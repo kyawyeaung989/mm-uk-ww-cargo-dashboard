@@ -1,6 +1,31 @@
 {
-  "updatedAt": "2026-11-21T16:51:13.598Z",
+  "updatedAt": "2026-11-21T16:54:00.859Z",
   "records": [
+    {
+      "id": "rec_1795280038008_buva",
+      "invNo": "-",
+      "date": "21.11.2026",
+      "destType": "UK",
+      "locationNote": "Myanmar",
+      "sender": "Wai Yan",
+      "receiver": "Lwin Min",
+      "boxes": 1,
+      "kg": 18,
+      "kgPayStatus": "pay_arrival_uk",
+      "kgGbp": 35,
+      "kgMmk": 0,
+      "rate": 5500,
+      "kgPayDate": "",
+      "deliStatus": "pay_uk",
+      "deliGbp": 15,
+      "deliPayDate": "",
+      "insured": false,
+      "discount": true,
+      "note": "Discount 2 Pound",
+      "ready": false,
+      "dispatched": false,
+      "archived": false
+    },
     {
       "id": "rec_1795279871929_fpae",
       "invNo": "-",
