@@ -1,6 +1,31 @@
 {
-  "updatedAt": "2026-11-21T16:48:19.764Z",
+  "updatedAt": "2026-11-21T16:51:13.598Z",
   "records": [
+    {
+      "id": "rec_1795279871929_fpae",
+      "invNo": "-",
+      "date": "21.11.2026",
+      "destType": "UK",
+      "locationNote": "UK",
+      "sender": "Ma Su",
+      "receiver": "U Wai",
+      "boxes": 1,
+      "kg": 20,
+      "kgPayStatus": "paid_mm",
+      "kgGbp": 0,
+      "kgMmk": 750000,
+      "rate": 5500,
+      "kgPayDate": "18.11.2026",
+      "deliStatus": "pay_uk",
+      "deliGbp": 10,
+      "deliPayDate": "",
+      "insured": true,
+      "discount": false,
+      "note": "Insurance 200000",
+      "ready": false,
+      "dispatched": false,
+      "archived": false
+    },
     {
       "id": "rec_1795279613336_ihbi",
       "invNo": "8918435",
