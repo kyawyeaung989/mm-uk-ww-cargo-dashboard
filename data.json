@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T17:26:33.768Z",
+  "updatedAt": "2026-11-21T17:26:37.609Z",
   "records": [
     {
       "id": "rec_1795280038008_buva",
@@ -56,7 +56,7 @@
       "discount": false,
       "ready": false,
       "dispatched": false,
-      "archived": true,
+      "archived": false,
       "note": "Insurance 200000"
     },
     {
