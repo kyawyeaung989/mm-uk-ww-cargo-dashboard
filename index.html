@@ -93,18 +93,12 @@
 
   <main class="max-w-[1540px] mx-auto px-3 sm:px-5 mt-4 space-y-4">
 
-    <!-- Warm Staff Encouragement & Care Banner -->
-    <div class="glass-card rounded-2xl px-4 py-2.5 border border-amber-200/90 bg-gradient-to-r from-amber-50/90 via-white to-emerald-50/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-xs">
-      <div class="flex items-center gap-2.5">
-        <span class="text-xl shrink-0">💛</span>
-        <p class="text-xs text-slate-700 leading-relaxed">
-          <span class="font-bold text-amber-900">ဝန်ထမ်းများအတွက် အားပေးစကား:</span>
-          နေ့စဉ် မှတ်တမ်းတွေကို စိတ်ရှည်လက်ရှည် ဂရုစိုက် ဖြည့်သွင်းပေးတဲ့အတွက် အရမ်းကျေးဇူးတင်ပါတယ်နော်။ Sender / Receiver နာမည်၊ KG နဲ့ ငွေရှင်းမှုအခြေအနေ (MM / UK) တစ်ချက်ပြန်စစ်ပြီး မှန်ကန်စွာ ထည့်သွင်းပေးပါ။
-        </p>
-      </div>
-      <span class="text-[11px] font-bold text-emerald-800 bg-emerald-100/80 border border-emerald-200 px-2.5 py-1 rounded-xl shrink-0 self-start sm:self-center">
-        🛡️ တိကျမှု = စိတ်ချရမှု
-      </span>
+    <!-- Clean Polite Care Reminder (No Heading) -->
+    <div class="glass-card rounded-2xl px-4 py-2.5 border border-amber-200/80 bg-gradient-to-r from-amber-50/75 via-white to-emerald-50/65 flex items-center gap-2.5 shadow-xs">
+      <span class="text-lg shrink-0">💛</span>
+      <p class="text-xs text-slate-700 leading-relaxed">
+        နေ့စဉ် မှတ်တမ်းတွေကို ဂရုစိုက် ဖြည့်သွင်းပေးပါနော် — Sender / Receiver နာမည်၊ နိုင်ငံ၊ KG နဲ့ ငွေရှင်းမှုအခြေအနေ (MM / UK) တစ်ချက်ပြန်စစ်ပြီး မှန်ကန်စွာ ထည့်သွင်းပေးပါ။
+      </p>
     </div>
 
     <!-- Summary Cards -->
@@ -135,7 +129,7 @@
       </div>
     </div>
 
-    <!-- Mode Switcher (Active vs History) & Backup / Filters -->
+    <!-- Mode Switcher (Active vs History) & Filters -->
     <div class="glass-card rounded-2xl p-3.5 border border-slate-200/80 shadow-xs space-y-3">
       <div class="flex flex-wrap items-center justify-between gap-2.5">
         <div class="inline-flex bg-slate-100 p-1 rounded-xl border border-slate-200">
@@ -151,15 +145,8 @@
           <button id="archiveCompletedBtn" onclick="archiveReadyOrDispatched()" class="h-9 bg-indigo-50 hover:bg-indigo-100 text-indigo-800 border border-indigo-200 text-xs font-semibold px-3 rounded-xl transition whitespace-nowrap">
             📥 Dispatched ဖြစ်ပြီးသား History ပို့မည်
           </button>
-          <button onclick="exportJsonBackup()" class="h-9 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 text-xs font-semibold px-3 rounded-xl transition whitespace-nowrap">
-            💾 JSON Backup ထုတ်မည်
-          </button>
-          <label class="h-9 bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-300 text-xs font-semibold px-3 rounded-xl transition whitespace-nowrap inline-flex items-center cursor-pointer">
-            📂 JSON ပြန်ထည့်မည်
-            <input type="file" accept=".json,application/json" onchange="importJsonBackup(event)" class="hidden" />
-          </label>
           <button onclick="exportCSV()" class="h-9 bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 text-xs font-semibold px-3 rounded-xl transition whitespace-nowrap">
-            ⬇️ CSV Backup
+            ⬇️ CSV Backup ထုတ်မည်
           </button>
           <button id="bulkDeleteHistoryBtn" onclick="bulkDeleteSelectedHistory()" class="hidden h-9 bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold px-3 rounded-xl transition whitespace-nowrap">
             🗑️ ရွေးထားသော History များ ဖျက်မည် (<span id="selectedHistoryCount">0</span>)
@@ -280,7 +267,7 @@
           <span class="text-2xl">📦</span>
           <div>
             <h2 id="entryModalTitle" class="text-base sm:text-lg font-bold text-slate-900">စာရင်းသစ် ထည့်ရန်</h2>
-            <p class="text-[11px] text-amber-800 font-medium">💡 ဂရုစိုက်ဖြည့်ရန်: နိုင်ငံ၊ နာမည်၊ KG နဲ့ ငွေရှင်းမှုအခြေအနေ (MM / UK) ကို သေချာပြန်စစ်ပါ။</p>
+            <p class="text-[11px] text-amber-800 font-medium">💡 နိုင်ငံ၊ နာမည်၊ KG နဲ့ ငွေရှင်းမှုအခြေအနေ (MM / UK) ကို ဂရုစိုက်ပြန်စစ်ပြီး ဖြည့်သွင်းပေးပါ။</p>
           </div>
         </div>
         <button onclick="closeEntryModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold px-2">✕</button>
@@ -315,7 +302,7 @@
 
           <div class="space-y-1.5">
             <label class="block text-xs font-bold text-slate-700">ရောက်မယ့် နိုင်ငံ (Destination)</label>
-            <select id="fDestSelect" onchange="toggleCustomCountryInputs()" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm font-semibold bg-white">
+            <select id="fDestSelect" onchange="handleDestChange()" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm font-semibold bg-white">
               <option value="UK">UK (ယူကေ)</option>
               <option value="Other">Other (ကိုယ်တိုင်ရိုက်ထည့်မည်)</option>
             </select>
@@ -348,40 +335,50 @@
         </div>
       </div>
 
-      <!-- KG Freight Fee Section -->
+      <!-- 1. KG Freight Fee Section (Matching Currency + Auto Rate UI) -->
       <div class="bg-emerald-50/70 p-3.5 rounded-2xl border border-emerald-200 space-y-3">
-        <p class="text-xs font-extrabold text-emerald-950 uppercase">💳 1. KG Freight Fee (ပို့ခ ငွေရှင်းမှု)</p>
-        <div class="grid grid-cols-1 sm:grid-cols-4 gap-2.5">
+        <p class="text-xs font-extrabold text-emerald-950 uppercase">💳 1. KG Freight Fee (£ ပေါင် / MMK ကျပ်)</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
           <div>
             <label class="block text-[11px] font-semibold text-slate-700 mb-1">ရှင်းတဲ့နေရာ / Status</label>
             <select id="fKgPayStatus" class="w-full border border-slate-300 rounded-xl px-2.5 py-2 text-xs font-bold bg-white">
               <option value="paid_mm">Paid in MM (မြန်မာရှင်းပြီး)</option>
               <option value="paid_uk">Paid in UK (UK ရှင်းပြီး)</option>
-              <option value="pay_arrival_uk">Pay on Arrival (UK)</option>
+              <option value="pay_arrival_uk">Pay on Arrival</option>
               <option value="unpaid">Unpaid (မရှင်းရသေး)</option>
             </select>
           </div>
           <div>
-            <label class="block text-[11px] font-semibold text-slate-700 mb-1">Amount (£ GBP)</label>
-            <input id="fKgGbp" type="number" step="0.01" min="0" value="0" class="w-full border border-slate-300 rounded-xl px-2.5 py-2 text-xs font-bold bg-white" />
-          </div>
-          <div>
-            <label class="block text-[11px] font-semibold text-slate-700 mb-1">MMK Amount (Ks)</label>
-            <input id="fKgMmk" type="number" step="1" min="0" value="0" class="w-full border border-slate-300 rounded-xl px-2.5 py-2 text-xs font-bold bg-white" />
-          </div>
-          <div>
-            <label class="block text-[11px] font-semibold text-slate-700 mb-1">Rate (1£ = ? Ks)</label>
-            <input id="fRate" type="number" step="1" min="0" value="5500" class="w-full border border-slate-300 rounded-xl px-2.5 py-2 text-xs font-bold bg-white" />
+            <label class="block text-[11px] font-semibold text-slate-700 mb-1">ငွေကြေးရွေးရန် (£ / MMK)</label>
+            <select id="fKgCurrency" onchange="toggleKgCurrencyFields()" class="w-full border border-slate-300 rounded-xl px-2.5 py-2 text-xs font-bold bg-white">
+              <option value="GBP">£ (Pound / ပေါင်)</option>
+              <option value="MMK">MMK (Kyat / ကျပ်)</option>
+            </select>
           </div>
         </div>
-        <div>
-          <label class="block text-[11px] font-semibold text-slate-700 mb-1">KG Fee ရှင်းသည့်ရက်စွဲ (Payment Date)</label>
-          <input id="fKgPayDate" type="text" placeholder="ဥပမာ: 21.11.2026" class="w-full border border-slate-300 rounded-xl px-3 py-1.5 text-xs bg-white" />
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+          <div id="kgGbpBox">
+            <label class="block text-[11px] font-semibold text-slate-700 mb-1">KG Fee Amount (£)</label>
+            <input id="fKgGbp" type="number" step="0.01" min="0" value="0" class="w-full border border-slate-300 rounded-xl px-2.5 py-2 text-xs font-bold bg-white" />
+          </div>
+          <div id="kgMmkBox" class="hidden">
+            <label class="block text-[11px] font-semibold text-slate-700 mb-1">KG Fee Amount (MMK)</label>
+            <input id="fKgMmk" type="number" step="1" min="0" value="0" class="w-full border border-slate-300 rounded-xl px-2.5 py-2 text-xs font-bold bg-white" />
+          </div>
+          <div id="kgRateBox" class="hidden">
+            <label class="block text-[11px] font-semibold text-slate-700 mb-1">Rate (1£ = ? Ks)</label>
+            <input id="fRate" type="number" step="1" min="0" value="5500" class="w-full border border-emerald-400 rounded-xl px-2.5 py-2 text-xs font-bold bg-white" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-700 mb-1">KG Fee ရှင်းသည့်ရက်စွဲ</label>
+            <input id="fKgPayDate" type="text" placeholder="ဥပမာ: 21.11.2026" class="w-full border border-slate-300 rounded-xl px-2.5 py-2 text-xs bg-white" />
+          </div>
         </div>
       </div>
 
-      <!-- Local Delivery Fee Section (GBP + MMK + Rate when MMK) -->
-      <div class="bg-amber-50/80 p-3.5 rounded-2xl border border-amber-200 space-y-3">
+      <!-- 2. Local Delivery Fee Section (Shown ONLY when Destination is UK) -->
+      <div id="localDeliveryBox" class="bg-amber-50/80 p-3.5 rounded-2xl border border-amber-200 space-y-3">
         <p class="text-xs font-extrabold text-amber-950 uppercase">🚚 2. Local Delivery Fee (£ ပေါင် / MMK ကျပ်)</p>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
           <div>
@@ -531,10 +528,19 @@
       return new TextDecoder().decode(bytes);
     }
 
+    function isUkDestination(destType, destination) {
+      if (destType === 'UK') return true;
+      const d = String(destination || '').trim().toLowerCase();
+      return d === 'uk' || d === 'united kingdom';
+    }
+
     function normalizeRecord(r) {
       const origin = r.origin || 'Myanmar';
-      const destType = r.destType || (r.destination === 'UK' ? 'UK' : 'Worldwide');
-      const destination = r.destination || r.locationNote || (destType === 'UK' ? 'UK' : 'Worldwide');
+      const destination = r.destination || r.locationNote || (r.destType === 'UK' ? 'UK' : 'Worldwide');
+      const destType = isUkDestination(r.destType, destination) ? 'UK' : 'Worldwide';
+      const kgCurrency = r.kgCurrency || ((r.kgMmk > 0 && (!r.kgGbp || r.kgGbp === 0)) ? 'MMK' : 'GBP');
+      const deliStatus = destType === 'UK' ? (r.deliStatus || 'none') : 'none';
+
       return {
         id: r.id || ('rec_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6)),
         invNo: r.invNo || '-',
@@ -547,11 +553,12 @@
         boxes: Math.max(1, parseInt(r.boxes, 10) || 1),
         kg: Math.max(0, parseFloat(r.kg) || 0),
         kgPayStatus: r.kgPayStatus || 'unpaid',
+        kgCurrency,
         kgGbp: Math.max(0, parseFloat(r.kgGbp) || 0),
         kgMmk: Math.max(0, parseFloat(r.kgMmk) || 0),
         rate: Math.max(0, parseFloat(r.rate) || 0),
         kgPayDate: r.kgPayDate || '',
-        deliStatus: r.deliStatus || 'none',
+        deliStatus,
         deliCurrency: r.deliCurrency || 'GBP',
         deliGbp: Math.max(0, parseFloat(r.deliGbp) || 0),
         deliMmk: Math.max(0, parseFloat(r.deliMmk) || 0),
@@ -727,6 +734,48 @@
       else destCustom.classList.add('hidden');
     }
 
+    function handleDestChange() {
+      toggleCustomCountryInputs();
+      toggleLocalDeliverySection();
+    }
+
+    function isModalDestUk() {
+      const destSel = document.getElementById('fDestSelect').value;
+      if (destSel === 'UK') return true;
+      const customVal = document.getElementById('fDestCustom').value.trim().toLowerCase();
+      return customVal === 'uk' || customVal === 'united kingdom';
+    }
+
+    function toggleLocalDeliverySection() {
+      const box = document.getElementById('localDeliveryBox');
+      if (isModalDestUk()) {
+        box.classList.remove('hidden');
+        if (document.getElementById('fDeliStatus').value === 'none') {
+          document.getElementById('fDeliStatus').value = 'pay_uk';
+        }
+      } else {
+        box.classList.add('hidden');
+        document.getElementById('fDeliStatus').value = 'none';
+      }
+    }
+
+    function toggleKgCurrencyFields() {
+      const curr = document.getElementById('fKgCurrency').value;
+      const gbpBox = document.getElementById('kgGbpBox');
+      const mmkBox = document.getElementById('kgMmkBox');
+      const rateBox = document.getElementById('kgRateBox');
+
+      if (curr === 'MMK') {
+        gbpBox.classList.add('hidden');
+        mmkBox.classList.remove('hidden');
+        rateBox.classList.remove('hidden');
+      } else {
+        gbpBox.classList.remove('hidden');
+        mmkBox.classList.add('hidden');
+        rateBox.classList.add('hidden');
+      }
+    }
+
     function toggleDeliCurrencyFields() {
       const curr = document.getElementById('fDeliCurrency').value;
       const gbpBox = document.getElementById('deliGbpBox');
@@ -761,7 +810,7 @@
           document.getElementById('fOriginCustom').value = rec.origin;
         }
 
-        if (rec.destination === 'UK' || (rec.destType === 'UK' && (!rec.destination || rec.destination === 'UK'))) {
+        if (isUkDestination(rec.destType, rec.destination)) {
           document.getElementById('fDestSelect').value = 'UK';
           document.getElementById('fDestCustom').value = '';
         } else {
@@ -774,6 +823,7 @@
         document.getElementById('fBoxes').value = rec.boxes || 1;
         document.getElementById('fKg').value = rec.kg || 0;
         document.getElementById('fKgPayStatus').value = rec.kgPayStatus || 'unpaid';
+        document.getElementById('fKgCurrency').value = rec.kgCurrency || 'GBP';
         document.getElementById('fKgGbp').value = rec.kgGbp || 0;
         document.getElementById('fKgMmk').value = rec.kgMmk || 0;
         document.getElementById('fRate').value = rec.rate || 5500;
@@ -804,6 +854,7 @@
         document.getElementById('fBoxes').value = 1;
         document.getElementById('fKg').value = 0;
         document.getElementById('fKgPayStatus').value = 'unpaid';
+        document.getElementById('fKgCurrency').value = 'GBP';
         document.getElementById('fKgGbp').value = 0;
         document.getElementById('fKgMmk').value = 0;
         document.getElementById('fRate').value = 5500;
@@ -822,6 +873,8 @@
       }
 
       toggleCustomCountryInputs();
+      toggleLocalDeliverySection();
+      toggleKgCurrencyFields();
       toggleDeliCurrencyFields();
       document.getElementById('entryModal').classList.remove('hidden');
     }
@@ -847,8 +900,11 @@
       const destination = destSel === 'Other'
         ? (document.getElementById('fDestCustom').value.trim() || 'Other')
         : 'UK';
-      const destType = destination.toLowerCase() === 'uk' ? 'UK' : 'Worldwide';
+      const destUk = isUkDestination(null, destination);
+      const destType = destUk ? 'UK' : 'Worldwide';
 
+      const kgCurrency = document.getElementById('fKgCurrency').value;
+      const deliStatus = destUk ? document.getElementById('fDeliStatus').value : 'none';
       const deliCurrency = document.getElementById('fDeliCurrency').value;
 
       const editId = document.getElementById('editId').value;
@@ -863,16 +919,17 @@
         boxes: Math.max(1, parseInt(document.getElementById('fBoxes').value, 10) || 1),
         kg: Math.max(0, parseFloat(document.getElementById('fKg').value) || 0),
         kgPayStatus: document.getElementById('fKgPayStatus').value,
-        kgGbp: Math.max(0, parseFloat(document.getElementById('fKgGbp').value) || 0),
-        kgMmk: Math.max(0, parseFloat(document.getElementById('fKgMmk').value) || 0),
-        rate: Math.max(0, parseFloat(document.getElementById('fRate').value) || 0),
+        kgCurrency,
+        kgGbp: kgCurrency === 'GBP' ? Math.max(0, parseFloat(document.getElementById('fKgGbp').value) || 0) : 0,
+        kgMmk: kgCurrency === 'MMK' ? Math.max(0, parseFloat(document.getElementById('fKgMmk').value) || 0) : 0,
+        rate: kgCurrency === 'MMK' ? Math.max(0, parseFloat(document.getElementById('fRate').value) || 0) : 0,
         kgPayDate: document.getElementById('fKgPayDate').value.trim(),
-        deliStatus: document.getElementById('fDeliStatus').value,
+        deliStatus,
         deliCurrency,
-        deliGbp: deliCurrency === 'GBP' ? Math.max(0, parseFloat(document.getElementById('fDeliGbp').value) || 0) : 0,
-        deliMmk: deliCurrency === 'MMK' ? Math.max(0, parseFloat(document.getElementById('fDeliMmk').value) || 0) : 0,
-        deliRate: deliCurrency === 'MMK' ? Math.max(0, parseFloat(document.getElementById('fDeliRate').value) || 0) : 0,
-        deliPayDate: document.getElementById('fDeliPayDate').value.trim(),
+        deliGbp: (destUk && deliCurrency === 'GBP') ? Math.max(0, parseFloat(document.getElementById('fDeliGbp').value) || 0) : 0,
+        deliMmk: (destUk && deliCurrency === 'MMK') ? Math.max(0, parseFloat(document.getElementById('fDeliMmk').value) || 0) : 0,
+        deliRate: (destUk && deliCurrency === 'MMK') ? Math.max(0, parseFloat(document.getElementById('fDeliRate').value) || 0) : 0,
+        deliPayDate: destUk ? document.getElementById('fDeliPayDate').value.trim() : '',
         insured: document.getElementById('fInsured').checked,
         discount: document.getElementById('fDiscount').checked,
         note: document.getElementById('fNote').value.trim()
@@ -923,7 +980,7 @@
     async function deleteSingleHistory(id) {
       const rec = records.find(r => r.id === id);
       if (!rec || !rec.archived) return;
-      if (!confirm('History ထဲမှ "' + rec.invNo + ' - ' + rec.receiver + '" ကို အပြီးဖျက်မလား? (JSON / CSV Backup အရင် ထုတ်ထားသင့်ပါသည်)')) return;
+      if (!confirm('History ထဲမှ "' + rec.invNo + ' - ' + rec.receiver + '" ကို အပြီးဖျက်မလား? (CSV Backup အရင် ထုတ်ထားသင့်ပါသည်)')) return;
       records = records.filter(r => r.id !== id);
       selectedHistoryIds.delete(id);
       await persistRecords();
@@ -991,8 +1048,8 @@
     }
 
     function getDeliBadge(rec) {
-      if (rec.deliStatus === 'none') {
-        return { label: '— No Local Deli', cls: 'bg-slate-100 text-slate-600 border-slate-200' };
+      if (!isUkDestination(rec.destType, rec.destination) || rec.deliStatus === 'none') {
+        return { label: '— အိမ်အရောက်တန်းပို့ / မရှိ', cls: 'bg-slate-100 text-slate-500 border-slate-200' };
       }
       const map = {
         pay_uk: { label: '🚚 ရောက်မှ ကောက်မည်', cls: 'bg-amber-100 text-amber-900 border-amber-300' },
@@ -1074,12 +1131,24 @@
           selectCell = `<td class="py-2.5 px-2 text-center"><input type="checkbox" ${checked} onchange="toggleSelectHistoryItem('${r.id}', this.checked)" /></td>`;
         }
 
-        const mmkText = r.kgMmk ? Number(r.kgMmk).toLocaleString() + ' Ks' : '0 Ks';
-        const rateText = r.rate ? ' @ ' + Number(r.rate).toLocaleString() : '';
-        const gbpText = r.kgGbp ? '£' + Number(r.kgGbp).toFixed(2) : '£0.00';
+        let kgAmountHtml = '';
+        if (r.kgCurrency === 'MMK') {
+          const kMmk = r.kgMmk ? Number(r.kgMmk).toLocaleString() + ' Ks' : '0 Ks';
+          const kRate = r.rate ? 'Rate @ ' + Number(r.rate).toLocaleString() : '';
+          kgAmountHtml = `
+            <div class="text-[11px] font-bold text-slate-800 mt-1">${kMmk}</div>
+            <div class="text-[10px] text-slate-500">${kRate}${r.kgPayDate ? ' • ' + escapeHtml(r.kgPayDate) : ''}</div>
+          `;
+        } else {
+          const kGbp = r.kgGbp ? '£' + Number(r.kgGbp).toFixed(2) : '£0.00';
+          kgAmountHtml = `
+            <div class="text-[11px] font-bold text-slate-800 mt-1">${kGbp}</div>
+            <div class="text-[10px] text-slate-500">${r.kgPayDate ? 'Date: ' + escapeHtml(r.kgPayDate) : ''}</div>
+          `;
+        }
 
         let deliDetailHtml = '';
-        if (r.deliStatus !== 'none') {
+        if (isUkDestination(r.destType, r.destination) && r.deliStatus !== 'none') {
           if (r.deliCurrency === 'MMK') {
             const dMmk = r.deliMmk ? Number(r.deliMmk).toLocaleString() + ' Ks' : '0 Ks';
             const dRate = r.deliRate ? 'Rate @ ' + Number(r.deliRate).toLocaleString() : '';
@@ -1137,8 +1206,7 @@
           </td>
           <td class="py-2.5 px-2.5">
             <span class="inline-block text-[10.5px] font-bold border px-2 py-0.5 rounded-lg ${kgBadge.cls}">${kgBadge.label}</span>
-            <div class="text-[11px] font-bold text-slate-800 mt-1">${gbpText} <span class="text-slate-400 font-normal">/</span> ${mmkText}</div>
-            <div class="text-[10px] text-slate-500">${rateText ? 'Rate' + rateText : ''}${r.kgPayDate ? ' • Date: ' + escapeHtml(r.kgPayDate) : ''}</div>
+            ${kgAmountHtml}
           </td>
           <td class="py-2.5 px-2.5">
             <span class="inline-block text-[10.5px] font-bold border px-2 py-0.5 rounded-lg ${deliBadge.cls}">${deliBadge.label}</span>
@@ -1183,52 +1251,17 @@
         .replace(/"/g, '&quot;');
     }
 
-    function exportJsonBackup() {
-      const payload = {
-        exportedAt: new Date().toISOString(),
-        records
-      };
-      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'mm-uk-ww-dashboard-backup.json';
-      a.click();
-      URL.revokeObjectURL(url);
-    }
-
-    async function importJsonBackup(event) {
-      const file = event.target.files && event.target.files[0];
-      if (!file) return;
-      try {
-        const text = await file.text();
-        const parsed = JSON.parse(text);
-        const list = Array.isArray(parsed) ? parsed : (Array.isArray(parsed.records) ? parsed.records : null);
-        if (!list) {
-          alert('မှန်ကန်သော JSON backup ဖိုင် မဟုတ်ပါ။');
-          return;
-        }
-        if (!confirm('JSON ဖိုင်ထဲမှ စာရင်း ' + list.length + ' ခုကို ထည့်သွင်းပြီး သိမ်းမလား?')) return;
-        records = list.map(normalizeRecord);
-        await persistRecords();
-      } catch (err) {
-        alert('JSON ဖိုင် ဖတ်ရာတွင် အမှားရှိပါသည်: ' + err.message);
-      } finally {
-        event.target.value = '';
-      }
-    }
-
     function exportCSV() {
       const headers = [
         'Tab', 'InvNo', 'Date', 'Origin', 'Destination', 'Sender', 'Receiver',
-        'Boxes', 'KG', 'KgPayStatus', 'KgGBP', 'KgMMK', 'Rate', 'KgPayDate',
+        'Boxes', 'KG', 'KgPayStatus', 'KgCurrency', 'KgGBP', 'KgMMK', 'Rate', 'KgPayDate',
         'DeliStatus', 'DeliCurrency', 'DeliGBP', 'DeliMMK', 'DeliRate', 'DeliPayDate',
         'Insured', 'Discount', 'Ready', 'Dispatched', 'Note'
       ];
       const rows = records.map(r => [
         r.archived ? 'History' : 'Active',
         r.invNo, r.date, r.origin, r.destination, r.sender, r.receiver,
-        r.boxes, r.kg, r.kgPayStatus, r.kgGbp, r.kgMmk, r.rate, r.kgPayDate,
+        r.boxes, r.kg, r.kgPayStatus, r.kgCurrency, r.kgGbp, r.kgMmk, r.rate, r.kgPayDate,
         r.deliStatus, r.deliCurrency, r.deliGbp, r.deliMmk, r.deliRate, r.deliPayDate,
         r.insured ? 'Yes' : 'No',
         r.discount ? 'Yes' : 'No',
