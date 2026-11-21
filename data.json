@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T16:47:53.557Z",
+  "updatedAt": "2026-11-21T16:48:19.764Z",
   "records": [
     {
       "id": "rec_1795279613336_ihbi",
@@ -14,7 +14,7 @@
       "kgPayStatus": "paid_mm",
       "kgGbp": 0,
       "kgMmk": 550000,
-      "rate": 0,
+      "rate": 5500,
       "kgPayDate": "21.11.2026",
       "deliStatus": "pay_uk",
       "deliGbp": 15,
