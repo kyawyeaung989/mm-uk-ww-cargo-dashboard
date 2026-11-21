@@ -1,12 +1,13 @@
 {
-  "updatedAt": "2026-11-21T17:07:18.390Z",
+  "updatedAt": "2026-11-21T17:26:21.960Z",
   "records": [
     {
       "id": "rec_1795280038008_buva",
       "invNo": "-",
       "date": "21.11.2026",
+      "origin": "Myanmar",
       "destType": "UK",
-      "locationNote": "Myanmar",
+      "destination": "Myanmar",
       "sender": "Wai Yan",
       "receiver": "Lwin Min",
       "boxes": 1,
@@ -17,21 +18,25 @@
       "rate": 0,
       "kgPayDate": "",
       "deliStatus": "pay_uk",
+      "deliCurrency": "GBP",
       "deliGbp": 15,
+      "deliMmk": 0,
+      "deliRate": 0,
       "deliPayDate": "",
       "insured": false,
       "discount": true,
-      "note": "Discount 2 Pound",
       "ready": false,
       "dispatched": true,
-      "archived": true
+      "archived": true,
+      "note": "Discount 2 Pound"
     },
     {
       "id": "rec_1795279871929_fpae",
       "invNo": "-",
       "date": "21.11.2026",
+      "origin": "Myanmar",
       "destType": "UK",
-      "locationNote": "UK",
+      "destination": "UK",
       "sender": "Ma Su",
       "receiver": "U Wai",
       "boxes": 1,
@@ -42,21 +47,25 @@
       "rate": 0,
       "kgPayDate": "18.11.2026",
       "deliStatus": "pay_uk",
+      "deliCurrency": "GBP",
       "deliGbp": 10,
+      "deliMmk": 0,
+      "deliRate": 0,
       "deliPayDate": "",
       "insured": true,
       "discount": false,
-      "note": "Insurance 200000",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": true,
+      "note": "Insurance 200000"
     },
     {
       "id": "rec_1795279613336_ihbi",
       "invNo": "8918435",
       "date": "21.11.2026",
+      "origin": "Myanmar",
       "destType": "UK",
-      "locationNote": "UK",
+      "destination": "UK",
       "sender": "Daw Thein",
       "receiver": "U Aung",
       "boxes": 1,
@@ -67,14 +76,17 @@
       "rate": 5500,
       "kgPayDate": "21.11.2026",
       "deliStatus": "pay_uk",
+      "deliCurrency": "GBP",
       "deliGbp": 15,
+      "deliMmk": 0,
+      "deliRate": 0,
       "deliPayDate": "",
       "insured": false,
       "discount": false,
-      "note": "",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": false,
+      "note": ""
     }
   ]
 }
