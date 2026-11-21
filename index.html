@@ -155,8 +155,8 @@
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 pt-2.5 border-t border-slate-100">
-        <div class="sm:col-span-5">
-          <input id="searchInput" oninput="renderTable()" type="text" placeholder="🔍 Inv No. / Sender / Receiver / Origin / Destination / မှတ်ချက် ရှာရန်..." class="w-full h-9 border border-slate-300 rounded-xl px-3 text-xs sm:text-sm focus:outline-none focus:border-indigo-500 bg-white" />
+        <div class="sm:col-span-4">
+          <input id="searchInput" oninput="renderTable()" type="text" placeholder="🔍 Inv No. / Sender / Receiver / နိုင်ငံ / မှတ်ချက် ရှာရန်..." class="w-full h-9 border border-slate-300 rounded-xl px-3 text-xs sm:text-sm focus:outline-none focus:border-indigo-500 bg-white" />
         </div>
         <div class="sm:col-span-3">
           <select id="destFilter" onchange="renderTable()" class="w-full h-9 border border-slate-300 rounded-xl px-3 text-xs sm:text-sm focus:outline-none focus:border-indigo-500 bg-white">
@@ -165,9 +165,11 @@
             <option value="Worldwide">🌍 Destination: Other / Worldwide</option>
           </select>
         </div>
-        <div class="sm:col-span-4">
+        <div class="sm:col-span-5">
           <select id="paymentFilter" onchange="renderTable()" class="w-full h-9 border border-slate-300 rounded-xl px-3 text-xs sm:text-sm focus:outline-none focus:border-indigo-500 bg-white">
             <option value="all">ငွေရှင်းမှုအခြေအနေ အားလုံး</option>
+            <option value="both_paid">✅ KG Fee + Local Delivery နှစ်ခုလုံး ရှင်းပြီး (MM / UK)</option>
+            <option value="both_uk_collect">🚚 KG Fee + Local Delivery (UK ဘက်ဆိုင်ရာ)</option>
             <option value="paid_mm">🇲🇲 KG Fee Paid in MM</option>
             <option value="paid_uk">🇬🇧 KG Fee Paid in UK</option>
             <option value="unpaid">⚠️ KG Fee Unpaid / Arrival</option>
@@ -335,7 +337,7 @@
         </div>
       </div>
 
-      <!-- 1. KG Freight Fee Section (Matching Currency + Auto Rate UI) -->
+      <!-- 1. KG Freight Fee Section -->
       <div class="bg-emerald-50/70 p-3.5 rounded-2xl border border-emerald-200 space-y-3">
         <p class="text-xs font-extrabold text-emerald-950 uppercase">💳 1. KG Freight Fee (£ ပေါင် / MMK ကျပ်)</p>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -448,6 +450,30 @@
     </div>
   </div>
 
+  <!-- 3. Pop-up Payment & Shipment Slip Document Modal (Copy Only, No Print) -->
+  <div id="slipModal" class="hidden fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">📄</span>
+          <h2 class="text-base sm:text-lg font-bold text-slate-900">Payment &amp; Shipment Summary Slip</h2>
+        </div>
+        <button onclick="closeSlipModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold px-2">✕</button>
+      </div>
+
+      <div id="slipContent" class="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-3 text-xs text-slate-800"></div>
+
+      <p id="slipCopyFeedback" class="text-xs text-emerald-700 font-bold hidden"></p>
+
+      <div class="flex justify-end gap-2 pt-2 border-t border-slate-100">
+        <button onclick="closeSlipModal()" class="px-4 py-2 text-xs sm:text-sm text-slate-600 hover:bg-slate-100 rounded-xl">ပိတ်မည်</button>
+        <button onclick="copySlipText()" class="px-4 py-2 text-xs sm:text-sm bg-indigo-700 hover:bg-indigo-800 text-white font-bold rounded-xl shadow-sm">
+          📋 Copy Summary
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script>
     const LOCAL_CACHE_KEY = 'mm_uk_ww_dashboard_cache_v1';
     const CFG_KEY = 'mm_uk_ww_gh_cfg_v1';
@@ -458,6 +484,7 @@
     let records = [];
     let fileSha = null;
     let lockedRole = null;
+    let activeSlipPlainText = '';
 
     function initFromUrlParams() {
       const params = new URLSearchParams(window.location.search);
@@ -1059,6 +1086,25 @@
       return map[rec.deliStatus] || map.pay_uk;
     }
 
+    function formatKgAmountStr(r) {
+      if (r.kgCurrency === 'MMK') {
+        const amt = (r.kgMmk ? Number(r.kgMmk).toLocaleString() : '0') + ' Ks';
+        return r.rate ? `${amt} (Rate @ ${Number(r.rate).toLocaleString()})` : amt;
+      }
+      return r.kgGbp ? '£' + Number(r.kgGbp).toFixed(2) : '£0.00';
+    }
+
+    function formatDeliAmountStr(r) {
+      if (!isUkDestination(r.destType, r.destination) || r.deliStatus === 'none') {
+        return '—';
+      }
+      if (r.deliCurrency === 'MMK') {
+        const amt = (r.deliMmk ? Number(r.deliMmk).toLocaleString() : '0') + ' Ks';
+        return r.deliRate ? `${amt} (Rate @ ${Number(r.deliRate).toLocaleString()})` : amt;
+      }
+      return r.deliGbp ? '£' + Number(r.deliGbp).toFixed(2) : '£0.00';
+    }
+
     function getFilteredRecords() {
       const q = (document.getElementById('searchInput').value || '').trim().toLowerCase();
       const destF = document.getElementById('destFilter').value;
@@ -1071,6 +1117,19 @@
         if (destF === 'UK' && r.destType !== 'UK') return false;
         if (destF === 'Worldwide' && r.destType === 'UK') return false;
 
+        const kgPaid = ['paid_mm', 'paid_uk'].includes(r.kgPayStatus);
+        const deliPaid = ['paid_mm', 'paid_uk'].includes(r.deliStatus);
+        const hasDeli = isUkDestination(r.destType, r.destination) && r.deliStatus !== 'none';
+
+        if (payF === 'both_paid') {
+          if (!kgPaid) return false;
+          if (hasDeli && !deliPaid) return false;
+        }
+        if (payF === 'both_uk_collect') {
+          const ukKg = ['paid_uk', 'pay_arrival_uk'].includes(r.kgPayStatus);
+          const ukDeli = r.deliStatus === 'pay_uk';
+          if (!ukKg && !ukDeli) return false;
+        }
         if (payF === 'paid_mm' && r.kgPayStatus !== 'paid_mm') return false;
         if (payF === 'paid_uk' && r.kgPayStatus !== 'paid_uk') return false;
         if (payF === 'unpaid' && !['unpaid', 'pay_arrival_uk'].includes(r.kgPayStatus)) return false;
@@ -1082,6 +1141,100 @@
           if (!hay.includes(q)) return false;
         }
         return true;
+      });
+    }
+
+    function openSlipModal(id) {
+      const r = records.find(item => item.id === id);
+      if (!r) return;
+
+      const kgBadge = getKgPayBadge(r);
+      const deliBadge = getDeliBadge(r);
+      const kgAmt = formatKgAmountStr(r);
+      const hasDeli = isUkDestination(r.destType, r.destination) && r.deliStatus !== 'none';
+      const deliAmt = formatDeliAmountStr(r);
+
+      const extras = [
+        r.insured ? 'Insured' : '',
+        r.discount ? 'Discount' : ''
+      ].filter(Boolean).join(', ') || '—';
+
+      const lines = [
+        `📦 MM → UK & Worldwide Payment Summary`,
+        `────────────────────────────`,
+        `Invoice: ${r.invNo} | Date: ${r.date}`,
+        `Route: ${r.origin} → ${r.destination}`,
+        `Sender: ${r.sender}`,
+        `Receiver: ${r.receiver}`,
+        `Boxes / KG: ${r.boxes} ပုံး | ${Number(r.kg).toFixed(2)} kg`,
+        ``,
+        `💳 KG Freight Fee: ${kgBadge.label}`,
+        `   Amount: ${kgAmt}${r.kgPayDate ? ' | Date: ' + r.kgPayDate : ''}`,
+        ``,
+        `🚚 Local Delivery Fee: ${deliBadge.label}`,
+        ...(hasDeli ? [`   Amount: ${deliAmt}${r.deliPayDate ? ' | Date: ' + r.deliPayDate : ''}`] : []),
+        ``,
+        `🏷️ Extra: ${extras}`,
+        ...(r.note ? [`📝 Note: ${r.note}`] : [])
+      ];
+      activeSlipPlainText = lines.join('\n');
+
+      document.getElementById('slipContent').innerHTML = `
+        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+          <div>
+            <span class="font-extrabold text-sm text-slate-900">Inv: ${escapeHtml(r.invNo)}</span>
+            <span class="text-slate-500 ml-2">${escapeHtml(r.date)}</span>
+          </div>
+          <span class="text-[11px] font-bold px-2 py-0.5 rounded-lg ${r.destType === 'UK' ? 'bg-indigo-100 text-indigo-800' : 'bg-teal-100 text-teal-800'}">
+            ${escapeHtml(r.origin)} → ${escapeHtml(r.destination)}
+          </span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 bg-white p-2.5 rounded-xl border border-slate-200/70">
+          <div><span class="text-slate-500">📤 Sender:</span> <strong class="text-slate-900">${escapeHtml(r.sender)}</strong></div>
+          <div><span class="text-slate-500">📥 Receiver:</span> <strong class="text-indigo-950">${escapeHtml(r.receiver)}</strong></div>
+          <div><span class="text-slate-500">📦 ပုံး:</span> <strong>${r.boxes} ပုံး</strong></div>
+          <div><span class="text-slate-500">⚖️ KG:</span> <strong class="text-sky-700">${Number(r.kg).toFixed(2)} kg</strong></div>
+        </div>
+
+        <div class="bg-emerald-50/80 border border-emerald-200 rounded-xl p-2.5 space-y-1">
+          <div class="flex items-center justify-between gap-2">
+            <span class="font-bold text-emerald-950">💳 1. KG Freight Fee</span>
+            <span class="text-[10.5px] font-bold border px-2 py-0.5 rounded-lg ${kgBadge.cls}">${kgBadge.label}</span>
+          </div>
+          <div class="font-bold text-slate-900">${escapeHtml(kgAmt)}</div>
+          ${r.kgPayDate ? `<div class="text-[11px] text-slate-600">Date: ${escapeHtml(r.kgPayDate)}</div>` : ''}
+        </div>
+
+        <div class="bg-amber-50/80 border border-amber-200 rounded-xl p-2.5 space-y-1">
+          <div class="flex items-center justify-between gap-2">
+            <span class="font-bold text-amber-950">🚚 2. Local Delivery Fee</span>
+            <span class="text-[10.5px] font-bold border px-2 py-0.5 rounded-lg ${deliBadge.cls}">${deliBadge.label}</span>
+          </div>
+          ${hasDeli ? `<div class="font-bold text-slate-900">${escapeHtml(deliAmt)}</div>` : ''}
+          ${(hasDeli && r.deliPayDate) ? `<div class="text-[11px] text-slate-600">Date: ${escapeHtml(r.deliPayDate)}</div>` : ''}
+        </div>
+
+        <div class="text-[11px] text-slate-600 space-y-0.5">
+          <div><span class="font-semibold">🏷️ Extra:</span> ${escapeHtml(extras)}</div>
+          <div><span class="font-semibold">📝 Note:</span> ${escapeHtml(r.note || '—')}</div>
+        </div>
+      `;
+
+      document.getElementById('slipCopyFeedback').classList.add('hidden');
+      document.getElementById('slipModal').classList.remove('hidden');
+    }
+
+    function closeSlipModal() {
+      document.getElementById('slipModal').classList.add('hidden');
+    }
+
+    function copySlipText() {
+      if (!activeSlipPlainText) return;
+      navigator.clipboard.writeText(activeSlipPlainText).then(() => {
+        const fb = document.getElementById('slipCopyFeedback');
+        fb.textContent = '✅ Summary ကို Copy ကူးပြီးပါပြီ (Viber / Telegram တွင် Paste လုပ်ပို့နိုင်ပါသည်)';
+        fb.classList.remove('hidden');
       });
     }
 
@@ -1171,7 +1324,7 @@
 
         const canEdit = role === 'admin' || role === 'office' || role === 'page';
 
-        let actionButtons = '';
+        let actionButtons = `<button onclick="openSlipModal('${r.id}')" class="text-[11px] font-semibold bg-indigo-50 hover:bg-indigo-100 text-indigo-800 px-2 py-1 rounded-lg border border-indigo-200">📄 Slip</button>`;
         if (canEdit) {
           actionButtons += `<button onclick="openEntryModal('${r.id}')" class="text-[11px] font-semibold bg-slate-100 hover:bg-slate-200 text-slate-800 px-2 py-1 rounded-lg border border-slate-300">✏️ Edit</button>`;
         }
@@ -1226,7 +1379,7 @@
                   ${r.dispatched ? '🚚 Sent' : 'Sent?'}
                 </button>
               </div>
-              <div class="flex items-center gap-1 mt-0.5">
+              <div class="flex items-center gap-1 mt-0.5 flex-wrap justify-center">
                 ${actionButtons}
               </div>
             </div>
