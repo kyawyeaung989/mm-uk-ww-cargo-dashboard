@@ -1,4 +1,30 @@
 {
-  "updatedAt": "",
-  "records": []
+  "updatedAt": "2026-11-21T16:46:55.318Z",
+  "records": [
+    {
+      "id": "rec_1795279613336_ihbi",
+      "invNo": "8918435",
+      "date": "21.11.2026",
+      "destType": "UK",
+      "locationNote": "UK",
+      "sender": "Daw Thein",
+      "receiver": "U Aung",
+      "boxes": 1,
+      "kg": 25,
+      "kgPayStatus": "paid_mm",
+      "kgGbp": 0,
+      "kgMmk": 550000,
+      "rate": 5500,
+      "kgPayDate": "21.11.2026",
+      "deliStatus": "pay_uk",
+      "deliGbp": 15,
+      "deliPayDate": "",
+      "insured": false,
+      "discount": false,
+      "note": "",
+      "ready": false,
+      "dispatched": false,
+      "archived": false
+    }
+  ]
 }
