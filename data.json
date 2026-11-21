@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T17:47:47.982Z",
+  "updatedAt": "2026-11-21T17:56:14.677Z",
   "records": [
     {
       "id": "rec_1795282276065_trtf",
@@ -16,13 +16,13 @@
       "kgCurrency": "MMK",
       "kgGbp": 0,
       "kgMmk": 500000,
-      "rate": 0,
+      "rate": 5500,
       "kgPayDate": "",
       "deliStatus": "pay_uk",
-      "deliCurrency": "MMK",
-      "deliGbp": 0,
-      "deliMmk": 120000,
-      "deliRate": 6500,
+      "deliCurrency": "GBP",
+      "deliGbp": 10,
+      "deliMmk": 0,
+      "deliRate": 0,
       "deliPayDate": "",
       "insured": false,
       "discount": false,
