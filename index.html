@@ -9,7 +9,7 @@
   <style>
     body {
       font-family: 'Inter', 'Noto Sans Myanmar', sans-serif;
-      background: linear-gradient(135deg, #f1f5f9 0%, #eff6ff 50%, #f0fdf4 100%);
+      background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 45%, #ecfdf5 100%);
       min-height: 100vh;
     }
     .glass-card {
@@ -19,30 +19,54 @@
     th, td {
       vertical-align: top;
     }
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-3px); }
+    }
+    .mascot-float {
+      animation: floatSlow 3.2s ease-in-out infinite;
+    }
   </style>
 </head>
 <body class="text-slate-800 pb-16">
 
   <!-- Top Bar -->
-  <header class="bg-slate-950 text-white sticky top-0 z-30 border-b border-slate-800 shadow-md">
-    <div class="max-w-[1520px] mx-auto px-3 sm:px-5 py-2.5 flex flex-wrap items-center justify-between gap-2">
+  <header class="bg-slate-950 text-white sticky top-0 z-30 border-b border-slate-800 shadow-lg">
+    <div class="max-w-[1540px] mx-auto px-3 sm:px-5 py-2.5 flex flex-wrap items-center justify-between gap-2">
       <div class="flex items-center gap-2.5 min-w-0">
-        <div class="bg-amber-400 text-slate-950 font-extrabold text-xs sm:text-sm px-2.5 py-1.5 rounded-xl shrink-0">
-          MM → UK/WW
+        <!-- Cute Cartoon Cargo Mascot SVG -->
+        <div class="mascot-float bg-gradient-to-br from-amber-300 to-amber-500 text-slate-950 p-1.5 rounded-2xl shadow-md shrink-0">
+          <svg class="w-8 h-8" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="20" width="44" height="34" rx="8" fill="#FEF3C7" stroke="#78350F" stroke-width="3"/>
+            <path d="M10 30H54" stroke="#78350F" stroke-width="2.5" stroke-dasharray="4 3"/>
+            <path d="M32 20V30" stroke="#78350F" stroke-width="2.5"/>
+            <circle cx="24" cy="40" r="3.2" fill="#1E293B"/>
+            <circle cx="40" cy="40" r="3.2" fill="#1E293B"/>
+            <circle cx="25.2" cy="38.8" r="1.1" fill="#FFFFFF"/>
+            <circle cx="41.2" cy="38.8" r="1.1" fill="#FFFFFF"/>
+            <path d="M27 45C29 47.5 35 47.5 37 45" stroke="#B45309" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="18" cy="43" r="2.5" fill="#FDA4AF" opacity="0.75"/>
+            <circle cx="46" cy="43" r="2.5" fill="#FDA4AF" opacity="0.75"/>
+            <path d="M20 14C20 10.5 44 10.5 44 14L47 20H17L20 14Z" fill="#F59E0B" stroke="#78350F" stroke-width="2.5"/>
+          </svg>
         </div>
+
         <div class="min-w-0">
-          <h1 class="font-bold text-sm sm:text-base lg:text-lg truncate">
-            Myanmar → UK &amp; Worldwide Approval &amp; Payment Dashboard
-          </h1>
-          <div class="flex items-center gap-2 mt-0.5">
-            <p id="syncStatus" class="text-[11px] text-amber-300 font-medium truncate">
-              ⚙️ GitHub Setup မလုပ်ရသေးပါ (Local Mode)
-            </p>
+          <div class="flex items-center gap-2 flex-wrap">
+            <h1 class="font-extrabold text-sm sm:text-base lg:text-lg truncate text-white">
+              MM → UK &amp; Worldwide Approval &amp; Payment Dashboard
+            </h1>
+            <span class="hidden md:inline-flex items-center gap-1 text-[10.5px] bg-amber-400/15 text-amber-300 border border-amber-400/30 px-2 py-0.5 rounded-full font-semibold">
+              ✨ Route &amp; Split Payment Ready
+            </span>
           </div>
+          <p id="syncStatus" class="text-[11px] text-amber-300 font-medium truncate mt-0.5">
+            ⚙️ GitHub Setup မလုပ်ရသေးပါ (Local Mode)
+          </p>
         </div>
       </div>
 
-      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0 flex-wrap">
         <div id="roleSelectWrapper">
           <select id="roleSelect" onchange="renderAll()" class="h-8 sm:h-9 bg-slate-800 border border-slate-600 text-white text-xs sm:text-sm rounded-xl px-2.5 font-semibold focus:outline-none focus:border-amber-400">
             <option value="admin">👑 Full Admin / UK Owner</option>
@@ -60,14 +84,28 @@
           ⚙️ Setup
         </button>
 
-        <button onclick="openEntryModal()" class="h-8 sm:h-9 bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold px-3 rounded-xl shadow-sm transition whitespace-nowrap">
+        <button onclick="openEntryModal()" class="h-8 sm:h-9 bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-bold px-3 rounded-xl shadow-sm transition whitespace-nowrap">
           + စာရင်းသစ်
         </button>
       </div>
     </div>
   </header>
 
-  <main class="max-w-[1520px] mx-auto px-3 sm:px-5 mt-4 space-y-4">
+  <main class="max-w-[1540px] mx-auto px-3 sm:px-5 mt-4 space-y-4">
+
+    <!-- Warm Staff Encouragement & Care Banner -->
+    <div class="glass-card rounded-2xl px-4 py-2.5 border border-amber-200/90 bg-gradient-to-r from-amber-50/90 via-white to-emerald-50/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-xs">
+      <div class="flex items-center gap-2.5">
+        <span class="text-xl shrink-0">💛</span>
+        <p class="text-xs text-slate-700 leading-relaxed">
+          <span class="font-bold text-amber-900">ဝန်ထမ်းများအတွက် အားပေးစကား:</span>
+          နေ့စဉ် မှတ်တမ်းတွေကို စိတ်ရှည်လက်ရှည် ဂရုစိုက် ဖြည့်သွင်းပေးတဲ့အတွက် အရမ်းကျေးဇူးတင်ပါတယ်နော်။ Sender / Receiver နာမည်၊ KG နဲ့ ငွေရှင်းမှုအခြေအနေ (MM / UK) တစ်ချက်ပြန်စစ်ပြီး မှန်ကန်စွာ ထည့်သွင်းပေးပါ။
+        </p>
+      </div>
+      <span class="text-[11px] font-bold text-emerald-800 bg-emerald-100/80 border border-emerald-200 px-2.5 py-1 rounded-xl shrink-0 self-start sm:self-center">
+        🛡️ တိကျမှု = စိတ်ချရမှု
+      </span>
+    </div>
 
     <!-- Summary Cards -->
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
@@ -97,7 +135,7 @@
       </div>
     </div>
 
-    <!-- Mode Switcher (Active vs History) & Filters -->
+    <!-- Mode Switcher (Active vs History) & Backup / Filters -->
     <div class="glass-card rounded-2xl p-3.5 border border-slate-200/80 shadow-xs space-y-3">
       <div class="flex flex-wrap items-center justify-between gap-2.5">
         <div class="inline-flex bg-slate-100 p-1 rounded-xl border border-slate-200">
@@ -113,8 +151,15 @@
           <button id="archiveCompletedBtn" onclick="archiveReadyOrDispatched()" class="h-9 bg-indigo-50 hover:bg-indigo-100 text-indigo-800 border border-indigo-200 text-xs font-semibold px-3 rounded-xl transition whitespace-nowrap">
             📥 Dispatched ဖြစ်ပြီးသား History ပို့မည်
           </button>
+          <button onclick="exportJsonBackup()" class="h-9 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 text-xs font-semibold px-3 rounded-xl transition whitespace-nowrap">
+            💾 JSON Backup ထုတ်မည်
+          </button>
+          <label class="h-9 bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-300 text-xs font-semibold px-3 rounded-xl transition whitespace-nowrap inline-flex items-center cursor-pointer">
+            📂 JSON ပြန်ထည့်မည်
+            <input type="file" accept=".json,application/json" onchange="importJsonBackup(event)" class="hidden" />
+          </label>
           <button onclick="exportCSV()" class="h-9 bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 text-xs font-semibold px-3 rounded-xl transition whitespace-nowrap">
-            ⬇️ CSV Backup ထုတ်မည်
+            ⬇️ CSV Backup
           </button>
           <button id="bulkDeleteHistoryBtn" onclick="bulkDeleteSelectedHistory()" class="hidden h-9 bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold px-3 rounded-xl transition whitespace-nowrap">
             🗑️ ရွေးထားသော History များ ဖျက်မည် (<span id="selectedHistoryCount">0</span>)
@@ -124,13 +169,13 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 pt-2.5 border-t border-slate-100">
         <div class="sm:col-span-5">
-          <input id="searchInput" oninput="renderTable()" type="text" placeholder="🔍 Inv No. / Sender / Receiver / Destination / မှတ်ချက် ရှာရန်..." class="w-full h-9 border border-slate-300 rounded-xl px-3 text-xs sm:text-sm focus:outline-none focus:border-indigo-500 bg-white" />
+          <input id="searchInput" oninput="renderTable()" type="text" placeholder="🔍 Inv No. / Sender / Receiver / Origin / Destination / မှတ်ချက် ရှာရန်..." class="w-full h-9 border border-slate-300 rounded-xl px-3 text-xs sm:text-sm focus:outline-none focus:border-indigo-500 bg-white" />
         </div>
         <div class="sm:col-span-3">
           <select id="destFilter" onchange="renderTable()" class="w-full h-9 border border-slate-300 rounded-xl px-3 text-xs sm:text-sm focus:outline-none focus:border-indigo-500 bg-white">
-            <option value="all">နိုင်ငံအားလုံး (UK &amp; Worldwide)</option>
-            <option value="UK">🇬🇧 UK (United Kingdom)</option>
-            <option value="Worldwide">🌍 Worldwide (Other Countries)</option>
+            <option value="all">လမ်းကြောင်းအားလုံး (All Routes)</option>
+            <option value="UK">🇬🇧 Destination: UK</option>
+            <option value="Worldwide">🌍 Destination: Other / Worldwide</option>
           </select>
         </div>
         <div class="sm:col-span-4">
@@ -139,8 +184,8 @@
             <option value="paid_mm">🇲🇲 KG Fee Paid in MM</option>
             <option value="paid_uk">🇬🇧 KG Fee Paid in UK</option>
             <option value="unpaid">⚠️ KG Fee Unpaid / Arrival</option>
-            <option value="deli_pay_uk">🚚 UK Local Delivery: Pay in UK</option>
-            <option value="deli_paid_mm">✅ UK Local Delivery: Paid in MM</option>
+            <option value="deli_pay_uk">🚚 Local Delivery: Pay in UK</option>
+            <option value="deli_paid_mm">✅ Local Delivery: Paid in MM</option>
           </select>
         </div>
       </div>
@@ -151,7 +196,7 @@
       <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse text-xs">
           <thead>
-            <tr class="bg-slate-100/90 border-b border-slate-200 text-[10.5px] font-bold text-slate-700 uppercase">
+            <tr class="bg-slate-100/95 border-b border-slate-200 text-[10.5px] font-bold text-slate-700 uppercase">
               <th id="selectColHeader" class="hidden py-2.5 px-2 w-8 text-center">
                 <input id="selectAllHistory" type="checkbox" onchange="toggleSelectAllHistory(this.checked)" />
               </th>
@@ -159,7 +204,7 @@
               <th class="py-2.5 px-2.5 whitespace-nowrap">Sender &amp; Receiver</th>
               <th class="py-2.5 px-2.5 whitespace-nowrap">📦 ပုံး &amp; ⚖️ KG (ရုံးစစ်)</th>
               <th class="py-2.5 px-2.5 whitespace-nowrap">💳 KG Freight Fee</th>
-              <th class="py-2.5 px-2.5 whitespace-nowrap">🚚 UK Local Delivery Fee</th>
+              <th class="py-2.5 px-2.5 whitespace-nowrap">🚚 Local Delivery Fee</th>
               <th class="py-2.5 px-2.5 whitespace-nowrap">🏷️ Badges &amp; Notes</th>
               <th class="py-2.5 px-2.5 text-center whitespace-nowrap">Status / Actions</th>
             </tr>
@@ -231,13 +276,20 @@
   <div id="entryModal" class="hidden fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl border border-slate-200 space-y-4 max-h-[92vh] overflow-y-auto">
       <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-        <h2 id="entryModalTitle" class="text-base sm:text-lg font-bold text-slate-900">➕ စာရင်းသစ် ထည့်ရန် (MM → UK / Worldwide)</h2>
+        <div class="flex items-center gap-2">
+          <span class="text-2xl">📦</span>
+          <div>
+            <h2 id="entryModalTitle" class="text-base sm:text-lg font-bold text-slate-900">စာရင်းသစ် ထည့်ရန်</h2>
+            <p class="text-[11px] text-amber-800 font-medium">💡 ဂရုစိုက်ဖြည့်ရန်: နိုင်ငံ၊ နာမည်၊ KG နဲ့ ငွေရှင်းမှုအခြေအနေ (MM / UK) ကို သေချာပြန်စစ်ပါ။</p>
+          </div>
+        </div>
         <button onclick="closeEntryModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold px-2">✕</button>
       </div>
 
       <input type="hidden" id="editId" />
 
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <!-- Inv & Date -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div>
           <label class="block text-xs font-semibold text-slate-700 mb-1">Invoice No.</label>
           <input id="fInvNo" type="text" placeholder="ADF564" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm" />
@@ -246,31 +298,46 @@
           <label class="block text-xs font-semibold text-slate-700 mb-1">Date</label>
           <input id="fDate" type="text" placeholder="21.11.2026" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm" />
         </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 mb-1">Destination / Route</label>
-          <select id="fDestType" onchange="toggleLocalDeliveryField()" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm font-semibold">
-            <option value="UK">🇬🇧 UK (United Kingdom)</option>
-            <option value="Worldwide">🌍 Worldwide (Other Country)</option>
-          </select>
+      </div>
+
+      <!-- Origin & Destination (Dropdown + Other Custom Input) -->
+      <div class="bg-sky-50/70 p-3.5 rounded-2xl border border-sky-200 space-y-3">
+        <p class="text-xs font-extrabold text-sky-950 uppercase">🌍 စထွက်မယ့်နိုင်ငံ (Origin) &amp; ရောက်မယ့်နိုင်ငံ (Destination)</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="space-y-1.5">
+            <label class="block text-xs font-bold text-slate-700">စထွက်မယ့် နိုင်ငံ (Origin)</label>
+            <select id="fOriginSelect" onchange="toggleCustomCountryInputs()" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm font-semibold bg-white">
+              <option value="Myanmar">Myanmar (မြန်မာ)</option>
+              <option value="Other">Other (ကိုယ်တိုင်ရိုက်ထည့်မည်)</option>
+            </select>
+            <input id="fOriginCustom" type="text" placeholder="ဥပမာ: Thailand, Malaysia" class="hidden w-full border border-sky-400 rounded-xl px-3 py-2 text-sm bg-white font-medium" />
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="block text-xs font-bold text-slate-700">ရောက်မယ့် နိုင်ငံ (Destination)</label>
+            <select id="fDestSelect" onchange="toggleCustomCountryInputs()" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm font-semibold bg-white">
+              <option value="UK">UK (ယူကေ)</option>
+              <option value="Other">Other (ကိုယ်တိုင်ရိုက်ထည့်မည်)</option>
+            </select>
+            <input id="fDestCustom" type="text" placeholder="ဥပမာ: France, Netherlands, USA" class="hidden w-full border border-sky-400 rounded-xl px-3 py-2 text-sm bg-white font-medium" />
+          </div>
         </div>
       </div>
 
+      <!-- Sender & Receiver -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-slate-50 p-3 rounded-2xl border border-slate-200/80">
         <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">📤 Sender Name (မြန်မာ ပေးပို့သူ)</label>
-          <input id="fSender" type="text" placeholder="ပေးပို့သူ နာမည်" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm bg-white" />
+          <label class="block text-xs font-bold text-slate-700 mb-1">📤 Sender Name (ပေးပို့သူ နာမည်)</label>
+          <input id="fSender" type="text" placeholder="ပေးပို့သူ နာမည် သေချာရိုက်ပါ" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm bg-white" />
         </div>
         <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">📥 Receiver Name (UK / Worldwide လက်ခံသူ)</label>
-          <input id="fReceiver" type="text" placeholder="လက်ခံသူ နာမည်" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm bg-white" />
+          <label class="block text-xs font-bold text-slate-700 mb-1">📥 Receiver Name (လက်ခံသူ နာမည်)</label>
+          <input id="fReceiver" type="text" placeholder="လက်ခံသူ နာမည် သေချာရိုက်ပါ" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm bg-white" />
         </div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 mb-1">Country / City Note</label>
-          <input id="fLocationNote" type="text" placeholder="ဥပမာ: UK / USA / Australia" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm" />
-        </div>
+      <!-- Boxes & KG -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div>
           <label class="block text-xs font-semibold text-slate-700 mb-1">📦 ပုံးအရေအတွက် (ရုံးစစ်)</label>
           <input id="fBoxes" type="number" min="1" value="1" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm" />
@@ -282,7 +349,7 @@
       </div>
 
       <!-- KG Freight Fee Section -->
-      <div class="bg-emerald-50/60 p-3.5 rounded-2xl border border-emerald-200 space-y-3">
+      <div class="bg-emerald-50/70 p-3.5 rounded-2xl border border-emerald-200 space-y-3">
         <p class="text-xs font-extrabold text-emerald-950 uppercase">💳 1. KG Freight Fee (ပို့ခ ငွေရှင်းမှု)</p>
         <div class="grid grid-cols-1 sm:grid-cols-4 gap-2.5">
           <div>
@@ -313,26 +380,44 @@
         </div>
       </div>
 
-      <!-- UK Local Delivery Fee Section -->
-      <div id="localDeliveryBox" class="bg-amber-50/70 p-3.5 rounded-2xl border border-amber-200 space-y-3">
-        <p class="text-xs font-extrabold text-amber-950 uppercase">🚚 2. UK Local Delivery Fee (UK ရုံး → Customer အိမ်အရောက်)</p>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+      <!-- Local Delivery Fee Section (GBP + MMK + Rate when MMK) -->
+      <div class="bg-amber-50/80 p-3.5 rounded-2xl border border-amber-200 space-y-3">
+        <p class="text-xs font-extrabold text-amber-950 uppercase">🚚 2. Local Delivery Fee (£ ပေါင် / MMK ကျပ်)</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
           <div>
             <label class="block text-[11px] font-semibold text-slate-700 mb-1">Local Delivery Status</label>
             <select id="fDeliStatus" class="w-full border border-slate-300 rounded-xl px-2.5 py-2 text-xs font-bold bg-white">
-              <option value="pay_uk">Pay in UK (UK ရောက်မှ ရှင်းမယ်)</option>
+              <option value="pay_uk">Pay in UK (ရောက်မှ ကောက်မည်)</option>
               <option value="paid_mm">Paid in MM (မြန်မာမှာ ရှင်းပြီး)</option>
-              <option value="paid_uk">Paid in UK (UK မှာ ရှင်းပြီး)</option>
-              <option value="none">No Local Delivery (ရုံးလာထုတ်)</option>
+              <option value="paid_uk">Paid in UK (ရှင်းပြီး)</option>
+              <option value="none">No Local Delivery (မပါ / ရုံးလာထုတ်)</option>
             </select>
           </div>
           <div>
+            <label class="block text-[11px] font-semibold text-slate-700 mb-1">ငွေကြေးရွေးရန် (£ / MMK)</label>
+            <select id="fDeliCurrency" onchange="toggleDeliCurrencyFields()" class="w-full border border-slate-300 rounded-xl px-2.5 py-2 text-xs font-bold bg-white">
+              <option value="GBP">£ (Pound / ပေါင်)</option>
+              <option value="MMK">MMK (Kyat / ကျပ်)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+          <div id="deliGbpBox">
             <label class="block text-[11px] font-semibold text-slate-700 mb-1">Local Deli Amount (£)</label>
             <input id="fDeliGbp" type="number" step="0.01" min="0" value="0" class="w-full border border-slate-300 rounded-xl px-2.5 py-2 text-xs font-bold bg-white" />
           </div>
+          <div id="deliMmkBox" class="hidden">
+            <label class="block text-[11px] font-semibold text-slate-700 mb-1">Local Deli Amount (MMK)</label>
+            <input id="fDeliMmk" type="number" step="1" min="0" value="0" class="w-full border border-slate-300 rounded-xl px-2.5 py-2 text-xs font-bold bg-white" />
+          </div>
+          <div id="deliRateBox" class="hidden">
+            <label class="block text-[11px] font-semibold text-slate-700 mb-1">Rate (1£ = ? Ks)</label>
+            <input id="fDeliRate" type="number" step="1" min="0" value="5500" class="w-full border border-amber-400 rounded-xl px-2.5 py-2 text-xs font-bold bg-white" />
+          </div>
           <div>
             <label class="block text-[11px] font-semibold text-slate-700 mb-1">Local Deli ရှင်းသည့်ရက်</label>
-            <input id="fDeliPayDate" type="text" placeholder="ဥပမာ: 25.11.2026" class="w-full border border-slate-300 rounded-xl px-2.5 py-2 text-xs bg-white" />
+            <input id="fDeliPayDate" type="text" placeholder="ဥပမာ: 21.11.2026" class="w-full border border-slate-300 rounded-xl px-2.5 py-2 text-xs bg-white" />
           </div>
         </div>
       </div>
@@ -350,9 +435,13 @@
           </label>
         </div>
         <div>
-          <label class="block text-xs font-semibold text-slate-700 mb-1">မှတ်ချက် အတို (UK / MM Admin နှစ်ဘက်မြင်ရန်)</label>
-          <input id="fNote" type="text" placeholder="ဥပမာ: KG ကို MMK ဖြင့် ရှင်းပြီး / Local delivery ကို UK မှာ ကောက်မည်" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs" />
+          <label class="block text-xs font-semibold text-slate-700 mb-1">မှတ်ချက် အတို (Admin များ နှစ်ဘက်မြင်ရန်)</label>
+          <input id="fNote" type="text" placeholder="ဥပမာ: KG ကို MMK ဖြင့် ရှင်းပြီး / Local delivery ကို ကျပ်ဖြင့် ရှင်းပြီး" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs" />
         </div>
+      </div>
+
+      <div class="bg-amber-50/70 border border-amber-200 rounded-xl px-3 py-2 text-[11px] text-amber-900 font-medium">
+        ✨ Save မနှိပ်မီ တစ်ချက်ပြန်ကြည့်ပေးပါ — မှန်ကန်တိကျတဲ့ မှတ်တမ်းတစ်ခုက လုပ်ဖော်ကိုင်ဖက်တွေနဲ့ Customer တွေအတွက် အများကြီး အထောက်အကူ ဖြစ်စေပါတယ်။
       </div>
 
       <div class="flex justify-end gap-2 pt-2 border-t border-slate-100">
@@ -425,7 +514,7 @@
         red: 'text-rose-300',
         sky: 'text-sky-300'
       };
-      el.className = 'text-[11px] font-medium truncate ' + (colors[tone] || 'text-amber-300');
+      el.className = 'text-[11px] font-medium truncate mt-0.5 ' + (colors[tone] || 'text-amber-300');
     }
 
     function toBase64Utf8(str) {
@@ -442,12 +531,47 @@
       return new TextDecoder().decode(bytes);
     }
 
+    function normalizeRecord(r) {
+      const origin = r.origin || 'Myanmar';
+      const destType = r.destType || (r.destination === 'UK' ? 'UK' : 'Worldwide');
+      const destination = r.destination || r.locationNote || (destType === 'UK' ? 'UK' : 'Worldwide');
+      return {
+        id: r.id || ('rec_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6)),
+        invNo: r.invNo || '-',
+        date: r.date || '-',
+        origin,
+        destType,
+        destination,
+        sender: r.sender || '-',
+        receiver: r.receiver || '-',
+        boxes: Math.max(1, parseInt(r.boxes, 10) || 1),
+        kg: Math.max(0, parseFloat(r.kg) || 0),
+        kgPayStatus: r.kgPayStatus || 'unpaid',
+        kgGbp: Math.max(0, parseFloat(r.kgGbp) || 0),
+        kgMmk: Math.max(0, parseFloat(r.kgMmk) || 0),
+        rate: Math.max(0, parseFloat(r.rate) || 0),
+        kgPayDate: r.kgPayDate || '',
+        deliStatus: r.deliStatus || 'none',
+        deliCurrency: r.deliCurrency || 'GBP',
+        deliGbp: Math.max(0, parseFloat(r.deliGbp) || 0),
+        deliMmk: Math.max(0, parseFloat(r.deliMmk) || 0),
+        deliRate: Math.max(0, parseFloat(r.deliRate) || 0),
+        deliPayDate: r.deliPayDate || '',
+        insured: !!r.insured,
+        discount: !!r.discount,
+        ready: !!r.ready,
+        dispatched: !!r.dispatched,
+        archived: !!r.archived,
+        note: r.note || ''
+      };
+    }
+
     async function loadFromGitHub() {
       const cfg = getCfg();
       if (!cfg.user || !cfg.repo || !cfg.token) {
         try {
           const cached = JSON.parse(localStorage.getItem(LOCAL_CACHE_KEY));
-          records = Array.isArray(cached) ? cached : [];
+          records = Array.isArray(cached) ? cached.map(normalizeRecord) : [];
         } catch (e) {
           records = [];
         }
@@ -474,7 +598,8 @@
         fileSha = data.sha;
         const decoded = fromBase64Utf8(data.content || '');
         const parsed = JSON.parse(decoded || '{}');
-        records = Array.isArray(parsed.records) ? parsed.records : (Array.isArray(parsed) ? parsed : []);
+        const rawList = Array.isArray(parsed.records) ? parsed.records : (Array.isArray(parsed) ? parsed : []);
+        records = rawList.map(normalizeRecord);
         localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify(records));
         const nowStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         setSyncStatus(`✅ GitHub Sync ချိတ်ဆက်ပြီး (${cfg.repo} • ${nowStr})`, 'green');
@@ -483,7 +608,7 @@
         setSyncStatus(`❌ Sync Error (${err.message}) — Setup သို့မဟုတ် data.json စစ်ဆေးပါ`, 'red');
         try {
           const cached = JSON.parse(localStorage.getItem(LOCAL_CACHE_KEY));
-          records = Array.isArray(cached) ? cached : [];
+          records = Array.isArray(cached) ? cached.map(normalizeRecord) : [];
         } catch (e) {
           records = [];
         }
@@ -503,7 +628,6 @@
       try {
         const apiUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.user)}/${encodeURIComponent(cfg.repo)}/contents/${DATA_FILE_PATH}`;
 
-        // Always fetch latest SHA before writing to prevent conflict
         const getRes = await fetch(apiUrl + `?t=${Date.now()}`, {
           headers: {
             'Authorization': `Bearer ${cfg.token}`,
@@ -591,32 +715,32 @@
       });
     }
 
-    function setViewTab(tab) {
-      currentTab = tab;
-      if (tab !== 'history') {
-        selectedHistoryIds.clear();
-      }
-      const tabActive = document.getElementById('tabActive');
-      const tabHistory = document.getElementById('tabHistory');
-      if (tab === 'active') {
-        tabActive.className = 'px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold bg-slate-900 text-white transition';
-        tabHistory.className = 'px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition';
-      } else {
-        tabHistory.className = 'px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold bg-purple-800 text-white transition';
-        tabActive.className = 'px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition';
-      }
-      renderAll();
+    function toggleCustomCountryInputs() {
+      const originSel = document.getElementById('fOriginSelect').value;
+      const originCustom = document.getElementById('fOriginCustom');
+      if (originSel === 'Other') originCustom.classList.remove('hidden');
+      else originCustom.classList.add('hidden');
+
+      const destSel = document.getElementById('fDestSelect').value;
+      const destCustom = document.getElementById('fDestCustom');
+      if (destSel === 'Other') destCustom.classList.remove('hidden');
+      else destCustom.classList.add('hidden');
     }
 
-    function toggleLocalDeliveryField() {
-      const destType = document.getElementById('fDestType').value;
-      const box = document.getElementById('localDeliveryBox');
-      if (destType === 'UK') {
-        box.classList.remove('hidden');
+    function toggleDeliCurrencyFields() {
+      const curr = document.getElementById('fDeliCurrency').value;
+      const gbpBox = document.getElementById('deliGbpBox');
+      const mmkBox = document.getElementById('deliMmkBox');
+      const rateBox = document.getElementById('deliRateBox');
+
+      if (curr === 'MMK') {
+        gbpBox.classList.add('hidden');
+        mmkBox.classList.remove('hidden');
+        rateBox.classList.remove('hidden');
       } else {
-        box.classList.add('hidden');
-        document.getElementById('fDeliStatus').value = 'none';
-        document.getElementById('fDeliGbp').value = 0;
+        gbpBox.classList.remove('hidden');
+        mmkBox.classList.add('hidden');
+        rateBox.classList.add('hidden');
       }
     }
 
@@ -628,8 +752,23 @@
         document.getElementById('entryModalTitle').textContent = '✏️ စာရင်း ပြင်ဆင်ရန် (' + rec.invNo + ')';
         document.getElementById('fInvNo').value = rec.invNo || '';
         document.getElementById('fDate').value = rec.date || '';
-        document.getElementById('fDestType').value = rec.destType || 'UK';
-        document.getElementById('fLocationNote').value = rec.locationNote || '';
+
+        if (rec.origin === 'Myanmar' || !rec.origin) {
+          document.getElementById('fOriginSelect').value = 'Myanmar';
+          document.getElementById('fOriginCustom').value = '';
+        } else {
+          document.getElementById('fOriginSelect').value = 'Other';
+          document.getElementById('fOriginCustom').value = rec.origin;
+        }
+
+        if (rec.destination === 'UK' || (rec.destType === 'UK' && (!rec.destination || rec.destination === 'UK'))) {
+          document.getElementById('fDestSelect').value = 'UK';
+          document.getElementById('fDestCustom').value = '';
+        } else {
+          document.getElementById('fDestSelect').value = 'Other';
+          document.getElementById('fDestCustom').value = rec.destination || '';
+        }
+
         document.getElementById('fSender').value = rec.sender || '';
         document.getElementById('fReceiver').value = rec.receiver || '';
         document.getElementById('fBoxes').value = rec.boxes || 1;
@@ -639,20 +778,27 @@
         document.getElementById('fKgMmk').value = rec.kgMmk || 0;
         document.getElementById('fRate').value = rec.rate || 5500;
         document.getElementById('fKgPayDate').value = rec.kgPayDate || '';
+
         document.getElementById('fDeliStatus').value = rec.deliStatus || 'none';
+        document.getElementById('fDeliCurrency').value = rec.deliCurrency || 'GBP';
         document.getElementById('fDeliGbp').value = rec.deliGbp || 0;
+        document.getElementById('fDeliMmk').value = rec.deliMmk || 0;
+        document.getElementById('fDeliRate').value = rec.deliRate || 5500;
         document.getElementById('fDeliPayDate').value = rec.deliPayDate || '';
+
         document.getElementById('fInsured').checked = !!rec.insured;
         document.getElementById('fDiscount').checked = !!rec.discount;
         document.getElementById('fNote').value = rec.note || '';
       } else {
-        document.getElementById('entryModalTitle').textContent = '➕ စာရင်းသစ် ထည့်ရန် (MM → UK / Worldwide)';
+        document.getElementById('entryModalTitle').textContent = '➕ စာရင်းသစ် ထည့်ရန်';
         const today = new Date();
         const dStr = String(today.getDate()).padStart(2, '0') + '.' + String(today.getMonth() + 1).padStart(2, '0') + '.' + today.getFullYear();
         document.getElementById('fInvNo').value = '';
         document.getElementById('fDate').value = dStr;
-        document.getElementById('fDestType').value = 'UK';
-        document.getElementById('fLocationNote').value = '';
+        document.getElementById('fOriginSelect').value = 'Myanmar';
+        document.getElementById('fOriginCustom').value = '';
+        document.getElementById('fDestSelect').value = 'UK';
+        document.getElementById('fDestCustom').value = '';
         document.getElementById('fSender').value = '';
         document.getElementById('fReceiver').value = '';
         document.getElementById('fBoxes').value = 1;
@@ -662,14 +808,21 @@
         document.getElementById('fKgMmk').value = 0;
         document.getElementById('fRate').value = 5500;
         document.getElementById('fKgPayDate').value = '';
+
         document.getElementById('fDeliStatus').value = 'pay_uk';
+        document.getElementById('fDeliCurrency').value = 'GBP';
         document.getElementById('fDeliGbp').value = 0;
+        document.getElementById('fDeliMmk').value = 0;
+        document.getElementById('fDeliRate').value = 5500;
         document.getElementById('fDeliPayDate').value = '';
+
         document.getElementById('fInsured').checked = false;
         document.getElementById('fDiscount').checked = false;
         document.getElementById('fNote').value = '';
       }
-      toggleLocalDeliveryField();
+
+      toggleCustomCountryInputs();
+      toggleDeliCurrencyFields();
       document.getElementById('entryModal').classList.remove('hidden');
     }
 
@@ -685,14 +838,26 @@
         return;
       }
 
-      const editId = document.getElementById('editId').value;
-      const destType = document.getElementById('fDestType').value;
+      const originSel = document.getElementById('fOriginSelect').value;
+      const origin = originSel === 'Other'
+        ? (document.getElementById('fOriginCustom').value.trim() || 'Other')
+        : 'Myanmar';
 
+      const destSel = document.getElementById('fDestSelect').value;
+      const destination = destSel === 'Other'
+        ? (document.getElementById('fDestCustom').value.trim() || 'Other')
+        : 'UK';
+      const destType = destination.toLowerCase() === 'uk' ? 'UK' : 'Worldwide';
+
+      const deliCurrency = document.getElementById('fDeliCurrency').value;
+
+      const editId = document.getElementById('editId').value;
       const payload = {
         invNo: document.getElementById('fInvNo').value.trim() || '-',
         date: document.getElementById('fDate').value.trim() || '-',
+        origin,
         destType,
-        locationNote: document.getElementById('fLocationNote').value.trim() || (destType === 'UK' ? 'UK' : 'Worldwide'),
+        destination,
         sender: sender || '-',
         receiver: receiver || '-',
         boxes: Math.max(1, parseInt(document.getElementById('fBoxes').value, 10) || 1),
@@ -702,9 +867,12 @@
         kgMmk: Math.max(0, parseFloat(document.getElementById('fKgMmk').value) || 0),
         rate: Math.max(0, parseFloat(document.getElementById('fRate').value) || 0),
         kgPayDate: document.getElementById('fKgPayDate').value.trim(),
-        deliStatus: destType === 'UK' ? document.getElementById('fDeliStatus').value : 'none',
-        deliGbp: destType === 'UK' ? Math.max(0, parseFloat(document.getElementById('fDeliGbp').value) || 0) : 0,
-        deliPayDate: destType === 'UK' ? document.getElementById('fDeliPayDate').value.trim() : '',
+        deliStatus: document.getElementById('fDeliStatus').value,
+        deliCurrency,
+        deliGbp: deliCurrency === 'GBP' ? Math.max(0, parseFloat(document.getElementById('fDeliGbp').value) || 0) : 0,
+        deliMmk: deliCurrency === 'MMK' ? Math.max(0, parseFloat(document.getElementById('fDeliMmk').value) || 0) : 0,
+        deliRate: deliCurrency === 'MMK' ? Math.max(0, parseFloat(document.getElementById('fDeliRate').value) || 0) : 0,
+        deliPayDate: document.getElementById('fDeliPayDate').value.trim(),
         insured: document.getElementById('fInsured').checked,
         discount: document.getElementById('fDiscount').checked,
         note: document.getElementById('fNote').value.trim()
@@ -755,7 +923,7 @@
     async function deleteSingleHistory(id) {
       const rec = records.find(r => r.id === id);
       if (!rec || !rec.archived) return;
-      if (!confirm('History ထဲမှ "' + rec.invNo + ' - ' + rec.receiver + '" ကို အပြီးဖျက်မလား? (CSV Backup အရင် ထုတ်ထားသင့်ပါသည်)')) return;
+      if (!confirm('History ထဲမှ "' + rec.invNo + ' - ' + rec.receiver + '" ကို အပြီးဖျက်မလား? (JSON / CSV Backup အရင် ထုတ်ထားသင့်ပါသည်)')) return;
       records = records.filter(r => r.id !== id);
       selectedHistoryIds.delete(id);
       await persistRecords();
@@ -795,24 +963,41 @@
       }
     }
 
+    function setViewTab(tab) {
+      currentTab = tab;
+      if (tab !== 'history') {
+        selectedHistoryIds.clear();
+      }
+      const tabActive = document.getElementById('tabActive');
+      const tabHistory = document.getElementById('tabHistory');
+      if (tab === 'active') {
+        tabActive.className = 'px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold bg-slate-900 text-white transition';
+        tabHistory.className = 'px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition';
+      } else {
+        tabHistory.className = 'px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold bg-purple-800 text-white transition';
+        tabActive.className = 'px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition';
+      }
+      renderAll();
+    }
+
     function getKgPayBadge(rec) {
       const map = {
         paid_mm: { label: '🇲🇲 Paid in MM (ထပ်မတောင်းရ)', cls: 'bg-emerald-100 text-emerald-900 border-emerald-300' },
         paid_uk: { label: '🇬🇧 Paid in UK', cls: 'bg-indigo-100 text-indigo-900 border-indigo-300' },
-        pay_arrival_uk: { label: '⏳ Pay on Arrival (UK)', cls: 'bg-amber-100 text-amber-900 border-amber-300' },
+        pay_arrival_uk: { label: '⏳ Pay on Arrival', cls: 'bg-amber-100 text-amber-900 border-amber-300' },
         unpaid: { label: '⚠️ Unpaid', cls: 'bg-rose-100 text-rose-900 border-rose-300' }
       };
       return map[rec.kgPayStatus] || map.unpaid;
     }
 
     function getDeliBadge(rec) {
-      if (rec.destType !== 'UK' || rec.deliStatus === 'none') {
+      if (rec.deliStatus === 'none') {
         return { label: '— No Local Deli', cls: 'bg-slate-100 text-slate-600 border-slate-200' };
       }
       const map = {
-        pay_uk: { label: '🚚 UK မှာ ကောက်မည်', cls: 'bg-amber-100 text-amber-900 border-amber-300' },
+        pay_uk: { label: '🚚 ရောက်မှ ကောက်မည်', cls: 'bg-amber-100 text-amber-900 border-amber-300' },
         paid_mm: { label: '✅ MM မှာ ရှင်းပြီး', cls: 'bg-emerald-100 text-emerald-900 border-emerald-300' },
-        paid_uk: { label: '✅ UK မှာ ရှင်းပြီး', cls: 'bg-sky-100 text-sky-900 border-sky-300' }
+        paid_uk: { label: '✅ ရှင်းပြီး', cls: 'bg-sky-100 text-sky-900 border-sky-300' }
       };
       return map[rec.deliStatus] || map.pay_uk;
     }
@@ -826,7 +1011,8 @@
         if (currentTab === 'active' && r.archived) return false;
         if (currentTab === 'history' && !r.archived) return false;
 
-        if (destF !== 'all' && r.destType !== destF) return false;
+        if (destF === 'UK' && r.destType !== 'UK') return false;
+        if (destF === 'Worldwide' && r.destType === 'UK') return false;
 
         if (payF === 'paid_mm' && r.kgPayStatus !== 'paid_mm') return false;
         if (payF === 'paid_uk' && r.kgPayStatus !== 'paid_uk') return false;
@@ -835,7 +1021,7 @@
         if (payF === 'deli_paid_mm' && r.deliStatus !== 'paid_mm') return false;
 
         if (q) {
-          const hay = [r.invNo, r.sender, r.receiver, r.locationNote, r.note, r.date].join(' ').toLowerCase();
+          const hay = [r.invNo, r.sender, r.receiver, r.origin, r.destination, r.note, r.date].join(' ').toLowerCase();
           if (!hay.includes(q)) return false;
         }
         return true;
@@ -892,9 +1078,22 @@
         const rateText = r.rate ? ' @ ' + Number(r.rate).toLocaleString() : '';
         const gbpText = r.kgGbp ? '£' + Number(r.kgGbp).toFixed(2) : '£0.00';
 
-        const deliAmountText = (r.destType === 'UK' && r.deliStatus !== 'none' && r.deliGbp > 0)
-          ? '£' + Number(r.deliGbp).toFixed(2)
-          : '';
+        let deliDetailHtml = '';
+        if (r.deliStatus !== 'none') {
+          if (r.deliCurrency === 'MMK') {
+            const dMmk = r.deliMmk ? Number(r.deliMmk).toLocaleString() + ' Ks' : '0 Ks';
+            const dRate = r.deliRate ? 'Rate @ ' + Number(r.deliRate).toLocaleString() : '';
+            deliDetailHtml = `
+              <div class="text-[11px] font-bold text-amber-950 mt-1">${dMmk}</div>
+              <div class="text-[10px] text-slate-500">${dRate}${r.deliPayDate ? ' • ' + escapeHtml(r.deliPayDate) : ''}</div>
+            `;
+          } else {
+            const dGbp = r.deliGbp ? '£' + Number(r.deliGbp).toFixed(2) : '£0.00';
+            deliDetailHtml = `
+              <div class="text-[11px] font-bold text-amber-950 mt-1">${dGbp}${r.deliPayDate ? ' • ' + escapeHtml(r.deliPayDate) : ''}</div>
+            `;
+          }
+        }
 
         const badgesHtml = [
           r.insured ? '<span class="inline-block text-[10px] font-bold bg-sky-100 text-sky-900 border border-sky-200 px-1.5 py-0.5 rounded-md">🛡️ Insured</span>' : '',
@@ -924,7 +1123,7 @@
             <div class="text-[11px] text-slate-500">${escapeHtml(r.date)}</div>
             <div class="mt-0.5">
               <span class="text-[10px] font-bold px-1.5 py-0.5 rounded ${r.destType === 'UK' ? 'bg-indigo-100 text-indigo-800' : 'bg-teal-100 text-teal-800'}">
-                ${r.destType === 'UK' ? '🇬🇧 UK' : '🌍 WW'} • ${escapeHtml(r.locationNote)}
+                ${escapeHtml(r.origin)} → ${escapeHtml(r.destination)}
               </span>
             </div>
           </td>
@@ -943,7 +1142,7 @@
           </td>
           <td class="py-2.5 px-2.5">
             <span class="inline-block text-[10.5px] font-bold border px-2 py-0.5 rounded-lg ${deliBadge.cls}">${deliBadge.label}</span>
-            ${deliAmountText ? `<div class="text-[11px] font-bold text-amber-900 mt-1">${deliAmountText}${r.deliPayDate ? ' • ' + escapeHtml(r.deliPayDate) : ''}</div>` : ''}
+            ${deliDetailHtml}
           </td>
           <td class="py-2.5 px-2.5 max-w-[220px]">
             ${badgesHtml ? `<div class="mb-1">${badgesHtml}</div>` : ''}
@@ -984,17 +1183,53 @@
         .replace(/"/g, '&quot;');
     }
 
+    function exportJsonBackup() {
+      const payload = {
+        exportedAt: new Date().toISOString(),
+        records
+      };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'mm-uk-ww-dashboard-backup.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    async function importJsonBackup(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+      try {
+        const text = await file.text();
+        const parsed = JSON.parse(text);
+        const list = Array.isArray(parsed) ? parsed : (Array.isArray(parsed.records) ? parsed.records : null);
+        if (!list) {
+          alert('မှန်ကန်သော JSON backup ဖိုင် မဟုတ်ပါ။');
+          return;
+        }
+        if (!confirm('JSON ဖိုင်ထဲမှ စာရင်း ' + list.length + ' ခုကို ထည့်သွင်းပြီး သိမ်းမလား?')) return;
+        records = list.map(normalizeRecord);
+        await persistRecords();
+      } catch (err) {
+        alert('JSON ဖိုင် ဖတ်ရာတွင် အမှားရှိပါသည်: ' + err.message);
+      } finally {
+        event.target.value = '';
+      }
+    }
+
     function exportCSV() {
       const headers = [
-        'Tab', 'InvNo', 'Date', 'DestType', 'Location', 'Sender', 'Receiver',
+        'Tab', 'InvNo', 'Date', 'Origin', 'Destination', 'Sender', 'Receiver',
         'Boxes', 'KG', 'KgPayStatus', 'KgGBP', 'KgMMK', 'Rate', 'KgPayDate',
-        'DeliStatus', 'DeliGBP', 'DeliPayDate', 'Insured', 'Discount', 'Ready', 'Dispatched', 'Note'
+        'DeliStatus', 'DeliCurrency', 'DeliGBP', 'DeliMMK', 'DeliRate', 'DeliPayDate',
+        'Insured', 'Discount', 'Ready', 'Dispatched', 'Note'
       ];
       const rows = records.map(r => [
         r.archived ? 'History' : 'Active',
-        r.invNo, r.date, r.destType, r.locationNote, r.sender, r.receiver,
+        r.invNo, r.date, r.origin, r.destination, r.sender, r.receiver,
         r.boxes, r.kg, r.kgPayStatus, r.kgGbp, r.kgMmk, r.rate, r.kgPayDate,
-        r.deliStatus, r.deliGbp, r.deliPayDate,
+        r.deliStatus, r.deliCurrency, r.deliGbp, r.deliMmk, r.deliRate, r.deliPayDate,
         r.insured ? 'Yes' : 'No',
         r.discount ? 'Yes' : 'No',
         r.ready ? 'Yes' : 'No',
