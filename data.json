@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T17:33:24.322Z",
+  "updatedAt": "2026-11-21T17:47:47.982Z",
   "records": [
     {
       "id": "rec_1795282276065_trtf",
@@ -13,6 +13,7 @@
       "boxes": 1,
       "kg": 16,
       "kgPayStatus": "paid_mm",
+      "kgCurrency": "MMK",
       "kgGbp": 0,
       "kgMmk": 500000,
       "rate": 0,
@@ -25,10 +26,10 @@
       "deliPayDate": "",
       "insured": false,
       "discount": false,
-      "note": "",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": false,
+      "note": ""
     },
     {
       "id": "rec_1795280038008_buva",
@@ -41,12 +42,13 @@
       "receiver": "Lwin Min",
       "boxes": 1,
       "kg": 18,
-      "kgPayStatus": "pay_arrival_uk",
+      "kgPayStatus": "paid_mm",
+      "kgCurrency": "MMK",
       "kgGbp": 0,
       "kgMmk": 650000,
       "rate": 6400,
       "kgPayDate": "",
-      "deliStatus": "pay_uk",
+      "deliStatus": "none",
       "deliCurrency": "GBP",
       "deliGbp": 0,
       "deliMmk": 0,
@@ -71,6 +73,7 @@
       "boxes": 1,
       "kg": 20,
       "kgPayStatus": "paid_mm",
+      "kgCurrency": "MMK",
       "kgGbp": 0,
       "kgMmk": 750000,
       "rate": 0,
@@ -100,6 +103,7 @@
       "boxes": 1,
       "kg": 25,
       "kgPayStatus": "paid_mm",
+      "kgCurrency": "MMK",
       "kgGbp": 0,
       "kgMmk": 550000,
       "rate": 5500,
