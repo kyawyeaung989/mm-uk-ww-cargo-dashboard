@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T17:00:37.024Z",
+  "updatedAt": "2026-11-21T17:07:18.390Z",
   "records": [
     {
       "id": "rec_1795280038008_buva",
@@ -39,7 +39,7 @@
       "kgPayStatus": "paid_mm",
       "kgGbp": 0,
       "kgMmk": 750000,
-      "rate": 5500,
+      "rate": 0,
       "kgPayDate": "18.11.2026",
       "deliStatus": "pay_uk",
       "deliGbp": 10,
