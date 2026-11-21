@@ -34,21 +34,34 @@
           <h1 class="font-bold text-sm sm:text-base lg:text-lg truncate">
             Myanmar → UK &amp; Worldwide Approval &amp; Payment Dashboard
           </h1>
-          <p class="text-[11px] text-slate-400 truncate">
-            Sender &amp; Receiver • Verified KG • KG Fee &amp; UK Local Delivery Split • Active &amp; History
-          </p>
+          <div class="flex items-center gap-2 mt-0.5">
+            <p id="syncStatus" class="text-[11px] text-amber-300 font-medium truncate">
+              ⚙️ GitHub Setup မလုပ်ရသေးပါ (Local Mode)
+            </p>
+          </div>
         </div>
       </div>
 
-      <div class="flex items-center gap-2 shrink-0">
-        <select id="roleSelect" onchange="renderAll()" class="h-8 sm:h-9 bg-slate-800 border border-slate-600 text-white text-xs sm:text-sm rounded-xl px-2.5 font-semibold focus:outline-none focus:border-amber-400">
-          <option value="admin">👑 Full Admin / UK Owner</option>
-          <option value="office">⚖️ MM Office (KG &amp; Dispatch)</option>
-          <option value="page">💳 Payment Admin (MM / UK)</option>
-        </select>
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <div id="roleSelectWrapper">
+          <select id="roleSelect" onchange="renderAll()" class="h-8 sm:h-9 bg-slate-800 border border-slate-600 text-white text-xs sm:text-sm rounded-xl px-2.5 font-semibold focus:outline-none focus:border-amber-400">
+            <option value="admin">👑 Full Admin / UK Owner</option>
+            <option value="office">⚖️ MM Office (KG &amp; Dispatch)</option>
+            <option value="page">💳 Payment Admin (MM / UK)</option>
+          </select>
+        </div>
+        <div id="lockedRoleBadge" class="hidden h-8 sm:h-9 bg-indigo-900 border border-indigo-400 text-indigo-100 text-xs sm:text-sm rounded-xl px-2.5 font-semibold items-center whitespace-nowrap"></div>
+
+        <button onclick="loadFromGitHub()" class="h-8 sm:h-9 bg-slate-800 hover:bg-slate-700 text-white border border-slate-600 text-xs sm:text-sm font-semibold px-2.5 rounded-xl transition whitespace-nowrap">
+          🔄 Sync
+        </button>
+
+        <button id="setupBtn" onclick="openSetupModal()" class="h-8 sm:h-9 bg-amber-400 hover:bg-amber-500 text-slate-950 text-xs sm:text-sm font-bold px-2.5 rounded-xl transition whitespace-nowrap">
+          ⚙️ Setup
+        </button>
 
         <button onclick="openEntryModal()" class="h-8 sm:h-9 bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold px-3 rounded-xl shadow-sm transition whitespace-nowrap">
-          + စာရင်းသစ်ထည့်မည်
+          + စာရင်းသစ်
         </button>
       </div>
     </div>
@@ -161,7 +174,60 @@
     </div>
   </main>
 
-  <!-- Add / Edit Shipment Modal -->
+  <!-- 1. GitHub Sync Setup & Share Link Modal -->
+  <div id="setupModal" class="hidden fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h2 class="text-base sm:text-lg font-bold text-slate-900">⚙️ GitHub Sync Setup (MM → UK &amp; Worldwide)</h2>
+        <button onclick="closeSetupModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold px-2">✕</button>
+      </div>
+
+      <p class="text-xs text-slate-500 leading-relaxed">
+        Repo ထဲရှိ <b>data.json</b> နှင့် ချိတ်ဆက်ရန် တစ်ကြိမ်သာ ဖြည့်ပါ။ ပြီးလျှင် UK Admin နှင့် ဝန်ထမ်းများအတွက် Share Link များ Copy ယူပေးပို့နိုင်ပါသည်။
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">GitHub Username</label>
+          <input id="cfgUser" type="text" placeholder="kyawyeaung989" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">MM → UK/WW Repo Name</label>
+          <input id="cfgRepo" type="text" placeholder="mm-uk-ww-cargo-dashboard" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm" />
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs font-semibold text-slate-700 mb-1">GitHub Fine-grained Token (Contents: Read &amp; Write)</label>
+        <input id="cfgToken" type="password" placeholder="github_pat_..." class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm" />
+      </div>
+
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3 space-y-2">
+        <p class="text-xs font-bold text-slate-700">👑 UK ပိုင်ရှင် / Full Admin Link:</p>
+        <button onclick="copyShareLink('admin')" class="w-full bg-purple-700 hover:bg-purple-800 text-white text-xs font-semibold py-2 px-3 rounded-xl transition">
+          👑 Copy UK Owner / Full Admin Link
+        </button>
+
+        <p class="text-xs font-bold text-slate-700 pt-1">🔒 ဝန်ထမ်းများအတွက် Role-Locked Links:</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <button onclick="copyShareLink('office')" class="bg-sky-700 hover:bg-sky-800 text-white text-xs font-semibold py-2 px-3 rounded-xl transition">
+            ⚖️ MM Office Link
+          </button>
+          <button onclick="copyShareLink('page')" class="bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold py-2 px-3 rounded-xl transition">
+            💳 Payment Admin Link
+          </button>
+        </div>
+        <p id="copyFeedback" class="text-xs text-emerald-700 font-semibold hidden"></p>
+      </div>
+
+      <div class="flex justify-end gap-2 pt-2">
+        <button onclick="closeSetupModal()" class="px-4 py-2 text-xs sm:text-sm text-slate-600 hover:bg-slate-100 rounded-xl">ပိတ်မည်</button>
+        <button onclick="saveSetup()" class="px-4 py-2 text-xs sm:text-sm bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl">✅ Save &amp; Sync</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Add / Edit Shipment Modal -->
   <div id="entryModal" class="hidden fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl border border-slate-200 space-y-4 max-h-[92vh] overflow-y-auto">
       <div class="flex items-center justify-between border-b border-slate-100 pb-3">
@@ -183,7 +249,7 @@
         <div>
           <label class="block text-xs font-semibold text-slate-700 mb-1">Destination / Route</label>
           <select id="fDestType" onchange="toggleLocalDeliveryField()" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm font-semibold">
-            <option value="UK">🇬🇧 UK (London / Dagenham / etc.)</option>
+            <option value="UK">🇬🇧 UK (United Kingdom)</option>
             <option value="Worldwide">🌍 Worldwide (Other Country)</option>
           </select>
         </div>
@@ -297,80 +363,232 @@
   </div>
 
   <script>
-    const STORAGE_KEY = 'mm_uk_ww_dashboard_v1';
+    const LOCAL_CACHE_KEY = 'mm_uk_ww_dashboard_cache_v1';
+    const CFG_KEY = 'mm_uk_ww_gh_cfg_v1';
+    const DATA_FILE_PATH = 'data.json';
+
     let currentTab = 'active';
     let selectedHistoryIds = new Set();
+    let records = [];
+    let fileSha = null;
+    let lockedRole = null;
 
-    let records = loadRecords();
+    function initFromUrlParams() {
+      const params = new URLSearchParams(window.location.search);
+      const u = params.get('u');
+      const r = params.get('r');
+      const t = params.get('t');
+      const role = params.get('role');
 
-    function getDefaultRecords() {
-      return [
-        {
-          id: 'rec_1',
-          invNo: 'ADF563',
-          date: '21.11.2026',
-          destType: 'UK',
-          locationNote: 'UK (London)',
-          sender: 'May Zon Moe',
-          receiver: 'Ahmed Jarmal',
-          boxes: 2,
-          kg: 12.5,
-          kgPayStatus: 'paid_mm',
-          kgGbp: 175,
-          kgMmk: 962500,
-          rate: 5500,
-          kgPayDate: '21.11.2026',
-          deliStatus: 'pay_uk',
-          deliGbp: 10,
-          deliPayDate: '',
-          insured: true,
-          discount: false,
-          ready: true,
-          dispatched: false,
-          archived: false,
-          note: 'KG မြန်မာမှာ MMK ရှင်းပြီး (ထပ်မတောင်းရ)။ Local delivery £10 ကို UK မှာ ကောက်မည်။'
-        },
-        {
-          id: 'rec_2',
-          invNo: 'ADF564',
-          date: '21.11.2026',
-          destType: 'Worldwide',
-          locationNote: 'USA',
-          sender: 'Kyaw Min Htet',
-          receiver: 'David Lin',
-          boxes: 1,
-          kg: 6.0,
-          kgPayStatus: 'paid_mm',
-          kgGbp: 90,
-          kgMmk: 495000,
-          rate: 5500,
-          kgPayDate: '20.11.2026',
-          deliStatus: 'none',
-          deliGbp: 0,
-          deliPayDate: '',
-          insured: false,
-          discount: true,
-          ready: true,
-          dispatched: false,
-          archived: false,
-          note: 'Worldwide prepaid ရှင်းပြီး။'
+      if (u && r && t) {
+        saveCfg({ user: u, repo: r, token: t });
+      }
+
+      if (role && ['admin', 'office', 'page'].includes(role)) {
+        lockedRole = role;
+        const roleSelect = document.getElementById('roleSelect');
+        roleSelect.value = role;
+        document.getElementById('roleSelectWrapper').classList.add('hidden');
+        const badge = document.getElementById('lockedRoleBadge');
+        badge.classList.remove('hidden');
+        badge.classList.add('flex');
+        const labels = {
+          admin: '👑 Full Admin / UK Owner',
+          office: '⚖️ MM Office (Locked)',
+          page: '💳 Payment Admin (Locked)'
+        };
+        badge.textContent = labels[role];
+        if (role !== 'admin') {
+          document.getElementById('setupBtn').classList.add('hidden');
         }
-      ];
-    }
-
-    function loadRecords() {
-      try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if (!raw) return getDefaultRecords();
-        const parsed = JSON.parse(raw);
-        return Array.isArray(parsed) ? parsed : getDefaultRecords();
-      } catch (e) {
-        return getDefaultRecords();
       }
     }
 
-    function saveRecords() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+    function getCfg() {
+      try {
+        return JSON.parse(localStorage.getItem(CFG_KEY)) || { user: '', repo: '', token: '' };
+      } catch (e) {
+        return { user: '', repo: '', token: '' };
+      }
+    }
+
+    function saveCfg(cfg) {
+      localStorage.setItem(CFG_KEY, JSON.stringify(cfg));
+    }
+
+    function setSyncStatus(text, tone = 'amber') {
+      const el = document.getElementById('syncStatus');
+      el.textContent = text;
+      const colors = {
+        amber: 'text-amber-300',
+        green: 'text-emerald-300',
+        red: 'text-rose-300',
+        sky: 'text-sky-300'
+      };
+      el.className = 'text-[11px] font-medium truncate ' + (colors[tone] || 'text-amber-300');
+    }
+
+    function toBase64Utf8(str) {
+      const bytes = new TextEncoder().encode(str);
+      let bin = '';
+      bytes.forEach(b => { bin += String.fromCharCode(b); });
+      return btoa(bin);
+    }
+
+    function fromBase64Utf8(b64) {
+      const bin = atob(b64.replace(/\n/g, ''));
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return new TextDecoder().decode(bytes);
+    }
+
+    async function loadFromGitHub() {
+      const cfg = getCfg();
+      if (!cfg.user || !cfg.repo || !cfg.token) {
+        try {
+          const cached = JSON.parse(localStorage.getItem(LOCAL_CACHE_KEY));
+          records = Array.isArray(cached) ? cached : [];
+        } catch (e) {
+          records = [];
+        }
+        setSyncStatus('⚙️ GitHub Setup မလုပ်ရသေးပါ (Local Mode)', 'amber');
+        renderAll();
+        return;
+      }
+
+      setSyncStatus('⏳ GitHub data.json မှ ဒေတာ ဖတ်နေသည်...', 'sky');
+      try {
+        const apiUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.user)}/${encodeURIComponent(cfg.repo)}/contents/${DATA_FILE_PATH}?t=${Date.now()}`;
+        const res = await fetch(apiUrl, {
+          headers: {
+            'Authorization': `Bearer ${cfg.token}`,
+            'Accept': 'application/vnd.github+json'
+          }
+        });
+
+        if (!res.ok) {
+          throw new Error('HTTP ' + res.status);
+        }
+
+        const data = await res.json();
+        fileSha = data.sha;
+        const decoded = fromBase64Utf8(data.content || '');
+        const parsed = JSON.parse(decoded || '{}');
+        records = Array.isArray(parsed.records) ? parsed.records : (Array.isArray(parsed) ? parsed : []);
+        localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify(records));
+        const nowStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        setSyncStatus(`✅ GitHub Sync ချိတ်ဆက်ပြီး (${cfg.repo} • ${nowStr})`, 'green');
+        renderAll();
+      } catch (err) {
+        setSyncStatus(`❌ Sync Error (${err.message}) — Setup သို့မဟုတ် data.json စစ်ဆေးပါ`, 'red');
+        try {
+          const cached = JSON.parse(localStorage.getItem(LOCAL_CACHE_KEY));
+          records = Array.isArray(cached) ? cached : [];
+        } catch (e) {
+          records = [];
+        }
+        renderAll();
+      }
+    }
+
+    async function persistRecords() {
+      localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify(records));
+      const cfg = getCfg();
+      if (!cfg.user || !cfg.repo || !cfg.token) {
+        renderAll();
+        return;
+      }
+
+      setSyncStatus('⏳ GitHub data.json သို့ သိမ်းဆည်းနေသည်...', 'sky');
+      try {
+        const apiUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.user)}/${encodeURIComponent(cfg.repo)}/contents/${DATA_FILE_PATH}`;
+
+        // Always fetch latest SHA before writing to prevent conflict
+        const getRes = await fetch(apiUrl + `?t=${Date.now()}`, {
+          headers: {
+            'Authorization': `Bearer ${cfg.token}`,
+            'Accept': 'application/vnd.github+json'
+          }
+        });
+        if (getRes.ok) {
+          const latest = await getRes.json();
+          fileSha = latest.sha;
+        }
+
+        const payloadObj = {
+          updatedAt: new Date().toISOString(),
+          records
+        };
+        const contentB64 = toBase64Utf8(JSON.stringify(payloadObj, null, 2));
+
+        const putRes = await fetch(apiUrl, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${cfg.token}`,
+            'Accept': 'application/vnd.github+json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: 'Update MM → UK/WW cargo dashboard data',
+            content: contentB64,
+            ...(fileSha ? { sha: fileSha } : {})
+          })
+        });
+
+        if (!putRes.ok) {
+          throw new Error('HTTP ' + putRes.status);
+        }
+
+        const saved = await putRes.json();
+        if (saved && saved.content && saved.content.sha) {
+          fileSha = saved.content.sha;
+        }
+        const nowStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        setSyncStatus(`✅ GitHub တွင် သိမ်းဆည်းပြီး (${nowStr})`, 'green');
+      } catch (err) {
+        setSyncStatus(`❌ Save Failed (${err.message}) — Refresh လုပ်ပြီး ပြန်စမ်းပါ`, 'red');
+      }
+      renderAll();
+    }
+
+    function openSetupModal() {
+      const cfg = getCfg();
+      document.getElementById('cfgUser').value = cfg.user || '';
+      document.getElementById('cfgRepo').value = cfg.repo || '';
+      document.getElementById('cfgToken').value = cfg.token || '';
+      document.getElementById('copyFeedback').classList.add('hidden');
+      document.getElementById('setupModal').classList.remove('hidden');
+    }
+
+    function closeSetupModal() {
+      document.getElementById('setupModal').classList.add('hidden');
+    }
+
+    function saveSetup() {
+      const user = document.getElementById('cfgUser').value.trim();
+      const repo = document.getElementById('cfgRepo').value.trim();
+      const token = document.getElementById('cfgToken').value.trim();
+      saveCfg({ user, repo, token });
+      closeSetupModal();
+      loadFromGitHub();
+    }
+
+    function copyShareLink(role) {
+      const user = document.getElementById('cfgUser').value.trim();
+      const repo = document.getElementById('cfgRepo').value.trim();
+      const token = document.getElementById('cfgToken').value.trim();
+      if (!user || !repo || !token) {
+        alert('Username, Repo Name နှင့် Token ကို အရင် ဖြည့်ပေးပါ။');
+        return;
+      }
+      saveCfg({ user, repo, token });
+      const base = window.location.origin + window.location.pathname;
+      const url = `${base}?u=${encodeURIComponent(user)}&r=${encodeURIComponent(repo)}&t=${encodeURIComponent(token)}&role=${encodeURIComponent(role)}`;
+      navigator.clipboard.writeText(url).then(() => {
+        const fb = document.getElementById('copyFeedback');
+        fb.textContent = `✅ ${role.toUpperCase()} Share Link ကို Copy ကူးပြီးပါပြီ!`;
+        fb.classList.remove('hidden');
+      });
     }
 
     function setViewTab(tab) {
@@ -459,7 +677,7 @@
       document.getElementById('entryModal').classList.add('hidden');
     }
 
-    function saveEntry() {
+    async function saveEntry() {
       const sender = document.getElementById('fSender').value.trim();
       const receiver = document.getElementById('fReceiver').value.trim();
       if (!sender && !receiver) {
@@ -504,30 +722,26 @@
         });
       }
 
-      saveRecords();
       closeEntryModal();
-      renderAll();
+      await persistRecords();
     }
 
-    function toggleFlag(id, field) {
+    async function toggleFlag(id, field) {
       records = records.map(r => r.id === id ? { ...r, [field]: !r[field] } : r);
-      saveRecords();
-      renderAll();
+      await persistRecords();
     }
 
-    function moveToHistory(id) {
+    async function moveToHistory(id) {
       records = records.map(r => r.id === id ? { ...r, archived: true } : r);
-      saveRecords();
-      renderAll();
+      await persistRecords();
     }
 
-    function restoreFromHistory(id) {
+    async function restoreFromHistory(id) {
       records = records.map(r => r.id === id ? { ...r, archived: false } : r);
-      saveRecords();
-      renderAll();
+      await persistRecords();
     }
 
-    function archiveReadyOrDispatched() {
+    async function archiveReadyOrDispatched() {
       const targets = records.filter(r => !r.archived && r.dispatched);
       if (targets.length === 0) {
         alert('History ထဲ ပြောင်းရန် Dispatched ဖြစ်ပြီးသား စာရင်း မရှိသေးပါ။');
@@ -535,18 +749,16 @@
       }
       if (!confirm('Dispatched ဖြစ်ပြီးသား စာရင်း ' + targets.length + ' ခုကို History ထဲ ပြောင်းမလား?')) return;
       records = records.map(r => (!r.archived && r.dispatched) ? { ...r, archived: true } : r);
-      saveRecords();
-      renderAll();
+      await persistRecords();
     }
 
-    function deleteSingleHistory(id) {
+    async function deleteSingleHistory(id) {
       const rec = records.find(r => r.id === id);
       if (!rec || !rec.archived) return;
-      if (!confirm('History ထဲမှ "' + rec.invNo + ' - ' + rec.receiver + '" ကို အပြီးဖျက်မလား? (အရင် CSV Backup ထုတ်ထားသင့်ပါသည်)')) return;
+      if (!confirm('History ထဲမှ "' + rec.invNo + ' - ' + rec.receiver + '" ကို အပြီးဖျက်မလား? (CSV Backup အရင် ထုတ်ထားသင့်ပါသည်)')) return;
       records = records.filter(r => r.id !== id);
       selectedHistoryIds.delete(id);
-      saveRecords();
-      renderAll();
+      await persistRecords();
     }
 
     function toggleSelectHistoryItem(id, checked) {
@@ -564,13 +776,12 @@
       renderTable();
     }
 
-    function bulkDeleteSelectedHistory() {
+    async function bulkDeleteSelectedHistory() {
       if (selectedHistoryIds.size === 0) return;
-      if (!confirm('ရွေးထားသော History စာရင်း ' + selectedHistoryIds.size + ' ခုကို အပြီးဖျက်မလား? (CSV Backup ထုတ်ပြီးဖြစ်ကြောင်း သေချာပါစေ)')) return;
+      if (!confirm('ရွေးထားသော History စာရင်း ' + selectedHistoryIds.size + ' ခုကို အပြီးဖျက်မလား?')) return;
       records = records.filter(r => !(r.archived && selectedHistoryIds.has(r.id)));
       selectedHistoryIds.clear();
-      saveRecords();
-      renderAll();
+      await persistRecords();
     }
 
     function updateBulkDeleteUI() {
@@ -804,7 +1015,8 @@
       URL.revokeObjectURL(url);
     }
 
-    renderAll();
+    initFromUrlParams();
+    loadFromGitHub();
   </script>
 </body>
 </html>
