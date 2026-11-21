@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T17:26:21.960Z",
+  "updatedAt": "2026-11-21T17:26:33.768Z",
   "records": [
     {
       "id": "rec_1795280038008_buva",
@@ -27,7 +27,7 @@
       "discount": true,
       "ready": false,
       "dispatched": true,
-      "archived": true,
+      "archived": false,
       "note": "Discount 2 Pound"
     },
     {
