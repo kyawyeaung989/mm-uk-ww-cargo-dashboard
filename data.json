@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T05:03:21.686Z",
+  "updatedAt": "2026-11-22T05:23:35.868Z",
   "records": [
     {
       "id": "rec_1795317481807_rnrj",
@@ -67,7 +67,7 @@
       "id": "rec_1795280038008_buva",
       "invNo": "-",
       "date": "21.11.2026",
-      "cargoType": "Standard",
+      "cargoType": "Risk",
       "origin": "Myanmar",
       "destType": "Worldwide",
       "destination": "Netherlands",
