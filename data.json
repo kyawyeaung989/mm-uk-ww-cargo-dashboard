@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T05:35:50.088Z",
+  "updatedAt": "2026-11-22T05:36:01.871Z",
   "records": [
     {
       "id": "rec_1795317481807_rnrj",
@@ -28,7 +28,7 @@
       "insured": false,
       "discount": true,
       "ready": false,
-      "dispatched": true,
+      "dispatched": false,
       "archived": false,
       "note": ""
     },
