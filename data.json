@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T09:45:16.991Z",
+  "updatedAt": "2026-11-22T09:45:39.147Z",
   "records": [
     {
       "id": "rec_1795328250540_wlzc",
@@ -68,7 +68,7 @@
       "insured": false,
       "discount": true,
       "ready": false,
-      "dispatched": true,
+      "dispatched": false,
       "archived": false,
       "note": ""
     },
