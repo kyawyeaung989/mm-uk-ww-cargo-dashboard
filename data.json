@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T05:35:46.158Z",
+  "updatedAt": "2026-11-22T05:35:47.743Z",
   "records": [
     {
       "id": "rec_1795317481807_rnrj",
@@ -90,7 +90,7 @@
       "insured": false,
       "discount": true,
       "ready": false,
-      "dispatched": false,
+      "dispatched": true,
       "archived": false,
       "note": "Discount 2 Pound"
     },
