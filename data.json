@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T05:32:18.428Z",
+  "updatedAt": "2026-11-22T05:35:00.732Z",
   "records": [
     {
       "id": "rec_1795317481807_rnrj",
@@ -143,11 +143,11 @@
       "kgMmk": 550000,
       "rate": 5500,
       "kgPayDate": "21.11.2026",
-      "deliStatus": "pay_uk",
-      "deliCurrency": "GBP",
-      "deliGbp": 15,
-      "deliMmk": 0,
-      "deliRate": 0,
+      "deliStatus": "paid_mm",
+      "deliCurrency": "MMK",
+      "deliGbp": 0,
+      "deliMmk": 35000,
+      "deliRate": 6500,
       "deliPayDate": "",
       "insured": false,
       "discount": false,
