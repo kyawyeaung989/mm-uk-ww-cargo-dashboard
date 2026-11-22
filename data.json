@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T05:36:01.871Z",
+  "updatedAt": "2026-11-22T05:36:03.913Z",
   "records": [
     {
       "id": "rec_1795317481807_rnrj",
@@ -59,7 +59,7 @@
       "insured": false,
       "discount": false,
       "ready": false,
-      "dispatched": true,
+      "dispatched": false,
       "archived": false,
       "note": ""
     },
@@ -90,7 +90,7 @@
       "insured": false,
       "discount": true,
       "ready": false,
-      "dispatched": true,
+      "dispatched": false,
       "archived": false,
       "note": "Discount 2 Pound"
     },
@@ -121,7 +121,7 @@
       "insured": true,
       "discount": false,
       "ready": false,
-      "dispatched": true,
+      "dispatched": false,
       "archived": false,
       "note": "Insurance 200000"
     },
