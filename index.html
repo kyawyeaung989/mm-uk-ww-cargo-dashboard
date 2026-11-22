@@ -34,7 +34,6 @@
   <header class="bg-slate-950 text-white sticky top-0 z-30 border-b border-slate-800 shadow-lg">
     <div class="max-w-[1560px] mx-auto px-3 sm:px-5 py-2.5 flex flex-wrap items-center justify-between gap-2">
       <div class="flex items-center gap-2.5 min-w-0">
-        <!-- Cute Cartoon Cargo Mascot SVG -->
         <div class="mascot-float bg-gradient-to-br from-amber-300 to-amber-500 text-slate-950 p-1.5 rounded-2xl shadow-md shrink-0">
           <svg class="w-8 h-8" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="10" y="20" width="44" height="34" rx="8" fill="#FEF3C7" stroke="#78350F" stroke-width="3"/>
@@ -57,7 +56,7 @@
               MM → UK &amp; Worldwide Approval &amp; Payment Dashboard
             </h1>
             <span class="hidden md:inline-flex items-center gap-1 text-[10.5px] bg-amber-400/15 text-amber-300 border border-amber-400/30 px-2 py-0.5 rounded-full font-semibold">
-              ✨ Route, Split Payment &amp; Viber Report
+              ✨ Route, Split Payment, Photos &amp; Viber Report
             </span>
           </div>
           <p id="syncStatus" class="text-[11px] text-amber-300 font-medium truncate mt-0.5">
@@ -97,7 +96,6 @@
 
   <main class="max-w-[1560px] mx-auto px-3 sm:px-5 mt-4 space-y-4">
 
-    <!-- Clean Polite Care Reminder (No Heading) -->
     <div class="glass-card rounded-2xl px-4 py-2.5 border border-amber-200/80 bg-gradient-to-r from-amber-50/75 via-white to-emerald-50/65 flex items-center gap-2.5 shadow-xs">
       <span class="text-lg shrink-0">💛</span>
       <p class="text-xs text-slate-700 leading-relaxed">
@@ -105,7 +103,7 @@
       </p>
     </div>
 
-    <!-- Summary Cards (Including Financial Totals) -->
+    <!-- Summary Cards -->
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
       <div class="glass-card rounded-2xl p-3 border border-slate-200/80 shadow-xs">
         <p class="text-[11px] text-slate-500 font-medium">Active စာရင်း</p>
@@ -139,7 +137,7 @@
       </div>
     </div>
 
-    <!-- Mode Switcher (Active vs History) & Filters -->
+    <!-- Mode Switcher & Filters -->
     <div class="glass-card rounded-2xl p-3.5 border border-slate-200/80 shadow-xs space-y-3">
       <div class="flex flex-wrap items-center justify-between gap-2.5">
         <div class="inline-flex bg-slate-100 p-1 rounded-xl border border-slate-200">
@@ -157,6 +155,9 @@
           </button>
           <button id="archiveCompletedBtn" onclick="archiveReadyOrDispatched()" class="h-9 bg-indigo-50 hover:bg-indigo-100 text-indigo-800 border border-indigo-200 text-xs font-semibold px-3 rounded-xl transition whitespace-nowrap">
             📥 Dispatched ဖြစ်ပြီးသား History ပို့မည်
+          </button>
+          <button onclick="exportPDF()" class="h-9 bg-rose-50 hover:bg-rose-100 text-rose-800 border border-rose-200 text-xs font-bold px-3 rounded-xl transition whitespace-nowrap">
+            📄 PDF ထုတ်မည်
           </button>
           <button onclick="exportCSV()" class="h-9 bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 text-xs font-semibold px-3 rounded-xl transition whitespace-nowrap">
             ⬇️ CSV Backup ထုတ်မည်
@@ -222,7 +223,7 @@
               <th class="py-2.5 px-2.5 whitespace-nowrap">📦 ပုံး / ⚖️ KG / Type</th>
               <th class="py-2.5 px-2.5 whitespace-nowrap">💳 KG Freight Fee</th>
               <th class="py-2.5 px-2.5 whitespace-nowrap">🚚 Local Delivery Fee</th>
-              <th class="py-2.5 px-2.5 whitespace-nowrap">🏷️ Badges &amp; Notes</th>
+              <th class="py-2.5 px-2.5 whitespace-nowrap">📷 Photos &amp; Notes</th>
               <th class="py-2.5 px-2.5 text-center whitespace-nowrap">Status / Actions</th>
             </tr>
           </thead>
@@ -236,7 +237,7 @@
     </div>
   </main>
 
-  <!-- 1. GitHub Sync Setup & Share Link Modal (Full Admin Only) -->
+  <!-- 1. GitHub Sync Setup & Share Link Modal -->
   <div id="setupModal" class="hidden fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-4">
       <div class="flex items-center justify-between border-b border-slate-100 pb-3">
@@ -297,7 +298,7 @@
           <span class="text-2xl">📦</span>
           <div>
             <h2 id="entryModalTitle" class="text-base sm:text-lg font-bold text-slate-900">စာရင်းသစ် ထည့်ရန်</h2>
-            <p class="text-[11px] text-amber-800 font-medium">💡 နိုင်ငံ၊ နာမည်၊ Standard/Risk၊ KG နဲ့ ငွေရှင်းမှုအခြေအနေ (MM / UK) ကို ဂရုစိုက်ပြန်စစ်ပြီး ဖြည့်သွင်းပေးပါ။</p>
+            <p class="text-[11px] text-amber-800 font-medium">💡 နိုင်ငံ၊ နာမည်၊ Standard/Risk၊ KG၊ ပစ္စည်းဓာတ်ပုံ နဲ့ ငွေရှင်းမှုအခြေအနေ (MM / UK) ကို ဂရုစိုက်ဖြည့်သွင်းပေးပါ။</p>
           </div>
         </div>
         <button onclick="closeEntryModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold px-2">✕</button>
@@ -305,7 +306,6 @@
 
       <input type="hidden" id="editId" />
 
-      <!-- Inv, Date & Cargo Type (Standard / Risk) -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <div>
           <label class="block text-xs font-semibold text-slate-700 mb-1">Invoice No.</label>
@@ -324,7 +324,6 @@
         </div>
       </div>
 
-      <!-- Origin & Destination (Dropdown + Other Custom Input) -->
       <div class="bg-sky-50/70 p-3.5 rounded-2xl border border-sky-200 space-y-3">
         <p class="text-xs font-extrabold text-sky-950 uppercase">🌍 စထွက်မယ့်နိုင်ငံ (Origin) &amp; ရောက်မယ့်နိုင်ငံ (Destination)</p>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -348,7 +347,6 @@
         </div>
       </div>
 
-      <!-- Sender & Receiver -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-slate-50 p-3 rounded-2xl border border-slate-200/80">
         <div>
           <label class="block text-xs font-bold text-slate-700 mb-1">📤 Sender Name (ပေးပို့သူ နာမည်)</label>
@@ -360,7 +358,6 @@
         </div>
       </div>
 
-      <!-- Boxes & KG -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div>
           <label class="block text-xs font-semibold text-slate-700 mb-1">📦 ပုံးအရေအတွက် (ရုံးစစ်)</label>
@@ -370,6 +367,23 @@
           <label class="block text-xs font-semibold text-slate-700 mb-1">⚖️ Verified KG (ရုံးစစ် KG)</label>
           <input id="fKg" type="number" step="0.01" min="0" value="0" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm font-bold text-sky-800" />
         </div>
+      </div>
+
+      <!-- Parcel Photos (1 to 3 Photos with Smart Compression) -->
+      <div class="bg-indigo-50/70 p-3.5 rounded-2xl border border-indigo-200 space-y-2.5">
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <div>
+            <p class="text-xs font-extrabold text-indigo-950 uppercase">📷 ပစ္စည်းဓာတ်ပုံများ (၁ ပုံ မှ ၃ ပုံအထိ ထည့်နိုင်သည်)</p>
+            <p class="text-[10.5px] text-slate-600">UK ရောက်လျှင် ဘယ်အိတ်/ဘယ်ပုံးလဲ တန်းကြည့်သိနိုင်ရန် (Website မလေးအောင် အလိုအလျောက် ချုံ့သိမ်းပေးပါမည်)</p>
+          </div>
+          <label class="cursor-pointer bg-indigo-700 hover:bg-indigo-800 text-white text-xs font-bold px-3 py-1.5 rounded-xl shadow-xs transition">
+            + ပုံရွေး / ရိုက်ထည့်ရန်
+            <input id="fPhotoInput" type="file" accept="image/*" multiple onchange="handlePhotoFiles(event)" class="hidden" />
+          </label>
+        </div>
+
+        <div id="modalPhotoPreviewGrid" class="flex flex-wrap gap-2.5 pt-1"></div>
+        <p id="photoCompressStatus" class="text-[11px] text-indigo-800 font-semibold hidden"></p>
       </div>
 
       <!-- 1. KG Freight Fee Section -->
@@ -414,7 +428,7 @@
         </div>
       </div>
 
-      <!-- 2. Local Delivery Fee Section (Shown ONLY when Destination is UK) -->
+      <!-- 2. Local Delivery Fee Section -->
       <div id="localDeliveryBox" class="bg-amber-50/80 p-3.5 rounded-2xl border border-amber-200 space-y-3">
         <p class="text-xs font-extrabold text-amber-950 uppercase">🚚 2. Local Delivery Fee (£ ပေါင် / MMK ကျပ်)</p>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -456,7 +470,6 @@
         </div>
       </div>
 
-      <!-- Badges & Notes -->
       <div class="space-y-2.5">
         <div class="flex flex-wrap items-center gap-4">
           <label class="inline-flex items-center gap-2 text-xs font-bold text-sky-900 cursor-pointer">
@@ -470,12 +483,8 @@
         </div>
         <div>
           <label class="block text-xs font-semibold text-slate-700 mb-1">မှတ်ချက် အတို (Admin များ နှစ်ဘက်မြင်ရန်)</label>
-          <input id="fNote" type="text" placeholder="ဥပမာ: KG ကို MMK ဖြင့် ရှင်းပြီး / Local delivery ကို UK ရောက်မှ ကောက်မည်" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs" />
+          <input id="fNote" type="text" placeholder="ဥပမာ: အိတ်အမဲ ၂ လုံး / KG ကို MMK ဖြင့် ရှင်းပြီး" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs" />
         </div>
-      </div>
-
-      <div class="bg-amber-50/70 border border-amber-200 rounded-xl px-3 py-2 text-[11px] text-amber-900 font-medium">
-        ✨ Save မနှိပ်မီ တစ်ချက်ပြန်ကြည့်ပေးပါ — မှန်ကန်တိကျတဲ့ မှတ်တမ်းတစ်ခုက လုပ်ဖော်ကိုင်ဖက်တွေနဲ့ Customer တွေအတွက် အများကြီး အထောက်အကူ ဖြစ်စေပါတယ်။
       </div>
 
       <div class="flex justify-end gap-2 pt-2 border-t border-slate-100">
@@ -485,9 +494,9 @@
     </div>
   </div>
 
-  <!-- 3. Pop-up Payment & Shipment Slip Document Modal (With Paid/Remaining Summary & Copy Only) -->
+  <!-- 3. Pop-up Payment & Shipment Slip Document Modal -->
   <div id="slipModal" class="hidden fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-4 max-h-[90vh] overflow-y-auto">
       <div class="flex items-center justify-between border-b border-slate-100 pb-3">
         <div class="flex items-center gap-2">
           <span class="text-xl">📄</span>
@@ -509,7 +518,7 @@
     </div>
   </div>
 
-  <!-- 4. Viber Daily Report Modal (1-Click Copy in Clean Viber Group Format) -->
+  <!-- 4. Viber Daily Report Modal -->
   <div id="viberReportModal" class="hidden fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl border border-slate-200 space-y-4 max-h-[92vh] overflow-y-auto">
       <div class="flex items-center justify-between border-b border-slate-100 pb-3">
@@ -552,6 +561,36 @@
     </div>
   </div>
 
+  <!-- 5. Full-Screen Photo Lightbox Viewer Modal -->
+  <div id="photoViewerModal" class="hidden fixed inset-0 bg-slate-950/90 z-50 flex flex-col justify-between p-4">
+    <div class="max-w-5xl w-full mx-auto flex items-center justify-between text-white pb-2 border-b border-slate-800">
+      <div>
+        <h3 id="viewerTitle" class="text-sm sm:text-base font-bold text-white">📷 ပစ္စည်းဓာတ်ပုံ</h3>
+        <p id="viewerSub" class="text-xs text-slate-300"></p>
+      </div>
+      <div class="flex items-center gap-2">
+        <a id="viewerDownloadBtn" href="#" download="cargo-photo.jpg" class="bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold px-3 py-1.5 rounded-xl border border-slate-600">
+          ⬇️ Download ပုံ
+        </a>
+        <button onclick="closePhotoViewer()" class="bg-rose-600 hover:bg-rose-700 text-white text-xs sm:text-sm font-bold px-3 py-1.5 rounded-xl">
+          ✕ ပိတ်မည်
+        </button>
+      </div>
+    </div>
+
+    <div class="flex-1 flex items-center justify-center my-3 overflow-hidden relative">
+      <button id="viewerPrevBtn" onclick="stepPhotoViewer(-1)" class="hidden absolute left-2 sm:left-6 bg-white/15 hover:bg-white/30 text-white text-lg font-extrabold w-10 h-10 rounded-full backdrop-blur-xs">
+        ◀
+      </button>
+      <img id="viewerMainImg" src="" alt="Parcel Photo" class="max-h-[75vh] max-w-full object-contain rounded-2xl shadow-2xl border border-slate-700" />
+      <button id="viewerNextBtn" onclick="stepPhotoViewer(1)" class="hidden absolute right-2 sm:right-6 bg-white/15 hover:bg-white/30 text-white text-lg font-extrabold w-10 h-10 rounded-full backdrop-blur-xs">
+        ▶
+      </button>
+    </div>
+
+    <div id="viewerThumbsRow" class="max-w-3xl w-full mx-auto flex items-center justify-center gap-2 pt-1"></div>
+  </div>
+
   <script>
     const LOCAL_CACHE_KEY = 'mm_uk_ww_dashboard_cache_v1';
     const CFG_KEY = 'mm_uk_ww_gh_cfg_v1';
@@ -563,6 +602,9 @@
     let fileSha = null;
     let lockedRole = null;
     let activeSlipPlainText = '';
+    let modalPhotos = [];
+    let viewerPhotos = [];
+    let viewerIndex = 0;
 
     function applySetupVisibility(role) {
       const setupBtn = document.getElementById('setupBtn');
@@ -663,6 +705,7 @@
       const kgCurrency = r.kgCurrency || ((r.kgMmk > 0 && (!r.kgGbp || r.kgGbp === 0)) ? 'MMK' : 'GBP');
       const deliStatus = destType === 'UK' ? (r.deliStatus || 'none') : 'none';
       const cargoType = (r.cargoType === 'Risk') ? 'Risk' : 'Standard';
+      const photos = Array.isArray(r.photos) ? r.photos.filter(Boolean).slice(0, 3) : [];
 
       return {
         id: r.id || ('rec_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6)),
@@ -676,6 +719,7 @@
         receiver: r.receiver || '-',
         boxes: Math.max(1, parseInt(r.boxes, 10) || 1),
         kg: Math.max(0, parseFloat(r.kg) || 0),
+        photos,
         kgPayStatus: r.kgPayStatus || 'unpaid',
         kgCurrency,
         kgGbp: Math.max(0, parseFloat(r.kgGbp) || 0),
@@ -695,6 +739,146 @@
         archived: !!r.archived,
         note: r.note || ''
       };
+    }
+
+    function compressImageFile(file, maxDim = 1100, quality = 0.76) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = ev => {
+          const img = new Image();
+          img.onload = () => {
+            let w = img.width;
+            let h = img.height;
+            if (w > maxDim || h > maxDim) {
+              if (w > h) {
+                h = Math.round((h * maxDim) / w);
+                w = maxDim;
+              } else {
+                w = Math.round((w * maxDim) / h);
+                h = maxDim;
+              }
+            }
+            const canvas = document.createElement('canvas');
+            canvas.width = w;
+            canvas.height = h;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, w, h);
+            resolve(canvas.toDataURL('image/jpeg', quality));
+          };
+          img.onerror = reject;
+          img.src = ev.target.result;
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    async function handlePhotoFiles(event) {
+      const files = Array.from(event.target.files || []);
+      if (!files.length) return;
+      const statusEl = document.getElementById('photoCompressStatus');
+      statusEl.textContent = '⏳ ပုံများကို ကြည်လင်အောင် ချုံ့ပြင်ဆင်နေပါသည်...';
+      statusEl.classList.remove('hidden');
+
+      for (const f of files) {
+        if (modalPhotos.length >= 3) {
+          alert('စာရင်းတစ်ခုလျှင် ပစ္စည်းဓာတ်ပုံ အများဆုံး ၃ ပုံအထိ ထည့်နိုင်ပါသည်။');
+          break;
+        }
+        try {
+          const compressedDataUrl = await compressImageFile(f);
+          modalPhotos.push(compressedDataUrl);
+        } catch (err) {
+          console.error(err);
+        }
+      }
+      event.target.value = '';
+      statusEl.textContent = `✅ ပုံ ${modalPhotos.length} ပုံ အသင့်ဖြစ်ပါပြီ (သိမ်းမည် နှိပ်ပါ)`;
+      renderModalPhotoPreviews();
+    }
+
+    function removeModalPhoto(idx) {
+      modalPhotos.splice(idx, 1);
+      renderModalPhotoPreviews();
+      const statusEl = document.getElementById('photoCompressStatus');
+      if (modalPhotos.length === 0) statusEl.classList.add('hidden');
+      else statusEl.textContent = `✅ ပုံ ${modalPhotos.length} ပုံ ကျန်ရှိပါသည်`;
+    }
+
+    function renderModalPhotoPreviews() {
+      const grid = document.getElementById('modalPhotoPreviewGrid');
+      if (!modalPhotos.length) {
+        grid.innerHTML = '<p class="text-[11px] text-slate-400">ပစ္စည်းဓာတ်ပုံ မထည့်ရသေးပါ (၁–၃ ပုံအထိ ထည့်နိုင်သည်)</p>';
+        return;
+      }
+      grid.innerHTML = modalPhotos.map((src, i) => `
+        <div class="relative w-20 h-20 rounded-xl overflow-hidden border border-indigo-300 shadow-xs bg-white group">
+          <img src="${src}" onclick="openPhotoViewerFromArray(modalPhotos, ${i}, 'Preview Photo')" class="w-full h-full object-cover cursor-pointer" />
+          <button type="button" onclick="removeModalPhoto(${i})" class="absolute top-1 right-1 bg-rose-600 text-white text-[10px] font-bold w-5 h-5 rounded-full shadow">✕</button>
+          <span class="absolute bottom-0.5 left-1 bg-black/60 text-white text-[9px] px-1 rounded">#${i + 1}</span>
+        </div>
+      `).join('');
+    }
+
+    function openPhotoViewer(recordId, startIdx = 0) {
+      const rec = records.find(r => r.id === recordId);
+      if (!rec || !rec.photos || rec.photos.length === 0) return;
+      const title = `📷 ${rec.sender} → ${rec.receiver} (${rec.invNo})`;
+      const sub = `${rec.date} • ${Number(rec.kg).toFixed(2)} Kg (${rec.boxes} ပုံး) • ${rec.origin} → ${rec.destination}`;
+      openPhotoViewerFromArray(rec.photos, startIdx, title, sub);
+    }
+
+    function openPhotoViewerFromArray(photoArr, startIdx = 0, title = '📷 ပစ္စည်းဓာတ်ပုံ', sub = '') {
+      viewerPhotos = photoArr || [];
+      if (!viewerPhotos.length) return;
+      viewerIndex = Math.max(0, Math.min(startIdx, viewerPhotos.length - 1));
+      document.getElementById('viewerTitle').textContent = title;
+      document.getElementById('viewerSub').textContent = sub;
+      updatePhotoViewerUI();
+      document.getElementById('photoViewerModal').classList.remove('hidden');
+    }
+
+    function updatePhotoViewerUI() {
+      const src = viewerPhotos[viewerIndex];
+      document.getElementById('viewerMainImg').src = src;
+      document.getElementById('viewerDownloadBtn').href = src;
+      document.getElementById('viewerDownloadBtn').download = `parcel-photo-${viewerIndex + 1}.jpg`;
+
+      const prevBtn = document.getElementById('viewerPrevBtn');
+      const nextBtn = document.getElementById('viewerNextBtn');
+      if (viewerPhotos.length > 1) {
+        prevBtn.classList.remove('hidden');
+        nextBtn.classList.remove('hidden');
+      } else {
+        prevBtn.classList.add('hidden');
+        nextBtn.classList.add('hidden');
+      }
+
+      const thumbsRow = document.getElementById('viewerThumbsRow');
+      if (viewerPhotos.length > 1) {
+        thumbsRow.innerHTML = viewerPhotos.map((p, i) => `
+          <button onclick="jumpPhotoViewer(${i})" class="w-14 h-14 rounded-xl overflow-hidden border-2 ${i === viewerIndex ? 'border-amber-400 scale-105' : 'border-slate-600 opacity-65'} transition">
+            <img src="${p}" class="w-full h-full object-cover" />
+          </button>
+        `).join('');
+      } else {
+        thumbsRow.innerHTML = '';
+      }
+    }
+
+    function stepPhotoViewer(delta) {
+      if (viewerPhotos.length <= 1) return;
+      viewerIndex = (viewerIndex + delta + viewerPhotos.length) % viewerPhotos.length;
+      updatePhotoViewerUI();
+    }
+
+    function jumpPhotoViewer(idx) {
+      viewerIndex = idx;
+      updatePhotoViewerUI();
+    }
+
+    function closePhotoViewer() {
+      document.getElementById('photoViewerModal').classList.add('hidden');
     }
 
     async function loadFromGitHub() {
@@ -748,7 +932,11 @@
     }
 
     async function persistRecords() {
-      localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify(records));
+      try {
+        localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify(records));
+      } catch (storageErr) {
+        alert('⚠️ Browser Memory ပြည့်လုနီးပါပြီ — History ထဲက စာရင်းဟောင်း/ပုံဟောင်းတချို့ကို CSV / PDF Backup ထုတ်ပြီး ရှင်းပေးပါ။');
+      }
       const cfg = getCfg();
       if (!cfg.user || !cfg.repo || !cfg.token) {
         renderAll();
@@ -951,6 +1139,10 @@
       document.getElementById('fReceiver').value = rec.receiver || '';
       document.getElementById('fBoxes').value = rec.boxes || 1;
       document.getElementById('fKg').value = isDuplicate ? 0 : (rec.kg || 0);
+      modalPhotos = isDuplicate ? [] : [...(rec.photos || [])];
+      renderModalPhotoPreviews();
+      document.getElementById('photoCompressStatus').classList.add('hidden');
+
       document.getElementById('fKgPayStatus').value = rec.kgPayStatus || 'unpaid';
       document.getElementById('fKgCurrency').value = rec.kgCurrency || 'GBP';
       document.getElementById('fKgGbp').value = isDuplicate ? 0 : (rec.kgGbp || 0);
@@ -991,6 +1183,10 @@
         document.getElementById('fReceiver').value = '';
         document.getElementById('fBoxes').value = 1;
         document.getElementById('fKg').value = 0;
+        modalPhotos = [];
+        renderModalPhotoPreviews();
+        document.getElementById('photoCompressStatus').classList.add('hidden');
+
         document.getElementById('fKgPayStatus').value = 'unpaid';
         document.getElementById('fKgCurrency').value = 'GBP';
         document.getElementById('fKgGbp').value = 0;
@@ -1087,6 +1283,7 @@
         receiver: receiver || '-',
         boxes: Math.max(1, parseInt(document.getElementById('fBoxes').value, 10) || 1),
         kg: kgNum,
+        photos: [...modalPhotos],
         kgPayStatus,
         kgCurrency,
         kgGbp: kgGbpVal,
@@ -1149,7 +1346,7 @@
     async function deleteSingleHistory(id) {
       const rec = records.find(r => r.id === id);
       if (!rec || !rec.archived) return;
-      if (!confirm('History ထဲမှ "' + rec.invNo + ' - ' + rec.receiver + '" ကို အပြီးဖျက်မလား? (CSV Backup အရင် ထုတ်ထားသင့်ပါသည်)')) return;
+      if (!confirm('History ထဲမှ "' + rec.invNo + ' - ' + rec.receiver + '" ကို အပြီးဖျက်မလား? (CSV / PDF Backup အရင် ထုတ်ထားသင့်ပါသည်)')) return;
       records = records.filter(r => r.id !== id);
       selectedHistoryIds.delete(id);
       await persistRecords();
@@ -1300,11 +1497,6 @@
       return sorted;
     }
 
-    // Viber item format:
-    // Line 1: 1. Sender → Receiver ✅/❌
-    // Line 2: Date | KG (Boxes) | MM → UK | [STANDARD] / ⚠️ [RISK]
-    // Line 3: 💳 KG: ...
-    // Line 4 (if UK): 🚚 Local Deli: ...
     function formatSingleRecordForViber(r, index) {
       const kgPaid = ['paid_mm', 'paid_uk'].includes(r.kgPayStatus);
       const hasDeli = isUkDestination(r.destType, r.destination) && r.deliStatus !== 'none';
@@ -1349,9 +1541,9 @@
       const now = new Date();
       const dateStr = String(now.getDate()).padStart(2, '0') + '.' + String(now.getMonth() + 1).padStart(2, '0') + '.' + String(now.getFullYear()).slice(-2);
       const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      const headerDatePart = (selectedScope && selectedScope !== 'unsent_all' && !selectedScope.startsWith('date:'))
-        ? `${dateStr} (${timeStr})`
-        : (selectedScope.startsWith('date:') ? `${selectedScope.replace('date:', '')} (${timeStr})` : `${dateStr} (${timeStr})`);
+      const headerDatePart = selectedScope.startsWith('date:')
+        ? `${selectedScope.replace('date:', '')} (${timeStr})`
+        : `${dateStr} (${timeStr})`;
 
       if (!list || list.length === 0) {
         return `✨ ${headerDatePart}\n${headerTitle}\n\n📦 ရုံးတွင်းလက်ကျန် Kg မရှိပါ`;
@@ -1364,7 +1556,6 @@
     }
 
     function getUnsentOnHandList() {
-      // Accumulated on-hand cargo: active (!archived) and not yet dispatched (!dispatched)
       return records.filter(r => !r.archived && !r.dispatched);
     }
 
@@ -1465,6 +1656,17 @@
       ];
       activeSlipPlainText = lines.join('\n');
 
+      const photosHtml = (r.photos && r.photos.length > 0)
+        ? `<div class="pt-1">
+            <p class="text-[11px] font-bold text-indigo-900 mb-1.5">📷 ပစ္စည်းဓာတ်ပုံများ (နှိပ်၍ အကျယ်ချဲ့ ကြည့်နိုင်သည်):</p>
+            <div class="flex flex-wrap gap-2">
+              ${r.photos.map((src, i) => `
+                <img src="${src}" onclick="openPhotoViewer('${r.id}', ${i})" class="w-16 h-16 object-cover rounded-xl border border-indigo-300 cursor-pointer hover:opacity-90 shadow-xs" />
+              `).join('')}
+            </div>
+          </div>`
+        : '';
+
       document.getElementById('slipContent').innerHTML = `
         <div class="flex items-center justify-between border-b border-slate-200 pb-2 flex-wrap gap-1">
           <div>
@@ -1509,6 +1711,8 @@
         <div class="bg-indigo-50/90 border border-indigo-200 rounded-xl p-2.5 font-bold text-indigo-950 text-[11.5px]">
           ${escapeHtml(settlementSummary)}
         </div>
+
+        ${photosHtml}
 
         <div class="text-[11px] text-slate-600 space-y-0.5">
           <div><span class="font-semibold">🏷️ Extra:</span> ${escapeHtml(extras)}</div>
@@ -1641,6 +1845,12 @@
           ? '<span class="inline-block text-[10px] font-extrabold bg-rose-100 text-rose-800 border border-rose-300 px-1.5 py-0.5 rounded-md mt-1">⚠️ Risk</span>'
           : '<span class="inline-block text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-300 px-1.5 py-0.5 rounded-md mt-1">📦 Standard</span>';
 
+        const photoBtnHtml = (r.photos && r.photos.length > 0)
+          ? `<button onclick="openPhotoViewer('${r.id}', 0)" class="inline-flex items-center gap-1 text-[10.5px] font-bold bg-indigo-600 hover:bg-indigo-700 text-white px-2 py-0.5 rounded-lg shadow-xs mb-1">
+              📷 ပုံကြည့်ရန် (${r.photos.length})
+            </button>`
+          : '';
+
         const badgesHtml = [
           r.insured ? '<span class="inline-block text-[10px] font-bold bg-sky-100 text-sky-900 border border-sky-200 px-1.5 py-0.5 rounded-md">🛡️ Insured</span>' : '',
           r.discount ? '<span class="inline-block text-[10px] font-bold bg-emerald-100 text-emerald-900 border border-emerald-200 px-1.5 py-0.5 rounded-md">🏷️ Discount</span>' : ''
@@ -1688,7 +1898,8 @@
             <span class="inline-block text-[10.5px] font-bold border px-2 py-0.5 rounded-lg ${deliBadge.cls}">${deliBadge.label}</span>
             ${deliDetailHtml}
           </td>
-          <td class="py-2.5 px-2.5 max-w-[220px]">
+          <td class="py-2.5 px-2.5 max-w-[230px]">
+            ${photoBtnHtml ? `<div>${photoBtnHtml}</div>` : ''}
             ${badgesHtml ? `<div class="mb-1">${badgesHtml}</div>` : ''}
             <div class="text-[11px] text-slate-600 leading-snug break-words">${escapeHtml(r.note || '—')}</div>
           </td>
@@ -1727,17 +1938,86 @@
         .replace(/"/g, '&quot;');
     }
 
+    function exportPDF() {
+      const list = getFilteredRecords();
+      if (!list.length) {
+        alert('PDF ထုတ်ရန် စာရင်း မရှိသေးပါ။');
+        return;
+      }
+      const totalKg = list.reduce((s, r) => s + (parseFloat(r.kg) || 0), 0);
+      const totalBoxes = list.reduce((s, r) => s + (parseInt(r.boxes, 10) || 0), 0);
+      const nowStr = new Date().toLocaleDateString('en-GB');
+
+      const rowsHtml = list.map((r, i) => `
+        <tr>
+          <td>${i + 1}</td>
+          <td><b>${escapeHtml(r.invNo)}</b><br/><span style="color:#64748b">${escapeHtml(r.date)}</span></td>
+          <td>${escapeHtml(r.origin)} → ${escapeHtml(r.destination)}<br/><b>${escapeHtml(r.cargoType)}</b></td>
+          <td>📤 ${escapeHtml(r.sender)}<br/>📥 <b>${escapeHtml(r.receiver)}</b></td>
+          <td>${r.boxes} ပုံး<br/><b>${Number(r.kg).toFixed(2)} kg</b></td>
+          <td>${escapeHtml(getKgPayBadge(r).label)}<br/><b>${escapeHtml(formatKgAmountStr(r))}</b></td>
+          <td>${escapeHtml(getDeliBadge(r).label)}<br/><b>${escapeHtml(formatDeliAmountStr(r))}</b></td>
+          <td>${escapeHtml(r.note || '—')}</td>
+        </tr>
+      `).join('');
+
+      const printWin = window.open('', '_blank');
+      printWin.document.write(`
+        <!DOCTYPE html>
+        <html lang="my">
+        <head>
+          <meta charset="UTF-8" />
+          <title>MM → UK & Worldwide Cargo Report (${nowStr})</title>
+          <style>
+            body { font-family: Arial, 'Noto Sans Myanmar', sans-serif; padding: 20px; color: #0f172a; font-size: 11px; }
+            h1 { font-size: 16px; margin: 0 0 4px 0; }
+            .meta { color: #475569; margin-bottom: 12px; font-size: 11px; }
+            table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+            th, td { border: 1px solid #cbd5e1; padding: 6px 7px; text-align: left; vertical-align: top; }
+            th { background: #f1f5f9; font-weight: bold; }
+            .totals { margin-top: 12px; font-weight: bold; font-size: 12px; }
+            @media print { .no-print { display: none; } }
+          </style>
+        </head>
+        <body>
+          <div class="no-print" style="margin-bottom:12px;">
+            <button onclick="window.print()" style="padding:8px 14px;background:#0f172a;color:#fff;border:none;border-radius:8px;font-weight:bold;cursor:pointer;">🖨️ Save as PDF / Print</button>
+          </div>
+          <h1>MM → UK &amp; Worldwide Cargo &amp; Payment Report</h1>
+          <div class="meta">Date: ${nowStr} • စုစုပေါင်းစာရင်း: ${list.length} ခု • စုစုပေါင်း: ${totalBoxes} ပုံး / ${totalKg.toFixed(2)} kg</div>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Inv / Date</th>
+                <th>Route / Type</th>
+                <th>Sender &amp; Receiver</th>
+                <th>Boxes / KG</th>
+                <th>KG Fee</th>
+                <th>Local Delivery</th>
+                <th>Note</th>
+              </tr>
+            </thead>
+            <tbody>${rowsHtml}</tbody>
+          </table>
+          <div class="totals">Total Boxes: ${totalBoxes} ပုံး | Total Weight: ${totalKg.toFixed(2)} kg</div>
+        </body>
+        </html>
+      `);
+      printWin.document.close();
+    }
+
     function exportCSV() {
       const headers = [
         'Tab', 'InvNo', 'Date', 'CargoType', 'Origin', 'Destination', 'Sender', 'Receiver',
-        'Boxes', 'KG', 'KgPayStatus', 'KgCurrency', 'KgGBP', 'KgMMK', 'Rate', 'KgPayDate',
+        'Boxes', 'KG', 'PhotoCount', 'KgPayStatus', 'KgCurrency', 'KgGBP', 'KgMMK', 'Rate', 'KgPayDate',
         'DeliStatus', 'DeliCurrency', 'DeliGBP', 'DeliMMK', 'DeliRate', 'DeliPayDate',
         'Insured', 'Discount', 'Ready', 'Dispatched', 'Note'
       ];
       const rows = records.map(r => [
         r.archived ? 'History' : 'Active',
         r.invNo, r.date, r.cargoType, r.origin, r.destination, r.sender, r.receiver,
-        r.boxes, r.kg, r.kgPayStatus, r.kgCurrency, r.kgGbp, r.kgMmk, r.rate, r.kgPayDate,
+        r.boxes, r.kg, (r.photos || []).length, r.kgPayStatus, r.kgCurrency, r.kgGbp, r.kgMmk, r.rate, r.kgPayDate,
         r.deliStatus, r.deliCurrency, r.deliGbp, r.deliMmk, r.deliRate, r.deliPayDate,
         r.insured ? 'Yes' : 'No',
         r.discount ? 'Yes' : 'No',
