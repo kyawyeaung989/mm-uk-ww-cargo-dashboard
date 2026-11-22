@@ -196,6 +196,7 @@
             <option value="unpaid">⚠️ KG Fee Unpaid / Arrival</option>
             <option value="deli_pay_uk">🚚 Local Delivery: Pay in UK</option>
             <option value="deli_paid_mm">✅ Local Delivery: Paid in MM</option>
+            <option value="deli_office_pickup">🏢 ရုံးလာထုတ်မည် (Office Pickup)</option>
           </select>
         </div>
         <div class="sm:col-span-2">
@@ -438,7 +439,8 @@
               <option value="pay_uk">Pay in UK (ရောက်မှ ကောက်မည်)</option>
               <option value="paid_mm">Paid in MM (မြန်မာမှာ ရှင်းပြီး)</option>
               <option value="paid_uk">Paid in UK (UK မှာ ရှင်းပြီး)</option>
-              <option value="none">No Local Delivery (မပါ / ရုံးလာထုတ်)</option>
+              <option value="office_pickup">🏢 Office Pickup (ရုံးလာထုတ်မည်)</option>
+              <option value="none">No Local Delivery (Local Delivery မပါ)</option>
             </select>
           </div>
           <div>
@@ -698,12 +700,19 @@
       return `${o} → ${d}`;
     }
 
+    function hasSeparateLocalDeliveryAmount(r) {
+      return isUkDestination(r.destType, r.destination) && ['pay_uk', 'paid_mm', 'paid_uk'].includes(r.deliStatus);
+    }
+
     function normalizeRecord(r) {
       const origin = r.origin || 'Myanmar';
       const destination = r.destination || r.locationNote || (r.destType === 'UK' ? 'UK' : 'Worldwide');
       const destType = isUkDestination(r.destType, destination) ? 'UK' : 'Worldwide';
       const kgCurrency = r.kgCurrency || ((r.kgMmk > 0 && (!r.kgGbp || r.kgGbp === 0)) ? 'MMK' : 'GBP');
-      const deliStatus = destType === 'UK' ? (r.deliStatus || 'none') : 'none';
+      const validDeliStatuses = ['pay_uk', 'paid_mm', 'paid_uk', 'office_pickup', 'none'];
+      const deliStatus = destType === 'UK'
+        ? (validDeliStatuses.includes(r.deliStatus) ? r.deliStatus : 'none')
+        : 'none';
       const cargoType = (r.cargoType === 'Risk') ? 'Risk' : 'Standard';
       const photos = Array.isArray(r.photos) ? r.photos.filter(Boolean).slice(0, 3) : [];
 
@@ -1248,10 +1257,11 @@
       const rateVal = kgCurrency === 'MMK' ? Math.max(0, parseFloat(document.getElementById('fRate').value) || 0) : 0;
 
       const deliStatus = destUk ? document.getElementById('fDeliStatus').value : 'none';
+      const hasDeliAmt = destUk && ['pay_uk', 'paid_mm', 'paid_uk'].includes(deliStatus);
       const deliCurrency = document.getElementById('fDeliCurrency').value;
-      const deliGbpVal = (destUk && deliCurrency === 'GBP') ? Math.max(0, parseFloat(document.getElementById('fDeliGbp').value) || 0) : 0;
-      const deliMmkVal = (destUk && deliCurrency === 'MMK') ? Math.max(0, parseFloat(document.getElementById('fDeliMmk').value) || 0) : 0;
-      const deliRateVal = (destUk && deliCurrency === 'MMK') ? Math.max(0, parseFloat(document.getElementById('fDeliRate').value) || 0) : 0;
+      const deliGbpVal = (hasDeliAmt && deliCurrency === 'GBP') ? Math.max(0, parseFloat(document.getElementById('fDeliGbp').value) || 0) : 0;
+      const deliMmkVal = (hasDeliAmt && deliCurrency === 'MMK') ? Math.max(0, parseFloat(document.getElementById('fDeliMmk').value) || 0) : 0;
+      const deliRateVal = (hasDeliAmt && deliCurrency === 'MMK') ? Math.max(0, parseFloat(document.getElementById('fDeliRate').value) || 0) : 0;
 
       const warnings = [];
       const kgNum = Math.max(0, parseFloat(document.getElementById('fKg').value) || 0);
@@ -1295,7 +1305,7 @@
         deliGbp: deliGbpVal,
         deliMmk: deliMmkVal,
         deliRate: deliRateVal,
-        deliPayDate: destUk ? document.getElementById('fDeliPayDate').value.trim() : '',
+        deliPayDate: hasDeliAmt ? document.getElementById('fDeliPayDate').value.trim() : '',
         insured: document.getElementById('fInsured').checked,
         discount: document.getElementById('fDiscount').checked,
         note: document.getElementById('fNote').value.trim()
@@ -1414,8 +1424,14 @@
     }
 
     function getDeliBadge(rec) {
-      if (!isUkDestination(rec.destType, rec.destination) || rec.deliStatus === 'none') {
-        return { label: '— အိမ်အရောက်တန်းပို့ / မရှိ', cls: 'bg-slate-100 text-slate-500 border-slate-200' };
+      if (!isUkDestination(rec.destType, rec.destination)) {
+        return { label: '— No Local Delivery', cls: 'bg-slate-100 text-slate-500 border-slate-200' };
+      }
+      if (rec.deliStatus === 'office_pickup') {
+        return { label: '🏢 ရုံးလာထုတ်မည် (Office Pickup)', cls: 'bg-cyan-100 text-cyan-950 border-cyan-300' };
+      }
+      if (rec.deliStatus === 'none') {
+        return { label: '— No Local Delivery', cls: 'bg-slate-100 text-slate-500 border-slate-200' };
       }
       const map = {
         pay_uk: { label: '🚚 ရောက်မှ ကောက်မည်', cls: 'bg-amber-100 text-amber-900 border-amber-300' },
@@ -1434,7 +1450,7 @@
     }
 
     function formatDeliAmountStr(r) {
-      if (!isUkDestination(r.destType, r.destination) || r.deliStatus === 'none') {
+      if (!hasSeparateLocalDeliveryAmount(r)) {
         return '—';
       }
       if (r.deliCurrency === 'MMK') {
@@ -1462,7 +1478,7 @@
 
         const kgPaid = ['paid_mm', 'paid_uk'].includes(r.kgPayStatus);
         const deliPaid = ['paid_mm', 'paid_uk'].includes(r.deliStatus);
-        const hasDeli = isUkDestination(r.destType, r.destination) && r.deliStatus !== 'none';
+        const hasDeli = hasSeparateLocalDeliveryAmount(r);
 
         if (payF === 'both_paid') {
           if (!kgPaid) return false;
@@ -1478,6 +1494,7 @@
         if (payF === 'unpaid' && !['unpaid', 'pay_arrival_uk'].includes(r.kgPayStatus)) return false;
         if (payF === 'deli_pay_uk' && r.deliStatus !== 'pay_uk') return false;
         if (payF === 'deli_paid_mm' && r.deliStatus !== 'paid_mm') return false;
+        if (payF === 'deli_office_pickup' && r.deliStatus !== 'office_pickup') return false;
 
         if (q) {
           const hay = [r.invNo, r.sender, r.receiver, r.origin, r.destination, r.cargoType, r.note, r.date].join(' ').toLowerCase();
@@ -1499,7 +1516,7 @@
 
     function formatSingleRecordForViber(r, index) {
       const kgPaid = ['paid_mm', 'paid_uk'].includes(r.kgPayStatus);
-      const hasDeli = isUkDestination(r.destType, r.destination) && r.deliStatus !== 'none';
+      const hasDeli = hasSeparateLocalDeliveryAmount(r);
       const deliPaid = ['paid_mm', 'paid_uk'].includes(r.deliStatus);
       const isFullySettled = kgPaid && (!hasDeli || deliPaid);
       const statusEmoji = isFullySettled ? '✅' : '❌';
@@ -1532,6 +1549,8 @@
         };
         const deliAmtShort = (r.deliGbp > 0 || r.deliMmk > 0) ? ` (${formatDeliAmountStr(r)})` : '';
         deliLine = `\n   🚚 Local Deli: ${deliShortMap[r.deliStatus] || ''}${deliAmtShort}`;
+      } else if (isUkDestination(r.destType, r.destination) && r.deliStatus === 'office_pickup') {
+        deliLine = `\n   🏢 Pickup: ရုံးလာထုတ်မည်`;
       }
 
       return `${line1}\n${line2}\n${kgLine}${deliLine}`;
@@ -1613,7 +1632,7 @@
       const kgBadge = getKgPayBadge(r);
       const deliBadge = getDeliBadge(r);
       const kgAmt = formatKgAmountStr(r);
-      const hasDeli = isUkDestination(r.destType, r.destination) && r.deliStatus !== 'none';
+      const hasDeli = hasSeparateLocalDeliveryAmount(r);
       const deliAmt = formatDeliAmountStr(r);
 
       const kgPaid = ['paid_mm', 'paid_uk'].includes(r.kgPayStatus);
@@ -1825,7 +1844,7 @@
         }
 
         let deliDetailHtml = '';
-        if (isUkDestination(r.destType, r.destination) && r.deliStatus !== 'none') {
+        if (hasSeparateLocalDeliveryAmount(r)) {
           if (r.deliCurrency === 'MMK') {
             const dMmk = r.deliMmk ? Number(r.deliMmk).toLocaleString() + ' Ks' : '0 Ks';
             const dRate = r.deliRate ? 'Rate @ ' + Number(r.deliRate).toLocaleString() : '';
