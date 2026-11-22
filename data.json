@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T06:19:10.427Z",
+  "updatedAt": "2026-11-22T06:31:32.696Z",
   "records": [
     {
       "id": "rec_1795328250540_wlzc",
@@ -23,7 +23,7 @@
       "kgMmk": 0,
       "rate": 0,
       "kgPayDate": "",
-      "deliStatus": "none",
+      "deliStatus": "office_pickup",
       "deliCurrency": "GBP",
       "deliGbp": 0,
       "deliMmk": 0,
@@ -31,10 +31,10 @@
       "deliPayDate": "",
       "insured": false,
       "discount": false,
-      "note": "",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": false,
+      "note": ""
     },
     {
       "id": "rec_1795317481807_rnrj",
