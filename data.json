@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T06:18:48.360Z",
+  "updatedAt": "2026-11-22T06:19:10.427Z",
   "records": [
     {
       "id": "rec_1795328250540_wlzc",
@@ -23,7 +23,7 @@
       "kgMmk": 0,
       "rate": 0,
       "kgPayDate": "",
-      "deliStatus": "pay_uk",
+      "deliStatus": "none",
       "deliCurrency": "GBP",
       "deliGbp": 0,
       "deliMmk": 0,
