@@ -1,10 +1,11 @@
 {
-  "updatedAt": "2026-11-22T03:18:03.355Z",
+  "updatedAt": "2026-11-22T05:03:21.686Z",
   "records": [
     {
       "id": "rec_1795317481807_rnrj",
       "invNo": "-",
       "date": "22.11.2026",
+      "cargoType": "Standard",
       "origin": "Myanmar",
       "destType": "UK",
       "destination": "UK",
@@ -26,15 +27,16 @@
       "deliPayDate": "",
       "insured": false,
       "discount": true,
-      "note": "",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": true,
+      "note": ""
     },
     {
       "id": "rec_1795282276065_trtf",
       "invNo": "-",
       "date": "21.11.2026",
+      "cargoType": "Standard",
       "origin": "Myanmar",
       "destType": "UK",
       "destination": "UK",
@@ -65,6 +67,7 @@
       "id": "rec_1795280038008_buva",
       "invNo": "-",
       "date": "21.11.2026",
+      "cargoType": "Standard",
       "origin": "Myanmar",
       "destType": "Worldwide",
       "destination": "Netherlands",
@@ -95,6 +98,7 @@
       "id": "rec_1795279871929_fpae",
       "invNo": "-",
       "date": "21.11.2026",
+      "cargoType": "Standard",
       "origin": "Myanmar",
       "destType": "UK",
       "destination": "UK",
@@ -125,6 +129,7 @@
       "id": "rec_1795279613336_ihbi",
       "invNo": "8918435",
       "date": "21.11.2026",
+      "cargoType": "Standard",
       "origin": "Myanmar",
       "destType": "UK",
       "destination": "UK",
