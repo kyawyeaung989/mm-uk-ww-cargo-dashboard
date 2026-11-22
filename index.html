@@ -152,8 +152,8 @@
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
-          <button onclick="quickCopyViberFiltered()" class="h-9 bg-purple-50 hover:bg-purple-100 text-purple-800 border border-purple-200 text-xs font-bold px-3 rounded-xl transition whitespace-nowrap">
-            ⚡ 1-Click Viber Copy (လက်ရှိစာရင်း)
+          <button onclick="quickCopyViberUnsent()" class="h-9 bg-purple-50 hover:bg-purple-100 text-purple-800 border border-purple-200 text-xs font-bold px-3 rounded-xl transition whitespace-nowrap">
+            ⚡ 1-Click Viber Copy (ရုံးလက်ကျန်)
           </button>
           <button id="archiveCompletedBtn" onclick="archiveReadyOrDispatched()" class="h-9 bg-indigo-50 hover:bg-indigo-100 text-indigo-800 border border-indigo-200 text-xs font-semibold px-3 rounded-xl transition whitespace-nowrap">
             📥 Dispatched ဖြစ်ပြီးသား History ပို့မည်
@@ -517,7 +517,7 @@
           <span class="text-xl">📋</span>
           <div>
             <h2 class="text-base sm:text-lg font-bold text-slate-900">Viber Daily Report (1-Click Copy)</h2>
-            <p class="text-[11px] text-slate-500">သပ်သပ်ရပ်ရပ် ကြောင်းရေနည်းနည်းနဲ့ Emoji များဖြင့် Viber Group ထဲ တန်းပို့နိုင်ပါသည်</p>
+            <p class="text-[11px] text-slate-500">မပို့ရသေးသည့် ရုံးလက်ကျန် စုထားသမျှကို ပေါင်းပြပြီး Sent ဖြစ်လျှင် အလိုအလျောက် ထွက်သွားပါမည်</p>
           </div>
         </div>
         <button onclick="closeViberReportModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold px-2">✕</button>
@@ -526,12 +526,12 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
         <div>
           <label class="block text-[11px] font-bold text-slate-700 mb-1">ခေါင်းစဉ် (Header Title)</label>
-          <input id="viberHeaderInput" oninput="buildViberReportPreview()" type="text" value="ရုံးလက်ကျန် / နေ့စဉ်ပစ္စည်းစာရင်း Kg" class="w-full border border-slate-300 rounded-xl px-3 py-1.5 text-xs font-semibold" />
+          <input id="viberHeaderInput" oninput="buildViberReportPreview()" type="text" value="ရုံးလက်ကျန် Kg" class="w-full border border-slate-300 rounded-xl px-3 py-1.5 text-xs font-semibold" />
         </div>
         <div>
-          <label class="block text-[11px] font-bold text-slate-700 mb-1">ရက်စွဲဖြင့် စစ်ထုတ်ရန် (Date Filter)</label>
+          <label class="block text-[11px] font-bold text-slate-700 mb-1">Report Scope (ရုံးလက်ကျန် / ရက်စွဲ)</label>
           <select id="viberDateFilter" onchange="buildViberReportPreview()" class="w-full border border-slate-300 rounded-xl px-3 py-1.5 text-xs font-semibold bg-white">
-            <option value="all">Active စာရင်းအားလုံး (All Active)</option>
+            <option value="unsent_all">📦 ရုံးလက်ကျန် အားလုံး (မပို့ရသေးသည့် စုထားသမျှ)</option>
           </select>
         </div>
       </div>
@@ -1300,7 +1300,11 @@
       return sorted;
     }
 
-    // Compact, clean 3-line Viber item formatter with pleasant emojis
+    // Viber item format:
+    // Line 1: 1. Sender → Receiver ✅/❌
+    // Line 2: Date | KG (Boxes) | MM → UK | [STANDARD] / ⚠️ [RISK]
+    // Line 3: 💳 KG: ...
+    // Line 4 (if UK): 🚚 Local Deli: ...
     function formatSingleRecordForViber(r, index) {
       const kgPaid = ['paid_mm', 'paid_uk'].includes(r.kgPayStatus);
       const hasDeli = isUkDestination(r.destType, r.destination) && r.deliStatus !== 'none';
@@ -1312,7 +1316,7 @@
         ? `${r.sender} → ${r.receiver}`
         : (r.receiver && r.receiver !== '-' ? r.receiver : r.sender);
 
-      const typeLabel = r.cargoType === 'Risk' ? '⚠️ Risk' : 'Standard';
+      const typeHighlight = r.cargoType === 'Risk' ? '⚠️ [RISK]' : '📦 [STANDARD]';
       const routeShort = shortRouteTag(r.origin, r.destination);
 
       const kgShortMap = {
@@ -1322,9 +1326,12 @@
         unpaid: '❌ မရှင်းရသေး'
       };
       const kgAmtShort = (r.kgGbp > 0 || r.kgMmk > 0) ? ` (${formatKgAmountStr(r)})` : '';
-      const kgPart = `💳 KG: ${kgShortMap[r.kgPayStatus] || '❌ မရှင်းရသေး'}${kgAmtShort}`;
+      const kgLine = `   💳 KG: ${kgShortMap[r.kgPayStatus] || '❌ မရှင်းရသေး'}${kgAmtShort}`;
 
-      let deliPart = '';
+      const line1 = `${index + 1}. ${displayName} ${statusEmoji}`;
+      const line2 = `   ${r.date} | ${Number(r.kg).toFixed(2)} Kg (${r.boxes} ပုံး) | ${routeShort} | ${typeHighlight}`;
+
+      let deliLine = '';
       if (hasDeli) {
         const deliShortMap = {
           pay_uk: '🚚 UK ရောက်မှ',
@@ -1332,23 +1339,19 @@
           paid_uk: '✅ UK ရှင်းပြီး'
         };
         const deliAmtShort = (r.deliGbp > 0 || r.deliMmk > 0) ? ` (${formatDeliAmountStr(r)})` : '';
-        deliPart = ` | Deli: ${deliShortMap[r.deliStatus] || ''}${deliAmtShort}`;
+        deliLine = `\n   🚚 Local Deli: ${deliShortMap[r.deliStatus] || ''}${deliAmtShort}`;
       }
 
-      const line1 = `${index + 1}. ${displayName} ${statusEmoji}`;
-      const line2 = `   ${r.date} | ${Number(r.kg).toFixed(2)} Kg (${r.boxes} ပုံး) | ${routeShort} | ${typeLabel}`;
-      const line3 = `   ${kgPart}${deliPart}`;
-
-      return `${line1}\n${line2}\n${line3}`;
+      return `${line1}\n${line2}\n${kgLine}${deliLine}`;
     }
 
-    function generateViberReportString(list, headerTitle, selectedDateLabel = '') {
+    function generateViberReportString(list, headerTitle, selectedScope = 'unsent_all') {
       const now = new Date();
       const dateStr = String(now.getDate()).padStart(2, '0') + '.' + String(now.getMonth() + 1).padStart(2, '0') + '.' + String(now.getFullYear()).slice(-2);
       const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      const headerDatePart = (selectedDateLabel && selectedDateLabel !== 'all')
-        ? `${selectedDateLabel} (${timeStr})`
-        : `${dateStr} (${timeStr})`;
+      const headerDatePart = (selectedScope && selectedScope !== 'unsent_all' && !selectedScope.startsWith('date:'))
+        ? `${dateStr} (${timeStr})`
+        : (selectedScope.startsWith('date:') ? `${selectedScope.replace('date:', '')} (${timeStr})` : `${dateStr} (${timeStr})`);
 
       if (!list || list.length === 0) {
         return `✨ ${headerDatePart}\n${headerTitle}\n\n📦 ရုံးတွင်းလက်ကျန် Kg မရှိပါ`;
@@ -1360,12 +1363,18 @@
       return `✨ ${headerDatePart}\n${headerTitle}\n\n${itemsBlock}\n\n⚖️ Total Kg - ${totalKg.toFixed(2)} Kg`;
     }
 
+    function getUnsentOnHandList() {
+      // Accumulated on-hand cargo: active (!archived) and not yet dispatched (!dispatched)
+      return records.filter(r => !r.archived && !r.dispatched);
+    }
+
     function openViberReportModal() {
-      const activeList = records.filter(r => !r.archived);
-      const uniqueDates = [...new Set(activeList.map(r => r.date).filter(d => d && d !== '-'))];
+      const unsentList = getUnsentOnHandList();
+      const uniqueDates = [...new Set(unsentList.map(r => r.date).filter(d => d && d !== '-'))];
       const dateSel = document.getElementById('viberDateFilter');
-      dateSel.innerHTML = `<option value="all">Active စာရင်းအားလုံး (${activeList.length} ခု)</option>` +
-        uniqueDates.map(d => `<option value="${escapeHtml(d)}">📅 Date: ${escapeHtml(d)}</option>`).join('');
+      dateSel.innerHTML =
+        `<option value="unsent_all">📦 ရုံးလက်ကျန် အားလုံး (${unsentList.length} ခု — စုထားသမျှ)</option>` +
+        uniqueDates.map(d => `<option value="date:${escapeHtml(d)}">📅 Date: ${escapeHtml(d)}</option>`).join('');
 
       buildViberReportPreview();
       document.getElementById('viberCopyFeedback').classList.add('hidden');
@@ -1377,13 +1386,15 @@
     }
 
     function buildViberReportPreview() {
-      const headerTitle = document.getElementById('viberHeaderInput').value.trim() || 'ရုံးလက်ကျန် / နေ့စဉ်ပစ္စည်းစာရင်း Kg';
-      const selectedDate = document.getElementById('viberDateFilter').value;
-      let targetList = records.filter(r => !r.archived);
-      if (selectedDate !== 'all') {
-        targetList = targetList.filter(r => r.date === selectedDate);
+      const headerTitle = document.getElementById('viberHeaderInput').value.trim() || 'ရုံးလက်ကျန် Kg';
+      const scope = document.getElementById('viberDateFilter').value;
+      const unsentList = getUnsentOnHandList();
+      let targetList = unsentList;
+      if (scope.startsWith('date:')) {
+        const dVal = scope.replace('date:', '');
+        targetList = unsentList.filter(r => r.date === dVal);
       }
-      document.getElementById('viberPreviewBox').value = generateViberReportString(targetList, headerTitle, selectedDate);
+      document.getElementById('viberPreviewBox').value = generateViberReportString(targetList, headerTitle, scope);
     }
 
     function copyViberReportText() {
@@ -1396,11 +1407,11 @@
       });
     }
 
-    function quickCopyViberFiltered() {
-      const list = getFilteredRecords();
-      const txt = generateViberReportString(list, 'ရုံးလက်ကျန် / နေ့စဉ်ပစ္စည်းစာရင်း Kg');
+    function quickCopyViberUnsent() {
+      const unsentList = getUnsentOnHandList();
+      const txt = generateViberReportString(unsentList, 'ရုံးလက်ကျန် Kg', 'unsent_all');
       navigator.clipboard.writeText(txt).then(() => {
-        alert('✅ Viber Report ကို Copy ကူးပြီးပါပြီ! Viber Group ထဲ Paste နှိပ်ပြီး ပို့နိုင်ပါပြီ။');
+        alert('✅ ရုံးလက်ကျန် Viber Report (' + unsentList.length + ' ခု) ကို Copy ကူးပြီးပါပြီ! Viber Group ထဲ Paste နှိပ်ပြီး ပို့နိုင်ပါပြီ။');
       });
     }
 
