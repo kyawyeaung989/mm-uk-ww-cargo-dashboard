@@ -313,7 +313,7 @@
         </div>
         <div>
           <label class="block text-xs font-semibold text-slate-700 mb-1">Date</label>
-          <input id="fDate" type="text" placeholder="21.11.2026" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm" />
+          <input id="fDate" type="text" placeholder="22.11.2026" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm" />
         </div>
         <div>
           <label class="block text-xs font-bold text-slate-700 mb-1">📦 Cargo Type (Standard / Risk)</label>
@@ -409,7 +409,7 @@
           </div>
           <div>
             <label class="block text-[11px] font-semibold text-slate-700 mb-1">KG Fee ရှင်းသည့်ရက်စွဲ</label>
-            <input id="fKgPayDate" type="text" placeholder="ဥပမာ: 21.11.2026" class="w-full border border-slate-300 rounded-xl px-2.5 py-2 text-xs bg-white" />
+            <input id="fKgPayDate" type="text" placeholder="ဥပမာ: 22.11.2026" class="w-full border border-slate-300 rounded-xl px-2.5 py-2 text-xs bg-white" />
           </div>
         </div>
       </div>
@@ -451,7 +451,7 @@
           </div>
           <div>
             <label class="block text-[11px] font-semibold text-slate-700 mb-1">Local Deli ရှင်းသည့်ရက်</label>
-            <input id="fDeliPayDate" type="text" placeholder="ဥပမာ: 21.11.2026" class="w-full border border-slate-300 rounded-xl px-2.5 py-2 text-xs bg-white" />
+            <input id="fDeliPayDate" type="text" placeholder="ဥပမာ: 22.11.2026" class="w-full border border-slate-300 rounded-xl px-2.5 py-2 text-xs bg-white" />
           </div>
         </div>
       </div>
@@ -509,7 +509,7 @@
     </div>
   </div>
 
-  <!-- 4. Viber Daily Report Modal (1-Click Copy in Viber Group Format) -->
+  <!-- 4. Viber Daily Report Modal (1-Click Copy in Clean Viber Group Format) -->
   <div id="viberReportModal" class="hidden fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl border border-slate-200 space-y-4 max-h-[92vh] overflow-y-auto">
       <div class="flex items-center justify-between border-b border-slate-100 pb-3">
@@ -517,7 +517,7 @@
           <span class="text-xl">📋</span>
           <div>
             <h2 class="text-base sm:text-lg font-bold text-slate-900">Viber Daily Report (1-Click Copy)</h2>
-            <p class="text-[11px] text-slate-500">ရက်စွဲအလိုက် (သို့) Active စာရင်းအားလုံးကို Viber Format အတိုင်း တစ်ချက်တည်း Copy ယူနိုင်ပါသည်</p>
+            <p class="text-[11px] text-slate-500">သပ်သပ်ရပ်ရပ် ကြောင်းရေနည်းနည်းနဲ့ Emoji များဖြင့် Viber Group ထဲ တန်းပို့နိုင်ပါသည်</p>
           </div>
         </div>
         <button onclick="closeViberReportModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold px-2">✕</button>
@@ -647,6 +647,15 @@
       return d === 'uk' || d === 'united kingdom';
     }
 
+    function shortRouteTag(origin, destination) {
+      const o = String(origin || '').trim().toLowerCase() === 'myanmar' ? 'MM' : (origin || 'MM');
+      const dRaw = String(destination || '').trim();
+      const d = (dRaw.toLowerCase() === 'uk' || dRaw.toLowerCase() === 'united kingdom')
+        ? 'UK'
+        : (dRaw.toLowerCase() === 'netherlands' ? 'NL' : dRaw);
+      return `${o} → ${d}`;
+    }
+
     function normalizeRecord(r) {
       const origin = r.origin || 'Myanmar';
       const destination = r.destination || r.locationNote || (r.destType === 'UK' ? 'UK' : 'Worldwide');
@@ -750,7 +759,6 @@
       try {
         const apiUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.user)}/${encodeURIComponent(cfg.repo)}/contents/${DATA_FILE_PATH}`;
 
-        // Conflict check: fetch latest SHA before writing
         const getRes = await fetch(apiUrl + `?t=${Date.now()}`, {
           headers: {
             'Authorization': `Bearer ${cfg.token}`,
@@ -1049,7 +1057,6 @@
       const deliMmkVal = (destUk && deliCurrency === 'MMK') ? Math.max(0, parseFloat(document.getElementById('fDeliMmk').value) || 0) : 0;
       const deliRateVal = (destUk && deliCurrency === 'MMK') ? Math.max(0, parseFloat(document.getElementById('fDeliRate').value) || 0) : 0;
 
-      // Missing Info Warning Check
       const warnings = [];
       const kgNum = Math.max(0, parseFloat(document.getElementById('fKg').value) || 0);
       if (kgNum === 0) warnings.push('• Verified KG က 0 ဖြစ်နေပါသည်');
@@ -1293,59 +1300,64 @@
       return sorted;
     }
 
-    // Build Viber Daily Report Text (Exact Viber Group Format + Detailed KG & Local Deli Status)
+    // Compact, clean 3-line Viber item formatter with pleasant emojis
     function formatSingleRecordForViber(r, index) {
       const kgPaid = ['paid_mm', 'paid_uk'].includes(r.kgPayStatus);
       const hasDeli = isUkDestination(r.destType, r.destination) && r.deliStatus !== 'none';
       const deliPaid = ['paid_mm', 'paid_uk'].includes(r.deliStatus);
       const isFullySettled = kgPaid && (!hasDeli || deliPaid);
-      const statusIcon = isFullySettled ? '✅' : '❌';
+      const statusEmoji = isFullySettled ? '✅' : '❌';
 
       const displayName = (r.sender && r.sender !== '-' && r.receiver && r.receiver !== '-')
         ? `${r.sender} → ${r.receiver}`
         : (r.receiver && r.receiver !== '-' ? r.receiver : r.sender);
 
-      const kgStatusMap = {
-        paid_mm: 'မြန်မာမှာ ရှင်းပြီး (Paid in MM)',
-        paid_uk: 'UK မှာ ရှင်းပြီး (Paid in UK)',
-        pay_arrival_uk: 'ရောက်မှ ရှင်းမည် (Pay on Arrival)',
-        unpaid: 'မရှင်းရသေး (Unpaid)'
-      };
-      const kgAmtText = (r.kgGbp > 0 || r.kgMmk > 0) ? ` [${formatKgAmountStr(r)}]` : '';
-      const kgLine = `   • KG ဖိုး: ${kgStatusMap[r.kgPayStatus] || 'မရှင်းရသေး'}${kgAmtText}`;
+      const typeLabel = r.cargoType === 'Risk' ? '⚠️ Risk' : 'Standard';
+      const routeShort = shortRouteTag(r.origin, r.destination);
 
-      let deliLine = '';
+      const kgShortMap = {
+        paid_mm: '✅ MM ရှင်းပြီး',
+        paid_uk: '✅ UK ရှင်းပြီး',
+        pay_arrival_uk: '⏳ ရောက်မှရှင်းမည်',
+        unpaid: '❌ မရှင်းရသေး'
+      };
+      const kgAmtShort = (r.kgGbp > 0 || r.kgMmk > 0) ? ` (${formatKgAmountStr(r)})` : '';
+      const kgPart = `💳 KG: ${kgShortMap[r.kgPayStatus] || '❌ မရှင်းရသေး'}${kgAmtShort}`;
+
+      let deliPart = '';
       if (hasDeli) {
-        const deliStatusMap = {
-          pay_uk: 'UK ရောက်မှ ကောက်မည် (Pay in UK)',
-          paid_mm: 'မြန်မာမှာ ရှင်းပြီး (Paid in MM)',
-          paid_uk: 'UK မှာ ရှင်းပြီး (Paid in UK)'
+        const deliShortMap = {
+          pay_uk: '🚚 UK ရောက်မှ',
+          paid_mm: '✅ MM ရှင်းပြီး',
+          paid_uk: '✅ UK ရှင်းပြီး'
         };
-        const deliAmtText = (r.deliGbp > 0 || r.deliMmk > 0) ? ` [${formatDeliAmountStr(r)}]` : '';
-        deliLine = `\n   • Local Deli: ${deliStatusMap[r.deliStatus] || ''}${deliAmtText}`;
-      } else if (isUkDestination(r.destType, r.destination)) {
-        deliLine = `\n   • Local Deli: မရှိ / ရုံးလာထုတ်`;
+        const deliAmtShort = (r.deliGbp > 0 || r.deliMmk > 0) ? ` (${formatDeliAmountStr(r)})` : '';
+        deliPart = ` | Deli: ${deliShortMap[r.deliStatus] || ''}${deliAmtShort}`;
       }
 
-      const routeTag = `${r.origin} → ${r.destination}`;
-      const noteLine = r.note ? `\n   • Note: ${r.note}` : '';
+      const line1 = `${index + 1}. ${displayName} ${statusEmoji}`;
+      const line2 = `   ${r.date} | ${Number(r.kg).toFixed(2)} Kg (${r.boxes} ပုံး) | ${routeShort} | ${typeLabel}`;
+      const line3 = `   ${kgPart}${deliPart}`;
 
-      return `${index + 1}. ${displayName} ${statusIcon}\n   ${r.date}    ${Number(r.kg).toFixed(2)} Kg (${r.boxes} ပုံး) [${routeTag}]\n   (${r.cargoType})\n${kgLine}${deliLine}${noteLine}`;
+      return `${line1}\n${line2}\n${line3}`;
     }
 
-    function generateViberReportString(list, headerTitle) {
+    function generateViberReportString(list, headerTitle, selectedDateLabel = '') {
       const now = new Date();
       const dateStr = String(now.getDate()).padStart(2, '0') + '.' + String(now.getMonth() + 1).padStart(2, '0') + '.' + String(now.getFullYear()).slice(-2);
       const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const headerDatePart = (selectedDateLabel && selectedDateLabel !== 'all')
+        ? `${selectedDateLabel} (${timeStr})`
+        : `${dateStr} (${timeStr})`;
 
       if (!list || list.length === 0) {
-        return `${dateStr} (${timeStr})\n${headerTitle}\n\n(စာရင်း မရှိသေးပါ)`;
+        return `✨ ${headerDatePart}\n${headerTitle}\n\n📦 ရုံးတွင်းလက်ကျန် Kg မရှိပါ`;
       }
 
       const itemsBlock = list.map((r, idx) => formatSingleRecordForViber(r, idx)).join('\n\n');
       const totalKg = list.reduce((sum, r) => sum + (parseFloat(r.kg) || 0), 0);
 
-      return `${dateStr} (${timeStr})\n${headerTitle}\n\n${itemsBlock}\n\nTotal Kg - ${totalKg.toFixed(2)} Kg`;
+      return `✨ ${headerDatePart}\n${headerTitle}\n\n${itemsBlock}\n\n⚖️ Total Kg - ${totalKg.toFixed(2)} Kg`;
     }
 
     function openViberReportModal() {
@@ -1371,7 +1383,7 @@
       if (selectedDate !== 'all') {
         targetList = targetList.filter(r => r.date === selectedDate);
       }
-      document.getElementById('viberPreviewBox').value = generateViberReportString(targetList, headerTitle);
+      document.getElementById('viberPreviewBox').value = generateViberReportString(targetList, headerTitle, selectedDate);
     }
 
     function copyViberReportText() {
@@ -1388,7 +1400,7 @@
       const list = getFilteredRecords();
       const txt = generateViberReportString(list, 'ရုံးလက်ကျန် / နေ့စဉ်ပစ္စည်းစာရင်း Kg');
       navigator.clipboard.writeText(txt).then(() => {
-        alert('✅ လက်ရှိစာရင်း (' + list.length + ' ခု) ကို Viber Report Format အတိုင်း Copy ကူးပြီးပါပြီ! Viber Group ထဲ Paste နှိပ်ပြီး ပို့နိုင်ပါပြီ။');
+        alert('✅ Viber Report ကို Copy ကူးပြီးပါပြီ! Viber Group ထဲ Paste နှိပ်ပြီး ပို့နိုင်ပါပြီ။');
       });
     }
 
@@ -1623,7 +1635,6 @@
           r.discount ? '<span class="inline-block text-[10px] font-bold bg-emerald-100 text-emerald-900 border border-emerald-200 px-1.5 py-0.5 rounded-md">🏷️ Discount</span>' : ''
         ].filter(Boolean).join(' ');
 
-        // Unified shared access for Admin, Office, and Payment roles
         let actionButtons = `
           <button onclick="openSlipModal('${r.id}')" class="text-[11px] font-semibold bg-indigo-50 hover:bg-indigo-100 text-indigo-800 px-2 py-1 rounded-lg border border-indigo-200">📄 Slip</button>
           <button onclick="openEntryModal('${r.id}')" class="text-[11px] font-semibold bg-slate-100 hover:bg-slate-200 text-slate-800 px-2 py-1 rounded-lg border border-slate-300">✏️ Edit</button>
