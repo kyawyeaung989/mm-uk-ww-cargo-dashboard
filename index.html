@@ -32,7 +32,7 @@
 
   <!-- Top Bar -->
   <header class="bg-slate-950 text-white sticky top-0 z-30 border-b border-slate-800 shadow-lg">
-    <div class="max-w-[1540px] mx-auto px-3 sm:px-5 py-2.5 flex flex-wrap items-center justify-between gap-2">
+    <div class="max-w-[1560px] mx-auto px-3 sm:px-5 py-2.5 flex flex-wrap items-center justify-between gap-2">
       <div class="flex items-center gap-2.5 min-w-0">
         <!-- Cute Cartoon Cargo Mascot SVG -->
         <div class="mascot-float bg-gradient-to-br from-amber-300 to-amber-500 text-slate-950 p-1.5 rounded-2xl shadow-md shrink-0">
@@ -57,7 +57,7 @@
               MM → UK &amp; Worldwide Approval &amp; Payment Dashboard
             </h1>
             <span class="hidden md:inline-flex items-center gap-1 text-[10.5px] bg-amber-400/15 text-amber-300 border border-amber-400/30 px-2 py-0.5 rounded-full font-semibold">
-              ✨ Route &amp; Split Payment Ready
+              ✨ Route, Split Payment &amp; Viber Report
             </span>
           </div>
           <p id="syncStatus" class="text-[11px] text-amber-300 font-medium truncate mt-0.5">
@@ -70,11 +70,15 @@
         <div id="roleSelectWrapper">
           <select id="roleSelect" onchange="renderAll()" class="h-8 sm:h-9 bg-slate-800 border border-slate-600 text-white text-xs sm:text-sm rounded-xl px-2.5 font-semibold focus:outline-none focus:border-amber-400">
             <option value="admin">👑 Full Admin / UK Owner</option>
-            <option value="office">⚖️ MM Office (KG &amp; Dispatch)</option>
-            <option value="page">💳 Payment Admin (MM / UK)</option>
+            <option value="office">⚖️ MM Office (Shared Access)</option>
+            <option value="page">💳 Payment Admin (Shared Access)</option>
           </select>
         </div>
         <div id="lockedRoleBadge" class="hidden h-8 sm:h-9 bg-indigo-900 border border-indigo-400 text-indigo-100 text-xs sm:text-sm rounded-xl px-2.5 font-semibold items-center whitespace-nowrap"></div>
+
+        <button onclick="openViberReportModal()" class="h-8 sm:h-9 bg-purple-600 hover:bg-purple-700 text-white text-xs sm:text-sm font-bold px-2.5 rounded-xl shadow-sm transition whitespace-nowrap">
+          📋 Viber Report
+        </button>
 
         <button onclick="loadFromGitHub()" class="h-8 sm:h-9 bg-slate-800 hover:bg-slate-700 text-white border border-slate-600 text-xs sm:text-sm font-semibold px-2.5 rounded-xl transition whitespace-nowrap">
           🔄 Sync
@@ -91,41 +95,47 @@
     </div>
   </header>
 
-  <main class="max-w-[1540px] mx-auto px-3 sm:px-5 mt-4 space-y-4">
+  <main class="max-w-[1560px] mx-auto px-3 sm:px-5 mt-4 space-y-4">
 
     <!-- Clean Polite Care Reminder (No Heading) -->
     <div class="glass-card rounded-2xl px-4 py-2.5 border border-amber-200/80 bg-gradient-to-r from-amber-50/75 via-white to-emerald-50/65 flex items-center gap-2.5 shadow-xs">
       <span class="text-lg shrink-0">💛</span>
       <p class="text-xs text-slate-700 leading-relaxed">
-        နေ့စဉ် မှတ်တမ်းတွေကို ဂရုစိုက် ဖြည့်သွင်းပေးပါနော် — Sender / Receiver နာမည်၊ နိုင်ငံ၊ KG နဲ့ ငွေရှင်းမှုအခြေအနေ (MM / UK) တစ်ချက်ပြန်စစ်ပြီး မှန်ကန်စွာ ထည့်သွင်းပေးပါ။
+        နေ့စဉ် မှတ်တမ်းတွေကို ဂရုစိုက် ဖြည့်သွင်းပေးပါနော် — Sender / Receiver နာမည်၊ နိုင်ငံ၊ Standard/Risk၊ KG နဲ့ ငွေရှင်းမှုအခြေအနေ (MM / UK) တစ်ချက်ပြန်စစ်ပြီး မှန်ကန်စွာ ထည့်သွင်းပေးပါ။
       </p>
     </div>
 
-    <!-- Summary Cards -->
+    <!-- Summary Cards (Including Financial Totals) -->
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
       <div class="glass-card rounded-2xl p-3 border border-slate-200/80 shadow-xs">
         <p class="text-[11px] text-slate-500 font-medium">Active စာရင်း</p>
         <p id="sumActiveCount" class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-0.5">0</p>
+        <p id="sumRiskCount" class="text-[10.5px] text-rose-700 font-semibold mt-0.5">Standard: 0 • Risk: 0</p>
       </div>
       <div class="glass-card rounded-2xl p-3 border border-sky-200/80 shadow-xs">
         <p class="text-[11px] text-slate-500 font-medium">⚖️ စုစုပေါင်း KG (Active)</p>
-        <p id="sumTotalKg" class="text-xl sm:text-2xl font-extrabold text-sky-700 mt-0.5">0.0 kg</p>
+        <p id="sumTotalKg" class="text-xl sm:text-2xl font-extrabold text-sky-700 mt-0.5">0.00 kg</p>
+        <p id="sumTotalBoxes" class="text-[10.5px] text-slate-500 font-medium mt-0.5">စုစုပေါင်း 0 ပုံး</p>
       </div>
       <div class="glass-card rounded-2xl p-3 border border-emerald-200/80 shadow-xs">
         <p class="text-[11px] text-slate-500 font-medium">🇲🇲 KG Fee Paid in MM</p>
         <p id="sumKgPaidMm" class="text-xl sm:text-2xl font-extrabold text-emerald-700 mt-0.5">0</p>
+        <p id="sumKgPaidMmAmt" class="text-[10.5px] text-emerald-800 font-semibold mt-0.5 truncate">£0 / 0 Ks</p>
       </div>
       <div class="glass-card rounded-2xl p-3 border border-indigo-200/80 shadow-xs">
         <p class="text-[11px] text-slate-500 font-medium">🇬🇧 KG Fee Paid in UK</p>
         <p id="sumKgPaidUk" class="text-xl sm:text-2xl font-extrabold text-indigo-700 mt-0.5">0</p>
+        <p id="sumKgPaidUkAmt" class="text-[10.5px] text-indigo-800 font-semibold mt-0.5 truncate">£0 / 0 Ks</p>
       </div>
       <div class="glass-card rounded-2xl p-3 border border-amber-200/80 shadow-xs">
         <p class="text-[11px] text-slate-500 font-medium">🚚 Local Deli Pay in UK</p>
         <p id="sumDeliPayUk" class="text-xl sm:text-2xl font-extrabold text-amber-700 mt-0.5">0</p>
+        <p id="sumDeliPayUkAmt" class="text-[10.5px] text-amber-800 font-semibold mt-0.5 truncate">ကောက်ရန် £0</p>
       </div>
       <div class="glass-card rounded-2xl p-3 border border-purple-200/80 shadow-xs">
         <p class="text-[11px] text-slate-500 font-medium">🗂️ History မှတ်တမ်း</p>
         <p id="sumHistoryCount" class="text-xl sm:text-2xl font-extrabold text-purple-700 mt-0.5">0</p>
+        <p id="sumUnpaidCount" class="text-[10.5px] text-rose-700 font-semibold mt-0.5">KG Unpaid/Arrival: 0</p>
       </div>
     </div>
 
@@ -142,6 +152,9 @@
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
+          <button onclick="quickCopyViberFiltered()" class="h-9 bg-purple-50 hover:bg-purple-100 text-purple-800 border border-purple-200 text-xs font-bold px-3 rounded-xl transition whitespace-nowrap">
+            ⚡ 1-Click Viber Copy (လက်ရှိစာရင်း)
+          </button>
           <button id="archiveCompletedBtn" onclick="archiveReadyOrDispatched()" class="h-9 bg-indigo-50 hover:bg-indigo-100 text-indigo-800 border border-indigo-200 text-xs font-semibold px-3 rounded-xl transition whitespace-nowrap">
             📥 Dispatched ဖြစ်ပြီးသား History ပို့မည်
           </button>
@@ -155,26 +168,41 @@
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 pt-2.5 border-t border-slate-100">
-        <div class="sm:col-span-4">
-          <input id="searchInput" oninput="renderTable()" type="text" placeholder="🔍 Inv No. / Sender / Receiver / နိုင်ငံ / မှတ်ချက် ရှာရန်..." class="w-full h-9 border border-slate-300 rounded-xl px-3 text-xs sm:text-sm focus:outline-none focus:border-indigo-500 bg-white" />
-        </div>
         <div class="sm:col-span-3">
-          <select id="destFilter" onchange="renderTable()" class="w-full h-9 border border-slate-300 rounded-xl px-3 text-xs sm:text-sm focus:outline-none focus:border-indigo-500 bg-white">
-            <option value="all">လမ်းကြောင်းအားလုံး (All Routes)</option>
+          <input id="searchInput" oninput="renderTable()" type="text" placeholder="🔍 Inv / Sender / Receiver / နိုင်ငံ..." class="w-full h-9 border border-slate-300 rounded-xl px-3 text-xs sm:text-sm focus:outline-none focus:border-indigo-500 bg-white" />
+        </div>
+        <div class="sm:col-span-2">
+          <select id="destFilter" onchange="renderTable()" class="w-full h-9 border border-slate-300 rounded-xl px-2.5 text-xs sm:text-sm focus:outline-none focus:border-indigo-500 bg-white">
+            <option value="all">လမ်းကြောင်းအားလုံး</option>
             <option value="UK">🇬🇧 Destination: UK</option>
-            <option value="Worldwide">🌍 Destination: Other / Worldwide</option>
+            <option value="Worldwide">🌍 Other / Worldwide</option>
           </select>
         </div>
-        <div class="sm:col-span-5">
-          <select id="paymentFilter" onchange="renderTable()" class="w-full h-9 border border-slate-300 rounded-xl px-3 text-xs sm:text-sm focus:outline-none focus:border-indigo-500 bg-white">
+        <div class="sm:col-span-2">
+          <select id="cargoTypeFilter" onchange="renderTable()" class="w-full h-9 border border-slate-300 rounded-xl px-2.5 text-xs sm:text-sm focus:outline-none focus:border-indigo-500 bg-white">
+            <option value="all">Standard &amp; Risk အားလုံး</option>
+            <option value="Standard">📦 Standard ပဲကြည့်မည်</option>
+            <option value="Risk">⚠️ Risk ပဲကြည့်မည်</option>
+          </select>
+        </div>
+        <div class="sm:col-span-3">
+          <select id="paymentFilter" onchange="renderTable()" class="w-full h-9 border border-slate-300 rounded-xl px-2.5 text-xs sm:text-sm focus:outline-none focus:border-indigo-500 bg-white">
             <option value="all">ငွေရှင်းမှုအခြေအနေ အားလုံး</option>
-            <option value="both_paid">✅ KG Fee + Local Delivery နှစ်ခုလုံး ရှင်းပြီး (MM / UK)</option>
+            <option value="both_paid">✅ KG Fee + Local Delivery နှစ်ခုလုံး ရှင်းပြီး</option>
             <option value="both_uk_collect">🚚 KG Fee + Local Delivery (UK ဘက်ဆိုင်ရာ)</option>
             <option value="paid_mm">🇲🇲 KG Fee Paid in MM</option>
             <option value="paid_uk">🇬🇧 KG Fee Paid in UK</option>
             <option value="unpaid">⚠️ KG Fee Unpaid / Arrival</option>
             <option value="deli_pay_uk">🚚 Local Delivery: Pay in UK</option>
             <option value="deli_paid_mm">✅ Local Delivery: Paid in MM</option>
+          </select>
+        </div>
+        <div class="sm:col-span-2">
+          <select id="sortSelect" onchange="renderTable()" class="w-full h-9 border border-slate-300 rounded-xl px-2.5 text-xs sm:text-sm focus:outline-none focus:border-indigo-500 bg-white font-medium">
+            <option value="latest">⇅ အသစ်ဆုံးအရင်</option>
+            <option value="oldest">⇅ အဟောင်းဆုံးအရင်</option>
+            <option value="kg_desc">⚖️ KG အများဆုံးအရင်</option>
+            <option value="inv_asc">🔤 Inv No. အလိုက်</option>
           </select>
         </div>
       </div>
@@ -191,7 +219,7 @@
               </th>
               <th class="py-2.5 px-2.5 whitespace-nowrap">Inv / Date / Route</th>
               <th class="py-2.5 px-2.5 whitespace-nowrap">Sender &amp; Receiver</th>
-              <th class="py-2.5 px-2.5 whitespace-nowrap">📦 ပုံး &amp; ⚖️ KG (ရုံးစစ်)</th>
+              <th class="py-2.5 px-2.5 whitespace-nowrap">📦 ပုံး / ⚖️ KG / Type</th>
               <th class="py-2.5 px-2.5 whitespace-nowrap">💳 KG Freight Fee</th>
               <th class="py-2.5 px-2.5 whitespace-nowrap">🚚 Local Delivery Fee</th>
               <th class="py-2.5 px-2.5 whitespace-nowrap">🏷️ Badges &amp; Notes</th>
@@ -208,7 +236,7 @@
     </div>
   </main>
 
-  <!-- 1. GitHub Sync Setup & Share Link Modal -->
+  <!-- 1. GitHub Sync Setup & Share Link Modal (Full Admin Only) -->
   <div id="setupModal" class="hidden fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-4">
       <div class="flex items-center justify-between border-b border-slate-100 pb-3">
@@ -242,7 +270,7 @@
           👑 Copy UK Owner / Full Admin Link
         </button>
 
-        <p class="text-xs font-bold text-slate-700 pt-1">🔒 ဝန်ထမ်းများအတွက် Role-Locked Links:</p>
+        <p class="text-xs font-bold text-slate-700 pt-1">🔒 ဝန်ထမ်းများအတွက် Role-Locked Links (Setup ဖျောက်ပြီးသား):</p>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
           <button onclick="copyShareLink('office')" class="bg-sky-700 hover:bg-sky-800 text-white text-xs font-semibold py-2 px-3 rounded-xl transition">
             ⚖️ MM Office Link
@@ -269,7 +297,7 @@
           <span class="text-2xl">📦</span>
           <div>
             <h2 id="entryModalTitle" class="text-base sm:text-lg font-bold text-slate-900">စာရင်းသစ် ထည့်ရန်</h2>
-            <p class="text-[11px] text-amber-800 font-medium">💡 နိုင်ငံ၊ နာမည်၊ KG နဲ့ ငွေရှင်းမှုအခြေအနေ (MM / UK) ကို ဂရုစိုက်ပြန်စစ်ပြီး ဖြည့်သွင်းပေးပါ။</p>
+            <p class="text-[11px] text-amber-800 font-medium">💡 နိုင်ငံ၊ နာမည်၊ Standard/Risk၊ KG နဲ့ ငွေရှင်းမှုအခြေအနေ (MM / UK) ကို ဂရုစိုက်ပြန်စစ်ပြီး ဖြည့်သွင်းပေးပါ။</p>
           </div>
         </div>
         <button onclick="closeEntryModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold px-2">✕</button>
@@ -277,8 +305,8 @@
 
       <input type="hidden" id="editId" />
 
-      <!-- Inv & Date -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <!-- Inv, Date & Cargo Type (Standard / Risk) -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <div>
           <label class="block text-xs font-semibold text-slate-700 mb-1">Invoice No.</label>
           <input id="fInvNo" type="text" placeholder="ADF564" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm" />
@@ -286,6 +314,13 @@
         <div>
           <label class="block text-xs font-semibold text-slate-700 mb-1">Date</label>
           <input id="fDate" type="text" placeholder="21.11.2026" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">📦 Cargo Type (Standard / Risk)</label>
+          <select id="fCargoType" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm font-bold bg-white">
+            <option value="Standard">📦 Standard (သာမန်ပစ္စည်း)</option>
+            <option value="Risk">⚠️ Risk (အသား / အထူးပစ္စည်း)</option>
+          </select>
         </div>
       </div>
 
@@ -346,7 +381,7 @@
             <select id="fKgPayStatus" class="w-full border border-slate-300 rounded-xl px-2.5 py-2 text-xs font-bold bg-white">
               <option value="paid_mm">Paid in MM (မြန်မာရှင်းပြီး)</option>
               <option value="paid_uk">Paid in UK (UK ရှင်းပြီး)</option>
-              <option value="pay_arrival_uk">Pay on Arrival</option>
+              <option value="pay_arrival_uk">Pay on Arrival (ရောက်မှရှင်းမည်)</option>
               <option value="unpaid">Unpaid (မရှင်းရသေး)</option>
             </select>
           </div>
@@ -388,7 +423,7 @@
             <select id="fDeliStatus" class="w-full border border-slate-300 rounded-xl px-2.5 py-2 text-xs font-bold bg-white">
               <option value="pay_uk">Pay in UK (ရောက်မှ ကောက်မည်)</option>
               <option value="paid_mm">Paid in MM (မြန်မာမှာ ရှင်းပြီး)</option>
-              <option value="paid_uk">Paid in UK (ရှင်းပြီး)</option>
+              <option value="paid_uk">Paid in UK (UK မှာ ရှင်းပြီး)</option>
               <option value="none">No Local Delivery (မပါ / ရုံးလာထုတ်)</option>
             </select>
           </div>
@@ -435,7 +470,7 @@
         </div>
         <div>
           <label class="block text-xs font-semibold text-slate-700 mb-1">မှတ်ချက် အတို (Admin များ နှစ်ဘက်မြင်ရန်)</label>
-          <input id="fNote" type="text" placeholder="ဥပမာ: KG ကို MMK ဖြင့် ရှင်းပြီး / Local delivery ကို ကျပ်ဖြင့် ရှင်းပြီး" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs" />
+          <input id="fNote" type="text" placeholder="ဥပမာ: KG ကို MMK ဖြင့် ရှင်းပြီး / Local delivery ကို UK ရောက်မှ ကောက်မည်" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs" />
         </div>
       </div>
 
@@ -450,7 +485,7 @@
     </div>
   </div>
 
-  <!-- 3. Pop-up Payment & Shipment Slip Document Modal (Copy Only, No Print) -->
+  <!-- 3. Pop-up Payment & Shipment Slip Document Modal (With Paid/Remaining Summary & Copy Only) -->
   <div id="slipModal" class="hidden fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-4">
       <div class="flex items-center justify-between border-b border-slate-100 pb-3">
@@ -474,6 +509,49 @@
     </div>
   </div>
 
+  <!-- 4. Viber Daily Report Modal (1-Click Copy in Viber Group Format) -->
+  <div id="viberReportModal" class="hidden fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl border border-slate-200 space-y-4 max-h-[92vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">📋</span>
+          <div>
+            <h2 class="text-base sm:text-lg font-bold text-slate-900">Viber Daily Report (1-Click Copy)</h2>
+            <p class="text-[11px] text-slate-500">ရက်စွဲအလိုက် (သို့) Active စာရင်းအားလုံးကို Viber Format အတိုင်း တစ်ချက်တည်း Copy ယူနိုင်ပါသည်</p>
+          </div>
+        </div>
+        <button onclick="closeViberReportModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold px-2">✕</button>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+        <div>
+          <label class="block text-[11px] font-bold text-slate-700 mb-1">ခေါင်းစဉ် (Header Title)</label>
+          <input id="viberHeaderInput" oninput="buildViberReportPreview()" type="text" value="ရုံးလက်ကျန် / နေ့စဉ်ပစ္စည်းစာရင်း Kg" class="w-full border border-slate-300 rounded-xl px-3 py-1.5 text-xs font-semibold" />
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold text-slate-700 mb-1">ရက်စွဲဖြင့် စစ်ထုတ်ရန် (Date Filter)</label>
+          <select id="viberDateFilter" onchange="buildViberReportPreview()" class="w-full border border-slate-300 rounded-xl px-3 py-1.5 text-xs font-semibold bg-white">
+            <option value="all">Active စာရင်းအားလုံး (All Active)</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-[11px] font-bold text-slate-700 mb-1">Viber တွင် ပို့မည့် စာသား (Preview / တိုက်ရိုက်ပြင်နိုင်သည်)</label>
+        <textarea id="viberPreviewBox" rows="12" class="w-full border border-purple-300 rounded-2xl p-3 text-xs font-mono bg-purple-50/40 text-slate-900 leading-relaxed focus:outline-none focus:border-purple-500"></textarea>
+      </div>
+
+      <p id="viberCopyFeedback" class="text-xs text-emerald-700 font-bold hidden"></p>
+
+      <div class="flex justify-end gap-2 pt-2 border-t border-slate-100">
+        <button onclick="closeViberReportModal()" class="px-4 py-2 text-xs sm:text-sm text-slate-600 hover:bg-slate-100 rounded-xl">ပိတ်မည်</button>
+        <button onclick="copyViberReportText()" class="px-5 py-2 text-xs sm:text-sm bg-purple-700 hover:bg-purple-800 text-white font-bold rounded-xl shadow-sm">
+          📋 One-Click Copy for Viber
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script>
     const LOCAL_CACHE_KEY = 'mm_uk_ww_dashboard_cache_v1';
     const CFG_KEY = 'mm_uk_ww_gh_cfg_v1';
@@ -485,6 +563,16 @@
     let fileSha = null;
     let lockedRole = null;
     let activeSlipPlainText = '';
+
+    function applySetupVisibility(role) {
+      const setupBtn = document.getElementById('setupBtn');
+      if (role === 'admin') {
+        setupBtn.classList.remove('hidden');
+      } else {
+        setupBtn.classList.add('hidden');
+        closeSetupModal();
+      }
+    }
 
     function initFromUrlParams() {
       const params = new URLSearchParams(window.location.search);
@@ -507,14 +595,12 @@
         badge.classList.add('flex');
         const labels = {
           admin: '👑 Full Admin / UK Owner',
-          office: '⚖️ MM Office (Locked)',
-          page: '💳 Payment Admin (Locked)'
+          office: '⚖️ MM Office (Shared)',
+          page: '💳 Payment Admin (Shared)'
         };
         badge.textContent = labels[role];
-        if (role !== 'admin') {
-          document.getElementById('setupBtn').classList.add('hidden');
-        }
       }
+      applySetupVisibility(document.getElementById('roleSelect').value);
     }
 
     function getCfg() {
@@ -567,11 +653,13 @@
       const destType = isUkDestination(r.destType, destination) ? 'UK' : 'Worldwide';
       const kgCurrency = r.kgCurrency || ((r.kgMmk > 0 && (!r.kgGbp || r.kgGbp === 0)) ? 'MMK' : 'GBP');
       const deliStatus = destType === 'UK' ? (r.deliStatus || 'none') : 'none';
+      const cargoType = (r.cargoType === 'Risk') ? 'Risk' : 'Standard';
 
       return {
         id: r.id || ('rec_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6)),
         invNo: r.invNo || '-',
         date: r.date || '-',
+        cargoType,
         origin,
         destType,
         destination,
@@ -658,10 +746,11 @@
         return;
       }
 
-      setSyncStatus('⏳ GitHub data.json သို့ သိမ်းဆည်းနေသည်...', 'sky');
+      setSyncStatus('⏳ GitHub data.json သို့ Conflict စစ်ပြီး သိမ်းဆည်းနေသည်...', 'sky');
       try {
         const apiUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.user)}/${encodeURIComponent(cfg.repo)}/contents/${DATA_FILE_PATH}`;
 
+        // Conflict check: fetch latest SHA before writing
         const getRes = await fetch(apiUrl + `?t=${Date.now()}`, {
           headers: {
             'Authorization': `Bearer ${cfg.token}`,
@@ -670,6 +759,9 @@
         });
         if (getRes.ok) {
           const latest = await getRes.json();
+          if (fileSha && latest.sha && fileSha !== latest.sha) {
+            setSyncStatus('⚠️ အခြားစက်မှ အသစ်ပြင်ထားသည် — နောက်ဆုံး SHA နှင့် ညှိပြီး သိမ်းနေသည်...', 'amber');
+          }
           fileSha = latest.sha;
         }
 
@@ -704,12 +796,14 @@
         const nowStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         setSyncStatus(`✅ GitHub တွင် သိမ်းဆည်းပြီး (${nowStr})`, 'green');
       } catch (err) {
-        setSyncStatus(`❌ Save Failed (${err.message}) — Refresh လုပ်ပြီး ပြန်စမ်းပါ`, 'red');
+        setSyncStatus(`❌ Save Failed (${err.message}) — Sync ပြန်နှိပ်ပြီး ပြန်စမ်းပါ`, 'red');
       }
       renderAll();
     }
 
     function openSetupModal() {
+      const currentRole = lockedRole || document.getElementById('roleSelect').value;
+      if (currentRole !== 'admin') return;
       const cfg = getCfg();
       document.getElementById('cfgUser').value = cfg.user || '';
       document.getElementById('cfgRepo').value = cfg.repo || '';
@@ -820,58 +914,67 @@
       }
     }
 
-    function openEntryModal(id = null) {
+    function populateModalFromRecord(rec, isDuplicate = false) {
+      document.getElementById('editId').value = isDuplicate ? '' : (rec.id || '');
+      document.getElementById('entryModalTitle').textContent = isDuplicate
+        ? '📋 Duplicate စာရင်းသစ် ပွားရန်'
+        : ('✏️ စာရင်း ပြင်ဆင်ရန် (' + rec.invNo + ')');
+      document.getElementById('fInvNo').value = isDuplicate ? '' : (rec.invNo || '');
+      document.getElementById('fDate').value = rec.date || '';
+      document.getElementById('fCargoType').value = rec.cargoType === 'Risk' ? 'Risk' : 'Standard';
+
+      if (rec.origin === 'Myanmar' || !rec.origin) {
+        document.getElementById('fOriginSelect').value = 'Myanmar';
+        document.getElementById('fOriginCustom').value = '';
+      } else {
+        document.getElementById('fOriginSelect').value = 'Other';
+        document.getElementById('fOriginCustom').value = rec.origin;
+      }
+
+      if (isUkDestination(rec.destType, rec.destination)) {
+        document.getElementById('fDestSelect').value = 'UK';
+        document.getElementById('fDestCustom').value = '';
+      } else {
+        document.getElementById('fDestSelect').value = 'Other';
+        document.getElementById('fDestCustom').value = rec.destination || '';
+      }
+
+      document.getElementById('fSender').value = rec.sender || '';
+      document.getElementById('fReceiver').value = rec.receiver || '';
+      document.getElementById('fBoxes').value = rec.boxes || 1;
+      document.getElementById('fKg').value = isDuplicate ? 0 : (rec.kg || 0);
+      document.getElementById('fKgPayStatus').value = rec.kgPayStatus || 'unpaid';
+      document.getElementById('fKgCurrency').value = rec.kgCurrency || 'GBP';
+      document.getElementById('fKgGbp').value = isDuplicate ? 0 : (rec.kgGbp || 0);
+      document.getElementById('fKgMmk').value = isDuplicate ? 0 : (rec.kgMmk || 0);
+      document.getElementById('fRate').value = rec.rate || 5500;
+      document.getElementById('fKgPayDate').value = rec.kgPayDate || '';
+
+      document.getElementById('fDeliStatus').value = rec.deliStatus || 'none';
+      document.getElementById('fDeliCurrency').value = rec.deliCurrency || 'GBP';
+      document.getElementById('fDeliGbp').value = isDuplicate ? 0 : (rec.deliGbp || 0);
+      document.getElementById('fDeliMmk').value = isDuplicate ? 0 : (rec.deliMmk || 0);
+      document.getElementById('fDeliRate').value = rec.deliRate || 5500;
+      document.getElementById('fDeliPayDate').value = rec.deliPayDate || '';
+
+      document.getElementById('fInsured').checked = !!rec.insured;
+      document.getElementById('fDiscount').checked = !!rec.discount;
+      document.getElementById('fNote').value = rec.note || '';
+    }
+
+    function openEntryModal(id = null, isDuplicate = false) {
       document.getElementById('editId').value = id || '';
       if (id) {
         const rec = records.find(r => r.id === id);
         if (!rec) return;
-        document.getElementById('entryModalTitle').textContent = '✏️ စာရင်း ပြင်ဆင်ရန် (' + rec.invNo + ')';
-        document.getElementById('fInvNo').value = rec.invNo || '';
-        document.getElementById('fDate').value = rec.date || '';
-
-        if (rec.origin === 'Myanmar' || !rec.origin) {
-          document.getElementById('fOriginSelect').value = 'Myanmar';
-          document.getElementById('fOriginCustom').value = '';
-        } else {
-          document.getElementById('fOriginSelect').value = 'Other';
-          document.getElementById('fOriginCustom').value = rec.origin;
-        }
-
-        if (isUkDestination(rec.destType, rec.destination)) {
-          document.getElementById('fDestSelect').value = 'UK';
-          document.getElementById('fDestCustom').value = '';
-        } else {
-          document.getElementById('fDestSelect').value = 'Other';
-          document.getElementById('fDestCustom').value = rec.destination || '';
-        }
-
-        document.getElementById('fSender').value = rec.sender || '';
-        document.getElementById('fReceiver').value = rec.receiver || '';
-        document.getElementById('fBoxes').value = rec.boxes || 1;
-        document.getElementById('fKg').value = rec.kg || 0;
-        document.getElementById('fKgPayStatus').value = rec.kgPayStatus || 'unpaid';
-        document.getElementById('fKgCurrency').value = rec.kgCurrency || 'GBP';
-        document.getElementById('fKgGbp').value = rec.kgGbp || 0;
-        document.getElementById('fKgMmk').value = rec.kgMmk || 0;
-        document.getElementById('fRate').value = rec.rate || 5500;
-        document.getElementById('fKgPayDate').value = rec.kgPayDate || '';
-
-        document.getElementById('fDeliStatus').value = rec.deliStatus || 'none';
-        document.getElementById('fDeliCurrency').value = rec.deliCurrency || 'GBP';
-        document.getElementById('fDeliGbp').value = rec.deliGbp || 0;
-        document.getElementById('fDeliMmk').value = rec.deliMmk || 0;
-        document.getElementById('fDeliRate').value = rec.deliRate || 5500;
-        document.getElementById('fDeliPayDate').value = rec.deliPayDate || '';
-
-        document.getElementById('fInsured').checked = !!rec.insured;
-        document.getElementById('fDiscount').checked = !!rec.discount;
-        document.getElementById('fNote').value = rec.note || '';
+        populateModalFromRecord(rec, isDuplicate);
       } else {
         document.getElementById('entryModalTitle').textContent = '➕ စာရင်းသစ် ထည့်ရန်';
         const today = new Date();
         const dStr = String(today.getDate()).padStart(2, '0') + '.' + String(today.getMonth() + 1).padStart(2, '0') + '.' + today.getFullYear();
         document.getElementById('fInvNo').value = '';
         document.getElementById('fDate').value = dStr;
+        document.getElementById('fCargoType').value = 'Standard';
         document.getElementById('fOriginSelect').value = 'Myanmar';
         document.getElementById('fOriginCustom').value = '';
         document.getElementById('fDestSelect').value = 'UK';
@@ -906,6 +1009,10 @@
       document.getElementById('entryModal').classList.remove('hidden');
     }
 
+    function duplicateEntry(id) {
+      openEntryModal(id, true);
+    }
+
     function closeEntryModal() {
       document.getElementById('entryModal').classList.add('hidden');
     }
@@ -930,32 +1037,60 @@
       const destUk = isUkDestination(null, destination);
       const destType = destUk ? 'UK' : 'Worldwide';
 
+      const kgPayStatus = document.getElementById('fKgPayStatus').value;
       const kgCurrency = document.getElementById('fKgCurrency').value;
+      const kgGbpVal = kgCurrency === 'GBP' ? Math.max(0, parseFloat(document.getElementById('fKgGbp').value) || 0) : 0;
+      const kgMmkVal = kgCurrency === 'MMK' ? Math.max(0, parseFloat(document.getElementById('fKgMmk').value) || 0) : 0;
+      const rateVal = kgCurrency === 'MMK' ? Math.max(0, parseFloat(document.getElementById('fRate').value) || 0) : 0;
+
       const deliStatus = destUk ? document.getElementById('fDeliStatus').value : 'none';
       const deliCurrency = document.getElementById('fDeliCurrency').value;
+      const deliGbpVal = (destUk && deliCurrency === 'GBP') ? Math.max(0, parseFloat(document.getElementById('fDeliGbp').value) || 0) : 0;
+      const deliMmkVal = (destUk && deliCurrency === 'MMK') ? Math.max(0, parseFloat(document.getElementById('fDeliMmk').value) || 0) : 0;
+      const deliRateVal = (destUk && deliCurrency === 'MMK') ? Math.max(0, parseFloat(document.getElementById('fDeliRate').value) || 0) : 0;
+
+      // Missing Info Warning Check
+      const warnings = [];
+      const kgNum = Math.max(0, parseFloat(document.getElementById('fKg').value) || 0);
+      if (kgNum === 0) warnings.push('• Verified KG က 0 ဖြစ်နေပါသည်');
+      if (['paid_mm', 'paid_uk'].includes(kgPayStatus) && kgGbpVal === 0 && kgMmkVal === 0) {
+        warnings.push('• KG Fee ကို ရှင်းပြီး ရွေးထားသော်လည်း ငွေပမာဏ 0 ဖြစ်နေပါသည်');
+      }
+      if (kgCurrency === 'MMK' && rateVal === 0) {
+        warnings.push('• KG Fee အတွက် Rate (1£ = ? Ks) 0 ဖြစ်နေပါသည်');
+      }
+      if (destUk && ['paid_mm', 'paid_uk'].includes(deliStatus) && deliGbpVal === 0 && deliMmkVal === 0) {
+        warnings.push('• Local Delivery ကို ရှင်းပြီး ရွေးထားသော်လည်း ငွေပမာဏ 0 ဖြစ်နေပါသည်');
+      }
+
+      if (warnings.length > 0) {
+        const proceed = confirm('⚠️ သတိပြုရန် အချက်များ တွေ့ရှိပါသည်:\n\n' + warnings.join('\n') + '\n\nဒီအတိုင်း ဆက်သိမ်းမလား?');
+        if (!proceed) return;
+      }
 
       const editId = document.getElementById('editId').value;
       const payload = {
         invNo: document.getElementById('fInvNo').value.trim() || '-',
         date: document.getElementById('fDate').value.trim() || '-',
+        cargoType: document.getElementById('fCargoType').value === 'Risk' ? 'Risk' : 'Standard',
         origin,
         destType,
         destination,
         sender: sender || '-',
         receiver: receiver || '-',
         boxes: Math.max(1, parseInt(document.getElementById('fBoxes').value, 10) || 1),
-        kg: Math.max(0, parseFloat(document.getElementById('fKg').value) || 0),
-        kgPayStatus: document.getElementById('fKgPayStatus').value,
+        kg: kgNum,
+        kgPayStatus,
         kgCurrency,
-        kgGbp: kgCurrency === 'GBP' ? Math.max(0, parseFloat(document.getElementById('fKgGbp').value) || 0) : 0,
-        kgMmk: kgCurrency === 'MMK' ? Math.max(0, parseFloat(document.getElementById('fKgMmk').value) || 0) : 0,
-        rate: kgCurrency === 'MMK' ? Math.max(0, parseFloat(document.getElementById('fRate').value) || 0) : 0,
+        kgGbp: kgGbpVal,
+        kgMmk: kgMmkVal,
+        rate: rateVal,
         kgPayDate: document.getElementById('fKgPayDate').value.trim(),
         deliStatus,
         deliCurrency,
-        deliGbp: (destUk && deliCurrency === 'GBP') ? Math.max(0, parseFloat(document.getElementById('fDeliGbp').value) || 0) : 0,
-        deliMmk: (destUk && deliCurrency === 'MMK') ? Math.max(0, parseFloat(document.getElementById('fDeliMmk').value) || 0) : 0,
-        deliRate: (destUk && deliCurrency === 'MMK') ? Math.max(0, parseFloat(document.getElementById('fDeliRate').value) || 0) : 0,
+        deliGbp: deliGbpVal,
+        deliMmk: deliMmkVal,
+        deliRate: deliRateVal,
         deliPayDate: destUk ? document.getElementById('fDeliPayDate').value.trim() : '',
         insured: document.getElementById('fInsured').checked,
         discount: document.getElementById('fDiscount').checked,
@@ -1081,7 +1216,7 @@
       const map = {
         pay_uk: { label: '🚚 ရောက်မှ ကောက်မည်', cls: 'bg-amber-100 text-amber-900 border-amber-300' },
         paid_mm: { label: '✅ MM မှာ ရှင်းပြီး', cls: 'bg-emerald-100 text-emerald-900 border-emerald-300' },
-        paid_uk: { label: '✅ ရှင်းပြီး', cls: 'bg-sky-100 text-sky-900 border-sky-300' }
+        paid_uk: { label: '✅ UK မှာ ရှင်းပြီး', cls: 'bg-sky-100 text-sky-900 border-sky-300' }
       };
       return map[rec.deliStatus] || map.pay_uk;
     }
@@ -1108,14 +1243,18 @@
     function getFilteredRecords() {
       const q = (document.getElementById('searchInput').value || '').trim().toLowerCase();
       const destF = document.getElementById('destFilter').value;
+      const cargoF = document.getElementById('cargoTypeFilter').value;
       const payF = document.getElementById('paymentFilter').value;
+      const sortF = document.getElementById('sortSelect').value;
 
-      return records.filter(r => {
+      const filtered = records.filter(r => {
         if (currentTab === 'active' && r.archived) return false;
         if (currentTab === 'history' && !r.archived) return false;
 
         if (destF === 'UK' && r.destType !== 'UK') return false;
         if (destF === 'Worldwide' && r.destType === 'UK') return false;
+
+        if (cargoF !== 'all' && r.cargoType !== cargoF) return false;
 
         const kgPaid = ['paid_mm', 'paid_uk'].includes(r.kgPayStatus);
         const deliPaid = ['paid_mm', 'paid_uk'].includes(r.deliStatus);
@@ -1137,10 +1276,119 @@
         if (payF === 'deli_paid_mm' && r.deliStatus !== 'paid_mm') return false;
 
         if (q) {
-          const hay = [r.invNo, r.sender, r.receiver, r.origin, r.destination, r.note, r.date].join(' ').toLowerCase();
+          const hay = [r.invNo, r.sender, r.receiver, r.origin, r.destination, r.cargoType, r.note, r.date].join(' ').toLowerCase();
           if (!hay.includes(q)) return false;
         }
         return true;
+      });
+
+      const sorted = [...filtered];
+      if (sortF === 'oldest') {
+        sorted.reverse();
+      } else if (sortF === 'kg_desc') {
+        sorted.sort((a, b) => (parseFloat(b.kg) || 0) - (parseFloat(a.kg) || 0));
+      } else if (sortF === 'inv_asc') {
+        sorted.sort((a, b) => String(a.invNo || '').localeCompare(String(b.invNo || '')));
+      }
+      return sorted;
+    }
+
+    // Build Viber Daily Report Text (Exact Viber Group Format + Detailed KG & Local Deli Status)
+    function formatSingleRecordForViber(r, index) {
+      const kgPaid = ['paid_mm', 'paid_uk'].includes(r.kgPayStatus);
+      const hasDeli = isUkDestination(r.destType, r.destination) && r.deliStatus !== 'none';
+      const deliPaid = ['paid_mm', 'paid_uk'].includes(r.deliStatus);
+      const isFullySettled = kgPaid && (!hasDeli || deliPaid);
+      const statusIcon = isFullySettled ? '✅' : '❌';
+
+      const displayName = (r.sender && r.sender !== '-' && r.receiver && r.receiver !== '-')
+        ? `${r.sender} → ${r.receiver}`
+        : (r.receiver && r.receiver !== '-' ? r.receiver : r.sender);
+
+      const kgStatusMap = {
+        paid_mm: 'မြန်မာမှာ ရှင်းပြီး (Paid in MM)',
+        paid_uk: 'UK မှာ ရှင်းပြီး (Paid in UK)',
+        pay_arrival_uk: 'ရောက်မှ ရှင်းမည် (Pay on Arrival)',
+        unpaid: 'မရှင်းရသေး (Unpaid)'
+      };
+      const kgAmtText = (r.kgGbp > 0 || r.kgMmk > 0) ? ` [${formatKgAmountStr(r)}]` : '';
+      const kgLine = `   • KG ဖိုး: ${kgStatusMap[r.kgPayStatus] || 'မရှင်းရသေး'}${kgAmtText}`;
+
+      let deliLine = '';
+      if (hasDeli) {
+        const deliStatusMap = {
+          pay_uk: 'UK ရောက်မှ ကောက်မည် (Pay in UK)',
+          paid_mm: 'မြန်မာမှာ ရှင်းပြီး (Paid in MM)',
+          paid_uk: 'UK မှာ ရှင်းပြီး (Paid in UK)'
+        };
+        const deliAmtText = (r.deliGbp > 0 || r.deliMmk > 0) ? ` [${formatDeliAmountStr(r)}]` : '';
+        deliLine = `\n   • Local Deli: ${deliStatusMap[r.deliStatus] || ''}${deliAmtText}`;
+      } else if (isUkDestination(r.destType, r.destination)) {
+        deliLine = `\n   • Local Deli: မရှိ / ရုံးလာထုတ်`;
+      }
+
+      const routeTag = `${r.origin} → ${r.destination}`;
+      const noteLine = r.note ? `\n   • Note: ${r.note}` : '';
+
+      return `${index + 1}. ${displayName} ${statusIcon}\n   ${r.date}    ${Number(r.kg).toFixed(2)} Kg (${r.boxes} ပုံး) [${routeTag}]\n   (${r.cargoType})\n${kgLine}${deliLine}${noteLine}`;
+    }
+
+    function generateViberReportString(list, headerTitle) {
+      const now = new Date();
+      const dateStr = String(now.getDate()).padStart(2, '0') + '.' + String(now.getMonth() + 1).padStart(2, '0') + '.' + String(now.getFullYear()).slice(-2);
+      const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+      if (!list || list.length === 0) {
+        return `${dateStr} (${timeStr})\n${headerTitle}\n\n(စာရင်း မရှိသေးပါ)`;
+      }
+
+      const itemsBlock = list.map((r, idx) => formatSingleRecordForViber(r, idx)).join('\n\n');
+      const totalKg = list.reduce((sum, r) => sum + (parseFloat(r.kg) || 0), 0);
+
+      return `${dateStr} (${timeStr})\n${headerTitle}\n\n${itemsBlock}\n\nTotal Kg - ${totalKg.toFixed(2)} Kg`;
+    }
+
+    function openViberReportModal() {
+      const activeList = records.filter(r => !r.archived);
+      const uniqueDates = [...new Set(activeList.map(r => r.date).filter(d => d && d !== '-'))];
+      const dateSel = document.getElementById('viberDateFilter');
+      dateSel.innerHTML = `<option value="all">Active စာရင်းအားလုံး (${activeList.length} ခု)</option>` +
+        uniqueDates.map(d => `<option value="${escapeHtml(d)}">📅 Date: ${escapeHtml(d)}</option>`).join('');
+
+      buildViberReportPreview();
+      document.getElementById('viberCopyFeedback').classList.add('hidden');
+      document.getElementById('viberReportModal').classList.remove('hidden');
+    }
+
+    function closeViberReportModal() {
+      document.getElementById('viberReportModal').classList.add('hidden');
+    }
+
+    function buildViberReportPreview() {
+      const headerTitle = document.getElementById('viberHeaderInput').value.trim() || 'ရုံးလက်ကျန် / နေ့စဉ်ပစ္စည်းစာရင်း Kg';
+      const selectedDate = document.getElementById('viberDateFilter').value;
+      let targetList = records.filter(r => !r.archived);
+      if (selectedDate !== 'all') {
+        targetList = targetList.filter(r => r.date === selectedDate);
+      }
+      document.getElementById('viberPreviewBox').value = generateViberReportString(targetList, headerTitle);
+    }
+
+    function copyViberReportText() {
+      const txt = document.getElementById('viberPreviewBox').value;
+      if (!txt) return;
+      navigator.clipboard.writeText(txt).then(() => {
+        const fb = document.getElementById('viberCopyFeedback');
+        fb.textContent = '✅ Viber Daily Report ကို Copy ကူးပြီးပါပြီ — Viber Group ထဲ တန်း Paste လုပ်ပို့နိုင်ပါပြီ!';
+        fb.classList.remove('hidden');
+      });
+    }
+
+    function quickCopyViberFiltered() {
+      const list = getFilteredRecords();
+      const txt = generateViberReportString(list, 'ရုံးလက်ကျန် / နေ့စဉ်ပစ္စည်းစာရင်း Kg');
+      navigator.clipboard.writeText(txt).then(() => {
+        alert('✅ လက်ရှိစာရင်း (' + list.length + ' ခု) ကို Viber Report Format အတိုင်း Copy ကူးပြီးပါပြီ! Viber Group ထဲ Paste နှိပ်ပြီး ပို့နိုင်ပါပြီ။');
       });
     }
 
@@ -1154,6 +1402,20 @@
       const hasDeli = isUkDestination(r.destType, r.destination) && r.deliStatus !== 'none';
       const deliAmt = formatDeliAmountStr(r);
 
+      const kgPaid = ['paid_mm', 'paid_uk'].includes(r.kgPayStatus);
+      const deliPaid = ['paid_mm', 'paid_uk'].includes(r.deliStatus);
+
+      let settlementSummary = '';
+      if (kgPaid && (!hasDeli || deliPaid)) {
+        settlementSummary = '✅ ရှင်းလင်းပြီးစီးမှု: KG ဖိုးရော Local Delivery ပါ အားလုံး ရှင်းပြီးပါပြီ (ထပ်ကောက်ရန် မရှိပါ)';
+      } else if (kgPaid && hasDeli && !deliPaid) {
+        settlementSummary = `⏳ ကျန်ရှိငွေ: KG ဖိုး ရှင်းပြီး • Local Delivery (${deliAmt}) UK ရောက်မှ ကောက်ရန် ကျန်ပါသည်`;
+      } else if (!kgPaid && hasDeli && deliPaid) {
+        settlementSummary = `⏳ ကျန်ရှိငွေ: Local Delivery ရှင်းပြီး • KG ဖိုး (${kgAmt}) ရှင်းရန် ကျန်ပါသည်`;
+      } else {
+        settlementSummary = `⚠️ ကျန်ရှိငွေ: KG ဖိုး (${kgAmt})${hasDeli ? ` နှင့် Local Delivery (${deliAmt})` : ''} ရှင်းရန် ကျန်ပါသည်`;
+      }
+
       const extras = [
         r.insured ? 'Insured' : '',
         r.discount ? 'Discount' : ''
@@ -1162,7 +1424,7 @@
       const lines = [
         `📦 MM → UK & Worldwide Payment Summary`,
         `────────────────────────────`,
-        `Invoice: ${r.invNo} | Date: ${r.date}`,
+        `Invoice: ${r.invNo} | Date: ${r.date} | Type: ${r.cargoType}`,
         `Route: ${r.origin} → ${r.destination}`,
         `Sender: ${r.sender}`,
         `Receiver: ${r.receiver}`,
@@ -1174,20 +1436,26 @@
         `🚚 Local Delivery Fee: ${deliBadge.label}`,
         ...(hasDeli ? [`   Amount: ${deliAmt}${r.deliPayDate ? ' | Date: ' + r.deliPayDate : ''}`] : []),
         ``,
+        `${settlementSummary}`,
         `🏷️ Extra: ${extras}`,
         ...(r.note ? [`📝 Note: ${r.note}`] : [])
       ];
       activeSlipPlainText = lines.join('\n');
 
       document.getElementById('slipContent').innerHTML = `
-        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+        <div class="flex items-center justify-between border-b border-slate-200 pb-2 flex-wrap gap-1">
           <div>
             <span class="font-extrabold text-sm text-slate-900">Inv: ${escapeHtml(r.invNo)}</span>
             <span class="text-slate-500 ml-2">${escapeHtml(r.date)}</span>
           </div>
-          <span class="text-[11px] font-bold px-2 py-0.5 rounded-lg ${r.destType === 'UK' ? 'bg-indigo-100 text-indigo-800' : 'bg-teal-100 text-teal-800'}">
-            ${escapeHtml(r.origin)} → ${escapeHtml(r.destination)}
-          </span>
+          <div class="flex items-center gap-1.5">
+            <span class="text-[10.5px] font-bold px-2 py-0.5 rounded-lg ${r.cargoType === 'Risk' ? 'bg-rose-100 text-rose-800' : 'bg-slate-200 text-slate-800'}">
+              ${escapeHtml(r.cargoType)}
+            </span>
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded-lg ${r.destType === 'UK' ? 'bg-indigo-100 text-indigo-800' : 'bg-teal-100 text-teal-800'}">
+              ${escapeHtml(r.origin)} → ${escapeHtml(r.destination)}
+            </span>
+          </div>
         </div>
 
         <div class="grid grid-cols-2 gap-2 bg-white p-2.5 rounded-xl border border-slate-200/70">
@@ -1213,6 +1481,10 @@
           </div>
           ${hasDeli ? `<div class="font-bold text-slate-900">${escapeHtml(deliAmt)}</div>` : ''}
           ${(hasDeli && r.deliPayDate) ? `<div class="text-[11px] text-slate-600">Date: ${escapeHtml(r.deliPayDate)}</div>` : ''}
+        </div>
+
+        <div class="bg-indigo-50/90 border border-indigo-200 rounded-xl p-2.5 font-bold text-indigo-950 text-[11.5px]">
+          ${escapeHtml(settlementSummary)}
         </div>
 
         <div class="text-[11px] text-slate-600 space-y-0.5">
@@ -1243,16 +1515,41 @@
       const historyList = records.filter(r => r.archived);
 
       document.getElementById('sumActiveCount').textContent = activeList.length;
+      const stdCnt = activeList.filter(r => r.cargoType !== 'Risk').length;
+      const riskCnt = activeList.filter(r => r.cargoType === 'Risk').length;
+      document.getElementById('sumRiskCount').textContent = `Standard: ${stdCnt} • Risk: ${riskCnt}`;
+
       const totalKg = activeList.reduce((acc, r) => acc + (parseFloat(r.kg) || 0), 0);
-      document.getElementById('sumTotalKg').textContent = totalKg.toFixed(1) + ' kg';
-      document.getElementById('sumKgPaidMm').textContent = activeList.filter(r => r.kgPayStatus === 'paid_mm').length;
-      document.getElementById('sumKgPaidUk').textContent = activeList.filter(r => r.kgPayStatus === 'paid_uk').length;
-      document.getElementById('sumDeliPayUk').textContent = activeList.filter(r => r.deliStatus === 'pay_uk').length;
+      const totalBoxes = activeList.reduce((acc, r) => acc + (parseInt(r.boxes, 10) || 0), 0);
+      document.getElementById('sumTotalKg').textContent = totalKg.toFixed(2) + ' kg';
+      document.getElementById('sumTotalBoxes').textContent = `စုစုပေါင်း ${totalBoxes} ပုံး`;
+
+      const mmList = activeList.filter(r => r.kgPayStatus === 'paid_mm');
+      const mmGbp = mmList.reduce((s, r) => s + (r.kgCurrency === 'GBP' ? (r.kgGbp || 0) : 0), 0);
+      const mmKs = mmList.reduce((s, r) => s + (r.kgCurrency === 'MMK' ? (r.kgMmk || 0) : 0), 0);
+      document.getElementById('sumKgPaidMm').textContent = mmList.length;
+      document.getElementById('sumKgPaidMmAmt').textContent = `£${mmGbp.toFixed(0)} • ${mmKs.toLocaleString()} Ks`;
+
+      const ukList = activeList.filter(r => r.kgPayStatus === 'paid_uk');
+      const ukGbp = ukList.reduce((s, r) => s + (r.kgCurrency === 'GBP' ? (r.kgGbp || 0) : 0), 0);
+      const ukKs = ukList.reduce((s, r) => s + (r.kgCurrency === 'MMK' ? (r.kgMmk || 0) : 0), 0);
+      document.getElementById('sumKgPaidUk').textContent = ukList.length;
+      document.getElementById('sumKgPaidUkAmt').textContent = `£${ukGbp.toFixed(0)} • ${ukKs.toLocaleString()} Ks`;
+
+      const deliUkList = activeList.filter(r => r.deliStatus === 'pay_uk');
+      const deliUkGbp = deliUkList.reduce((s, r) => s + (r.deliCurrency === 'GBP' ? (r.deliGbp || 0) : 0), 0);
+      document.getElementById('sumDeliPayUk').textContent = deliUkList.length;
+      document.getElementById('sumDeliPayUkAmt').textContent = `ကောက်ရန် £${deliUkGbp.toFixed(2)}`;
+
       document.getElementById('sumHistoryCount').textContent = historyList.length;
+      const unpaidCnt = activeList.filter(r => ['unpaid', 'pay_arrival_uk'].includes(r.kgPayStatus)).length;
+      document.getElementById('sumUnpaidCount').textContent = `KG Unpaid/Arrival: ${unpaidCnt}`;
     }
 
     function renderTable() {
-      const role = document.getElementById('roleSelect').value;
+      const role = lockedRole || document.getElementById('roleSelect').value;
+      applySetupVisibility(role);
+
       const list = getFilteredRecords();
       const tbody = document.getElementById('tableBody');
       const empty = document.getElementById('emptyState');
@@ -1317,25 +1614,28 @@
           }
         }
 
+        const cargoTypeBadge = r.cargoType === 'Risk'
+          ? '<span class="inline-block text-[10px] font-extrabold bg-rose-100 text-rose-800 border border-rose-300 px-1.5 py-0.5 rounded-md mt-1">⚠️ Risk</span>'
+          : '<span class="inline-block text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-300 px-1.5 py-0.5 rounded-md mt-1">📦 Standard</span>';
+
         const badgesHtml = [
           r.insured ? '<span class="inline-block text-[10px] font-bold bg-sky-100 text-sky-900 border border-sky-200 px-1.5 py-0.5 rounded-md">🛡️ Insured</span>' : '',
           r.discount ? '<span class="inline-block text-[10px] font-bold bg-emerald-100 text-emerald-900 border border-emerald-200 px-1.5 py-0.5 rounded-md">🏷️ Discount</span>' : ''
         ].filter(Boolean).join(' ');
 
-        const canEdit = role === 'admin' || role === 'office' || role === 'page';
-
-        let actionButtons = `<button onclick="openSlipModal('${r.id}')" class="text-[11px] font-semibold bg-indigo-50 hover:bg-indigo-100 text-indigo-800 px-2 py-1 rounded-lg border border-indigo-200">📄 Slip</button>`;
-        if (canEdit) {
-          actionButtons += `<button onclick="openEntryModal('${r.id}')" class="text-[11px] font-semibold bg-slate-100 hover:bg-slate-200 text-slate-800 px-2 py-1 rounded-lg border border-slate-300">✏️ Edit</button>`;
-        }
-        if (!r.archived && (role === 'admin' || role === 'office')) {
+        // Unified shared access for Admin, Office, and Payment roles
+        let actionButtons = `
+          <button onclick="openSlipModal('${r.id}')" class="text-[11px] font-semibold bg-indigo-50 hover:bg-indigo-100 text-indigo-800 px-2 py-1 rounded-lg border border-indigo-200">📄 Slip</button>
+          <button onclick="openEntryModal('${r.id}')" class="text-[11px] font-semibold bg-slate-100 hover:bg-slate-200 text-slate-800 px-2 py-1 rounded-lg border border-slate-300">✏️ Edit</button>
+          <button onclick="duplicateEntry('${r.id}')" title="Duplicate Row" class="text-[11px] font-semibold bg-sky-50 hover:bg-sky-100 text-sky-800 px-2 py-1 rounded-lg border border-sky-200">📋 Copy</button>
+        `;
+        if (!r.archived) {
           actionButtons += `<button onclick="moveToHistory('${r.id}')" class="text-[11px] font-semibold bg-purple-50 hover:bg-purple-100 text-purple-800 px-2 py-1 rounded-lg border border-purple-200">🗂️ History</button>`;
-        }
-        if (r.archived && (role === 'admin' || role === 'office')) {
+        } else {
           actionButtons += `<button onclick="restoreFromHistory('${r.id}')" class="text-[11px] font-semibold bg-indigo-50 hover:bg-indigo-100 text-indigo-800 px-2 py-1 rounded-lg border border-indigo-200">↩️ Active</button>`;
-        }
-        if (r.archived && role === 'admin') {
-          actionButtons += `<button onclick="deleteSingleHistory('${r.id}')" class="text-[11px] font-semibold bg-rose-50 hover:bg-rose-100 text-rose-700 px-2 py-1 rounded-lg border border-rose-200">🗑️</button>`;
+          if (role === 'admin') {
+            actionButtons += `<button onclick="deleteSingleHistory('${r.id}')" class="text-[11px] font-semibold bg-rose-50 hover:bg-rose-100 text-rose-700 px-2 py-1 rounded-lg border border-rose-200">🗑️</button>`;
+          }
         }
 
         tr.innerHTML = `
@@ -1356,6 +1656,7 @@
           <td class="py-2.5 px-2.5 whitespace-nowrap">
             <div class="font-bold text-slate-800">📦 ${r.boxes} ပုံး</div>
             <div class="font-extrabold text-sky-700 text-xs mt-0.5">⚖️ ${Number(r.kg).toFixed(2)} kg</div>
+            <div>${cargoTypeBadge}</div>
           </td>
           <td class="py-2.5 px-2.5">
             <span class="inline-block text-[10.5px] font-bold border px-2 py-0.5 rounded-lg ${kgBadge.cls}">${kgBadge.label}</span>
@@ -1406,14 +1707,14 @@
 
     function exportCSV() {
       const headers = [
-        'Tab', 'InvNo', 'Date', 'Origin', 'Destination', 'Sender', 'Receiver',
+        'Tab', 'InvNo', 'Date', 'CargoType', 'Origin', 'Destination', 'Sender', 'Receiver',
         'Boxes', 'KG', 'KgPayStatus', 'KgCurrency', 'KgGBP', 'KgMMK', 'Rate', 'KgPayDate',
         'DeliStatus', 'DeliCurrency', 'DeliGBP', 'DeliMMK', 'DeliRate', 'DeliPayDate',
         'Insured', 'Discount', 'Ready', 'Dispatched', 'Note'
       ];
       const rows = records.map(r => [
         r.archived ? 'History' : 'Active',
-        r.invNo, r.date, r.origin, r.destination, r.sender, r.receiver,
+        r.invNo, r.date, r.cargoType, r.origin, r.destination, r.sender, r.receiver,
         r.boxes, r.kg, r.kgPayStatus, r.kgCurrency, r.kgGbp, r.kgMmk, r.rate, r.kgPayDate,
         r.deliStatus, r.deliCurrency, r.deliGbp, r.deliMmk, r.deliRate, r.deliPayDate,
         r.insured ? 'Yes' : 'No',
