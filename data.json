@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T04:02:45.425Z",
+  "updatedAt": "2026-11-23T04:03:28.243Z",
   "records": [
     {
       "id": "rec_1795328250540_wlzc",
@@ -101,6 +101,10 @@
         {
           "category": "Standard",
           "kg": 16
+        },
+        {
+          "category": "Gold & Jewelry",
+          "kg": 2
         }
       ],
       "origin": "Myanmar",
@@ -111,7 +115,7 @@
       "receiver": "U Saw Phae",
       "receiverPhone": "",
       "boxes": 1,
-      "kg": 16,
+      "kg": 18,
       "photos": [],
       "kgPayStatus": "paid_mm",
       "kgCurrency": "MMK",
