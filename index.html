@@ -56,7 +56,7 @@
               MM → UK &amp; Worldwide Approval &amp; Payment Dashboard
             </h1>
             <span class="hidden md:inline-flex items-center gap-1 text-[10.5px] bg-amber-400/15 text-amber-300 border border-amber-400/30 px-2 py-0.5 rounded-full font-semibold">
-              ✨ Multi-Category KG, Phones, Photos &amp; Viber Report
+              ⚡ Fast Folder Photos, Multi-Category KG &amp; Ins/Disc Amounts
             </span>
           </div>
           <p id="syncStatus" class="text-[11px] text-amber-300 font-medium truncate mt-0.5">
@@ -99,7 +99,7 @@
     <div class="glass-card rounded-2xl px-4 py-2.5 border border-amber-200/80 bg-gradient-to-r from-amber-50/75 via-white to-emerald-50/65 flex items-center gap-2.5 shadow-xs">
       <span class="text-lg shrink-0">💛</span>
       <p class="text-xs text-slate-700 leading-relaxed">
-        နေ့စဉ် မှတ်တမ်းတွေကို ဂရုစိုက် ဖြည့်သွင်းပေးပါနော် — Sender / Receiver နာမည်၊ ဖုန်းနံပါတ်၊ နိုင်ငံ၊ Category နဲ့ KG ခွဲခြားမှု၊ ဓာတ်ပုံ နဲ့ ငွေရှင်းမှုအခြေအနေ (MM / UK) တစ်ချက်ပြန်စစ်ပြီး မှန်ကန်စွာ ထည့်သွင်းပေးပါ။
+        နေ့စဉ် မှတ်တမ်းတွေကို ဂရုစိုက် ဖြည့်သွင်းပေးပါနော် — Sender / Receiver နာမည်၊ ဖုန်းနံပါတ်၊ နိုင်ငံ၊ Category &amp; KG ခွဲခြားမှု၊ Insurance/Discount ပမာဏ၊ ဓာတ်ပုံ နဲ့ ငွေရှင်းမှုအခြေအနေ (MM / UK) တစ်ချက်ပြန်စစ်ပြီး မှန်ကန်စွာ ထည့်သွင်းပေးပါ။
       </p>
     </div>
 
@@ -228,7 +228,7 @@
               <th class="py-2.5 px-2.5 whitespace-nowrap">📦 ပုံး / ⚖️ KG &amp; Category</th>
               <th class="py-2.5 px-2.5 whitespace-nowrap">💳 KG Freight Fee</th>
               <th class="py-2.5 px-2.5 whitespace-nowrap">🚚 Local Delivery Fee</th>
-              <th class="py-2.5 px-2.5 whitespace-nowrap">📷 Photos &amp; Notes</th>
+              <th class="py-2.5 px-2.5 whitespace-nowrap">📷 Photos, Ins/Disc &amp; Notes</th>
               <th class="py-2.5 px-2.5 text-center whitespace-nowrap">Status / Actions</th>
             </tr>
           </thead>
@@ -251,7 +251,7 @@
       </div>
 
       <p class="text-xs text-slate-500 leading-relaxed">
-        Repo ထဲရှိ <b>data.json</b> နှင့် ချိတ်ဆက်ရန် တစ်ကြိမ်သာ ဖြည့်ပါ။ ပြီးလျှင် UK Admin နှင့် ဝန်ထမ်းများအတွက် Share Link များ Copy ယူပေးပို့နိုင်ပါသည်။
+        Repo ထဲရှိ <b>data.json</b> နှင့် ချိတ်ဆက်ရန် တစ်ကြိမ်သာ ဖြည့်ပါ။ ပုံများကို <b>photos/</b> folder ထဲ သီးသန့်ပေါ့ပါးစွာ သိမ်းပေးပါမည်။
       </p>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -303,7 +303,7 @@
           <span class="text-2xl">📦</span>
           <div>
             <h2 id="entryModalTitle" class="text-base sm:text-lg font-bold text-slate-900">စာရင်းသစ် ထည့်ရန်</h2>
-            <p class="text-[11px] text-amber-800 font-medium">💡 နိုင်ငံ၊ နာမည်၊ ဖုန်းနံပါတ်၊ Category &amp; KG ခွဲခြားမှု၊ ဓာတ်ပုံ နဲ့ ငွေရှင်းမှုအခြေအနေ (MM / UK) ကို ဂရုစိုက်ဖြည့်သွင်းပေးပါ။</p>
+            <p class="text-[11px] text-amber-800 font-medium">💡 နိုင်ငံ၊ နာမည်၊ ဖုန်းနံပါတ်၊ Category &amp; KG ခွဲခြားမှု၊ Ins/Disc ပမာဏ၊ ဓာတ်ပုံ နဲ့ ငွေရှင်းမှုအခြေအနေ (MM / UK) ကို ဂရုစိုက်ဖြည့်သွင်းပေးပါ။</p>
           </div>
         </div>
         <button onclick="closeEntryModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold px-2">✕</button>
@@ -396,12 +396,12 @@
         </div>
       </div>
 
-      <!-- Parcel Photos (1 to 3 Photos with Smart Compression) -->
+      <!-- Parcel Photos (1 to 3 Photos — Stored in photos/ Folder when GitHub Connected) -->
       <div class="bg-indigo-50/70 p-3.5 rounded-2xl border border-indigo-200 space-y-2.5">
         <div class="flex items-center justify-between flex-wrap gap-2">
           <div>
             <p class="text-xs font-extrabold text-indigo-950 uppercase">📷 ပစ္စည်းဓာတ်ပုံများ (၁ ပုံ မှ ၃ ပုံအထိ ထည့်နိုင်သည်)</p>
-            <p class="text-[10.5px] text-slate-600">UK ရောက်လျှင် ဘယ်အိတ်/ဘယ်ပုံးလဲ တန်းကြည့်သိနိုင်ရန် (Website မလေးအောင် အလိုအလျောက် ချုံ့သိမ်းပေးပါမည်)</p>
+            <p class="text-[10.5px] text-slate-600">GitHub ချိတ်ထားလျှင် <b>photos/</b> folder ထဲ သီးသန့်ပေါ့ပါးစွာ သိမ်းပေးပြီး နှိပ်ကြည့်မှ ဖွင့်ပြပါမည် (Quality မကျဘဲ မြန်ပါသည်)</p>
           </div>
           <label class="cursor-pointer bg-indigo-700 hover:bg-indigo-800 text-white text-xs font-bold px-3 py-1.5 rounded-xl shadow-xs transition">
             + ပုံရွေး / ရိုက်ထည့်ရန်
@@ -498,26 +498,59 @@
         </div>
       </div>
 
-      <div class="space-y-2.5">
-        <div class="flex flex-wrap items-center gap-4">
-          <label class="inline-flex items-center gap-2 text-xs font-bold text-sky-900 cursor-pointer">
-            <input id="fInsured" type="checkbox" class="rounded text-sky-600" />
-            <span>🛡️ Insured (အာမခံ ပါရှိ)</span>
-          </label>
-          <label class="inline-flex items-center gap-2 text-xs font-bold text-emerald-900 cursor-pointer">
-            <input id="fDiscount" type="checkbox" class="rounded text-emerald-600" />
-            <span>🏷️ Discount (လျှော့ဈေး ပါရှိ)</span>
-          </label>
+      <!-- 3. Insurance & Discount Amounts + Note -->
+      <div class="bg-slate-50/90 p-3.5 rounded-2xl border border-slate-200 space-y-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="bg-white p-2.5 rounded-xl border border-sky-200/80 space-y-2">
+            <label class="inline-flex items-center gap-2 text-xs font-bold text-sky-900 cursor-pointer">
+              <input id="fInsured" type="checkbox" onchange="toggleInsuredAmountBox()" class="rounded text-sky-600" />
+              <span>🛡️ Insured (အာမခံ ပါရှိ)</span>
+            </label>
+            <div id="insuredAmountBox" class="hidden grid grid-cols-2 gap-2 pt-1">
+              <div>
+                <label class="block text-[10.5px] font-semibold text-slate-600 mb-0.5">ငွေကြေး</label>
+                <select id="fInsCurrency" class="w-full border border-slate-300 rounded-lg px-2 py-1 text-xs font-bold bg-white">
+                  <option value="GBP">£ (GBP)</option>
+                  <option value="MMK">MMK (Ks)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[10.5px] font-semibold text-slate-600 mb-0.5">Insurance ပမာဏ</label>
+                <input id="fInsAmount" type="number" step="0.01" min="0" value="0" class="w-full border border-sky-300 rounded-lg px-2 py-1 text-xs font-bold bg-white" />
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-2.5 rounded-xl border border-emerald-200/80 space-y-2">
+            <label class="inline-flex items-center gap-2 text-xs font-bold text-emerald-900 cursor-pointer">
+              <input id="fDiscount" type="checkbox" onchange="toggleDiscountAmountBox()" class="rounded text-emerald-600" />
+              <span>🏷️ Discount (လျှော့ဈေး ပါရှိ)</span>
+            </label>
+            <div id="discountAmountBox" class="hidden grid grid-cols-2 gap-2 pt-1">
+              <div>
+                <label class="block text-[10.5px] font-semibold text-slate-600 mb-0.5">ငွေကြေး</label>
+                <select id="fDiscCurrency" class="w-full border border-slate-300 rounded-lg px-2 py-1 text-xs font-bold bg-white">
+                  <option value="GBP">£ (GBP)</option>
+                  <option value="MMK">MMK (Ks)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[10.5px] font-semibold text-slate-600 mb-0.5">လျှော့ပေးသည့် ပမာဏ</label>
+                <input id="fDiscAmount" type="number" step="0.01" min="0" value="0" class="w-full border border-emerald-300 rounded-lg px-2 py-1 text-xs font-bold bg-white" />
+              </div>
+            </div>
+          </div>
         </div>
+
         <div>
           <label class="block text-xs font-semibold text-slate-700 mb-1">မှတ်ချက် အတို (Admin များ နှစ်ဘက်မြင်ရန်)</label>
-          <input id="fNote" type="text" placeholder="ဥပမာ: အိတ်အမဲ ၂ လုံး / KG ကို MMK ဖြင့် ရှင်းပြီး" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs" />
+          <input id="fNote" type="text" placeholder="ဥပမာ: အိတ်အမဲ ၂ လုံး / KG ကို MMK ဖြင့် ရှင်းပြီး" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs bg-white" />
         </div>
       </div>
 
       <div class="flex justify-end gap-2 pt-2 border-t border-slate-100">
         <button onclick="closeEntryModal()" class="px-4 py-2 text-xs sm:text-sm text-slate-600 hover:bg-slate-100 rounded-xl">မလုပ်တော့ပါ</button>
-        <button onclick="saveEntry()" class="px-5 py-2 text-xs sm:text-sm bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl shadow-sm">✅ သိမ်းမည်</button>
+        <button id="saveEntryBtn" onclick="saveEntry()" class="px-5 py-2 text-xs sm:text-sm bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl shadow-sm">✅ သိမ်းမည်</button>
       </div>
     </div>
   </div>
@@ -589,7 +622,7 @@
     </div>
   </div>
 
-  <!-- 5. Full-Screen Photo Lightbox Viewer Modal -->
+  <!-- 5. Full-Screen Photo Lightbox Viewer Modal (Lazy Loads from photos/ Folder on Click) -->
   <div id="photoViewerModal" class="hidden fixed inset-0 bg-slate-950/90 z-50 flex flex-col justify-between p-4">
     <div class="max-w-5xl w-full mx-auto flex items-center justify-between text-white pb-2 border-b border-slate-800">
       <div>
@@ -610,6 +643,7 @@
       <button id="viewerPrevBtn" onclick="stepPhotoViewer(-1)" class="hidden absolute left-2 sm:left-6 bg-white/15 hover:bg-white/30 text-white text-lg font-extrabold w-10 h-10 rounded-full backdrop-blur-xs">
         ◀
       </button>
+      <div id="viewerLoadingText" class="hidden text-amber-300 text-sm font-bold">⏳ ဓာတ်ပုံ ဖွင့်နေပါသည်...</div>
       <img id="viewerMainImg" src="" alt="Parcel Photo" class="max-h-[75vh] max-w-full object-contain rounded-2xl shadow-2xl border border-slate-700" />
       <button id="viewerNextBtn" onclick="stepPhotoViewer(1)" class="hidden absolute right-2 sm:right-6 bg-white/15 hover:bg-white/30 text-white text-lg font-extrabold w-10 h-10 rounded-full backdrop-blur-xs">
         ▶
@@ -621,6 +655,7 @@
 
   <script>
     const LOCAL_CACHE_KEY = 'mm_uk_ww_dashboard_cache_v1';
+    const LOCAL_PHOTO_KEY = 'mm_uk_ww_photo_cache_v1';
     const CFG_KEY = 'mm_uk_ww_gh_cfg_v1';
     const DATA_FILE_PATH = 'data.json';
 
@@ -639,9 +674,29 @@
     let fileSha = null;
     let lockedRole = null;
     let activeSlipPlainText = '';
+
+    // modalPhotos items: { dataUrl, existingPath, isNew }
     let modalPhotos = [];
-    let viewerPhotos = [];
+    let viewerPhotos = []; // array of dataUrls or paths
+    let viewerResolvedUrls = [];
     let viewerIndex = 0;
+    const photoMemoryCache = new Map();
+
+    function getLocalPhotoMap() {
+      try {
+        return JSON.parse(localStorage.getItem(LOCAL_PHOTO_KEY)) || {};
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function saveLocalPhotoMap(map) {
+      try {
+        localStorage.setItem(LOCAL_PHOTO_KEY, JSON.stringify(map));
+      } catch (e) {
+        // Ignore quota error on local fallback if GitHub is used
+      }
+    }
 
     function applySetupVisibility(role) {
       const setupBtn = document.getElementById('setupBtn');
@@ -720,6 +775,11 @@
       return new TextDecoder().decode(bytes);
     }
 
+    function dataUrlToPureBase64(dataUrl) {
+      const idx = String(dataUrl || '').indexOf(',');
+      return idx >= 0 ? dataUrl.slice(idx + 1) : dataUrl;
+    }
+
     function isUkDestination(destType, destination) {
       if (destType === 'UK') return true;
       const d = String(destination || '').trim().toLowerCase();
@@ -750,6 +810,14 @@
       return 'Standard';
     }
 
+    function formatFeeAmount(curr, amt) {
+      const num = Math.max(0, parseFloat(amt) || 0);
+      if (curr === 'MMK') {
+        return `${num.toLocaleString()} Ks`;
+      }
+      return `£${num.toFixed(2)}`;
+    }
+
     function normalizeRecord(r) {
       const origin = r.origin || 'Myanmar';
       const destination = r.destination || r.locationNote || (r.destType === 'UK' ? 'UK' : 'Worldwide');
@@ -776,6 +844,14 @@
       const finalKg = totalFromBreakdowns > 0 ? totalFromBreakdowns : baseKg;
       const cargoType = kgBreakdowns[0] ? kgBreakdowns[0].category : normalizeCategoryName(r.cargoType);
       const photos = Array.isArray(r.photos) ? r.photos.filter(Boolean).slice(0, 3) : [];
+
+      const insured = !!r.insured;
+      const insCurrency = (r.insCurrency === 'MMK') ? 'MMK' : 'GBP';
+      const insAmount = insured ? Math.max(0, parseFloat(r.insAmount) || 0) : 0;
+
+      const discount = !!r.discount;
+      const discCurrency = (r.discCurrency === 'MMK') ? 'MMK' : 'GBP';
+      const discAmount = discount ? Math.max(0, parseFloat(r.discAmount) || 0) : 0;
 
       return {
         id: r.id || ('rec_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6)),
@@ -805,13 +881,31 @@
         deliMmk: Math.max(0, parseFloat(r.deliMmk) || 0),
         deliRate: Math.max(0, parseFloat(r.deliRate) || 0),
         deliPayDate: r.deliPayDate || '',
-        insured: !!r.insured,
-        discount: !!r.discount,
+        insured,
+        insCurrency,
+        insAmount,
+        discount,
+        discCurrency,
+        discAmount,
         ready: !!r.ready,
         dispatched: !!r.dispatched,
         archived: !!r.archived,
         note: r.note || ''
       };
+    }
+
+    function toggleInsuredAmountBox() {
+      const checked = document.getElementById('fInsured').checked;
+      const box = document.getElementById('insuredAmountBox');
+      if (checked) box.classList.remove('hidden');
+      else box.classList.add('hidden');
+    }
+
+    function toggleDiscountAmountBox() {
+      const checked = document.getElementById('fDiscount').checked;
+      const box = document.getElementById('discountAmountBox');
+      if (checked) box.classList.remove('hidden');
+      else box.classList.add('hidden');
     }
 
     function getCategoryShortTag(cat) {
@@ -904,7 +998,7 @@
       }
     }
 
-    function compressImageFile(file, maxDim = 1100, quality = 0.76) {
+    function compressImageFile(file, maxDim = 1280, quality = 0.82) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onload = ev => {
@@ -940,7 +1034,7 @@
       const files = Array.from(event.target.files || []);
       if (!files.length) return;
       const statusEl = document.getElementById('photoCompressStatus');
-      statusEl.textContent = '⏳ ပုံများကို ကြည်လင်အောင် ချုံ့ပြင်ဆင်နေပါသည်...';
+      statusEl.textContent = '⏳ ပုံများကို ပြင်ဆင်နေပါသည်...';
       statusEl.classList.remove('hidden');
 
       for (const f of files) {
@@ -950,7 +1044,11 @@
         }
         try {
           const compressedDataUrl = await compressImageFile(f);
-          modalPhotos.push(compressedDataUrl);
+          modalPhotos.push({
+            dataUrl: compressedDataUrl,
+            existingPath: '',
+            isNew: true
+          });
         } catch (err) {
           console.error(err);
         }
@@ -968,47 +1066,138 @@
       else statusEl.textContent = `✅ ပုံ ${modalPhotos.length} ပုံ ကျန်ရှိပါသည်`;
     }
 
-    function renderModalPhotoPreviews() {
+    async function resolvePhotoSource(refOrDataUrl) {
+      if (!refOrDataUrl) return '';
+      if (String(refOrDataUrl).startsWith('data:image/')) {
+        return refOrDataUrl;
+      }
+      if (photoMemoryCache.has(refOrDataUrl)) {
+        return photoMemoryCache.get(refOrDataUrl);
+      }
+      const localMap = getLocalPhotoMap();
+      if (localMap[refOrDataUrl]) {
+        photoMemoryCache.set(refOrDataUrl, localMap[refOrDataUrl]);
+        return localMap[refOrDataUrl];
+      }
+
+      const cfg = getCfg();
+      if (cfg.user && cfg.repo && cfg.token) {
+        const apiUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.user)}/${encodeURIComponent(cfg.repo)}/contents/${encodeURIComponent(refOrDataUrl)}?t=${Date.now()}`;
+        const res = await fetch(apiUrl, {
+          headers: {
+            'Authorization': `Bearer ${cfg.token}`,
+            'Accept': 'application/vnd.github+json'
+          }
+        });
+        if (res.ok) {
+          const json = await res.json();
+          const b64 = String(json.content || '').replace(/\n/g, '');
+          const dataUrl = `data:image/jpeg;base64,${b64}`;
+          photoMemoryCache.set(refOrDataUrl, dataUrl);
+          return dataUrl;
+        }
+      }
+      return '';
+    }
+
+    async function renderModalPhotoPreviews() {
       const grid = document.getElementById('modalPhotoPreviewGrid');
       if (!modalPhotos.length) {
         grid.innerHTML = '<p class="text-[11px] text-slate-400">ပစ္စည်းဓာတ်ပုံ မထည့်ရသေးပါ (၁–၃ ပုံအထိ ထည့်နိုင်သည်)</p>';
         return;
       }
-      grid.innerHTML = modalPhotos.map((src, i) => `
-        <div class="relative w-20 h-20 rounded-xl overflow-hidden border border-indigo-300 shadow-xs bg-white group">
-          <img src="${src}" onclick="openPhotoViewerFromArray(modalPhotos, ${i}, 'Preview Photo')" class="w-full h-full object-cover cursor-pointer" />
-          <button type="button" onclick="removeModalPhoto(${i})" class="absolute top-1 right-1 bg-rose-600 text-white text-[10px] font-bold w-5 h-5 rounded-full shadow">✕</button>
-          <span class="absolute bottom-0.5 left-1 bg-black/60 text-white text-[9px] px-1 rounded">#${i + 1}</span>
-        </div>
-      `).join('');
+
+      const cards = [];
+      for (let i = 0; i < modalPhotos.length; i++) {
+        const item = modalPhotos[i];
+        let src = item.dataUrl || '';
+        if (!src && item.existingPath) {
+          src = await resolvePhotoSource(item.existingPath);
+        }
+        cards.push(`
+          <div class="relative w-20 h-20 rounded-xl overflow-hidden border border-indigo-300 shadow-xs bg-white group">
+            ${src
+              ? `<img src="${src}" onclick="openPhotoViewerFromArray(modalPhotos.map(x => x.dataUrl || x.existingPath), ${i}, 'Preview Photo')" class="w-full h-full object-cover cursor-pointer" />`
+              : `<div class="w-full h-full flex items-center justify-center text-[10px] text-slate-500">📷 #${i + 1}</div>`
+            }
+            <button type="button" onclick="removeModalPhoto(${i})" class="absolute top-1 right-1 bg-rose-600 text-white text-[10px] font-bold w-5 h-5 rounded-full shadow">✕</button>
+            <span class="absolute bottom-0.5 left-1 bg-black/60 text-white text-[9px] px-1 rounded">#${i + 1}</span>
+          </div>
+        `);
+      }
+      grid.innerHTML = cards.join('');
     }
 
-    function openPhotoViewer(recordId, startIdx = 0) {
+    async function uploadNewPhotoToGitHubFolder(dataUrl, recordId, idx) {
+      const cfg = getCfg();
+      const fileName = `photos/${recordId}_${Date.now()}_${idx + 1}.jpg`;
+      const pureB64 = dataUrlToPureBase64(dataUrl);
+
+      if (!cfg.user || !cfg.repo || !cfg.token) {
+        const localMap = getLocalPhotoMap();
+        localMap[fileName] = dataUrl;
+        saveLocalPhotoMap(localMap);
+        photoMemoryCache.set(fileName, dataUrl);
+        return fileName;
+      }
+
+      const apiUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.user)}/${encodeURIComponent(cfg.repo)}/contents/${fileName}`;
+      const res = await fetch(apiUrl, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${cfg.token}`,
+          'Accept': 'application/vnd.github+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: `Upload parcel photo ${fileName}`,
+          content: pureB64
+        })
+      });
+
+      if (!res.ok) {
+        throw new Error('Photo upload HTTP ' + res.status);
+      }
+      photoMemoryCache.set(fileName, dataUrl);
+      return fileName;
+    }
+
+    async function openPhotoViewer(recordId, startIdx = 0) {
       const rec = records.find(r => r.id === recordId);
       if (!rec || !rec.photos || rec.photos.length === 0) return;
       const title = `📷 ${rec.sender} → ${rec.receiver} (${rec.invNo})`;
       const sub = `${rec.date} • ${Number(rec.kg).toFixed(2)} Kg (${rec.boxes} ပုံး) • ${rec.origin} → ${rec.destination}`;
-      openPhotoViewerFromArray(rec.photos, startIdx, title, sub);
+      await openPhotoViewerFromArray(rec.photos, startIdx, title, sub);
     }
 
-    function openPhotoViewerFromArray(photoArr, startIdx = 0, title = '📷 ပစ္စည်းဓာတ်ပုံ', sub = '') {
-      viewerPhotos = photoArr || [];
+    async function openPhotoViewerFromArray(photoArr, startIdx = 0, title = '📷 ပစ္စည်းဓာတ်ပုံ', sub = '') {
+      viewerPhotos = (photoArr || []).filter(Boolean);
       if (!viewerPhotos.length) return;
       viewerIndex = Math.max(0, Math.min(startIdx, viewerPhotos.length - 1));
+      viewerResolvedUrls = new Array(viewerPhotos.length).fill('');
+
       document.getElementById('viewerTitle').textContent = title;
       document.getElementById('viewerSub').textContent = sub;
-      updatePhotoViewerUI();
       document.getElementById('photoViewerModal').classList.remove('hidden');
+
+      await loadCurrentViewerImage();
+      // Preload remaining photos in background while modal is open
+      viewerPhotos.forEach((p, idx) => {
+        if (idx !== viewerIndex) {
+          resolvePhotoSource(p).then(url => {
+            viewerResolvedUrls[idx] = url;
+            renderViewerThumbs();
+          });
+        }
+      });
     }
 
-    function updatePhotoViewerUI() {
-      const src = viewerPhotos[viewerIndex];
-      document.getElementById('viewerMainImg').src = src;
-      document.getElementById('viewerDownloadBtn').href = src;
-      document.getElementById('viewerDownloadBtn').download = `parcel-photo-${viewerIndex + 1}.jpg`;
-
+    async function loadCurrentViewerImage() {
+      const imgEl = document.getElementById('viewerMainImg');
+      const loadingEl = document.getElementById('viewerLoadingText');
       const prevBtn = document.getElementById('viewerPrevBtn');
       const nextBtn = document.getElementById('viewerNextBtn');
+
       if (viewerPhotos.length > 1) {
         prevBtn.classList.remove('hidden');
         nextBtn.classList.remove('hidden');
@@ -1017,27 +1206,48 @@
         nextBtn.classList.add('hidden');
       }
 
+      const rawRef = viewerPhotos[viewerIndex];
+      let resolved = viewerResolvedUrls[viewerIndex];
+      if (!resolved) {
+        imgEl.classList.add('hidden');
+        loadingEl.classList.remove('hidden');
+        resolved = await resolvePhotoSource(rawRef);
+        viewerResolvedUrls[viewerIndex] = resolved;
+      }
+
+      loadingEl.classList.add('hidden');
+      imgEl.classList.remove('hidden');
+      imgEl.src = resolved || '';
+      document.getElementById('viewerDownloadBtn').href = resolved || '#';
+      document.getElementById('viewerDownloadBtn').download = `parcel-photo-${viewerIndex + 1}.jpg`;
+      renderViewerThumbs();
+    }
+
+    function renderViewerThumbs() {
       const thumbsRow = document.getElementById('viewerThumbsRow');
       if (viewerPhotos.length > 1) {
-        thumbsRow.innerHTML = viewerPhotos.map((p, i) => `
-          <button onclick="jumpPhotoViewer(${i})" class="w-14 h-14 rounded-xl overflow-hidden border-2 ${i === viewerIndex ? 'border-amber-400 scale-105' : 'border-slate-600 opacity-65'} transition">
-            <img src="${p}" class="w-full h-full object-cover" />
-          </button>
-        `).join('');
+        thumbsRow.innerHTML = viewerPhotos.map((p, i) => {
+          const thumbSrc = viewerResolvedUrls[i] || (String(p).startsWith('data:') ? p : '');
+          return `
+            <button onclick="jumpPhotoViewer(${i})" class="w-14 h-14 rounded-xl overflow-hidden border-2 flex items-center justify-center bg-slate-800 ${i === viewerIndex ? 'border-amber-400 scale-105' : 'border-slate-600 opacity-65'} transition">
+              ${thumbSrc ? `<img src="${thumbSrc}" class="w-full h-full object-cover" />` : `<span class="text-[10px] text-slate-300">#${i + 1}</span>`}
+            </button>
+          `;
+        }).join('');
       } else {
         thumbsRow.innerHTML = '';
       }
     }
 
-    function stepPhotoViewer(delta) {
+    async function stepPhotoViewer(delta) {
       if (viewerPhotos.length <= 1) return;
       viewerIndex = (viewerIndex + delta + viewerPhotos.length) % viewerPhotos.length;
-      updatePhotoViewerUI();
+      await loadCurrentViewerImage();
     }
 
-    function jumpPhotoViewer(idx) {
+    async function jumpPhotoViewer(idx) {
       viewerIndex = idx;
-      updatePhotoViewerUI();
+      await loadCurrentViewerImage();
     }
 
     function closePhotoViewer() {
@@ -1098,7 +1308,7 @@
       try {
         localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify(records));
       } catch (storageErr) {
-        alert('⚠️ Browser Memory ပြည့်လုနီးပါပြီ — History ထဲက စာရင်းဟောင်း/ပုံဟောင်းတချို့ကို CSV / PDF Backup ထုတ်ပြီး ရှင်းပေးပါ။');
+        alert('⚠️ Browser Memory ပြည့်လုနီးပါပြီ — History ထဲက စာရင်းဟောင်းတချို့ကို CSV / PDF Backup ထုတ်ပြီး ရှင်းပေးပါ။');
       }
       const cfg = getCfg();
       if (!cfg.user || !cfg.repo || !cfg.token) {
@@ -1313,7 +1523,11 @@
       renderKgBreakRows(breakList);
       document.getElementById('fKg').value = isDuplicate ? 0 : (rec.kg || 0);
 
-      modalPhotos = isDuplicate ? [] : [...(rec.photos || [])];
+      modalPhotos = isDuplicate ? [] : (rec.photos || []).map(p => ({
+        dataUrl: String(p).startsWith('data:image/') ? p : '',
+        existingPath: String(p).startsWith('data:image/') ? '' : p,
+        isNew: false
+      }));
       renderModalPhotoPreviews();
       document.getElementById('photoCompressStatus').classList.add('hidden');
 
@@ -1332,7 +1546,13 @@
       document.getElementById('fDeliPayDate').value = rec.deliPayDate || '';
 
       document.getElementById('fInsured').checked = !!rec.insured;
+      document.getElementById('fInsCurrency').value = rec.insCurrency || 'GBP';
+      document.getElementById('fInsAmount').value = isDuplicate ? 0 : (rec.insAmount || 0);
+
       document.getElementById('fDiscount').checked = !!rec.discount;
+      document.getElementById('fDiscCurrency').value = rec.discCurrency || 'GBP';
+      document.getElementById('fDiscAmount').value = isDuplicate ? 0 : (rec.discAmount || 0);
+
       document.getElementById('fNote').value = rec.note || '';
     }
 
@@ -1379,7 +1599,13 @@
         document.getElementById('fDeliPayDate').value = '';
 
         document.getElementById('fInsured').checked = false;
+        document.getElementById('fInsCurrency').value = 'GBP';
+        document.getElementById('fInsAmount').value = 0;
+
         document.getElementById('fDiscount').checked = false;
+        document.getElementById('fDiscCurrency').value = 'GBP';
+        document.getElementById('fDiscAmount').value = 0;
+
         document.getElementById('fNote').value = '';
       }
 
@@ -1387,6 +1613,8 @@
       toggleLocalDeliverySection();
       toggleKgCurrencyFields();
       toggleDeliCurrencyFields();
+      toggleInsuredAmountBox();
+      toggleDiscountAmountBox();
       document.getElementById('entryModal').classList.remove('hidden');
     }
 
@@ -1406,106 +1634,147 @@
         return;
       }
 
-      const originSel = document.getElementById('fOriginSelect').value;
-      const origin = originSel === 'Other'
-        ? (document.getElementById('fOriginCustom').value.trim() || 'Other')
-        : 'Myanmar';
+      const saveBtn = document.getElementById('saveEntryBtn');
+      saveBtn.disabled = true;
+      saveBtn.textContent = '⏳ သိမ်းနေသည်...';
 
-      const destSel = document.getElementById('fDestSelect').value;
-      const destination = destSel === 'Other'
-        ? (document.getElementById('fDestCustom').value.trim() || 'Other')
-        : 'UK';
-      const destUk = isUkDestination(null, destination);
-      const destType = destUk ? 'UK' : 'Worldwide';
+      try {
+        const originSel = document.getElementById('fOriginSelect').value;
+        const origin = originSel === 'Other'
+          ? (document.getElementById('fOriginCustom').value.trim() || 'Other')
+          : 'Myanmar';
 
-      const rawBreakRows = collectKgBreakRowsFromDom();
-      let kgBreakdowns = rawBreakRows;
-      let kgNum = 0;
-      if (rawBreakRows.length > 1) {
-        kgNum = rawBreakRows.reduce((s, x) => s + (parseFloat(x.kg) || 0), 0);
-      } else {
-        kgNum = Math.max(0, parseFloat(document.getElementById('fKg').value) || 0);
-        kgBreakdowns = [{ category: rawBreakRows[0] ? rawBreakRows[0].category : 'Standard', kg: kgNum }];
+        const destSel = document.getElementById('fDestSelect').value;
+        const destination = destSel === 'Other'
+          ? (document.getElementById('fDestCustom').value.trim() || 'Other')
+          : 'UK';
+        const destUk = isUkDestination(null, destination);
+        const destType = destUk ? 'UK' : 'Worldwide';
+
+        const rawBreakRows = collectKgBreakRowsFromDom();
+        let kgBreakdowns = rawBreakRows;
+        let kgNum = 0;
+        if (rawBreakRows.length > 1) {
+          kgNum = rawBreakRows.reduce((s, x) => s + (parseFloat(x.kg) || 0), 0);
+        } else {
+          kgNum = Math.max(0, parseFloat(document.getElementById('fKg').value) || 0);
+          kgBreakdowns = [{ category: rawBreakRows[0] ? rawBreakRows[0].category : 'Standard', kg: kgNum }];
+        }
+        const cargoType = kgBreakdowns[0] ? kgBreakdowns[0].category : 'Standard';
+
+        const kgPayStatus = document.getElementById('fKgPayStatus').value;
+        const kgCurrency = document.getElementById('fKgCurrency').value;
+        const kgGbpVal = kgCurrency === 'GBP' ? Math.max(0, parseFloat(document.getElementById('fKgGbp').value) || 0) : 0;
+        const kgMmkVal = kgCurrency === 'MMK' ? Math.max(0, parseFloat(document.getElementById('fKgMmk').value) || 0) : 0;
+        const rateVal = kgCurrency === 'MMK' ? Math.max(0, parseFloat(document.getElementById('fRate').value) || 0) : 0;
+
+        const deliStatus = destUk ? document.getElementById('fDeliStatus').value : 'none';
+        const hasDeliAmt = destUk && ['pay_uk', 'paid_mm', 'paid_uk'].includes(deliStatus);
+        const deliCurrency = document.getElementById('fDeliCurrency').value;
+        const deliGbpVal = (hasDeliAmt && deliCurrency === 'GBP') ? Math.max(0, parseFloat(document.getElementById('fDeliGbp').value) || 0) : 0;
+        const deliMmkVal = (hasDeliAmt && deliCurrency === 'MMK') ? Math.max(0, parseFloat(document.getElementById('fDeliMmk').value) || 0) : 0;
+        const deliRateVal = (hasDeliAmt && deliCurrency === 'MMK') ? Math.max(0, parseFloat(document.getElementById('fDeliRate').value) || 0) : 0;
+
+        const insured = document.getElementById('fInsured').checked;
+        const insCurrency = document.getElementById('fInsCurrency').value === 'MMK' ? 'MMK' : 'GBP';
+        const insAmount = insured ? Math.max(0, parseFloat(document.getElementById('fInsAmount').value) || 0) : 0;
+
+        const discount = document.getElementById('fDiscount').checked;
+        const discCurrency = document.getElementById('fDiscCurrency').value === 'MMK' ? 'MMK' : 'GBP';
+        const discAmount = discount ? Math.max(0, parseFloat(document.getElementById('fDiscAmount').value) || 0) : 0;
+
+        const warnings = [];
+        if (kgNum === 0) warnings.push('• Verified KG က 0 ဖြစ်နေပါသည်');
+        if (['paid_mm', 'paid_uk'].includes(kgPayStatus) && kgGbpVal === 0 && kgMmkVal === 0) {
+          warnings.push('• KG Fee ကို ရှင်းပြီး ရွေးထားသော်လည်း ငွေပမာဏ 0 ဖြစ်နေပါသည်');
+        }
+        if (kgCurrency === 'MMK' && rateVal === 0) {
+          warnings.push('• KG Fee အတွက် Rate (1£ = ? Ks) 0 ဖြစ်နေပါသည်');
+        }
+        if (destUk && ['paid_mm', 'paid_uk'].includes(deliStatus) && deliGbpVal === 0 && deliMmkVal === 0) {
+          warnings.push('• Local Delivery ကို ရှင်းပြီး ရွေးထားသော်လည်း ငွေပမာဏ 0 ဖြစ်နေပါသည်');
+        }
+
+        if (warnings.length > 0) {
+          const proceed = confirm('⚠️ သတိပြုရန် အချက်များ တွေ့ရှိပါသည်:\n\n' + warnings.join('\n') + '\n\nဒီအတိုင်း ဆက်သိမ်းမလား?');
+          if (!proceed) {
+            saveBtn.disabled = false;
+            saveBtn.textContent = '✅ သိမ်းမည်';
+            return;
+          }
+        }
+
+        const editId = document.getElementById('editId').value;
+        const recordId = editId || ('rec_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6));
+
+        const finalPhotoRefs = [];
+        for (let i = 0; i < modalPhotos.length; i++) {
+          const item = modalPhotos[i];
+          if (item.isNew && item.dataUrl) {
+            const savedPath = await uploadNewPhotoToGitHubFolder(item.dataUrl, recordId, i);
+            finalPhotoRefs.push(savedPath);
+          } else if (item.existingPath) {
+            finalPhotoRefs.push(item.existingPath);
+          } else if (item.dataUrl) {
+            const savedPath = await uploadNewPhotoToGitHubFolder(item.dataUrl, recordId, i);
+            finalPhotoRefs.push(savedPath);
+          }
+        }
+
+        const payload = {
+          invNo: document.getElementById('fInvNo').value.trim() || '-',
+          date: document.getElementById('fDate').value.trim() || '-',
+          cargoType,
+          kgBreakdowns,
+          origin,
+          destType,
+          destination,
+          sender: sender || '-',
+          senderPhone: document.getElementById('fSenderPhone').value.trim(),
+          receiver: receiver || '-',
+          receiverPhone: document.getElementById('fReceiverPhone').value.trim(),
+          boxes: Math.max(1, parseInt(document.getElementById('fBoxes').value, 10) || 1),
+          kg: kgNum,
+          photos: finalPhotoRefs,
+          kgPayStatus,
+          kgCurrency,
+          kgGbp: kgGbpVal,
+          kgMmk: kgMmkVal,
+          rate: rateVal,
+          kgPayDate: document.getElementById('fKgPayDate').value.trim(),
+          deliStatus,
+          deliCurrency,
+          deliGbp: deliGbpVal,
+          deliMmk: deliMmkVal,
+          deliRate: deliRateVal,
+          deliPayDate: hasDeliAmt ? document.getElementById('fDeliPayDate').value.trim() : '',
+          insured,
+          insCurrency,
+          insAmount,
+          discount,
+          discCurrency,
+          discAmount,
+          note: document.getElementById('fNote').value.trim()
+        };
+
+        if (editId) {
+          records = records.map(r => r.id === editId ? { ...r, ...payload } : r);
+        } else {
+          records.unshift({
+            id: recordId,
+            ...payload,
+            ready: false,
+            dispatched: false,
+            archived: false
+          });
+        }
+
+        closeEntryModal();
+        await persistRecords();
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.textContent = '✅ သိမ်းမည်';
       }
-      const cargoType = kgBreakdowns[0] ? kgBreakdowns[0].category : 'Standard';
-
-      const kgPayStatus = document.getElementById('fKgPayStatus').value;
-      const kgCurrency = document.getElementById('fKgCurrency').value;
-      const kgGbpVal = kgCurrency === 'GBP' ? Math.max(0, parseFloat(document.getElementById('fKgGbp').value) || 0) : 0;
-      const kgMmkVal = kgCurrency === 'MMK' ? Math.max(0, parseFloat(document.getElementById('fKgMmk').value) || 0) : 0;
-      const rateVal = kgCurrency === 'MMK' ? Math.max(0, parseFloat(document.getElementById('fRate').value) || 0) : 0;
-
-      const deliStatus = destUk ? document.getElementById('fDeliStatus').value : 'none';
-      const hasDeliAmt = destUk && ['pay_uk', 'paid_mm', 'paid_uk'].includes(deliStatus);
-      const deliCurrency = document.getElementById('fDeliCurrency').value;
-      const deliGbpVal = (hasDeliAmt && deliCurrency === 'GBP') ? Math.max(0, parseFloat(document.getElementById('fDeliGbp').value) || 0) : 0;
-      const deliMmkVal = (hasDeliAmt && deliCurrency === 'MMK') ? Math.max(0, parseFloat(document.getElementById('fDeliMmk').value) || 0) : 0;
-      const deliRateVal = (hasDeliAmt && deliCurrency === 'MMK') ? Math.max(0, parseFloat(document.getElementById('fDeliRate').value) || 0) : 0;
-
-      const warnings = [];
-      if (kgNum === 0) warnings.push('• Verified KG က 0 ဖြစ်နေပါသည်');
-      if (['paid_mm', 'paid_uk'].includes(kgPayStatus) && kgGbpVal === 0 && kgMmkVal === 0) {
-        warnings.push('• KG Fee ကို ရှင်းပြီး ရွေးထားသော်လည်း ငွေပမာဏ 0 ဖြစ်နေပါသည်');
-      }
-      if (kgCurrency === 'MMK' && rateVal === 0) {
-        warnings.push('• KG Fee အတွက် Rate (1£ = ? Ks) 0 ဖြစ်နေပါသည်');
-      }
-      if (destUk && ['paid_mm', 'paid_uk'].includes(deliStatus) && deliGbpVal === 0 && deliMmkVal === 0) {
-        warnings.push('• Local Delivery ကို ရှင်းပြီး ရွေးထားသော်လည်း ငွေပမာဏ 0 ဖြစ်နေပါသည်');
-      }
-
-      if (warnings.length > 0) {
-        const proceed = confirm('⚠️ သတိပြုရန် အချက်များ တွေ့ရှိပါသည်:\n\n' + warnings.join('\n') + '\n\nဒီအတိုင်း ဆက်သိမ်းမလား?');
-        if (!proceed) return;
-      }
-
-      const editId = document.getElementById('editId').value;
-      const payload = {
-        invNo: document.getElementById('fInvNo').value.trim() || '-',
-        date: document.getElementById('fDate').value.trim() || '-',
-        cargoType,
-        kgBreakdowns,
-        origin,
-        destType,
-        destination,
-        sender: sender || '-',
-        senderPhone: document.getElementById('fSenderPhone').value.trim(),
-        receiver: receiver || '-',
-        receiverPhone: document.getElementById('fReceiverPhone').value.trim(),
-        boxes: Math.max(1, parseInt(document.getElementById('fBoxes').value, 10) || 1),
-        kg: kgNum,
-        photos: [...modalPhotos],
-        kgPayStatus,
-        kgCurrency,
-        kgGbp: kgGbpVal,
-        kgMmk: kgMmkVal,
-        rate: rateVal,
-        kgPayDate: document.getElementById('fKgPayDate').value.trim(),
-        deliStatus,
-        deliCurrency,
-        deliGbp: deliGbpVal,
-        deliMmk: deliMmkVal,
-        deliRate: deliRateVal,
-        deliPayDate: hasDeliAmt ? document.getElementById('fDeliPayDate').value.trim() : '',
-        insured: document.getElementById('fInsured').checked,
-        discount: document.getElementById('fDiscount').checked,
-        note: document.getElementById('fNote').value.trim()
-      };
-
-      if (editId) {
-        records = records.map(r => r.id === editId ? { ...r, ...payload } : r);
-      } else {
-        records.unshift({
-          id: 'rec_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
-          ...payload,
-          ready: false,
-          dispatched: false,
-          archived: false
-        });
-      }
-
-      closeEntryModal();
-      await persistRecords();
     }
 
     async function toggleFlag(id, field) {
@@ -1641,6 +1910,18 @@
       return r.deliGbp ? '£' + Number(r.deliGbp).toFixed(2) : '£0.00';
     }
 
+    function formatInsuredStr(r) {
+      if (!r.insured) return '';
+      const amtStr = r.insAmount > 0 ? ` (${formatFeeAmount(r.insCurrency, r.insAmount)})` : '';
+      return `🛡️ Insured${amtStr}`;
+    }
+
+    function formatDiscountStr(r) {
+      if (!r.discount) return '';
+      const amtStr = r.discAmount > 0 ? ` (-${formatFeeAmount(r.discCurrency, r.discAmount)})` : '';
+      return `🏷️ Discount${amtStr}`;
+    }
+
     function recordHasCategory(r, cat) {
       if (Array.isArray(r.kgBreakdowns) && r.kgBreakdowns.length > 0) {
         return r.kgBreakdowns.some(b => normalizeCategoryName(b.category) === cat);
@@ -1750,7 +2031,10 @@
         deliLine = `\n   🏢 Pickup: ရုံးလာထုတ်မည်`;
       }
 
-      return `${line1}\n${line2}${catBreakdownLine}${phoneLine}\n${kgLine}${deliLine}`;
+      const extraParts = [formatInsuredStr(r), formatDiscountStr(r)].filter(Boolean);
+      const extraLine = extraParts.length ? `\n   ${extraParts.join(' | ')}` : '';
+
+      return `${line1}\n${line2}${catBreakdownLine}${phoneLine}\n${kgLine}${deliLine}${extraLine}`;
     }
 
     function generateViberReportString(list, headerTitle, selectedScope = 'unsent_all') {
@@ -1833,6 +2117,10 @@
       const deliAmt = formatDeliAmountStr(r);
       const catSummaryStr = formatKgBreakdownSummary(r);
 
+      const insStr = formatInsuredStr(r);
+      const discStr = formatDiscountStr(r);
+      const extras = [insStr, discStr].filter(Boolean).join(' • ') || '—';
+
       const kgPaid = ['paid_mm', 'paid_uk'].includes(r.kgPayStatus);
       const deliPaid = ['paid_mm', 'paid_uk'].includes(r.deliStatus);
 
@@ -1846,11 +2134,6 @@
       } else {
         settlementSummary = `⚠️ ကျန်ရှိငွေ: KG ဖိုး (${kgAmt})${hasDeli ? ` နှင့် Local Delivery (${deliAmt})` : ''} ရှင်းရန် ကျန်ပါသည်`;
       }
-
-      const extras = [
-        r.insured ? 'Insured' : '',
-        r.discount ? 'Discount' : ''
-      ].filter(Boolean).join(', ') || '—';
 
       const lines = [
         `📦 MM → UK & Worldwide Payment Summary`,
@@ -1869,19 +2152,16 @@
         ...(hasDeli ? [`   Amount: ${deliAmt}${r.deliPayDate ? ' | Date: ' + r.deliPayDate : ''}`] : []),
         ``,
         `${settlementSummary}`,
-        `🏷️ Extra: ${extras}`,
+        `🏷️ Ins / Disc: ${extras}`,
         ...(r.note ? [`📝 Note: ${r.note}`] : [])
       ];
       activeSlipPlainText = lines.join('\n');
 
       const photosHtml = (r.photos && r.photos.length > 0)
         ? `<div class="pt-1">
-            <p class="text-[11px] font-bold text-indigo-900 mb-1.5">📷 ပစ္စည်းဓာတ်ပုံများ (နှိပ်၍ အကျယ်ချဲ့ ကြည့်နိုင်သည်):</p>
-            <div class="flex flex-wrap gap-2">
-              ${r.photos.map((src, i) => `
-                <img src="${src}" onclick="openPhotoViewer('${r.id}', ${i})" class="w-16 h-16 object-cover rounded-xl border border-indigo-300 cursor-pointer hover:opacity-90 shadow-xs" />
-              `).join('')}
-            </div>
+            <button onclick="openPhotoViewer('${r.id}', 0)" class="inline-flex items-center gap-1.5 text-xs font-bold bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded-xl shadow-xs">
+              📷 ပစ္စည်းဓာတ်ပုံ ကြည့်ရန် (${r.photos.length} ပုံ)
+            </button>
           </div>`
         : '';
 
@@ -1941,7 +2221,7 @@
         ${photosHtml}
 
         <div class="text-[11px] text-slate-600 space-y-0.5">
-          <div><span class="font-semibold">🏷️ Extra:</span> ${escapeHtml(extras)}</div>
+          <div><span class="font-semibold">🏷️ Ins / Disc:</span> <b>${escapeHtml(extras)}</b></div>
           <div><span class="font-semibold">📝 Note:</span> ${escapeHtml(r.note || '—')}</div>
         </div>
       `;
@@ -2102,9 +2382,11 @@
             </button>`
           : '';
 
+        const insText = formatInsuredStr(r);
+        const discText = formatDiscountStr(r);
         const badgesHtml = [
-          r.insured ? '<span class="inline-block text-[10px] font-bold bg-sky-100 text-sky-900 border border-sky-200 px-1.5 py-0.5 rounded-md">🛡️ Insured</span>' : '',
-          r.discount ? '<span class="inline-block text-[10px] font-bold bg-emerald-100 text-emerald-900 border border-emerald-200 px-1.5 py-0.5 rounded-md">🏷️ Discount</span>' : ''
+          insText ? `<span class="inline-block text-[10px] font-bold bg-sky-100 text-sky-900 border border-sky-200 px-1.5 py-0.5 rounded-md">${escapeHtml(insText)}</span>` : '',
+          discText ? `<span class="inline-block text-[10px] font-bold bg-emerald-100 text-emerald-900 border border-emerald-200 px-1.5 py-0.5 rounded-md">${escapeHtml(discText)}</span>` : ''
         ].filter(Boolean).join(' ');
 
         const senderPhoneHtml = r.senderPhone
@@ -2157,9 +2439,9 @@
             <span class="inline-block text-[10.5px] font-bold border px-2 py-0.5 rounded-lg ${deliBadge.cls}">${deliBadge.label}</span>
             ${deliDetailHtml}
           </td>
-          <td class="py-2.5 px-2.5 max-w-[220px]">
+          <td class="py-2.5 px-2.5 max-w-[230px]">
             ${photoBtnHtml ? `<div>${photoBtnHtml}</div>` : ''}
-            ${badgesHtml ? `<div class="mb-1">${badgesHtml}</div>` : ''}
+            ${badgesHtml ? `<div class="mb-1 space-y-0.5">${badgesHtml}</div>` : ''}
             <div class="text-[11px] text-slate-600 leading-snug break-words">${escapeHtml(r.note || '—')}</div>
           </td>
           <td class="py-2.5 px-2.5 text-center whitespace-nowrap">
@@ -2207,18 +2489,21 @@
       const totalBoxes = list.reduce((s, r) => s + (parseInt(r.boxes, 10) || 0), 0);
       const nowStr = new Date().toLocaleDateString('en-GB');
 
-      const rowsHtml = list.map((r, i) => `
-        <tr>
-          <td>${i + 1}</td>
-          <td><b>${escapeHtml(r.invNo)}</b><br/><span style="color:#64748b">${escapeHtml(r.date)}</span></td>
-          <td>${escapeHtml(r.origin)} → ${escapeHtml(r.destination)}</td>
-          <td>📤 ${escapeHtml(r.sender)}${r.senderPhone ? '<br/><span style="color:#475569">📱 ' + escapeHtml(r.senderPhone) + '</span>' : ''}<br/>📥 <b>${escapeHtml(r.receiver)}</b>${r.receiverPhone ? '<br/><span style="color:#1e1b4b">🇬🇧 ' + escapeHtml(r.receiverPhone) + '</span>' : ''}</td>
-          <td>${r.boxes} ပုံး • <b>${Number(r.kg).toFixed(2)} kg</b><br/><span style="color:#0f766e">${escapeHtml(formatKgBreakdownSummary(r))}</span></td>
-          <td>${escapeHtml(getKgPayBadge(r).label)}<br/><b>${escapeHtml(formatKgAmountStr(r))}</b></td>
-          <td>${escapeHtml(getDeliBadge(r).label)}<br/><b>${escapeHtml(formatDeliAmountStr(r))}</b></td>
-          <td>${escapeHtml(r.note || '—')}</td>
-        </tr>
-      `).join('');
+      const rowsHtml = list.map((r, i) => {
+        const extraStr = [formatInsuredStr(r), formatDiscountStr(r)].filter(Boolean).join(' • ');
+        return `
+          <tr>
+            <td>${i + 1}</td>
+            <td><b>${escapeHtml(r.invNo)}</b><br/><span style="color:#64748b">${escapeHtml(r.date)}</span></td>
+            <td>${escapeHtml(r.origin)} → ${escapeHtml(r.destination)}</td>
+            <td>📤 ${escapeHtml(r.sender)}${r.senderPhone ? '<br/><span style="color:#475569">📱 ' + escapeHtml(r.senderPhone) + '</span>' : ''}<br/>📥 <b>${escapeHtml(r.receiver)}</b>${r.receiverPhone ? '<br/><span style="color:#1e1b4b">🇬🇧 ' + escapeHtml(r.receiverPhone) + '</span>' : ''}</td>
+            <td>${r.boxes} ပုံး • <b>${Number(r.kg).toFixed(2)} kg</b><br/><span style="color:#0f766e">${escapeHtml(formatKgBreakdownSummary(r))}</span></td>
+            <td>${escapeHtml(getKgPayBadge(r).label)}<br/><b>${escapeHtml(formatKgAmountStr(r))}</b></td>
+            <td>${escapeHtml(getDeliBadge(r).label)}<br/><b>${escapeHtml(formatDeliAmountStr(r))}</b></td>
+            <td>${extraStr ? '<b>' + escapeHtml(extraStr) + '</b><br/>' : ''}${escapeHtml(r.note || '—')}</td>
+          </tr>
+        `;
+      }).join('');
 
       const printWin = window.open('', '_blank');
       printWin.document.write(`
@@ -2254,7 +2539,7 @@
                 <th>Boxes / KG &amp; Categories</th>
                 <th>KG Fee</th>
                 <th>Local Delivery</th>
-                <th>Note</th>
+                <th>Ins/Disc &amp; Note</th>
               </tr>
             </thead>
             <tbody>${rowsHtml}</tbody>
@@ -2272,7 +2557,8 @@
         'Sender', 'SenderPhone', 'Receiver', 'ReceiverPhone',
         'Boxes', 'KG', 'PhotoCount', 'KgPayStatus', 'KgCurrency', 'KgGBP', 'KgMMK', 'Rate', 'KgPayDate',
         'DeliStatus', 'DeliCurrency', 'DeliGBP', 'DeliMMK', 'DeliRate', 'DeliPayDate',
-        'Insured', 'Discount', 'Ready', 'Dispatched', 'Note'
+        'Insured', 'InsCurrency', 'InsAmount', 'Discount', 'DiscCurrency', 'DiscAmount',
+        'Ready', 'Dispatched', 'Note'
       ];
       const rows = records.map(r => [
         r.archived ? 'History' : 'Active',
@@ -2280,8 +2566,8 @@
         r.sender, r.senderPhone, r.receiver, r.receiverPhone,
         r.boxes, r.kg, (r.photos || []).length, r.kgPayStatus, r.kgCurrency, r.kgGbp, r.kgMmk, r.rate, r.kgPayDate,
         r.deliStatus, r.deliCurrency, r.deliGbp, r.deliMmk, r.deliRate, r.deliPayDate,
-        r.insured ? 'Yes' : 'No',
-        r.discount ? 'Yes' : 'No',
+        r.insured ? 'Yes' : 'No', r.insCurrency, r.insAmount,
+        r.discount ? 'Yes' : 'No', r.discCurrency, r.discAmount,
         r.ready ? 'Yes' : 'No',
         r.dispatched ? 'Yes' : 'No',
         r.note
