@@ -56,7 +56,7 @@
               MM → UK &amp; Worldwide Approval &amp; Payment Dashboard
             </h1>
             <span class="hidden md:inline-flex items-center gap-1 text-[10.5px] bg-amber-400/15 text-amber-300 border border-amber-400/30 px-2 py-0.5 rounded-full font-semibold">
-              ✨ Route, Split Payment, Photos &amp; Viber Report
+              ✨ Multi-Category KG, Phones, Photos &amp; Viber Report
             </span>
           </div>
           <p id="syncStatus" class="text-[11px] text-amber-300 font-medium truncate mt-0.5">
@@ -99,7 +99,7 @@
     <div class="glass-card rounded-2xl px-4 py-2.5 border border-amber-200/80 bg-gradient-to-r from-amber-50/75 via-white to-emerald-50/65 flex items-center gap-2.5 shadow-xs">
       <span class="text-lg shrink-0">💛</span>
       <p class="text-xs text-slate-700 leading-relaxed">
-        နေ့စဉ် မှတ်တမ်းတွေကို ဂရုစိုက် ဖြည့်သွင်းပေးပါနော် — Sender / Receiver နာမည်၊ ဖုန်းနံပါတ်၊ နိုင်ငံ၊ Standard/Risk၊ KG နဲ့ ငွေရှင်းမှုအခြေအနေ (MM / UK) တစ်ချက်ပြန်စစ်ပြီး မှန်ကန်စွာ ထည့်သွင်းပေးပါ။
+        နေ့စဉ် မှတ်တမ်းတွေကို ဂရုစိုက် ဖြည့်သွင်းပေးပါနော် — Sender / Receiver နာမည်၊ ဖုန်းနံပါတ်၊ နိုင်ငံ၊ Category နဲ့ KG ခွဲခြားမှု၊ ဓာတ်ပုံ နဲ့ ငွေရှင်းမှုအခြေအနေ (MM / UK) တစ်ချက်ပြန်စစ်ပြီး မှန်ကန်စွာ ထည့်သွင်းပေးပါ။
       </p>
     </div>
 
@@ -108,22 +108,22 @@
       <div class="glass-card rounded-2xl p-3 border border-slate-200/80 shadow-xs">
         <p class="text-[11px] text-slate-500 font-medium">Active စာရင်း</p>
         <p id="sumActiveCount" class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-0.5">0</p>
-        <p id="sumRiskCount" class="text-[10.5px] text-rose-700 font-semibold mt-0.5">Standard: 0 • Risk: 0</p>
+        <p id="sumRiskCount" class="text-[10.5px] text-rose-700 font-semibold mt-0.5 truncate">Std: 0 • Risk: 0</p>
       </div>
       <div class="glass-card rounded-2xl p-3 border border-sky-200/80 shadow-xs">
         <p class="text-[11px] text-slate-500 font-medium">⚖️ စုစုပေါင်း KG (Active)</p>
         <p id="sumTotalKg" class="text-xl sm:text-2xl font-extrabold text-sky-700 mt-0.5">0.00 kg</p>
-        <p id="sumTotalBoxes" class="text-[10.5px] text-slate-500 font-medium mt-0.5">စုစုပေါင်း 0 ပုံး</p>
+        <p id="sumTotalBoxes" class="text-[10.5px] text-slate-500 font-medium mt-0.5 truncate">စုစုပေါင်း 0 ပုံး</p>
       </div>
       <div class="glass-card rounded-2xl p-3 border border-emerald-200/80 shadow-xs">
         <p class="text-[11px] text-slate-500 font-medium">🇲🇲 KG Fee Paid in MM</p>
         <p id="sumKgPaidMm" class="text-xl sm:text-2xl font-extrabold text-emerald-700 mt-0.5">0</p>
-        <p id="sumKgPaidMmAmt" class="text-[10.5px] text-emerald-800 font-semibold mt-0.5 truncate">£0 / 0 Ks</p>
+        <p id="sumKgPaidMmAmt" class="text-[10.5px] text-emerald-800 font-semibold mt-0.5 truncate">£0 • 0 Ks</p>
       </div>
       <div class="glass-card rounded-2xl p-3 border border-indigo-200/80 shadow-xs">
         <p class="text-[11px] text-slate-500 font-medium">🇬🇧 KG Fee Paid in UK</p>
         <p id="sumKgPaidUk" class="text-xl sm:text-2xl font-extrabold text-indigo-700 mt-0.5">0</p>
-        <p id="sumKgPaidUkAmt" class="text-[10.5px] text-indigo-800 font-semibold mt-0.5 truncate">£0 / 0 Ks</p>
+        <p id="sumKgPaidUkAmt" class="text-[10.5px] text-indigo-800 font-semibold mt-0.5 truncate">£0 • 0 Ks</p>
       </div>
       <div class="glass-card rounded-2xl p-3 border border-amber-200/80 shadow-xs">
         <p class="text-[11px] text-slate-500 font-medium">🚚 Local Deli Pay in UK</p>
@@ -133,7 +133,7 @@
       <div class="glass-card rounded-2xl p-3 border border-purple-200/80 shadow-xs">
         <p class="text-[11px] text-slate-500 font-medium">🗂️ History မှတ်တမ်း</p>
         <p id="sumHistoryCount" class="text-xl sm:text-2xl font-extrabold text-purple-700 mt-0.5">0</p>
-        <p id="sumUnpaidCount" class="text-[10.5px] text-rose-700 font-semibold mt-0.5">KG Unpaid/Arrival: 0</p>
+        <p id="sumUnpaidCount" class="text-[10.5px] text-rose-700 font-semibold mt-0.5 truncate">KG Unpaid/Arrival: 0</p>
       </div>
     </div>
 
@@ -170,7 +170,7 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 pt-2.5 border-t border-slate-100">
         <div class="sm:col-span-3">
-          <input id="searchInput" oninput="renderTable()" type="text" placeholder="🔍 Inv / Name / ဖုန်း / နိုင်ငံ..." class="w-full h-9 border border-slate-300 rounded-xl px-3 text-xs sm:text-sm focus:outline-none focus:border-indigo-500 bg-white" />
+          <input id="searchInput" oninput="renderTable()" type="text" placeholder="🔍 Inv / Name / ဖုန်း / Category / နိုင်ငံ..." class="w-full h-9 border border-slate-300 rounded-xl px-3 text-xs sm:text-sm focus:outline-none focus:border-indigo-500 bg-white" />
         </div>
         <div class="sm:col-span-2">
           <select id="destFilter" onchange="renderTable()" class="w-full h-9 border border-slate-300 rounded-xl px-2.5 text-xs sm:text-sm focus:outline-none focus:border-indigo-500 bg-white">
@@ -181,9 +181,13 @@
         </div>
         <div class="sm:col-span-2">
           <select id="cargoTypeFilter" onchange="renderTable()" class="w-full h-9 border border-slate-300 rounded-xl px-2.5 text-xs sm:text-sm focus:outline-none focus:border-indigo-500 bg-white">
-            <option value="all">Standard &amp; Risk အားလုံး</option>
-            <option value="Standard">📦 Standard ပဲကြည့်မည်</option>
-            <option value="Risk">⚠️ Risk ပဲကြည့်မည်</option>
+            <option value="all">Category အားလုံး</option>
+            <option value="Standard">📦 Standard</option>
+            <option value="Risk">⚠️ Risk</option>
+            <option value="Gold & Jewelry">💍 Gold &amp; Jewelry</option>
+            <option value="ကုန်ပွ">🎈 ကုန်ပွ</option>
+            <option value="ယွန်းထည်">🏺 ယွန်းထည်</option>
+            <option value="ဗုဒ္ဓရုပ်ပွား / ရှေးဟောင်း">🪷 ဗုဒ္ဓရုပ်ပွား / ရှေးဟောင်း</option>
           </select>
         </div>
         <div class="sm:col-span-3">
@@ -221,7 +225,7 @@
               </th>
               <th class="py-2.5 px-2.5 whitespace-nowrap">Inv / Date / Route</th>
               <th class="py-2.5 px-2.5 whitespace-nowrap">Sender &amp; Receiver (Contacts)</th>
-              <th class="py-2.5 px-2.5 whitespace-nowrap">📦 ပုံး / ⚖️ KG / Type</th>
+              <th class="py-2.5 px-2.5 whitespace-nowrap">📦 ပုံး / ⚖️ KG &amp; Category</th>
               <th class="py-2.5 px-2.5 whitespace-nowrap">💳 KG Freight Fee</th>
               <th class="py-2.5 px-2.5 whitespace-nowrap">🚚 Local Delivery Fee</th>
               <th class="py-2.5 px-2.5 whitespace-nowrap">📷 Photos &amp; Notes</th>
@@ -299,7 +303,7 @@
           <span class="text-2xl">📦</span>
           <div>
             <h2 id="entryModalTitle" class="text-base sm:text-lg font-bold text-slate-900">စာရင်းသစ် ထည့်ရန်</h2>
-            <p class="text-[11px] text-amber-800 font-medium">💡 နိုင်ငံ၊ နာမည်၊ ဖုန်းနံပါတ်၊ Standard/Risk၊ KG၊ ပစ္စည်းဓာတ်ပုံ နဲ့ ငွေရှင်းမှုအခြေအနေ (MM / UK) ကို ဂရုစိုက်ဖြည့်သွင်းပေးပါ။</p>
+            <p class="text-[11px] text-amber-800 font-medium">💡 နိုင်ငံ၊ နာမည်၊ ဖုန်းနံပါတ်၊ Category &amp; KG ခွဲခြားမှု၊ ဓာတ်ပုံ နဲ့ ငွေရှင်းမှုအခြေအနေ (MM / UK) ကို ဂရုစိုက်ဖြည့်သွင်းပေးပါ။</p>
           </div>
         </div>
         <button onclick="closeEntryModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold px-2">✕</button>
@@ -307,7 +311,7 @@
 
       <input type="hidden" id="editId" />
 
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div>
           <label class="block text-xs font-semibold text-slate-700 mb-1">Invoice No.</label>
           <input id="fInvNo" type="text" placeholder="ADF564" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm" />
@@ -315,13 +319,6 @@
         <div>
           <label class="block text-xs font-semibold text-slate-700 mb-1">Date</label>
           <input id="fDate" type="text" placeholder="22.11.2026" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm" />
-        </div>
-        <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">📦 Cargo Type (Standard / Risk)</label>
-          <select id="fCargoType" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm font-bold bg-white">
-            <option value="Standard">📦 Standard (သာမန်ပစ္စည်း)</option>
-            <option value="Risk">⚠️ Risk (အသား / အထူးပစ္စည်း)</option>
-          </select>
         </div>
       </div>
 
@@ -373,14 +370,29 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 mb-1">📦 ပုံးအရေအတွက် (ရုံးစစ်)</label>
-          <input id="fBoxes" type="number" min="1" value="1" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm" />
+      <!-- Boxes & Multi-Category KG Breakdown -->
+      <div class="bg-teal-50/70 p-3.5 rounded-2xl border border-teal-200 space-y-3">
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <div>
+            <p class="text-xs font-extrabold text-teal-950 uppercase">⚖️ ပုံးအရေအတွက် &amp; Category အလိုက် KG ခွဲခြားမှု</p>
+            <p class="text-[10.5px] text-slate-600">Standard, Risk, Gold &amp; Jewelry, ကုန်ပွ, ယွန်းထည်, ဗုဒ္ဓရုပ်ပွား / ရှေးဟောင်း တို့ကို တစ်ခုချင်းစီ သို့မဟုတ် တွဲထည့်နိုင်သည်</p>
+          </div>
+          <button type="button" onclick="addKgBreakRow()" class="bg-teal-700 hover:bg-teal-800 text-white text-xs font-bold px-3 py-1.5 rounded-xl shadow-xs transition">
+            + Category / KG ထပ်ထည့်ရန်
+          </button>
         </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 mb-1">⚖️ Verified KG (ရုံးစစ် KG)</label>
-          <input id="fKg" type="number" step="0.01" min="0" value="0" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm font-bold text-sky-800" />
+
+        <div id="kgBreakRowsList" class="space-y-2"></div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">📦 ပုံးအရေအတွက် (ရုံးစစ်)</label>
+            <input id="fBoxes" type="number" min="1" value="1" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm bg-white" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">⚖️ စုစုပေါင်း KG (အလိုအလျောက်ပေါင်းသည်)</label>
+            <input id="fKg" type="number" step="0.01" min="0" value="0" oninput="syncSingleKgRowIfNeeded()" class="w-full border border-sky-300 rounded-xl px-3 py-2 text-sm font-extrabold text-sky-800 bg-white" />
+          </div>
         </div>
       </div>
 
@@ -612,6 +624,15 @@
     const CFG_KEY = 'mm_uk_ww_gh_cfg_v1';
     const DATA_FILE_PATH = 'data.json';
 
+    const CARGO_CATEGORIES = [
+      'Standard',
+      'Risk',
+      'Gold & Jewelry',
+      'ကုန်ပွ',
+      'ယွန်းထည်',
+      'ဗုဒ္ဓရုပ်ပွား / ရှေးဟောင်း'
+    ];
+
     let currentTab = 'active';
     let selectedHistoryIds = new Set();
     let records = [];
@@ -718,6 +739,17 @@
       return isUkDestination(r.destType, r.destination) && ['pay_uk', 'paid_mm', 'paid_uk'].includes(r.deliStatus);
     }
 
+    function normalizeCategoryName(cat) {
+      const c = String(cat || '').trim();
+      if (CARGO_CATEGORIES.includes(c)) return c;
+      if (c.toLowerCase() === 'risk') return 'Risk';
+      if (c.toLowerCase().includes('gold') || c.toLowerCase().includes('jewelry')) return 'Gold & Jewelry';
+      if (c.includes('ကုန်ပွ')) return 'ကုန်ပွ';
+      if (c.includes('ယွန်း')) return 'ယွန်းထည်';
+      if (c.includes('ဗုဒ္ဓ') || c.includes('ရှေးဟောင်း')) return 'ဗုဒ္ဓရုပ်ပွား / ရှေးဟောင်း';
+      return 'Standard';
+    }
+
     function normalizeRecord(r) {
       const origin = r.origin || 'Myanmar';
       const destination = r.destination || r.locationNote || (r.destType === 'UK' ? 'UK' : 'Worldwide');
@@ -727,7 +759,22 @@
       const deliStatus = destType === 'UK'
         ? (validDeliStatuses.includes(r.deliStatus) ? r.deliStatus : 'none')
         : 'none';
-      const cargoType = (r.cargoType === 'Risk') ? 'Risk' : 'Standard';
+
+      const baseKg = Math.max(0, parseFloat(r.kg) || 0);
+      let kgBreakdowns = [];
+      if (Array.isArray(r.kgBreakdowns) && r.kgBreakdowns.length > 0) {
+        kgBreakdowns = r.kgBreakdowns.map(item => ({
+          category: normalizeCategoryName(item.category),
+          kg: Math.max(0, parseFloat(item.kg) || 0)
+        }));
+      } else {
+        const primaryCat = normalizeCategoryName(r.cargoType);
+        kgBreakdowns = [{ category: primaryCat, kg: baseKg }];
+      }
+
+      const totalFromBreakdowns = kgBreakdowns.reduce((s, item) => s + (parseFloat(item.kg) || 0), 0);
+      const finalKg = totalFromBreakdowns > 0 ? totalFromBreakdowns : baseKg;
+      const cargoType = kgBreakdowns[0] ? kgBreakdowns[0].category : normalizeCategoryName(r.cargoType);
       const photos = Array.isArray(r.photos) ? r.photos.filter(Boolean).slice(0, 3) : [];
 
       return {
@@ -735,6 +782,7 @@
         invNo: r.invNo || '-',
         date: r.date || '-',
         cargoType,
+        kgBreakdowns,
         origin,
         destType,
         destination,
@@ -743,7 +791,7 @@
         receiver: r.receiver || '-',
         receiverPhone: r.receiverPhone || '',
         boxes: Math.max(1, parseInt(r.boxes, 10) || 1),
-        kg: Math.max(0, parseFloat(r.kg) || 0),
+        kg: finalKg,
         photos,
         kgPayStatus: r.kgPayStatus || 'unpaid',
         kgCurrency,
@@ -764,6 +812,96 @@
         archived: !!r.archived,
         note: r.note || ''
       };
+    }
+
+    function getCategoryShortTag(cat) {
+      const map = {
+        'Standard': '📦 Std',
+        'Risk': '⚠️ Risk',
+        'Gold & Jewelry': '💍 Jewelry',
+        'ကုန်ပွ': '🎈 ကုန်ပွ',
+        'ယွန်းထည်': '🏺 ယွန်း',
+        'ဗုဒ္ဓရုပ်ပွား / ရှေးဟောင်း': '🪷 ရှေးဟောင်း'
+      };
+      return map[cat] || `📦 ${cat}`;
+    }
+
+    function formatKgBreakdownSummary(r) {
+      const list = Array.isArray(r.kgBreakdowns) && r.kgBreakdowns.length > 0
+        ? r.kgBreakdowns
+        : [{ category: r.cargoType || 'Standard', kg: parseFloat(r.kg) || 0 }];
+      return list
+        .map(item => `${getCategoryShortTag(item.category)}: ${Number(item.kg || 0).toFixed(2)} kg`)
+        .join(' • ');
+    }
+
+    function renderKgBreakRows(rowsData) {
+      const container = document.getElementById('kgBreakRowsList');
+      const items = (Array.isArray(rowsData) && rowsData.length > 0)
+        ? rowsData
+        : [{ category: 'Standard', kg: 0 }];
+
+      container.innerHTML = items.map((item, idx) => `
+        <div class="flex items-center gap-2 bg-white p-2 rounded-xl border border-teal-200/90">
+          <select class="kg-cat-select flex-1 border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs font-bold bg-white" onchange="recalcTotalKgFromRows()">
+            ${CARGO_CATEGORIES.map(c => `<option value="${escapeHtml(c)}" ${item.category === c ? 'selected' : ''}>${escapeHtml(getCategoryShortTag(c))} — ${escapeHtml(c)}</option>`).join('')}
+          </select>
+          <input type="number" step="0.01" min="0" value="${Number(item.kg || 0)}" oninput="recalcTotalKgFromRows()" placeholder="KG" class="kg-val-input w-28 border border-sky-300 rounded-lg px-2.5 py-1.5 text-xs font-extrabold text-sky-800 bg-sky-50/40" />
+          <span class="text-[11px] font-bold text-slate-500">kg</span>
+          ${items.length > 1
+            ? `<button type="button" onclick="removeKgBreakRow(${idx})" class="text-rose-600 hover:bg-rose-50 font-bold text-xs px-2 py-1 rounded-lg">✕</button>`
+            : ''}
+        </div>
+      `).join('');
+
+      recalcTotalKgFromRows();
+    }
+
+    function collectKgBreakRowsFromDom() {
+      const selects = document.querySelectorAll('#kgBreakRowsList .kg-cat-select');
+      const inputs = document.querySelectorAll('#kgBreakRowsList .kg-val-input');
+      const arr = [];
+      selects.forEach((sel, i) => {
+        const kgVal = Math.max(0, parseFloat(inputs[i] ? inputs[i].value : 0) || 0);
+        arr.push({
+          category: normalizeCategoryName(sel.value),
+          kg: kgVal
+        });
+      });
+      return arr;
+    }
+
+    function addKgBreakRow() {
+      const current = collectKgBreakRowsFromDom();
+      const used = new Set(current.map(x => x.category));
+      const nextCat = CARGO_CATEGORIES.find(c => !used.has(c)) || 'Gold & Jewelry';
+      current.push({ category: nextCat, kg: 0 });
+      renderKgBreakRows(current);
+    }
+
+    function removeKgBreakRow(idx) {
+      const current = collectKgBreakRowsFromDom();
+      if (current.length <= 1) return;
+      current.splice(idx, 1);
+      renderKgBreakRows(current);
+    }
+
+    function recalcTotalKgFromRows() {
+      const current = collectKgBreakRowsFromDom();
+      if (current.length > 1) {
+        const sum = current.reduce((s, x) => s + (parseFloat(x.kg) || 0), 0);
+        document.getElementById('fKg').value = sum.toFixed(2);
+      }
+    }
+
+    function syncSingleKgRowIfNeeded() {
+      const current = collectKgBreakRowsFromDom();
+      if (current.length === 1) {
+        const inputs = document.querySelectorAll('#kgBreakRowsList .kg-val-input');
+        if (inputs[0]) {
+          inputs[0].value = document.getElementById('fKg').value;
+        }
+      }
     }
 
     function compressImageFile(file, maxDim = 1100, quality = 0.76) {
@@ -1142,7 +1280,6 @@
         : ('✏️ စာရင်း ပြင်ဆင်ရန် (' + rec.invNo + ')');
       document.getElementById('fInvNo').value = isDuplicate ? '' : (rec.invNo || '');
       document.getElementById('fDate').value = rec.date || '';
-      document.getElementById('fCargoType').value = rec.cargoType === 'Risk' ? 'Risk' : 'Standard';
 
       if (rec.origin === 'Myanmar' || !rec.origin) {
         document.getElementById('fOriginSelect').value = 'Myanmar';
@@ -1165,7 +1302,17 @@
       document.getElementById('fReceiver').value = rec.receiver || '';
       document.getElementById('fReceiverPhone').value = rec.receiverPhone || '';
       document.getElementById('fBoxes').value = rec.boxes || 1;
+
+      const breakList = isDuplicate
+        ? (Array.isArray(rec.kgBreakdowns) && rec.kgBreakdowns.length > 0
+            ? rec.kgBreakdowns.map(x => ({ category: x.category, kg: 0 }))
+            : [{ category: rec.cargoType || 'Standard', kg: 0 }])
+        : (Array.isArray(rec.kgBreakdowns) && rec.kgBreakdowns.length > 0
+            ? rec.kgBreakdowns
+            : [{ category: rec.cargoType || 'Standard', kg: rec.kg || 0 }]);
+      renderKgBreakRows(breakList);
       document.getElementById('fKg').value = isDuplicate ? 0 : (rec.kg || 0);
+
       modalPhotos = isDuplicate ? [] : [...(rec.photos || [])];
       renderModalPhotoPreviews();
       document.getElementById('photoCompressStatus').classList.add('hidden');
@@ -1201,7 +1348,6 @@
         const dStr = String(today.getDate()).padStart(2, '0') + '.' + String(today.getMonth() + 1).padStart(2, '0') + '.' + today.getFullYear();
         document.getElementById('fInvNo').value = '';
         document.getElementById('fDate').value = dStr;
-        document.getElementById('fCargoType').value = 'Standard';
         document.getElementById('fOriginSelect').value = 'Myanmar';
         document.getElementById('fOriginCustom').value = '';
         document.getElementById('fDestSelect').value = 'UK';
@@ -1211,7 +1357,9 @@
         document.getElementById('fReceiver').value = '';
         document.getElementById('fReceiverPhone').value = '';
         document.getElementById('fBoxes').value = 1;
+        renderKgBreakRows([{ category: 'Standard', kg: 0 }]);
         document.getElementById('fKg').value = 0;
+
         modalPhotos = [];
         renderModalPhotoPreviews();
         document.getElementById('photoCompressStatus').classList.add('hidden');
@@ -1270,6 +1418,17 @@
       const destUk = isUkDestination(null, destination);
       const destType = destUk ? 'UK' : 'Worldwide';
 
+      const rawBreakRows = collectKgBreakRowsFromDom();
+      let kgBreakdowns = rawBreakRows;
+      let kgNum = 0;
+      if (rawBreakRows.length > 1) {
+        kgNum = rawBreakRows.reduce((s, x) => s + (parseFloat(x.kg) || 0), 0);
+      } else {
+        kgNum = Math.max(0, parseFloat(document.getElementById('fKg').value) || 0);
+        kgBreakdowns = [{ category: rawBreakRows[0] ? rawBreakRows[0].category : 'Standard', kg: kgNum }];
+      }
+      const cargoType = kgBreakdowns[0] ? kgBreakdowns[0].category : 'Standard';
+
       const kgPayStatus = document.getElementById('fKgPayStatus').value;
       const kgCurrency = document.getElementById('fKgCurrency').value;
       const kgGbpVal = kgCurrency === 'GBP' ? Math.max(0, parseFloat(document.getElementById('fKgGbp').value) || 0) : 0;
@@ -1284,7 +1443,6 @@
       const deliRateVal = (hasDeliAmt && deliCurrency === 'MMK') ? Math.max(0, parseFloat(document.getElementById('fDeliRate').value) || 0) : 0;
 
       const warnings = [];
-      const kgNum = Math.max(0, parseFloat(document.getElementById('fKg').value) || 0);
       if (kgNum === 0) warnings.push('• Verified KG က 0 ဖြစ်နေပါသည်');
       if (['paid_mm', 'paid_uk'].includes(kgPayStatus) && kgGbpVal === 0 && kgMmkVal === 0) {
         warnings.push('• KG Fee ကို ရှင်းပြီး ရွေးထားသော်လည်း ငွေပမာဏ 0 ဖြစ်နေပါသည်');
@@ -1305,7 +1463,8 @@
       const payload = {
         invNo: document.getElementById('fInvNo').value.trim() || '-',
         date: document.getElementById('fDate').value.trim() || '-',
-        cargoType: document.getElementById('fCargoType').value === 'Risk' ? 'Risk' : 'Standard',
+        cargoType,
+        kgBreakdowns,
         origin,
         destType,
         destination,
@@ -1482,6 +1641,13 @@
       return r.deliGbp ? '£' + Number(r.deliGbp).toFixed(2) : '£0.00';
     }
 
+    function recordHasCategory(r, cat) {
+      if (Array.isArray(r.kgBreakdowns) && r.kgBreakdowns.length > 0) {
+        return r.kgBreakdowns.some(b => normalizeCategoryName(b.category) === cat);
+      }
+      return normalizeCategoryName(r.cargoType) === cat;
+    }
+
     function getFilteredRecords() {
       const q = (document.getElementById('searchInput').value || '').trim().toLowerCase();
       const destF = document.getElementById('destFilter').value;
@@ -1496,7 +1662,7 @@
         if (destF === 'UK' && r.destType !== 'UK') return false;
         if (destF === 'Worldwide' && r.destType === 'UK') return false;
 
-        if (cargoF !== 'all' && r.cargoType !== cargoF) return false;
+        if (cargoF !== 'all' && !recordHasCategory(r, cargoF)) return false;
 
         const kgPaid = ['paid_mm', 'paid_uk'].includes(r.kgPayStatus);
         const deliPaid = ['paid_mm', 'paid_uk'].includes(r.deliStatus);
@@ -1519,9 +1685,10 @@
         if (payF === 'deli_office_pickup' && r.deliStatus !== 'office_pickup') return false;
 
         if (q) {
+          const catStr = (r.kgBreakdowns || []).map(b => b.category).join(' ');
           const hay = [
             r.invNo, r.sender, r.senderPhone, r.receiver, r.receiverPhone,
-            r.origin, r.destination, r.cargoType, r.note, r.date
+            r.origin, r.destination, r.cargoType, catStr, r.note, r.date
           ].join(' ').toLowerCase();
           if (!hay.includes(q)) return false;
         }
@@ -1550,7 +1717,7 @@
         ? `${r.sender} → ${r.receiver}`
         : (r.receiver && r.receiver !== '-' ? r.receiver : r.sender);
 
-      const typeHighlight = r.cargoType === 'Risk' ? '⚠️ [RISK]' : '📦 [STANDARD]';
+      const catBreakdownLine = `\n   ⚖️ ${formatKgBreakdownSummary(r)}`;
       const routeShort = shortRouteTag(r.origin, r.destination);
 
       const phoneParts = [];
@@ -1568,7 +1735,7 @@
       const kgLine = `   💳 KG: ${kgShortMap[r.kgPayStatus] || '❌ မရှင်းရသေး'}${kgAmtShort}`;
 
       const line1 = `${index + 1}. ${displayName} ${statusEmoji}`;
-      const line2 = `   ${r.date} | ${Number(r.kg).toFixed(2)} Kg (${r.boxes} ပုံး) | ${routeShort} | ${typeHighlight}`;
+      const line2 = `   ${r.date} | Total ${Number(r.kg).toFixed(2)} Kg (${r.boxes} ပုံး) | ${routeShort}`;
 
       let deliLine = '';
       if (hasDeli) {
@@ -1583,7 +1750,7 @@
         deliLine = `\n   🏢 Pickup: ရုံးလာထုတ်မည်`;
       }
 
-      return `${line1}\n${line2}${phoneLine}\n${kgLine}${deliLine}`;
+      return `${line1}\n${line2}${catBreakdownLine}${phoneLine}\n${kgLine}${deliLine}`;
     }
 
     function generateViberReportString(list, headerTitle, selectedScope = 'unsent_all') {
@@ -1664,6 +1831,7 @@
       const kgAmt = formatKgAmountStr(r);
       const hasDeli = hasSeparateLocalDeliveryAmount(r);
       const deliAmt = formatDeliAmountStr(r);
+      const catSummaryStr = formatKgBreakdownSummary(r);
 
       const kgPaid = ['paid_mm', 'paid_uk'].includes(r.kgPayStatus);
       const deliPaid = ['paid_mm', 'paid_uk'].includes(r.deliStatus);
@@ -1687,11 +1855,12 @@
       const lines = [
         `📦 MM → UK & Worldwide Payment Summary`,
         `────────────────────────────`,
-        `Invoice: ${r.invNo} | Date: ${r.date} | Type: ${r.cargoType}`,
+        `Invoice: ${r.invNo} | Date: ${r.date}`,
         `Route: ${r.origin} → ${r.destination}`,
         `Sender (MM): ${r.sender}${r.senderPhone ? ' (' + r.senderPhone + ')' : ''}`,
         `Receiver (UK): ${r.receiver}${r.receiverPhone ? ' (' + r.receiverPhone + ')' : ''}`,
-        `Boxes / KG: ${r.boxes} ပုံး | ${Number(r.kg).toFixed(2)} kg`,
+        `Boxes / Total KG: ${r.boxes} ပုံး | ${Number(r.kg).toFixed(2)} kg`,
+        `Category KG: ${catSummaryStr}`,
         ``,
         `💳 KG Freight Fee: ${kgBadge.label}`,
         `   Amount: ${kgAmt}${r.kgPayDate ? ' | Date: ' + r.kgPayDate : ''}`,
@@ -1723,9 +1892,6 @@
             <span class="text-slate-500 ml-2">${escapeHtml(r.date)}</span>
           </div>
           <div class="flex items-center gap-1.5">
-            <span class="text-[10.5px] font-bold px-2 py-0.5 rounded-lg ${r.cargoType === 'Risk' ? 'bg-rose-100 text-rose-800' : 'bg-slate-200 text-slate-800'}">
-              ${escapeHtml(r.cargoType)}
-            </span>
             <span class="text-[11px] font-bold px-2 py-0.5 rounded-lg ${r.destType === 'UK' ? 'bg-indigo-100 text-indigo-800' : 'bg-teal-100 text-teal-800'}">
               ${escapeHtml(r.origin)} → ${escapeHtml(r.destination)}
             </span>
@@ -1744,7 +1910,10 @@
             ${r.receiverPhone ? `<div class="text-[11px] text-indigo-800 font-semibold mt-0.5">🇬🇧 ${escapeHtml(r.receiverPhone)}</div>` : ''}
           </div>
           <div><span class="text-slate-500">📦 ပုံး:</span> <strong>${r.boxes} ပုံး</strong></div>
-          <div><span class="text-slate-500">⚖️ KG:</span> <strong class="text-sky-700">${Number(r.kg).toFixed(2)} kg</strong></div>
+          <div><span class="text-slate-500">⚖️ Total KG:</span> <strong class="text-sky-700">${Number(r.kg).toFixed(2)} kg</strong></div>
+          <div class="sm:col-span-2 text-[11px] bg-teal-50 border border-teal-200 rounded-lg px-2.5 py-1.5 font-bold text-teal-950">
+            ${escapeHtml(catSummaryStr)}
+          </div>
         </div>
 
         <div class="bg-emerald-50/80 border border-emerald-200 rounded-xl p-2.5 space-y-1">
@@ -1799,9 +1968,23 @@
       const historyList = records.filter(r => r.archived);
 
       document.getElementById('sumActiveCount').textContent = activeList.length;
-      const stdCnt = activeList.filter(r => r.cargoType !== 'Risk').length;
-      const riskCnt = activeList.filter(r => r.cargoType === 'Risk').length;
-      document.getElementById('sumRiskCount').textContent = `Standard: ${stdCnt} • Risk: ${riskCnt}`;
+
+      let stdKg = 0;
+      let riskKg = 0;
+      let specialKg = 0;
+      activeList.forEach(r => {
+        const list = Array.isArray(r.kgBreakdowns) && r.kgBreakdowns.length > 0
+          ? r.kgBreakdowns
+          : [{ category: r.cargoType || 'Standard', kg: parseFloat(r.kg) || 0 }];
+        list.forEach(b => {
+          const cat = normalizeCategoryName(b.category);
+          const w = parseFloat(b.kg) || 0;
+          if (cat === 'Standard') stdKg += w;
+          else if (cat === 'Risk') riskKg += w;
+          else specialKg += w;
+        });
+      });
+      document.getElementById('sumRiskCount').textContent = `Std: ${stdKg.toFixed(1)} • Risk: ${riskKg.toFixed(1)} • Other: ${specialKg.toFixed(1)}`;
 
       const totalKg = activeList.reduce((acc, r) => acc + (parseFloat(r.kg) || 0), 0);
       const totalBoxes = activeList.reduce((acc, r) => acc + (parseInt(r.boxes, 10) || 0), 0);
@@ -1898,9 +2081,20 @@
           }
         }
 
-        const cargoTypeBadge = r.cargoType === 'Risk'
-          ? '<span class="inline-block text-[10px] font-extrabold bg-rose-100 text-rose-800 border border-rose-300 px-1.5 py-0.5 rounded-md mt-1">⚠️ Risk</span>'
-          : '<span class="inline-block text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-300 px-1.5 py-0.5 rounded-md mt-1">📦 Standard</span>';
+        const catItems = Array.isArray(r.kgBreakdowns) && r.kgBreakdowns.length > 0
+          ? r.kgBreakdowns
+          : [{ category: r.cargoType || 'Standard', kg: parseFloat(r.kg) || 0 }];
+
+        const catBadgesHtml = catItems.map(b => {
+          const cat = normalizeCategoryName(b.category);
+          let cls = 'bg-slate-100 text-slate-700 border-slate-300';
+          if (cat === 'Risk') cls = 'bg-rose-100 text-rose-800 border-rose-300';
+          else if (cat === 'Gold & Jewelry') cls = 'bg-amber-100 text-amber-950 border-amber-300';
+          else if (cat === 'ကုန်ပွ') cls = 'bg-sky-100 text-sky-900 border-sky-300';
+          else if (cat === 'ယွန်းထည်') cls = 'bg-orange-100 text-orange-900 border-orange-300';
+          else if (cat === 'ဗုဒ္ဓရုပ်ပွား / ရှေးဟောင်း') cls = 'bg-purple-100 text-purple-900 border-purple-300';
+          return `<div class="inline-block text-[10px] font-bold border px-1.5 py-0.5 rounded-md mt-0.5 mr-1">${escapeHtml(getCategoryShortTag(cat))}: ${Number(b.kg || 0).toFixed(2)} kg</div>`;
+        }).join('');
 
         const photoBtnHtml = (r.photos && r.photos.length > 0)
           ? `<button onclick="openPhotoViewer('${r.id}', 0)" class="inline-flex items-center gap-1 text-[10.5px] font-bold bg-indigo-600 hover:bg-indigo-700 text-white px-2 py-0.5 rounded-lg shadow-xs mb-1">
@@ -1951,10 +2145,9 @@
             <div class="text-[11px] text-slate-700 mt-1"><span class="font-semibold text-slate-500">📥 UK:</span> <span class="font-bold text-indigo-950">${escapeHtml(r.receiver)}</span></div>
             ${receiverPhoneHtml}
           </td>
-          <td class="py-2.5 px-2.5 whitespace-nowrap">
-            <div class="font-bold text-slate-800">📦 ${r.boxes} ပုံး</div>
-            <div class="font-extrabold text-sky-700 text-xs mt-0.5">⚖️ ${Number(r.kg).toFixed(2)} kg</div>
-            <div>${cargoTypeBadge}</div>
+          <td class="py-2.5 px-2.5 max-w-[230px]">
+            <div class="font-bold text-slate-800">📦 ${r.boxes} ပုံး • <span class="font-extrabold text-sky-700">⚖️ ${Number(r.kg).toFixed(2)} kg</span></div>
+            <div class="mt-0.5">${catBadgesHtml}</div>
           </td>
           <td class="py-2.5 px-2.5">
             <span class="inline-block text-[10.5px] font-bold border px-2 py-0.5 rounded-lg ${kgBadge.cls}">${kgBadge.label}</span>
@@ -1964,7 +2157,7 @@
             <span class="inline-block text-[10.5px] font-bold border px-2 py-0.5 rounded-lg ${deliBadge.cls}">${deliBadge.label}</span>
             ${deliDetailHtml}
           </td>
-          <td class="py-2.5 px-2.5 max-w-[230px]">
+          <td class="py-2.5 px-2.5 max-w-[220px]">
             ${photoBtnHtml ? `<div>${photoBtnHtml}</div>` : ''}
             ${badgesHtml ? `<div class="mb-1">${badgesHtml}</div>` : ''}
             <div class="text-[11px] text-slate-600 leading-snug break-words">${escapeHtml(r.note || '—')}</div>
@@ -2018,9 +2211,9 @@
         <tr>
           <td>${i + 1}</td>
           <td><b>${escapeHtml(r.invNo)}</b><br/><span style="color:#64748b">${escapeHtml(r.date)}</span></td>
-          <td>${escapeHtml(r.origin)} → ${escapeHtml(r.destination)}<br/><b>${escapeHtml(r.cargoType)}</b></td>
+          <td>${escapeHtml(r.origin)} → ${escapeHtml(r.destination)}</td>
           <td>📤 ${escapeHtml(r.sender)}${r.senderPhone ? '<br/><span style="color:#475569">📱 ' + escapeHtml(r.senderPhone) + '</span>' : ''}<br/>📥 <b>${escapeHtml(r.receiver)}</b>${r.receiverPhone ? '<br/><span style="color:#1e1b4b">🇬🇧 ' + escapeHtml(r.receiverPhone) + '</span>' : ''}</td>
-          <td>${r.boxes} ပုံး<br/><b>${Number(r.kg).toFixed(2)} kg</b></td>
+          <td>${r.boxes} ပုံး • <b>${Number(r.kg).toFixed(2)} kg</b><br/><span style="color:#0f766e">${escapeHtml(formatKgBreakdownSummary(r))}</span></td>
           <td>${escapeHtml(getKgPayBadge(r).label)}<br/><b>${escapeHtml(formatKgAmountStr(r))}</b></td>
           <td>${escapeHtml(getDeliBadge(r).label)}<br/><b>${escapeHtml(formatDeliAmountStr(r))}</b></td>
           <td>${escapeHtml(r.note || '—')}</td>
@@ -2056,9 +2249,9 @@
               <tr>
                 <th>#</th>
                 <th>Inv / Date</th>
-                <th>Route / Type</th>
+                <th>Route</th>
                 <th>Sender &amp; Receiver</th>
-                <th>Boxes / KG</th>
+                <th>Boxes / KG &amp; Categories</th>
                 <th>KG Fee</th>
                 <th>Local Delivery</th>
                 <th>Note</th>
@@ -2075,7 +2268,7 @@
 
     function exportCSV() {
       const headers = [
-        'Tab', 'InvNo', 'Date', 'CargoType', 'Origin', 'Destination',
+        'Tab', 'InvNo', 'Date', 'PrimaryCategory', 'CategoryKgBreakdown', 'Origin', 'Destination',
         'Sender', 'SenderPhone', 'Receiver', 'ReceiverPhone',
         'Boxes', 'KG', 'PhotoCount', 'KgPayStatus', 'KgCurrency', 'KgGBP', 'KgMMK', 'Rate', 'KgPayDate',
         'DeliStatus', 'DeliCurrency', 'DeliGBP', 'DeliMMK', 'DeliRate', 'DeliPayDate',
@@ -2083,7 +2276,7 @@
       ];
       const rows = records.map(r => [
         r.archived ? 'History' : 'Active',
-        r.invNo, r.date, r.cargoType, r.origin, r.destination,
+        r.invNo, r.date, r.cargoType, formatKgBreakdownSummary(r), r.origin, r.destination,
         r.sender, r.senderPhone, r.receiver, r.receiverPhone,
         r.boxes, r.kg, (r.photos || []).length, r.kgPayStatus, r.kgCurrency, r.kgGbp, r.kgMmk, r.rate, r.kgPayDate,
         r.deliStatus, r.deliCurrency, r.deliGbp, r.deliMmk, r.deliRate, r.deliPayDate,
