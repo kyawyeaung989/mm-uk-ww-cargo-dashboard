@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T05:12:20.546Z",
+  "updatedAt": "2026-11-23T05:13:11.335Z",
   "records": [
     {
       "id": "rec_1795410693337_6kjz",
@@ -41,7 +41,7 @@
       "deliStatus": "paid_mm",
       "deliCurrency": "MMK",
       "deliGbp": 0,
-      "deliMmk": 10,
+      "deliMmk": 100000,
       "deliRate": 6500,
       "deliPayDate": "",
       "insured": true,
@@ -50,10 +50,10 @@
       "discount": true,
       "discCurrency": "MMK",
       "discAmount": 30000,
-      "note": "",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": false,
+      "note": ""
     }
   ]
 }
