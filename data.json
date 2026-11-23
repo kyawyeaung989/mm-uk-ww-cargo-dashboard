@@ -1,11 +1,17 @@
 {
-  "updatedAt": "2026-11-23T03:46:35.207Z",
+  "updatedAt": "2026-11-23T04:02:45.425Z",
   "records": [
     {
       "id": "rec_1795328250540_wlzc",
       "invNo": "-",
       "date": "22.11.2026",
       "cargoType": "Standard",
+      "kgBreakdowns": [
+        {
+          "category": "Standard",
+          "kg": 14
+        }
+      ],
       "origin": "Myanmar",
       "destType": "UK",
       "destination": "UK",
@@ -43,6 +49,20 @@
       "invNo": "-",
       "date": "22.11.2026",
       "cargoType": "Standard",
+      "kgBreakdowns": [
+        {
+          "category": "Standard",
+          "kg": 22
+        },
+        {
+          "category": "Risk",
+          "kg": 15
+        },
+        {
+          "category": "ယွန်းထည်",
+          "kg": 5
+        }
+      ],
       "origin": "Myanmar",
       "destType": "UK",
       "destination": "UK",
@@ -51,7 +71,7 @@
       "receiver": "Daw Lwin Lwin Aye",
       "receiverPhone": "",
       "boxes": 1,
-      "kg": 22,
+      "kg": 42,
       "photos": [],
       "kgPayStatus": "paid_uk",
       "kgCurrency": "GBP",
@@ -77,6 +97,12 @@
       "invNo": "-",
       "date": "21.11.2026",
       "cargoType": "Standard",
+      "kgBreakdowns": [
+        {
+          "category": "Standard",
+          "kg": 16
+        }
+      ],
       "origin": "Myanmar",
       "destType": "UK",
       "destination": "UK",
@@ -111,6 +137,12 @@
       "invNo": "-",
       "date": "21.11.2026",
       "cargoType": "Risk",
+      "kgBreakdowns": [
+        {
+          "category": "Risk",
+          "kg": 18
+        }
+      ],
       "origin": "Myanmar",
       "destType": "Worldwide",
       "destination": "Netherlands",
@@ -145,6 +177,12 @@
       "invNo": "-",
       "date": "21.11.2026",
       "cargoType": "Standard",
+      "kgBreakdowns": [
+        {
+          "category": "Standard",
+          "kg": 20
+        }
+      ],
       "origin": "Myanmar",
       "destType": "UK",
       "destination": "UK",
@@ -179,6 +217,12 @@
       "invNo": "8918435",
       "date": "21.11.2026",
       "cargoType": "Standard",
+      "kgBreakdowns": [
+        {
+          "category": "Standard",
+          "kg": 25
+        }
+      ],
       "origin": "Myanmar",
       "destType": "UK",
       "destination": "UK",
