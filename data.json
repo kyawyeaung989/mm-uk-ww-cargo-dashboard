@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T05:12:12.018Z",
+  "updatedAt": "2026-11-23T05:12:20.546Z",
   "records": [
     {
       "id": "rec_1795410693337_6kjz",
@@ -53,7 +53,7 @@
       "note": "",
       "ready": false,
       "dispatched": false,
-      "archived": true
+      "archived": false
     }
   ]
 }
