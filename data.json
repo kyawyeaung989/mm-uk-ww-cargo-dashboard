@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T02:18:36.814Z",
+  "updatedAt": "2026-11-24T03:17:09.757Z",
   "records": [
     {
       "id": "inv_ADF566_1795486710880",
@@ -34,21 +34,18 @@
       "deliCurrency": "MMK",
       "deliGbp": 0,
       "deliMmk": 66000,
-      "deliRate": 6600,
+      "deliRate": 6400,
       "deliPayDate": "24.11.2026",
       "insured": false,
       "insCurrency": "MMK",
       "insAmount": 0,
-      "insRate": 6600,
       "discount": false,
       "discCurrency": "GBP",
       "discAmount": 0,
-      "discRate": 6600,
-      "note": "",
-      "sourceApp": "mm-invoice-v44",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": false,
+      "note": ""
     },
     {
       "id": "inv_ADF565_1795430239009",
@@ -88,16 +85,13 @@
       "insured": false,
       "insCurrency": "GBP",
       "insAmount": 0,
-      "insRate": 5500,
       "discount": false,
       "discCurrency": "GBP",
       "discAmount": 0,
-      "discRate": 5500,
-      "note": "",
-      "sourceApp": "mm-invoice-v44",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": false,
+      "note": ""
     },
     {
       "id": "rec_1795410693337_6kjz",
