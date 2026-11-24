@@ -1,6 +1,55 @@
 {
-  "updatedAt": "2026-11-23T10:37:22.808Z",
+  "updatedAt": "2026-11-24T02:18:36.814Z",
   "records": [
+    {
+      "id": "inv_ADF566_1795486710880",
+      "invNo": "ADF566",
+      "date": "24.11.2026",
+      "cargoType": "Gold & Jewelry",
+      "kgBreakdowns": [
+        {
+          "category": "Gold & Jewelry",
+          "kg": 16
+        }
+      ],
+      "origin": "Myanmar",
+      "destType": "UK",
+      "destination": "UK",
+      "sender": "Kaung Khant",
+      "senderPhone": "09425587962",
+      "receiver": "Ahmed Jarmal",
+      "receiverPhone": "07854879632",
+      "boxes": 1,
+      "kg": 16,
+      "photos": [
+        "photos/inv_ADF566_1795486710880_1795486710880_1.jpg"
+      ],
+      "kgPayStatus": "paid_mm",
+      "kgCurrency": "MMK",
+      "kgGbp": 0,
+      "kgMmk": 1478400,
+      "rate": 6600,
+      "kgPayDate": "23.11.2026",
+      "deliStatus": "paid_mm",
+      "deliCurrency": "MMK",
+      "deliGbp": 0,
+      "deliMmk": 66000,
+      "deliRate": 6600,
+      "deliPayDate": "24.11.2026",
+      "insured": false,
+      "insCurrency": "MMK",
+      "insAmount": 0,
+      "insRate": 6600,
+      "discount": false,
+      "discCurrency": "GBP",
+      "discAmount": 0,
+      "discRate": 6600,
+      "note": "",
+      "sourceApp": "mm-invoice-v44",
+      "ready": false,
+      "dispatched": false,
+      "archived": false
+    },
     {
       "id": "inv_ADF565_1795430239009",
       "invNo": "ADF565",
