@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T09:08:10.508Z",
+  "updatedAt": "2026-11-24T09:12:01.128Z",
   "records": [
     {
       "id": "inv_ADF564_1795503244076",
@@ -44,7 +44,7 @@
       "discAmount": 0,
       "ready": false,
       "dispatched": false,
-      "archived": true,
+      "archived": false,
       "note": ""
     },
     {
