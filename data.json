@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T06:55:55.377Z",
+  "updatedAt": "2026-11-24T09:08:10.508Z",
   "records": [
     {
       "id": "inv_ADF564_1795503244076",
@@ -39,17 +39,13 @@
       "insured": false,
       "insCurrency": "MMK",
       "insAmount": 0,
-      "insRate": 6500,
       "discount": false,
       "discCurrency": "GBP",
       "discAmount": 0,
-      "discRate": 6500,
-      "note": "",
-      "invoiceStage": "Revised",
-      "sourceApp": "mm-invoice-v44",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": true,
+      "note": ""
     },
     {
       "id": "inv_ADF566_1795486710880",
@@ -99,11 +95,7 @@
       "ready": false,
       "dispatched": false,
       "archived": false,
-      "note": "",
-      "insRate": 5500,
-      "discRate": 5500,
-      "invoiceStage": "Revised",
-      "sourceApp": "mm-invoice-v44"
+      "note": ""
     },
     {
       "id": "inv_ADF565_1795430239009",
