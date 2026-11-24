@@ -66,6 +66,18 @@
       </div>
 
       <div class="flex items-center gap-1.5 sm:gap-2 shrink-0 flex-wrap">
+        <!-- Live Clock Badge -->
+        <div id="liveClockBadge" class="h-8 sm:h-9 bg-slate-900 border border-slate-700 text-amber-200 text-[11px] sm:text-xs rounded-xl px-2.5 font-semibold flex items-center gap-1.5 whitespace-nowrap shadow-inner">
+          <span>🕒</span>
+          <span id="liveClockText">--:--:--</span>
+        </div>
+
+        <!-- Open Invoice Button -->
+        <a href="https://kyawyeaung989.github.io/myanmar-to-worldwide-invoice/" target="_blank" rel="noopener noreferrer"
+           class="h-8 sm:h-9 bg-cyan-600 hover:bg-cyan-700 text-white text-xs sm:text-sm font-bold px-2.5 rounded-xl shadow-sm transition whitespace-nowrap inline-flex items-center gap-1">
+          🧾 Open Invoice
+        </a>
+
         <div id="roleSelectWrapper">
           <select id="roleSelect" onchange="renderAll()" class="h-8 sm:h-9 bg-slate-800 border border-slate-600 text-white text-xs sm:text-sm rounded-xl px-2.5 font-semibold focus:outline-none focus:border-amber-400">
             <option value="admin">👑 Full Admin / UK Owner</option>
@@ -509,7 +521,7 @@
               <input id="fInsured" type="checkbox" onchange="toggleInsuredAmountBox()" class="rounded text-sky-600" />
               <span>🛡️ Insured (အာမခံ ပါရှိ)</span>
             </label>
-            <div id="insuredAmountBox" class="hidden grid grid-cols-2 gap-2 pt-1">
+            <div id="insuredAmountBox" class="hidden grid-cols-2 gap-2 pt-1">
               <div>
                 <label class="block text-[10.5px] font-semibold text-slate-600 mb-0.5">ငွေကြေး</label>
                 <select id="fInsCurrency" class="w-full border border-slate-300 rounded-lg px-2 py-1 text-xs font-bold bg-white">
@@ -686,6 +698,17 @@
     let viewerResolvedUrls = [];
     let viewerIndex = 0;
     const photoMemoryCache = new Map();
+
+    function updateLiveClock() {
+      const el = document.getElementById('liveClockText');
+      if (!el) return;
+      const now = new Date();
+      const dd = String(now.getDate()).padStart(2, '0');
+      const mm = String(now.getMonth() + 1).padStart(2, '0');
+      const yyyy = now.getFullYear();
+      const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      el.textContent = `${dd}.${mm}.${yyyy} • ${timeStr}`;
+    }
 
     function getLocalPhotoMap() {
       try {
@@ -2632,6 +2655,8 @@
       URL.revokeObjectURL(url);
     }
 
+    updateLiveClock();
+    setInterval(updateLiveClock, 1000);
     initFromUrlParams();
     loadFromGitHub();
   </script>
