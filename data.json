@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T10:10:55.622Z",
+  "updatedAt": "2026-11-25T10:11:02.074Z",
   "records": [
     {
       "id": "inv_ADF595_1795600810691",
@@ -45,60 +45,6 @@
       "ready": false,
       "dispatched": false,
       "archived": false,
-      "note": ""
-    },
-    {
-      "id": "rec_1795410693337_6kjz",
-      "invNo": "8918435",
-      "date": "23.11.2026",
-      "cargoType": "Standard",
-      "kgBreakdowns": [
-        {
-          "category": "Standard",
-          "kg": 15
-        },
-        {
-          "category": "Risk",
-          "kg": 5
-        },
-        {
-          "category": "Gold & Jewelry",
-          "kg": 2
-        }
-      ],
-      "origin": "Myanmar",
-      "destType": "UK",
-      "destination": "UK",
-      "sender": "Kyaw Wanna",
-      "senderPhone": "09584425655",
-      "receiver": "Eaindra",
-      "receiverPhone": "+445825487521",
-      "boxes": 1,
-      "kg": 22,
-      "photos": [
-        "photos/rec_1795410693337_6kjz_1795410693337_1.jpg"
-      ],
-      "kgPayStatus": "paid_uk",
-      "kgCurrency": "MMK",
-      "kgGbp": 0,
-      "kgMmk": 500000,
-      "rate": 6500,
-      "kgPayDate": "",
-      "deliStatus": "paid_mm",
-      "deliCurrency": "MMK",
-      "deliGbp": 0,
-      "deliMmk": 100000,
-      "deliRate": 6500,
-      "deliPayDate": "",
-      "insured": true,
-      "insCurrency": "MMK",
-      "insAmount": 300000,
-      "discount": true,
-      "discCurrency": "MMK",
-      "discAmount": 30000,
-      "ready": false,
-      "dispatched": false,
-      "archived": true,
       "note": ""
     }
   ]
