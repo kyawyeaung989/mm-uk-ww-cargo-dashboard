@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T10:08:03.837Z",
+  "updatedAt": "2026-11-25T10:10:31.374Z",
   "records": [
     {
       "id": "inv_ADF595_1795600810691",
@@ -22,7 +22,7 @@
       "boxes": 1,
       "kg": 5,
       "photos": [
-        "photos/inv_ADF595_1795601272184_1795601272184_1.jpg"
+        "photos/inv_ADF595_1795600810691_1795600810691_1.jpg"
       ],
       "kgPayStatus": "paid_mm",
       "kgCurrency": "MMK",
@@ -39,17 +39,13 @@
       "insured": false,
       "insCurrency": "MMK",
       "insAmount": 0,
-      "insRate": 7050,
       "discount": false,
       "discCurrency": "GBP",
       "discAmount": 0,
-      "discRate": 7050,
-      "note": "",
-      "invoiceStage": "Revised",
-      "sourceApp": "mm-invoice-v44",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": false,
+      "note": ""
     },
     {
       "id": "inv_ADF564_1795503244076",
@@ -94,7 +90,7 @@
       "discAmount": 0,
       "ready": false,
       "dispatched": false,
-      "archived": false,
+      "archived": true,
       "note": ""
     },
     {
