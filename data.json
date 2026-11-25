@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T10:10:49.924Z",
+  "updatedAt": "2026-11-25T10:10:55.622Z",
   "records": [
     {
       "id": "inv_ADF595_1795600810691",
@@ -45,52 +45,6 @@
       "ready": false,
       "dispatched": false,
       "archived": false,
-      "note": ""
-    },
-    {
-      "id": "inv_ADF565_1795430239009",
-      "invNo": "ADF565",
-      "date": "23.11.2026",
-      "cargoType": "Risk",
-      "kgBreakdowns": [
-        {
-          "category": "Risk",
-          "kg": 5
-        }
-      ],
-      "origin": "Myanmar",
-      "destType": "UK",
-      "destination": "UK",
-      "sender": "May Zon Moe",
-      "senderPhone": "09777994663",
-      "receiver": "Ahmed Jarmal",
-      "receiverPhone": "07894253729",
-      "boxes": 1,
-      "kg": 5,
-      "photos": [
-        "photos/inv_ADF565_1795430239009_1795430239009_1.jpg"
-      ],
-      "kgPayStatus": "paid_uk",
-      "kgCurrency": "GBP",
-      "kgGbp": 70,
-      "kgMmk": 0,
-      "rate": 5500,
-      "kgPayDate": "23.11.2026",
-      "deliStatus": "pay_uk",
-      "deliCurrency": "GBP",
-      "deliGbp": 10,
-      "deliMmk": 0,
-      "deliRate": 5500,
-      "deliPayDate": "",
-      "insured": false,
-      "insCurrency": "GBP",
-      "insAmount": 0,
-      "discount": false,
-      "discCurrency": "GBP",
-      "discAmount": 0,
-      "ready": false,
-      "dispatched": false,
-      "archived": true,
       "note": ""
     },
     {
