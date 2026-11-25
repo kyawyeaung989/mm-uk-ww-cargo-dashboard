@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T10:00:20.555Z",
+  "updatedAt": "2026-11-25T10:08:03.837Z",
   "records": [
     {
       "id": "inv_ADF595_1795600810691",
@@ -22,7 +22,7 @@
       "boxes": 1,
       "kg": 5,
       "photos": [
-        "photos/inv_ADF595_1795600810691_1795600810691_1.jpg"
+        "photos/inv_ADF595_1795601272184_1795601272184_1.jpg"
       ],
       "kgPayStatus": "paid_mm",
       "kgCurrency": "MMK",
@@ -45,7 +45,7 @@
       "discAmount": 0,
       "discRate": 7050,
       "note": "",
-      "invoiceStage": "Final Invoice",
+      "invoiceStage": "Revised",
       "sourceApp": "mm-invoice-v44",
       "ready": false,
       "dispatched": false,
