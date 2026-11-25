@@ -1,6 +1,56 @@
 {
-  "updatedAt": "2026-11-25T08:04:59.361Z",
+  "updatedAt": "2026-11-25T10:00:20.555Z",
   "records": [
+    {
+      "id": "inv_ADF595_1795600810691",
+      "invNo": "ADF595",
+      "date": "25.11.2026",
+      "cargoType": "Standard",
+      "kgBreakdowns": [
+        {
+          "category": "Standard",
+          "kg": 5
+        }
+      ],
+      "origin": "Myanmar",
+      "destType": "UK",
+      "destination": "UK",
+      "sender": "MA WAR WAR KHIN",
+      "senderPhone": "09250278841",
+      "receiver": "MA YEE MON AUNG",
+      "receiverPhone": "+447547913750",
+      "boxes": 1,
+      "kg": 5,
+      "photos": [
+        "photos/inv_ADF595_1795600810691_1795600810691_1.jpg"
+      ],
+      "kgPayStatus": "paid_mm",
+      "kgCurrency": "MMK",
+      "kgGbp": 0,
+      "kgMmk": 423000,
+      "rate": 7050,
+      "kgPayDate": "25.11.2026",
+      "deliStatus": "none",
+      "deliCurrency": "GBP",
+      "deliGbp": 0,
+      "deliMmk": 0,
+      "deliRate": 7050,
+      "deliPayDate": "",
+      "insured": false,
+      "insCurrency": "MMK",
+      "insAmount": 0,
+      "insRate": 7050,
+      "discount": false,
+      "discCurrency": "GBP",
+      "discAmount": 0,
+      "discRate": 7050,
+      "note": "",
+      "invoiceStage": "Final Invoice",
+      "sourceApp": "mm-invoice-v44",
+      "ready": false,
+      "dispatched": false,
+      "archived": false
+    },
     {
       "id": "inv_ADF564_1795503244076",
       "invNo": "ADF564",
