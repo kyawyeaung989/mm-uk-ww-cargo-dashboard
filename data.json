@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T10:10:31.374Z",
+  "updatedAt": "2026-11-25T10:10:38.148Z",
   "records": [
     {
       "id": "inv_ADF595_1795600810691",
@@ -140,7 +140,7 @@
       "discAmount": 0,
       "ready": false,
       "dispatched": false,
-      "archived": false,
+      "archived": true,
       "note": ""
     },
     {
@@ -186,7 +186,7 @@
       "discAmount": 0,
       "ready": false,
       "dispatched": false,
-      "archived": false,
+      "archived": true,
       "note": ""
     },
     {
@@ -240,7 +240,7 @@
       "discAmount": 30000,
       "ready": false,
       "dispatched": false,
-      "archived": false,
+      "archived": true,
       "note": ""
     }
   ]
