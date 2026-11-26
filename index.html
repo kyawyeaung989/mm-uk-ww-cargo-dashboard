@@ -157,13 +157,23 @@
     <!-- Mode Switcher & Filters -->
     <div class="glass-card rounded-2xl p-3.5 border border-slate-200/80 shadow-xs space-y-3">
       <div class="flex flex-wrap items-center justify-between gap-2.5">
-        <div class="inline-flex bg-slate-100 p-1 rounded-xl border border-slate-200">
-          <button id="tabActive" onclick="setViewTab('active')" class="px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold bg-slate-900 text-white transition">
-            📦 Active Board
-          </button>
-          <button id="tabHistory" onclick="setViewTab('history')" class="px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition">
-            🗂️ History / Archive
-          </button>
+        <div class="flex flex-wrap items-center gap-2">
+          <div class="inline-flex bg-slate-100 p-1 rounded-xl border border-slate-200">
+            <button id="tabActive" onclick="setViewTab('active')" class="px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold bg-slate-900 text-white transition">
+              📦 Active Board
+            </button>
+            <button id="tabHistory" onclick="setViewTab('history')" class="px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition">
+              🗂️ History / Archive
+            </button>
+          </div>
+          <div class="inline-flex bg-slate-100 p-1 rounded-xl border border-slate-200">
+            <button id="layoutTableBtn" onclick="setLayoutMode('table')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-700 text-white transition">
+              📊 Table View
+            </button>
+            <button id="layoutCardBtn" onclick="setLayoutMode('card')" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-slate-900 transition">
+              📱 Card View
+            </button>
+          </div>
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
@@ -255,6 +265,8 @@
           <tbody id="tableBody" class="divide-y divide-slate-100"></tbody>
         </table>
       </div>
+
+      <div id="cardViewWrap" class="hidden p-3 sm:p-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 bg-slate-50/60"></div>
 
       <div id="emptyState" class="hidden py-10 px-4 text-center text-slate-500 text-xs">
         ပြသရန် စာရင်း မရှိသေးပါ။
@@ -483,6 +495,7 @@
             <label class="block text-[11px] font-semibold text-slate-700 mb-1">Local Delivery Status</label>
             <select id="fDeliStatus" class="w-full border border-slate-300 rounded-xl px-2.5 py-2 text-xs font-bold bg-white">
               <option value="pay_uk">Pay in UK (ရောက်မှ ကောက်မည်)</option>
+              <option value="pay_mm">Pay in Myanmar (မြန်မာမှာ ကောက်မည်)</option>
               <option value="paid_mm">Paid in MM (မြန်မာမှာ ရှင်းပြီး)</option>
               <option value="paid_uk">Paid in UK (UK မှာ ရှင်းပြီး)</option>
               <option value="office_pickup">🏢 Office Pickup (ရုံးလာထုတ်မည်)</option>
@@ -515,6 +528,10 @@
             <label class="block text-[11px] font-semibold text-slate-700 mb-1">Local Deli ရှင်းသည့်ရက်</label>
             <input id="fDeliPayDate" type="text" placeholder="ဥပမာ: 22.11.2026" class="w-full border border-slate-300 rounded-xl px-2.5 py-2 text-xs bg-white" />
           </div>
+        </div>
+        <div>
+          <label class="block text-[11px] font-semibold text-slate-700 mb-1">Invoice ထဲမှ Local Delivery စာသား / မှတ်ချက် (ရှိလျှင်)</label>
+          <input id="fDeliNote" type="text" placeholder="ဥပမာ: Pay in Myanmar / Office Pickup (London) / UK Doorstep" class="w-full border border-amber-300 rounded-xl px-2.5 py-1.5 text-xs bg-white font-medium" />
         </div>
       </div>
 
@@ -559,6 +576,43 @@
                 <input id="fDiscAmount" type="number" step="0.01" min="0" value="0" class="w-full border border-emerald-300 rounded-lg px-2 py-1 text-xs font-bold bg-white" />
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Customer Advance / Extra Purchase & Delivery Note (Dashboard Only) -->
+        <div class="bg-rose-50/80 p-3 rounded-xl border border-rose-200 space-y-2.5">
+          <div class="flex items-center justify-between flex-wrap gap-1">
+            <p class="text-xs font-extrabold text-rose-950">🧾 Customer စိုက်ရှင်းငွေ / ပစ္စည်းဝယ်ပေးမှု မှတ်တမ်း (Invoice ထဲမပါ)</p>
+            <label class="inline-flex items-center gap-1.5 text-[11px] font-bold text-rose-900 cursor-pointer">
+              <input id="fAdvanceInViber" type="checkbox" class="rounded text-rose-600" />
+              <span>Viber Report ထဲ ထည့်ပြမည်</span>
+            </label>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <div>
+              <label class="block text-[10.5px] font-semibold text-slate-700 mb-0.5">ငွေကြေး</label>
+              <select id="fAdvanceCurrency" class="w-full border border-slate-300 rounded-lg px-2 py-1.5 text-xs font-bold bg-white">
+                <option value="MMK">MMK (ကျပ်)</option>
+                <option value="GBP">£ (GBP)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[10.5px] font-semibold text-slate-700 mb-0.5">ပြန်ကောက်ရမည့် / စိုက်ငွေ ပမာဏ</label>
+              <input id="fAdvanceAmount" type="number" step="0.01" min="0" value="0" placeholder="0" class="w-full border border-rose-300 rounded-lg px-2.5 py-1.5 text-xs font-extrabold text-rose-900 bg-white" />
+            </div>
+            <div>
+              <label class="block text-[10.5px] font-semibold text-slate-700 mb-0.5">အခြေအနေ</label>
+              <select id="fAdvanceStatus" class="w-full border border-slate-300 rounded-lg px-2 py-1.5 text-xs font-bold bg-white">
+                <option value="none">မရှိပါ</option>
+                <option value="unpaid">⚠️ ပြန်ကောက်ရန် ကျန် (Unpaid)</option>
+                <option value="paid_mm">✅ MM မှာ ပြန်ရှင်းပြီး</option>
+                <option value="paid_uk">✅ UK မှာ ပြန်ရှင်းပြီး</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label class="block text-[10.5px] font-semibold text-slate-700 mb-0.5">အသေးစိတ် မှတ်တမ်း (ဘာဝယ်ပေးထားလဲ / ဘယ် Deli ကြေး စိုက်ပေးထားလဲ)</label>
+            <textarea id="fAdvanceNote" rows="2" placeholder="ဥပမာ: ပစ္စည်းဖိုး ၃၅,၀၀၀ ကျပ် + အိမ်အရောက် Deli ကြေး ၄,၀၀၀ ကျပ် စိုက်ရှင်းပေးထားသည် (စုစုပေါင်း ၃၉,၀၀၀ ကျပ် ပြန်ကောက်ရန်)" class="w-full border border-rose-300 rounded-lg px-2.5 py-1.5 text-xs bg-white"></textarea>
           </div>
         </div>
 
@@ -691,6 +745,7 @@
     ];
 
     let currentTab = 'active';
+    let currentLayout = localStorage.getItem('mm_uk_ww_layout_mode') || (window.innerWidth < 768 ? 'card' : 'table');
     let selectedHistoryIds = new Set();
     let records = [];
     let fileSha = null;
@@ -847,8 +902,48 @@
       return `${o} → ${d}`;
     }
 
+    function setLayoutMode(mode) {
+      currentLayout = mode === 'card' ? 'card' : 'table';
+      localStorage.setItem('mm_uk_ww_layout_mode', currentLayout);
+      const tBtn = document.getElementById('layoutTableBtn');
+      const cBtn = document.getElementById('layoutCardBtn');
+      if (tBtn && cBtn) {
+        if (currentLayout === 'table') {
+          tBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-700 text-white transition';
+          cBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-slate-900 transition';
+        } else {
+          cBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-700 text-white transition';
+          tBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-slate-900 transition';
+        }
+      }
+      renderTable();
+    }
+
     function hasSeparateLocalDeliveryAmount(r) {
-      return isUkDestination(r.destType, r.destination) && ['pay_uk', 'paid_mm', 'paid_uk'].includes(r.deliStatus);
+      return ['pay_uk', 'pay_mm', 'paid_mm', 'paid_uk'].includes(r.deliStatus) || (parseFloat(r.deliGbp) > 0) || (parseFloat(r.deliMmk) > 0);
+    }
+
+    function inferDeliStatusFromRecord(r, destType) {
+      const valid = ['pay_uk', 'pay_mm', 'paid_mm', 'paid_uk', 'office_pickup', 'none'];
+      const rawStatus = String(r.deliStatus || '').trim();
+      const rawText = String(r.deliNote || r.localDeliveryText || r.localDeliNote || '').trim();
+      const lower = (rawStatus + ' ' + rawText).toLowerCase();
+
+      if (lower.includes('office') || lower.includes('pickup') || lower.includes('ရုံးလာထုတ်')) return 'office_pickup';
+      if (lower.includes('pay in myanmar') || lower.includes('pay_mm') || lower.includes('မြန်မာမှာ ကောက်')) return 'pay_mm';
+      if (lower.includes('paid in mm') || lower.includes('paid_mm') || lower.includes('မြန်မာမှာ ရှင်းပြီး')) return 'paid_mm';
+      if (lower.includes('paid in uk') || lower.includes('paid_uk') || lower.includes('uk မှာ ရှင်းပြီး')) return 'paid_uk';
+      if (lower.includes('pay in uk') || lower.includes('pay_uk')) return 'pay_uk';
+      if (valid.includes(rawStatus)) {
+        if (rawStatus === 'none' && ((parseFloat(r.deliGbp) > 0) || (parseFloat(r.deliMmk) > 0))) {
+          return destType === 'UK' ? 'pay_uk' : 'pay_mm';
+        }
+        return rawStatus;
+      }
+      if ((parseFloat(r.deliGbp) > 0) || (parseFloat(r.deliMmk) > 0)) {
+        return destType === 'UK' ? 'pay_uk' : 'pay_mm';
+      }
+      return 'none';
     }
 
     function normalizeCategoryName(cat) {
@@ -882,10 +977,8 @@
       const destination = r.destination || r.locationNote || (r.destType === 'UK' ? 'UK' : 'Worldwide');
       const destType = isUkDestination(r.destType, destination) ? 'UK' : 'Worldwide';
       const kgCurrency = r.kgCurrency || ((r.kgMmk > 0 && (!r.kgGbp || r.kgGbp === 0)) ? 'MMK' : 'GBP');
-      const validDeliStatuses = ['pay_uk', 'paid_mm', 'paid_uk', 'office_pickup', 'none'];
-      const deliStatus = destType === 'UK'
-        ? (validDeliStatuses.includes(r.deliStatus) ? r.deliStatus : 'none')
-        : 'none';
+      const deliStatus = inferDeliStatusFromRecord(r, destType);
+      const deliNote = String(r.deliNote || r.localDeliveryText || r.localDeliNote || '').trim();
 
       const baseKg = Math.max(0, parseFloat(r.kg) || 0);
       let kgBreakdowns = [];
@@ -935,11 +1028,17 @@
         rate: Math.max(0, parseFloat(r.rate) || 0),
         kgPayDate: r.kgPayDate || '',
         deliStatus,
-        deliCurrency: r.deliCurrency || 'GBP',
+        deliNote,
+        deliCurrency: r.deliCurrency || ((r.deliMmk > 0 && (!r.deliGbp || r.deliGbp === 0)) ? 'MMK' : 'GBP'),
         deliGbp: Math.max(0, parseFloat(r.deliGbp) || 0),
         deliMmk: Math.max(0, parseFloat(r.deliMmk) || 0),
         deliRate: Math.max(0, parseFloat(r.deliRate) || 0),
         deliPayDate: r.deliPayDate || '',
+        advanceCurrency: r.advanceCurrency === 'GBP' ? 'GBP' : 'MMK',
+        advanceAmount: Math.max(0, parseFloat(r.advanceAmount) || 0),
+        advanceStatus: ['unpaid', 'paid_mm', 'paid_uk', 'none'].includes(r.advanceStatus) ? r.advanceStatus : (parseFloat(r.advanceAmount) > 0 ? 'unpaid' : 'none'),
+        advanceNote: String(r.advanceNote || '').trim(),
+        advanceInViber: !!r.advanceInViber,
         insured,
         insCurrency,
         insAmount,
@@ -1524,14 +1623,9 @@
 
     function toggleLocalDeliverySection() {
       const box = document.getElementById('localDeliveryBox');
-      if (isModalDestUk()) {
-        box.classList.remove('hidden');
-        if (document.getElementById('fDeliStatus').value === 'none') {
-          document.getElementById('fDeliStatus').value = 'pay_uk';
-        }
-      } else {
-        box.classList.add('hidden');
-        document.getElementById('fDeliStatus').value = 'none';
+      box.classList.remove('hidden');
+      if (isModalDestUk() && document.getElementById('fDeliStatus').value === 'none') {
+        document.getElementById('fDeliStatus').value = 'pay_uk';
       }
     }
 
@@ -1625,11 +1719,18 @@
       document.getElementById('fKgPayDate').value = rec.kgPayDate || '';
 
       document.getElementById('fDeliStatus').value = rec.deliStatus || 'none';
+      document.getElementById('fDeliNote').value = rec.deliNote || '';
       document.getElementById('fDeliCurrency').value = rec.deliCurrency || 'GBP';
       document.getElementById('fDeliGbp').value = isDuplicate ? 0 : (rec.deliGbp || 0);
       document.getElementById('fDeliMmk').value = isDuplicate ? 0 : (rec.deliMmk || 0);
       document.getElementById('fDeliRate').value = rec.deliRate || 5500;
       document.getElementById('fDeliPayDate').value = rec.deliPayDate || '';
+
+      document.getElementById('fAdvanceCurrency').value = rec.advanceCurrency || 'MMK';
+      document.getElementById('fAdvanceAmount').value = isDuplicate ? 0 : (rec.advanceAmount || 0);
+      document.getElementById('fAdvanceStatus').value = isDuplicate ? 'none' : (rec.advanceStatus || 'none');
+      document.getElementById('fAdvanceNote').value = isDuplicate ? '' : (rec.advanceNote || '');
+      document.getElementById('fAdvanceInViber').checked = isDuplicate ? false : !!rec.advanceInViber;
 
       document.getElementById('fInsured').checked = !!rec.insured;
       document.getElementById('fInsCurrency').value = rec.insCurrency || 'GBP';
@@ -1678,11 +1779,18 @@
         document.getElementById('fKgPayDate').value = '';
 
         document.getElementById('fDeliStatus').value = 'pay_uk';
+        document.getElementById('fDeliNote').value = '';
         document.getElementById('fDeliCurrency').value = 'GBP';
         document.getElementById('fDeliGbp').value = 0;
         document.getElementById('fDeliMmk').value = 0;
         document.getElementById('fDeliRate').value = 5500;
         document.getElementById('fDeliPayDate').value = '';
+
+        document.getElementById('fAdvanceCurrency').value = 'MMK';
+        document.getElementById('fAdvanceAmount').value = 0;
+        document.getElementById('fAdvanceStatus').value = 'none';
+        document.getElementById('fAdvanceNote').value = '';
+        document.getElementById('fAdvanceInViber').checked = false;
 
         document.getElementById('fInsured').checked = false;
         document.getElementById('fInsCurrency').value = 'GBP';
@@ -1755,12 +1863,20 @@
         const kgMmkVal = kgCurrency === 'MMK' ? Math.max(0, parseFloat(document.getElementById('fKgMmk').value) || 0) : 0;
         const rateVal = kgCurrency === 'MMK' ? Math.max(0, parseFloat(document.getElementById('fRate').value) || 0) : 0;
 
-        const deliStatus = destUk ? document.getElementById('fDeliStatus').value : 'none';
-        const hasDeliAmt = destUk && ['pay_uk', 'paid_mm', 'paid_uk'].includes(deliStatus);
+        const deliStatus = document.getElementById('fDeliStatus').value;
+        const deliNote = document.getElementById('fDeliNote').value.trim();
+        const hasDeliAmt = ['pay_uk', 'pay_mm', 'paid_mm', 'paid_uk'].includes(deliStatus);
         const deliCurrency = document.getElementById('fDeliCurrency').value;
         const deliGbpVal = (hasDeliAmt && deliCurrency === 'GBP') ? Math.max(0, parseFloat(document.getElementById('fDeliGbp').value) || 0) : 0;
         const deliMmkVal = (hasDeliAmt && deliCurrency === 'MMK') ? Math.max(0, parseFloat(document.getElementById('fDeliMmk').value) || 0) : 0;
         const deliRateVal = (hasDeliAmt && deliCurrency === 'MMK') ? Math.max(0, parseFloat(document.getElementById('fDeliRate').value) || 0) : 0;
+
+        const advanceCurrency = document.getElementById('fAdvanceCurrency').value === 'GBP' ? 'GBP' : 'MMK';
+        const advanceAmount = Math.max(0, parseFloat(document.getElementById('fAdvanceAmount').value) || 0);
+        const advanceStatusRaw = document.getElementById('fAdvanceStatus').value;
+        const advanceNote = document.getElementById('fAdvanceNote').value.trim();
+        const advanceStatus = (advanceStatusRaw === 'none' && (advanceAmount > 0 || advanceNote)) ? 'unpaid' : advanceStatusRaw;
+        const advanceInViber = document.getElementById('fAdvanceInViber').checked;
 
         const insured = document.getElementById('fInsured').checked;
         const insCurrency = document.getElementById('fInsCurrency').value === 'MMK' ? 'MMK' : 'GBP';
@@ -1830,11 +1946,17 @@
           rate: rateVal,
           kgPayDate: document.getElementById('fKgPayDate').value.trim(),
           deliStatus,
+          deliNote,
           deliCurrency,
           deliGbp: deliGbpVal,
           deliMmk: deliMmkVal,
           deliRate: deliRateVal,
           deliPayDate: hasDeliAmt ? document.getElementById('fDeliPayDate').value.trim() : '',
+          advanceCurrency,
+          advanceAmount,
+          advanceStatus,
+          advanceNote,
+          advanceInViber,
           insured,
           insCurrency,
           insAmount,
@@ -1961,21 +2083,36 @@
     }
 
     function getDeliBadge(rec) {
-      if (!isUkDestination(rec.destType, rec.destination)) {
-        return { label: '— No Local Delivery', cls: 'bg-slate-100 text-slate-500 border-slate-200' };
-      }
       if (rec.deliStatus === 'office_pickup') {
-        return { label: '🏢 ရုံးလာထုတ်မည် (Office Pickup)', cls: 'bg-cyan-100 text-cyan-950 border-cyan-300' };
+        return { label: '🏢 Office Pickup (ရုံးလာထုတ်မည်)', cls: 'bg-cyan-100 text-cyan-950 border-cyan-300' };
       }
-      if (rec.deliStatus === 'none') {
+      if (rec.deliStatus === 'none' && !rec.deliNote && !(rec.deliGbp > 0) && !(rec.deliMmk > 0)) {
         return { label: '— No Local Delivery', cls: 'bg-slate-100 text-slate-500 border-slate-200' };
       }
       const map = {
-        pay_uk: { label: '🚚 ရောက်မှ ကောက်မည်', cls: 'bg-amber-100 text-amber-900 border-amber-300' },
-        paid_mm: { label: '✅ MM မှာ ရှင်းပြီး', cls: 'bg-emerald-100 text-emerald-900 border-emerald-300' },
-        paid_uk: { label: '✅ UK မှာ ရှင်းပြီး', cls: 'bg-sky-100 text-sky-900 border-sky-300' }
+        pay_uk: { label: '🚚 Pay in UK (ရောက်မှ ကောက်မည်)', cls: 'bg-amber-100 text-amber-900 border-amber-300' },
+        pay_mm: { label: '🇲🇲 Pay in Myanmar (မြန်မာမှာ ကောက်မည်)', cls: 'bg-orange-100 text-orange-950 border-orange-300' },
+        paid_mm: { label: '✅ Paid in MM (မြန်မာမှာ ရှင်းပြီး)', cls: 'bg-emerald-100 text-emerald-900 border-emerald-300' },
+        paid_uk: { label: '✅ Paid in UK (UK မှာ ရှင်းပြီး)', cls: 'bg-sky-100 text-sky-900 border-sky-300' }
       };
-      return map[rec.deliStatus] || map.pay_uk;
+      if (map[rec.deliStatus]) return map[rec.deliStatus];
+      if (rec.deliNote) return { label: '🚚 ' + rec.deliNote, cls: 'bg-amber-100 text-amber-900 border-amber-300' };
+      return map.pay_uk;
+    }
+
+    function formatAdvanceSummaryStr(r) {
+      const hasAdv = (r.advanceAmount > 0) || !!r.advanceNote;
+      if (!hasAdv) return '';
+      const amtPart = r.advanceAmount > 0 ? formatFeeAmount(r.advanceCurrency, r.advanceAmount) : '';
+      const stMap = {
+        unpaid: '⚠️ ပြန်ကောက်ရန်',
+        paid_mm: '✅ MM ရှင်းပြီး',
+        paid_uk: '✅ UK ရှင်းပြီး',
+        none: ''
+      };
+      const stPart = stMap[r.advanceStatus] || '';
+      const head = ['🧾 စိုက်ငွေ/ဝယ်ပေး', amtPart, stPart].filter(Boolean).join(' • ');
+      return r.advanceNote ? `${head} — ${r.advanceNote}` : head;
     }
 
     function formatKgAmountStr(r) {
@@ -2084,51 +2221,56 @@
     function formatSingleRecordForViber(r, index) {
       const kgPaid = ['paid_mm', 'paid_uk'].includes(r.kgPayStatus);
       const hasDeli = hasSeparateLocalDeliveryAmount(r);
-      const deliPaid = ['paid_mm', 'paid_uk'].includes(r.deliStatus);
-      const isFullySettled = kgPaid && (!hasDeli || deliPaid);
+      const deliPaid = ['paid_mm', 'paid_uk', 'office_pickup', 'none'].includes(r.deliStatus);
+      const isFullySettled = kgPaid && deliPaid;
       const statusEmoji = isFullySettled ? '✅' : '❌';
 
       const displayName = (r.sender && r.sender !== '-' && r.receiver && r.receiver !== '-')
         ? `${r.sender} → ${r.receiver}`
         : (r.receiver && r.receiver !== '-' ? r.receiver : r.sender);
 
-      const catBreakdownLine = `\n   ⚖️ ${formatKgBreakdownSummary(r)}`;
       const routeShort = shortRouteTag(r.origin, r.destination);
+      const lines = [];
+      lines.push(`${index + 1}. ${displayName} ${statusEmoji}`);
+      lines.push(`   📅 ${r.date} | ${routeShort} | ${r.boxes} ပုံး | ${Number(r.kg).toFixed(2)} Kg`);
+      lines.push(`   📦 ${formatKgBreakdownSummary(r)}`);
 
-      const phoneParts = [];
-      if (r.senderPhone) phoneParts.push(`MM: ${r.senderPhone}`);
-      if (r.receiverPhone) phoneParts.push(`UK: ${r.receiverPhone}`);
-      const phoneLine = phoneParts.length ? `\n   📞 ${phoneParts.join(' | ')}` : '';
+      if (r.senderPhone) lines.push(`   📱 MM: ${r.senderPhone}`);
+      if (r.receiverPhone) lines.push(`   🇬🇧 UK: ${r.receiverPhone}`);
 
       const kgShortMap = {
-        paid_mm: '✅ MM ရှင်းပြီး',
-        paid_uk: '✅ UK ရှင်းပြီး',
-        pay_arrival_uk: '⏳ ရောက်မှရှင်းမည်',
-        unpaid: '❌ မရှင်းရသေး'
+        paid_mm: 'Paid in MM ✅',
+        paid_uk: 'Paid in UK ✅',
+        pay_arrival_uk: 'Pay on Arrival ⏳',
+        unpaid: 'Unpaid ❌'
       };
-      const kgAmtShort = (r.kgGbp > 0 || r.kgMmk > 0) ? ` (${formatKgAmountStr(r)})` : '';
-      const kgLine = `   💳 KG: ${kgShortMap[r.kgPayStatus] || '❌ မရှင်းရသေး'}${kgAmtShort}`;
+      const kgAmtShort = (r.kgGbp > 0 || r.kgMmk > 0) ? ` — ${formatKgAmountStr(r)}` : '';
+      lines.push(`   💳 KG Fee: ${kgShortMap[r.kgPayStatus] || 'Unpaid ❌'}${kgAmtShort}`);
 
-      const line1 = `${index + 1}. ${displayName} ${statusEmoji}`;
-      const line2 = `   ${r.date} | Total ${Number(r.kg).toFixed(2)} Kg (${r.boxes} ပုံး) | ${routeShort}`;
-
-      let deliLine = '';
-      if (hasDeli) {
-        const deliShortMap = {
-          pay_uk: '🚚 UK ရောက်မှ',
-          paid_mm: '✅ MM ရှင်းပြီး',
-          paid_uk: '✅ UK ရှင်းပြီး'
-        };
-        const deliAmtShort = (r.deliGbp > 0 || r.deliMmk > 0) ? ` (${formatDeliAmountStr(r)})` : '';
-        deliLine = `\n   🚚 Local Deli: ${deliShortMap[r.deliStatus] || ''}${deliAmtShort}`;
-      } else if (isUkDestination(r.destType, r.destination) && r.deliStatus === 'office_pickup') {
-        deliLine = `\n   🏢 Pickup: ရုံးလာထုတ်မည်`;
+      const deliLabelMap = {
+        pay_uk: 'Pay in UK 🚚',
+        pay_mm: 'Pay in Myanmar 🇲🇲',
+        paid_mm: 'Paid in MM ✅',
+        paid_uk: 'Paid in UK ✅',
+        office_pickup: 'Office Pickup 🏢',
+        none: 'No Local Delivery'
+      };
+      const deliText = r.deliNote ? `${deliLabelMap[r.deliStatus] || r.deliNote} (${r.deliNote})` : (deliLabelMap[r.deliStatus] || 'No Local Delivery');
+      const deliAmtShort = (hasDeli && (r.deliGbp > 0 || r.deliMmk > 0)) ? ` — ${formatDeliAmountStr(r)}` : '';
+      if (r.deliStatus !== 'none' || r.deliNote || r.deliGbp > 0 || r.deliMmk > 0) {
+        lines.push(`   🚚 Local Deli: ${deliText}${deliAmtShort}`);
       }
 
       const extraParts = [formatInsuredStr(r), formatDiscountStr(r)].filter(Boolean);
-      const extraLine = extraParts.length ? `\n   ${extraParts.join(' | ')}` : '';
+      if (extraParts.length) {
+        lines.push(`   ${extraParts.join(' | ')}`);
+      }
 
-      return `${line1}\n${line2}${catBreakdownLine}${phoneLine}\n${kgLine}${deliLine}${extraLine}`;
+      if (r.advanceInViber && ((r.advanceAmount > 0) || r.advanceNote)) {
+        lines.push(`   ${formatAdvanceSummaryStr(r)}`);
+      }
+
+      return lines.join('\n');
     }
 
     function generateViberReportString(list, headerTitle, selectedScope = 'unsent_all') {
@@ -2140,13 +2282,23 @@
         : `${dateStr} (${timeStr})`;
 
       if (!list || list.length === 0) {
-        return `✨ ${headerDatePart}\n${headerTitle}\n\n📦 ရုံးတွင်းလက်ကျန် Kg မရှိပါ`;
+        return `✨ ${headerDatePart}\n${headerTitle}\n────────────────────\n📦 ရုံးတွင်းလက်ကျန် Kg မရှိပါ`;
       }
 
-      const itemsBlock = list.map((r, idx) => formatSingleRecordForViber(r, idx)).join('\n\n');
+      const itemsBlock = list.map((r, idx) => formatSingleRecordForViber(r, idx)).join('\n────────────────────\n');
       const totalKg = list.reduce((sum, r) => sum + (parseFloat(r.kg) || 0), 0);
+      const totalBoxes = list.reduce((sum, r) => sum + (parseInt(r.boxes, 10) || 0), 0);
 
-      return `✨ ${headerDatePart}\n${headerTitle}\n\n${itemsBlock}\n\n⚖️ Total Kg - ${totalKg.toFixed(2)} Kg`;
+      const deliTotalGbp = list.reduce((sum, r) => sum + (r.deliCurrency === 'GBP' ? (parseFloat(r.deliGbp) || 0) : 0), 0);
+      const deliTotalMmk = list.reduce((sum, r) => sum + (r.deliCurrency === 'MMK' ? (parseFloat(r.deliMmk) || 0) : 0), 0);
+      const deliTotalsArr = [];
+      if (deliTotalGbp > 0) deliTotalsArr.push(`£${deliTotalGbp.toFixed(2)}`);
+      if (deliTotalMmk > 0) deliTotalsArr.push(`${deliTotalMmk.toLocaleString()} Ks`);
+      const deliSummaryLine = deliTotalsArr.length
+        ? `\n🚚 Total Local Deli - ${deliTotalsArr.join(' + ')}`
+        : '';
+
+      return `✨ ${headerDatePart}\n${headerTitle}\n────────────────────\n${itemsBlock}\n────────────────────\n📦 Total Boxes - ${totalBoxes} ပုံး\n⚖️ Total Kg - ${totalKg.toFixed(2)} Kg${deliSummaryLine}`;
     }
 
     function getUnsentOnHandList() {
@@ -2301,13 +2453,20 @@
         </div>
 
         <div class="bg-amber-50/80 border border-amber-200 rounded-xl p-2.5 space-y-1">
-          <div class="flex items-center justify-between gap-2">
+          <div class="flex items-center justify-between gap-2 flex-wrap">
             <span class="font-bold text-amber-950">🚚 2. Local Delivery Fee</span>
             <span class="text-[10.5px] font-bold border px-2 py-0.5 rounded-lg ${deliBadge.cls}">${deliBadge.label}</span>
           </div>
+          ${r.deliNote ? `<div class="text-[11px] font-semibold text-amber-900">📝 ${escapeHtml(r.deliNote)}</div>` : ''}
           ${hasDeli ? `<div class="font-bold text-slate-900">${escapeHtml(deliAmt)}</div>` : ''}
           ${(hasDeli && r.deliPayDate) ? `<div class="text-[11px] text-slate-600">Date: ${escapeHtml(r.deliPayDate)}</div>` : ''}
         </div>
+
+        ${(r.advanceAmount > 0 || r.advanceNote) ? `
+        <div class="bg-rose-50/90 border border-rose-200 rounded-xl p-2.5 space-y-1">
+          <div class="font-bold text-rose-950 text-[11.5px]">🧾 Customer စိုက်ရှင်းငွေ / ပစ္စည်းဝယ်ပေးမှု မှတ်တမ်း</div>
+          <div class="text-[11px] font-semibold text-rose-900">${escapeHtml(formatAdvanceSummaryStr(r))}</div>
+        </div>` : ''}
 
         <div class="bg-indigo-50/90 border border-indigo-200 rounded-xl p-2.5 font-bold text-indigo-950 text-[11.5px]">
           ${escapeHtml(settlementSummary)}
@@ -2406,7 +2565,12 @@
       }
 
       tbody.innerHTML = '';
+      const cardWrapClear = document.getElementById('cardViewWrap');
+      if (cardWrapClear) cardWrapClear.innerHTML = '';
       if (list.length === 0) {
+        const tableWrapEmpty = document.getElementById('tableScrollWrap');
+        if (tableWrapEmpty) tableWrapEmpty.classList.toggle('hidden', currentLayout === 'card');
+        if (cardWrapClear) cardWrapClear.classList.toggle('hidden', currentLayout !== 'card');
         empty.classList.remove('hidden');
         updateBulkDeleteUI();
         forceRepaintDashboard();
@@ -2443,18 +2607,21 @@
         }
 
         let deliDetailHtml = '';
+        if (r.deliNote) {
+          deliDetailHtml += `<div class="text-[10.5px] font-semibold text-amber-900 mt-1">📝 ${escapeHtml(r.deliNote)}</div>`;
+        }
         if (hasSeparateLocalDeliveryAmount(r)) {
           if (r.deliCurrency === 'MMK') {
             const dMmk = r.deliMmk ? Number(r.deliMmk).toLocaleString() + ' Ks' : '0 Ks';
             const dRate = r.deliRate ? 'Rate @ ' + Number(r.deliRate).toLocaleString() : '';
-            deliDetailHtml = `
-              <div class="text-[11px] font-bold text-amber-950 mt-1">${dMmk}</div>
+            deliDetailHtml += `
+              <div class="text-[11px] font-bold text-amber-950 mt-0.5">${dMmk}</div>
               <div class="text-[10px] text-slate-500">${dRate}${r.deliPayDate ? ' • ' + escapeHtml(r.deliPayDate) : ''}</div>
             `;
           } else {
             const dGbp = r.deliGbp ? '£' + Number(r.deliGbp).toFixed(2) : '£0.00';
-            deliDetailHtml = `
-              <div class="text-[11px] font-bold text-amber-950 mt-1">${dGbp}${r.deliPayDate ? ' • ' + escapeHtml(r.deliPayDate) : ''}</div>
+            deliDetailHtml += `
+              <div class="text-[11px] font-bold text-amber-950 mt-0.5">${dGbp}${r.deliPayDate ? ' • ' + escapeHtml(r.deliPayDate) : ''}</div>
             `;
           }
         }
@@ -2538,9 +2705,10 @@
             <span class="inline-block text-[10.5px] font-bold border px-2 py-0.5 rounded-lg ${deliBadge.cls}">${deliBadge.label}</span>
             ${deliDetailHtml}
           </td>
-          <td class="py-2.5 px-2.5 max-w-[230px]">
+          <td class="py-2.5 px-2.5 max-w-[240px]">
             ${photoBtnHtml ? `<div>${photoBtnHtml}</div>` : ''}
             ${badgesHtml ? `<div class="mb-1 space-y-0.5">${badgesHtml}</div>` : ''}
+            ${(r.advanceAmount > 0 || r.advanceNote) ? `<div class="mb-1 text-[10.5px] font-bold bg-rose-50 text-rose-900 border border-rose-200 px-2 py-1 rounded-lg leading-snug break-words">${escapeHtml(formatAdvanceSummaryStr(r))}</div>` : ''}
             <div class="text-[11px] text-slate-600 leading-snug break-words">${escapeHtml(r.note || '—')}</div>
           </td>
           <td class="py-2.5 px-2.5 text-center whitespace-nowrap">
@@ -2560,7 +2728,88 @@
           </td>
         `;
         tbody.appendChild(tr);
+
+        // Also build Card View item
+        const cardWrap = document.getElementById('cardViewWrap');
+        if (cardWrap) {
+          const card = document.createElement('div');
+          card.className = 'bg-white rounded-2xl border border-slate-200 p-3.5 shadow-xs space-y-2.5 flex flex-col justify-between';
+          const historyChkHtml = (currentTab === 'history' && role === 'admin')
+            ? `<input type="checkbox" ${selectedHistoryIds.has(r.id) ? 'checked' : ''} onchange="toggleSelectHistoryItem('${r.id}', this.checked)" class="mr-1.5" />`
+            : '';
+          card.innerHTML = `
+            <div class="space-y-2">
+              <div class="flex items-start justify-between gap-2 border-b border-slate-100 pb-2">
+                <div>
+                  <div class="font-extrabold text-sm text-slate-900 flex items-center">${historyChkHtml}${escapeHtml(r.invNo)}</div>
+                  <div class="text-[11px] text-slate-500">${escapeHtml(r.date)}</div>
+                </div>
+                <span class="text-[10.5px] font-bold px-2 py-0.5 rounded-lg ${r.destType === 'UK' ? 'bg-indigo-100 text-indigo-800' : 'bg-teal-100 text-teal-800'}">
+                  ${escapeHtml(r.origin)} → ${escapeHtml(r.destination)}
+                </span>
+              </div>
+
+              <div class="bg-slate-50 rounded-xl p-2.5 space-y-1 text-xs">
+                <div><span class="text-slate-500 font-semibold">📤 MM:</span> <span class="font-bold text-slate-900">${escapeHtml(r.sender)}</span> ${r.senderPhone ? `<span class="text-[11px] text-slate-600">(${escapeHtml(r.senderPhone)})</span>` : ''}</div>
+                <div><span class="text-slate-500 font-semibold">📥 UK:</span> <span class="font-bold text-indigo-950">${escapeHtml(r.receiver)}</span> ${r.receiverPhone ? `<span class="text-[11px] text-indigo-800 font-semibold">(${escapeHtml(r.receiverPhone)})</span>` : ''}</div>
+              </div>
+
+              <div>
+                <div class="font-bold text-xs text-slate-800">📦 ${r.boxes} ပုံး • <span class="font-extrabold text-sky-700">⚖️ ${Number(r.kg).toFixed(2)} kg</span></div>
+                <div class="mt-1">${catBadgesHtml}</div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div class="bg-emerald-50/60 border border-emerald-200/80 rounded-xl p-2">
+                  <div class="text-[10px] font-bold text-slate-500 mb-0.5">💳 KG Fee</div>
+                  <span class="inline-block text-[10px] font-bold border px-1.5 py-0.5 rounded-md ${kgBadge.cls}">${kgBadge.label}</span>
+                  ${kgAmountHtml}
+                </div>
+                <div class="bg-amber-50/60 border border-amber-200/80 rounded-xl p-2">
+                  <div class="text-[10px] font-bold text-slate-500 mb-0.5">🚚 Local Delivery</div>
+                  <span class="inline-block text-[10px] font-bold border px-1.5 py-0.5 rounded-md ${deliBadge.cls}">${deliBadge.label}</span>
+                  ${deliDetailHtml}
+                </div>
+              </div>
+
+              ${(photoBtnHtml || badgesHtml || r.advanceAmount > 0 || r.advanceNote || r.note) ? `
+              <div class="space-y-1 pt-0.5">
+                ${photoBtnHtml ? `<div>${photoBtnHtml}</div>` : ''}
+                ${badgesHtml ? `<div>${badgesHtml}</div>` : ''}
+                ${(r.advanceAmount > 0 || r.advanceNote) ? `<div class="text-[11px] font-bold bg-rose-50 text-rose-900 border border-rose-200 px-2.5 py-1.5 rounded-xl">${escapeHtml(formatAdvanceSummaryStr(r))}</div>` : ''}
+                ${r.note ? `<div class="text-[11px] text-slate-600 bg-slate-50 px-2.5 py-1 rounded-lg">📝 ${escapeHtml(r.note)}</div>` : ''}
+              </div>` : ''}
+            </div>
+
+            <div class="pt-2 border-t border-slate-100 flex items-center justify-between flex-wrap gap-1.5">
+              <div class="flex items-center gap-1">
+                <button onclick="toggleFlag('${r.id}', 'ready')" class="text-[11px] font-bold px-2.5 py-1 rounded-lg border ${r.ready ? 'bg-teal-600 text-white border-teal-700' : 'bg-white text-slate-600 border-slate-300'}">
+                  ${r.ready ? '✅ Ready' : 'Ready?'}
+                </button>
+                <button onclick="toggleFlag('${r.id}', 'dispatched')" class="text-[11px] font-bold px-2.5 py-1 rounded-lg border ${r.dispatched ? 'bg-amber-600 text-white border-amber-700' : 'bg-white text-slate-600 border-slate-300'}">
+                  ${r.dispatched ? '🚚 Sent' : 'Sent?'}
+                </button>
+              </div>
+              <div class="flex items-center gap-1 flex-wrap">
+                ${actionButtons}
+              </div>
+            </div>
+          `;
+          cardWrap.appendChild(card);
+        }
       });
+
+      const tableWrap = document.getElementById('tableScrollWrap');
+      const cardWrapEl = document.getElementById('cardViewWrap');
+      if (tableWrap && cardWrapEl) {
+        if (currentLayout === 'card') {
+          tableWrap.classList.add('hidden');
+          cardWrapEl.classList.remove('hidden');
+        } else {
+          cardWrapEl.classList.add('hidden');
+          tableWrap.classList.remove('hidden');
+        }
+      }
 
       updateBulkDeleteUI();
       forceRepaintDashboard();
@@ -2688,6 +2937,7 @@
 
     updateLiveClock();
     setInterval(updateLiveClock, 1000);
+    setLayoutMode(currentLayout);
     initFromUrlParams();
     loadFromGitHub();
   </script>
