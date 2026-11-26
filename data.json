@@ -1,40 +1,40 @@
 {
-  "updatedAt": "2026-11-25T10:11:02.074Z",
+  "updatedAt": "2026-11-26T03:05:45.933Z",
   "records": [
     {
       "id": "inv_ADF595_1795600810691",
       "invNo": "ADF595",
-      "date": "25.11.2026",
-      "cargoType": "Standard",
+      "date": "26.11.2026",
+      "cargoType": "Risk",
       "kgBreakdowns": [
         {
-          "category": "Standard",
-          "kg": 5
+          "category": "Risk",
+          "kg": 28
         }
       ],
       "origin": "Myanmar",
-      "destType": "UK",
-      "destination": "UK",
-      "sender": "MA WAR WAR KHIN",
-      "senderPhone": "09250278841",
-      "receiver": "MA YEE MON AUNG",
-      "receiverPhone": "+447547913750",
+      "destType": "Worldwide",
+      "destination": "Poland",
+      "sender": "Daw Than Than Win",
+      "senderPhone": "095009133",
+      "receiver": "Htet Myat Noe",
+      "receiverPhone": "+48798625219",
       "boxes": 1,
-      "kg": 5,
+      "kg": 28,
       "photos": [
-        "photos/inv_ADF595_1795600810691_1795600810691_1.jpg"
+        "photos/inv_ADF595_1795662341967_1795662341967_1.jpg"
       ],
       "kgPayStatus": "paid_mm",
       "kgCurrency": "MMK",
       "kgGbp": 0,
-      "kgMmk": 423000,
-      "rate": 7050,
-      "kgPayDate": "25.11.2026",
+      "kgMmk": 2380000,
+      "rate": 6800,
+      "kgPayDate": "17.11.2026",
       "deliStatus": "none",
       "deliCurrency": "GBP",
       "deliGbp": 0,
       "deliMmk": 0,
-      "deliRate": 7050,
+      "deliRate": 6800,
       "deliPayDate": "",
       "insured": false,
       "insCurrency": "MMK",
@@ -45,7 +45,11 @@
       "ready": false,
       "dispatched": false,
       "archived": false,
-      "note": ""
+      "note": "",
+      "insRate": 6800,
+      "discRate": 6800,
+      "invoiceStage": "Revised",
+      "sourceApp": "mm-invoice-v44"
     }
   ]
 }
