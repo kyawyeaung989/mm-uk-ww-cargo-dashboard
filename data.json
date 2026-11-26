@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T10:22:23.436Z",
+  "updatedAt": "2026-11-26T10:23:06.185Z",
   "records": [
     {
       "id": "inv_ADF567_1795688457574",
@@ -26,7 +26,7 @@
       "boxes": 1,
       "kg": 20,
       "photos": [
-        "photos/inv_ADF567_1795688540078_1795688540078_1.jpg"
+        "photos/inv_ADF567_1795688583246_1795688583246_1.jpg"
       ],
       "kgPayStatus": "paid_mm",
       "kgCurrency": "MMK",
@@ -34,9 +34,9 @@
       "kgMmk": 1540000,
       "rate": 5500,
       "kgPayDate": "25.11.2026",
-      "deliStatus": "office_pickup",
+      "deliStatus": "none",
       "deliCurrency": "GBP",
-      "deliGbp": 20,
+      "deliGbp": 0,
       "deliMmk": 0,
       "deliRate": 5500,
       "deliPayDate": "",
