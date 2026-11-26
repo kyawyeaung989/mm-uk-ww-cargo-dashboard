@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T21:53:17.064Z",
+  "updatedAt": "2026-11-26T21:54:53.171Z",
   "records": [
     {
       "id": "inv_ADF567_1795688457574",
@@ -54,7 +54,7 @@
       "discAmount": 0,
       "ready": false,
       "dispatched": false,
-      "archived": false,
+      "archived": true,
       "note": ""
     },
     {
@@ -105,7 +105,7 @@
       "discount": false,
       "discCurrency": "GBP",
       "discAmount": 0,
-      "ready": true,
+      "ready": false,
       "dispatched": false,
       "archived": false,
       "note": ""
