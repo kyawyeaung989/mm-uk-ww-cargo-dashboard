@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T10:23:06.185Z",
+  "updatedAt": "2026-11-26T10:24:06.093Z",
   "records": [
     {
       "id": "inv_ADF567_1795688457574",
@@ -26,7 +26,7 @@
       "boxes": 1,
       "kg": 20,
       "photos": [
-        "photos/inv_ADF567_1795688583246_1795688583246_1.jpg"
+        "photos/inv_ADF567_1795688643470_1795688643470_1.jpg"
       ],
       "kgPayStatus": "paid_mm",
       "kgCurrency": "MMK",
