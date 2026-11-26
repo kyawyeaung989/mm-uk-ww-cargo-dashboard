@@ -1,6 +1,60 @@
 {
-  "updatedAt": "2026-11-26T10:11:00.709Z",
+  "updatedAt": "2026-11-26T10:21:00.745Z",
   "records": [
+    {
+      "id": "inv_ADF567_1795688457574",
+      "invNo": "ADF567",
+      "date": "25.11.2026",
+      "cargoType": "Risk",
+      "kgBreakdowns": [
+        {
+          "category": "Risk",
+          "kg": 5
+        },
+        {
+          "category": "Standard",
+          "kg": 15
+        }
+      ],
+      "origin": "Myanmar",
+      "destType": "UK",
+      "destination": "UK",
+      "sender": "May Zon Moe",
+      "senderPhone": "09777994663",
+      "receiver": "Ahmed Jarmal",
+      "receiverPhone": "07894253729",
+      "boxes": 1,
+      "kg": 20,
+      "photos": [
+        "photos/inv_ADF567_1795688457574_1795688457574_1.jpg"
+      ],
+      "kgPayStatus": "paid_mm",
+      "kgCurrency": "MMK",
+      "kgGbp": 0,
+      "kgMmk": 1540000,
+      "rate": 5500,
+      "kgPayDate": "25.11.2026",
+      "deliStatus": "paid_mm",
+      "deliCurrency": "MMK",
+      "deliGbp": 0,
+      "deliMmk": 110000,
+      "deliRate": 5500,
+      "deliPayDate": "25.11.2026",
+      "insured": false,
+      "insCurrency": "MMK",
+      "insAmount": 0,
+      "insRate": 5500,
+      "discount": false,
+      "discCurrency": "GBP",
+      "discAmount": 0,
+      "discRate": 5500,
+      "note": "",
+      "invoiceStage": "Final Invoice",
+      "sourceApp": "mm-invoice-v44",
+      "ready": false,
+      "dispatched": false,
+      "archived": false
+    },
     {
       "id": "inv_ADF596_1795686309298",
       "invNo": "ADF596",
