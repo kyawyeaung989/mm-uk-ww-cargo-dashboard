@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T22:00:28.026Z",
+  "updatedAt": "2026-11-27T07:37:35.224Z",
   "records": [
     {
       "id": "inv_ADF567_1795688457574",
@@ -60,39 +60,39 @@
     {
       "id": "inv_ADF596_1795686309298",
       "invNo": "ADF596",
-      "date": "25.11.2026",
-      "cargoType": "Standard",
+      "date": "27.11.2026",
+      "cargoType": "Risk",
       "kgBreakdowns": [
         {
-          "category": "Standard",
-          "kg": 5
+          "category": "Risk",
+          "kg": 59
         }
       ],
       "origin": "Myanmar",
-      "destType": "UK",
-      "destination": "UK",
-      "sender": "Daw War War Khin",
-      "senderPhone": "09250278841",
-      "receiver": "Yee Mon Aung",
-      "receiverPhone": "+447547913750",
+      "destType": "Worldwide",
+      "destination": "Netherland",
+      "sender": "Ma Sandar Chit",
+      "senderPhone": "09966322019",
+      "receiver": "Nan Mya Soe San",
+      "receiverPhone": "+31641919100",
       "boxes": 1,
-      "kg": 5,
+      "kg": 59,
       "photos": [
-        "photos/inv_ADF596_1795686309298_1795686309298_1.jpg",
-        "photos/inv_ADF596_1795686309298_1795686312375_2.jpg"
+        "photos/inv_ADF596_1795765048100_1795765048100_1.jpg",
+        "photos/inv_ADF596_1795765048100_1795765051462_2.jpg"
       ],
-      "kgPayStatus": "paid_mm",
-      "kgCurrency": "MMK",
-      "kgGbp": 0,
-      "kgMmk": 423000,
-      "rate": 7050,
-      "kgPayDate": "26.11.2026",
-      "deliStatus": "none",
+      "kgPayStatus": "unpaid",
+      "kgCurrency": "GBP",
+      "kgGbp": 755.2,
+      "kgMmk": 0,
+      "rate": 5500,
+      "kgPayDate": "27.11.2026",
+      "deliStatus": "pay_uk",
       "deliNote": "",
       "deliCurrency": "GBP",
       "deliGbp": 0,
       "deliMmk": 0,
-      "deliRate": 7050,
+      "deliRate": 5500,
       "deliPayDate": "",
       "advanceCurrency": "MMK",
       "advanceAmount": 0,
@@ -108,7 +108,14 @@
       "ready": false,
       "dispatched": false,
       "archived": false,
-      "note": ""
+      "note": "",
+      "hasDeli": false,
+      "insRate": 5500,
+      "discRate": 5500,
+      "notes": "",
+      "dashNote": "",
+      "invoiceStage": "Revised",
+      "sourceApp": "mm-invoice-v44"
     },
     {
       "id": "inv_ADF595_1795600810691",
