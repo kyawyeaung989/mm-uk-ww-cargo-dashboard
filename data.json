@@ -1,19 +1,15 @@
 {
-  "updatedAt": "2026-11-27T08:28:46.117Z",
+  "updatedAt": "2026-11-27T10:06:54.309Z",
   "records": [
     {
       "id": "inv_ADF567_1795688457574",
       "invNo": "ADF567",
-      "date": "25.11.2026",
+      "date": "27.11.2026",
       "cargoType": "Risk",
       "kgBreakdowns": [
         {
           "category": "Risk",
           "kg": 5
-        },
-        {
-          "category": "Standard",
-          "kg": 15
         }
       ],
       "origin": "Myanmar",
@@ -24,22 +20,22 @@
       "receiver": "Ahmed Jarmal",
       "receiverPhone": "07894253729",
       "boxes": 1,
-      "kg": 20,
+      "kg": 5,
       "photos": [
-        "photos/inv_ADF567_1795688643470_1795688643470_1.jpg"
+        "photos/inv_ADF567_1795774010867_1795774010867_1.jpg"
       ],
       "kgPayStatus": "paid_mm",
-      "kgCurrency": "MMK",
-      "kgGbp": 0,
-      "kgMmk": 1540000,
+      "kgCurrency": "GBP",
+      "kgGbp": 70,
+      "kgMmk": 0,
       "rate": 5500,
-      "kgPayDate": "25.11.2026",
+      "kgPayDate": "27.11.2026",
       "deliStatus": "office_pickup",
       "deliNote": "",
       "deliCurrency": "GBP",
       "deliGbp": 0,
       "deliMmk": 0,
-      "deliRate": 0,
+      "deliRate": 5500,
       "deliPayDate": "",
       "advanceCurrency": "MMK",
       "advanceAmount": 0,
@@ -54,8 +50,12 @@
       "discAmount": 0,
       "ready": false,
       "dispatched": false,
-      "archived": true,
-      "note": ""
+      "archived": false,
+      "note": "",
+      "insRate": 5500,
+      "discRate": 5500,
+      "invoiceStage": "Revised",
+      "sourceApp": "mm-invoice-v44"
     },
     {
       "id": "inv_ADF596_1795686309298",
