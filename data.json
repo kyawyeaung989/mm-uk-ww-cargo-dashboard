@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T10:22:02.134Z",
+  "updatedAt": "2026-11-27T13:48:06.054Z",
   "records": [
     {
       "id": "inv_ADF567_1795688457574",
@@ -28,13 +28,13 @@
       "kgCurrency": "GBP",
       "kgGbp": 70,
       "kgMmk": 0,
-      "rate": 5500,
+      "rate": 0,
       "kgPayDate": "27.11.2026",
-      "deliStatus": "none",
+      "deliStatus": "office_pickup",
       "deliCurrency": "GBP",
       "deliGbp": 0,
       "deliMmk": 0,
-      "deliRate": 5500,
+      "deliRate": 0,
       "deliPayDate": "",
       "insured": false,
       "insCurrency": "MMK",
@@ -45,11 +45,7 @@
       "ready": false,
       "dispatched": false,
       "archived": false,
-      "note": "",
-      "insRate": 5500,
-      "discRate": 5500,
-      "invoiceStage": "Revised",
-      "sourceApp": "mm-invoice-v44"
+      "note": ""
     },
     {
       "id": "inv_ADF596_1795686309298",
