@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T13:48:06.054Z",
+  "updatedAt": "2026-11-27T13:48:33.073Z",
   "records": [
     {
       "id": "inv_ADF567_1795688457574",
@@ -30,7 +30,7 @@
       "kgMmk": 0,
       "rate": 0,
       "kgPayDate": "27.11.2026",
-      "deliStatus": "office_pickup",
+      "deliStatus": "pay_uk",
       "deliCurrency": "GBP",
       "deliGbp": 0,
       "deliMmk": 0,
