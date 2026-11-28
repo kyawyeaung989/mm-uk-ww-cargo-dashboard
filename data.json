@@ -1,6 +1,57 @@
 {
-  "updatedAt": "2026-11-28T05:12:24.082Z",
+  "updatedAt": "2026-11-28T05:25:17.651Z",
   "records": [
+    {
+      "id": "inv_ADF589_1795843511381",
+      "invNo": "ADF589",
+      "date": "16.11.2026",
+      "cargoType": "Risk",
+      "kgBreakdowns": [
+        {
+          "category": "Risk",
+          "kg": 11
+        }
+      ],
+      "origin": "Myanmar",
+      "destType": "UK",
+      "destination": "UK",
+      "sender": "May Thandar Ko",
+      "senderPhone": "0976275960",
+      "receiver": "Aye Thandar Ko",
+      "receiverPhone": "07352127599",
+      "boxes": 1,
+      "kg": 11,
+      "photos": [
+        "photos/inv_ADF589_1795843511381_1795843511381_1.jpg",
+        "photos/inv_ADF589_1795843511381_1795843513665_2.jpg"
+      ],
+      "kgPayStatus": "paid_mm",
+      "kgCurrency": "MMK",
+      "kgGbp": 0,
+      "kgMmk": 1001000,
+      "rate": 6500,
+      "kgPayDate": "16.11.2026",
+      "deliStatus": "paid_mm",
+      "deliCurrency": "MMK",
+      "deliGbp": 0,
+      "deliMmk": 260000,
+      "deliRate": 6500,
+      "deliPayDate": "16.11.2026",
+      "insured": false,
+      "insCurrency": "MMK",
+      "insAmount": 0,
+      "insRate": 6500,
+      "discount": false,
+      "discCurrency": "GBP",
+      "discAmount": 0,
+      "discRate": 6500,
+      "note": "",
+      "invoiceStage": "Revised",
+      "sourceApp": "mm-invoice-v44",
+      "ready": false,
+      "dispatched": false,
+      "archived": false
+    },
     {
       "id": "inv_ADF588_1795842705447",
       "invNo": "ADF588",
