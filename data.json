@@ -1,6 +1,52 @@
 {
-  "updatedAt": "2026-11-28T04:14:22.235Z",
+  "updatedAt": "2026-11-28T04:20:36.574Z",
   "records": [
+    {
+      "id": "rec_1795839632555_u45f",
+      "invNo": "ADF582",
+      "date": "8.11.2026",
+      "cargoType": "Risk",
+      "kgBreakdowns": [
+        {
+          "category": "Risk",
+          "kg": 14
+        }
+      ],
+      "origin": "Myanmar",
+      "destType": "UK",
+      "destination": "UK",
+      "sender": "Min Thiha Kyaw",
+      "senderPhone": "09794422308",
+      "receiver": "Ma Su Myat Noe",
+      "receiverPhone": "+447463499783",
+      "boxes": 1,
+      "kg": 14,
+      "photos": [
+        "photos/rec_1795839632555_u45f_1795839632556_1.jpg"
+      ],
+      "kgPayStatus": "paid_mm",
+      "kgCurrency": "MMK",
+      "kgGbp": 0,
+      "kgMmk": 1254400,
+      "rate": 6400,
+      "kgPayDate": "8.11.2026",
+      "deliStatus": "pay_uk",
+      "deliCurrency": "GBP",
+      "deliGbp": 10,
+      "deliMmk": 0,
+      "deliRate": 0,
+      "deliPayDate": "8.11.2026",
+      "insured": false,
+      "insCurrency": "GBP",
+      "insAmount": 0,
+      "discount": false,
+      "discCurrency": "GBP",
+      "discAmount": 0,
+      "note": "Cargofees & Local Deli Fees Paid By Kpay",
+      "ready": false,
+      "dispatched": false,
+      "archived": false
+    },
     {
       "id": "rec_1795839258607_2h2t",
       "invNo": "ADF581",
