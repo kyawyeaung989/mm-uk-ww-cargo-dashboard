@@ -1,6 +1,52 @@
 {
-  "updatedAt": "2026-11-28T05:41:05.757Z",
+  "updatedAt": "2026-11-28T05:46:12.312Z",
   "records": [
+    {
+      "id": "rec_1795844768598_wh25",
+      "invNo": "ADF591",
+      "date": "19.11.2026",
+      "cargoType": "Electronic Device",
+      "kgBreakdowns": [
+        {
+          "category": "Electronic Device",
+          "kg": 1.5
+        }
+      ],
+      "origin": "Myanmar",
+      "destType": "UK",
+      "destination": "UK",
+      "sender": "ZYTT Camera House",
+      "senderPhone": "09979554992",
+      "receiver": "Ko Thiha Kyaw",
+      "receiverPhone": "+447950831543",
+      "boxes": 1,
+      "kg": 1.5,
+      "photos": [
+        "photos/rec_1795844768598_wh25_1795844768598_1.jpg"
+      ],
+      "kgPayStatus": "paid_mm",
+      "kgCurrency": "MMK",
+      "kgGbp": 0,
+      "kgMmk": 253125,
+      "rate": 6750,
+      "kgPayDate": "19.11.2026",
+      "deliStatus": "none",
+      "deliCurrency": "GBP",
+      "deliGbp": 0,
+      "deliMmk": 0,
+      "deliRate": 0,
+      "deliPayDate": "",
+      "insured": false,
+      "insCurrency": "GBP",
+      "insAmount": 0,
+      "discount": false,
+      "discCurrency": "GBP",
+      "discAmount": 0,
+      "note": "Only Cargo Fees Paid  By Kpay",
+      "ready": false,
+      "dispatched": false,
+      "archived": false
+    },
     {
       "id": "rec_1795844461090_v2ih",
       "invNo": "ADF590",
