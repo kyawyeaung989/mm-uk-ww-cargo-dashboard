@@ -1,6 +1,52 @@
 {
-  "updatedAt": "2026-11-27T14:04:01.577Z",
+  "updatedAt": "2026-11-28T03:27:53.582Z",
   "records": [
+    {
+      "id": "rec_1795836458200_1axp",
+      "invNo": "ADF595",
+      "date": "25.11.2026",
+      "cargoType": "Standard",
+      "kgBreakdowns": [
+        {
+          "category": "Standard",
+          "kg": 5
+        }
+      ],
+      "origin": "Myanmar",
+      "destType": "UK",
+      "destination": "UK",
+      "sender": "Daw War War Khin",
+      "senderPhone": "09250278441",
+      "receiver": "Yee Mon Aung",
+      "receiverPhone": "+447547913750",
+      "boxes": 1,
+      "kg": 5,
+      "photos": [
+        "photos/rec_1795836458200_1axp_1795836458200_1.jpg"
+      ],
+      "kgPayStatus": "paid_mm",
+      "kgCurrency": "MMK",
+      "kgGbp": 0,
+      "kgMmk": 423000,
+      "rate": 7050,
+      "kgPayDate": "25.11.2026",
+      "deliStatus": "office_pickup",
+      "deliCurrency": "GBP",
+      "deliGbp": 0,
+      "deliMmk": 0,
+      "deliRate": 0,
+      "deliPayDate": "",
+      "insured": false,
+      "insCurrency": "GBP",
+      "insAmount": 0,
+      "discount": false,
+      "discCurrency": "GBP",
+      "discAmount": 0,
+      "note": "Only Cargo Fees Paid By MMK & Pick Up in UK Office",
+      "ready": false,
+      "dispatched": false,
+      "archived": false
+    },
     {
       "id": "inv_ADF567_1795688457574",
       "invNo": "ADF567",
