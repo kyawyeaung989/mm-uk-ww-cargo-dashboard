@@ -1,6 +1,52 @@
 {
-  "updatedAt": "2026-11-28T03:59:29.566Z",
+  "updatedAt": "2026-11-28T04:06:58.913Z",
   "records": [
+    {
+      "id": "rec_1795838811540_6vt2",
+      "invNo": "ADF579",
+      "date": "4.11.2026",
+      "cargoType": "Risk",
+      "kgBreakdowns": [
+        {
+          "category": "Risk",
+          "kg": 10
+        }
+      ],
+      "origin": "Myanmar",
+      "destType": "UK",
+      "destination": "UK",
+      "sender": "U Khin Than",
+      "senderPhone": "092033572",
+      "receiver": "Moe  Pwint Phyu",
+      "receiverPhone": "07774414715",
+      "boxes": 1,
+      "kg": 10,
+      "photos": [
+        "photos/rec_1795838811540_6vt2_1795838811540_1.jpg"
+      ],
+      "kgPayStatus": "unpaid",
+      "kgCurrency": "GBP",
+      "kgGbp": 140,
+      "kgMmk": 0,
+      "rate": 0,
+      "kgPayDate": "",
+      "deliStatus": "pay_uk",
+      "deliCurrency": "GBP",
+      "deliGbp": 15,
+      "deliMmk": 0,
+      "deliRate": 0,
+      "deliPayDate": "",
+      "insured": false,
+      "insCurrency": "GBP",
+      "insAmount": 0,
+      "discount": false,
+      "discCurrency": "GBP",
+      "discAmount": 0,
+      "note": "Unpaid",
+      "ready": false,
+      "dispatched": false,
+      "archived": false
+    },
     {
       "id": "rec_1795838364355_a7dn",
       "invNo": "ADF578",
