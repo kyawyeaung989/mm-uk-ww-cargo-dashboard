@@ -1,6 +1,57 @@
 {
-  "updatedAt": "2026-11-28T04:50:51.081Z",
+  "updatedAt": "2026-11-28T04:55:48.243Z",
   "records": [
+    {
+      "id": "inv_ADF586_1795841741339",
+      "invNo": "ADF586",
+      "date": "11.11.26",
+      "cargoType": "ကုန်ပွ",
+      "kgBreakdowns": [
+        {
+          "category": "ကုန်ပွ",
+          "kg": 5
+        }
+      ],
+      "origin": "Myanmar",
+      "destType": "UK",
+      "destination": "UK",
+      "sender": "Ma Sandar",
+      "senderPhone": "09253536677",
+      "receiver": "Stacey Eaint",
+      "receiverPhone": "07427029529",
+      "boxes": 1,
+      "kg": 5,
+      "photos": [
+        "photos/inv_ADF586_1795841741339_1795841741339_1.jpg",
+        "photos/inv_ADF586_1795841741339_1795841744413_2.jpg"
+      ],
+      "kgPayStatus": "paid_mm",
+      "kgCurrency": "MMK",
+      "kgGbp": 0,
+      "kgMmk": 455000,
+      "rate": 6500,
+      "kgPayDate": "11.11.26",
+      "deliStatus": "paid_mm",
+      "deliCurrency": "MMK",
+      "deliGbp": 0,
+      "deliMmk": 65000,
+      "deliRate": 6500,
+      "deliPayDate": "11.11.26",
+      "insured": false,
+      "insCurrency": "MMK",
+      "insAmount": 0,
+      "insRate": 6500,
+      "discount": false,
+      "discCurrency": "GBP",
+      "discAmount": 0,
+      "discRate": 6500,
+      "note": "",
+      "invoiceStage": "Revised",
+      "sourceApp": "mm-invoice-v44",
+      "ready": false,
+      "dispatched": false,
+      "archived": false
+    },
     {
       "id": "inv_ADF585_1795840877005",
       "invNo": "ADF585",
