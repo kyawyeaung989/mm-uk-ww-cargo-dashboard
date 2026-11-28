@@ -1,6 +1,52 @@
 {
-  "updatedAt": "2026-11-28T05:25:17.651Z",
+  "updatedAt": "2026-11-28T05:41:05.757Z",
   "records": [
+    {
+      "id": "rec_1795844461090_v2ih",
+      "invNo": "ADF590",
+      "date": "`17.11.2026",
+      "cargoType": "Standard",
+      "kgBreakdowns": [
+        {
+          "category": "Standard",
+          "kg": 5
+        }
+      ],
+      "origin": "Myanmar",
+      "destType": "UK",
+      "destination": "UK",
+      "sender": "Ko Htet",
+      "senderPhone": "095113105",
+      "receiver": "Ko Nanda Soe",
+      "receiverPhone": "+447772057923",
+      "boxes": 1,
+      "kg": 5,
+      "photos": [
+        "photos/rec_1795844461090_v2ih_1795844461090_1.jpg"
+      ],
+      "kgPayStatus": "paid_mm",
+      "kgCurrency": "MMK",
+      "kgGbp": 0,
+      "kgMmk": 438750,
+      "rate": 6750,
+      "kgPayDate": "17.11.2026",
+      "deliStatus": "pay_uk",
+      "deliCurrency": "MMK",
+      "deliGbp": 0,
+      "deliMmk": 67500,
+      "deliRate": 6750,
+      "deliPayDate": "17.11.2026",
+      "insured": false,
+      "insCurrency": "GBP",
+      "insAmount": 0,
+      "discount": false,
+      "discCurrency": "GBP",
+      "discAmount": 0,
+      "note": "Paid",
+      "ready": false,
+      "dispatched": false,
+      "archived": false
+    },
     {
       "id": "inv_ADF589_1795843511381",
       "invNo": "ADF589",
@@ -40,17 +86,13 @@
       "insured": false,
       "insCurrency": "MMK",
       "insAmount": 0,
-      "insRate": 6500,
       "discount": false,
       "discCurrency": "GBP",
       "discAmount": 0,
-      "discRate": 6500,
-      "note": "",
-      "invoiceStage": "Revised",
-      "sourceApp": "mm-invoice-v44",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": false,
+      "note": ""
     },
     {
       "id": "inv_ADF588_1795842705447",
