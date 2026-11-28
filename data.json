@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-28T05:56:56.445Z",
+  "updatedAt": "2026-11-28T05:57:02.001Z",
   "records": [
     {
       "id": "rec_1795845406775_fh5x",
@@ -90,7 +90,7 @@
       "discAmount": 0,
       "note": "Unpaid",
       "ready": false,
-      "dispatched": false,
+      "dispatched": true,
       "archived": false
     },
     {
@@ -136,7 +136,7 @@
       "discAmount": 0,
       "note": "Only Cargo Fees Paid  By Kpay",
       "ready": false,
-      "dispatched": false,
+      "dispatched": true,
       "archived": false
     },
     {
