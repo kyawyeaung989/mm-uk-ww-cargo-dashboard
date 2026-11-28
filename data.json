@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-28T05:11:49.202Z",
+  "updatedAt": "2026-11-28T05:12:24.082Z",
   "records": [
     {
       "id": "inv_ADF588_1795842705447",
@@ -32,28 +32,24 @@
       "kgCurrency": "GBP",
       "kgGbp": 301,
       "kgMmk": 0,
-      "rate": 6500,
+      "rate": 0,
       "kgPayDate": "15.11.2026",
       "deliStatus": "pay_uk",
       "deliCurrency": "GBP",
       "deliGbp": 20,
       "deliMmk": 0,
-      "deliRate": 6500,
+      "deliRate": 0,
       "deliPayDate": "",
       "insured": false,
       "insCurrency": "MMK",
       "insAmount": 0,
-      "insRate": 6500,
       "discount": false,
       "discCurrency": "GBP",
       "discAmount": 0,
-      "discRate": 6500,
-      "note": "",
-      "invoiceStage": "Revised",
-      "sourceApp": "mm-invoice-v44",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": false,
+      "note": ""
     },
     {
       "id": "inv_ADF587_1795842236966",
@@ -94,17 +90,13 @@
       "insured": false,
       "insCurrency": "MMK",
       "insAmount": 0,
-      "insRate": 6500,
       "discount": false,
       "discCurrency": "GBP",
       "discAmount": 0,
-      "discRate": 6500,
-      "note": "",
-      "invoiceStage": "Revised",
-      "sourceApp": "mm-invoice-v44",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": false,
+      "note": ""
     },
     {
       "id": "inv_ADF586_1795841741339",
@@ -145,17 +137,13 @@
       "insured": false,
       "insCurrency": "MMK",
       "insAmount": 0,
-      "insRate": 6500,
       "discount": false,
       "discCurrency": "GBP",
       "discAmount": 0,
-      "discRate": 6500,
-      "note": "",
-      "invoiceStage": "Revised",
-      "sourceApp": "mm-invoice-v44",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": false,
+      "note": ""
     },
     {
       "id": "inv_ADF585_1795840877005",
