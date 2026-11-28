@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-28T06:00:30.007Z",
+  "updatedAt": "2026-11-28T06:00:39.433Z",
   "records": [
     {
       "id": "rec_1795845406775_fh5x",
@@ -42,10 +42,10 @@
       "discount": false,
       "discCurrency": "GBP",
       "discAmount": 0,
-      "note": "Paid",
       "ready": false,
       "dispatched": true,
-      "archived": true
+      "archived": true,
+      "note": "Paid"
     },
     {
       "id": "rec_1795844978892_ypc9",
@@ -88,10 +88,10 @@
       "discount": false,
       "discCurrency": "GBP",
       "discAmount": 0,
-      "note": "Unpaid",
       "ready": false,
       "dispatched": true,
-      "archived": true
+      "archived": true,
+      "note": "Unpaid"
     },
     {
       "id": "rec_1795844768598_wh25",
@@ -134,10 +134,10 @@
       "discount": false,
       "discCurrency": "GBP",
       "discAmount": 0,
-      "note": "Only Cargo Fees Paid  By Kpay",
       "ready": false,
       "dispatched": true,
-      "archived": true
+      "archived": true,
+      "note": "Only Cargo Fees Paid  By Kpay"
     },
     {
       "id": "rec_1795844461090_v2ih",
@@ -180,10 +180,10 @@
       "discount": false,
       "discCurrency": "GBP",
       "discAmount": 0,
-      "note": "Paid",
       "ready": false,
       "dispatched": true,
-      "archived": true
+      "archived": true,
+      "note": "Paid"
     },
     {
       "id": "inv_ADF589_1795843511381",
@@ -373,7 +373,7 @@
       "discAmount": 0,
       "ready": false,
       "dispatched": true,
-      "archived": false,
+      "archived": true,
       "note": "Paid"
     },
     {
