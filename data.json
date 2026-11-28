@@ -1,6 +1,52 @@
 {
-  "updatedAt": "2026-11-28T05:46:12.312Z",
+  "updatedAt": "2026-11-28T05:49:42.405Z",
   "records": [
+    {
+      "id": "rec_1795844978892_ypc9",
+      "invNo": "ADF592",
+      "date": "20.11.2026",
+      "cargoType": "ကုန်ပွ",
+      "kgBreakdowns": [
+        {
+          "category": "ကုန်ပွ",
+          "kg": 12.5
+        }
+      ],
+      "origin": "Myanmar",
+      "destType": "UK",
+      "destination": "UK",
+      "sender": "Wyne",
+      "senderPhone": "09979554992",
+      "receiver": "Htet Thiri Naing",
+      "receiverPhone": "+447950831543",
+      "boxes": 1,
+      "kg": 12.5,
+      "photos": [
+        "photos/rec_1795844978892_ypc9_1795844978892_1.jpg"
+      ],
+      "kgPayStatus": "unpaid",
+      "kgCurrency": "GBP",
+      "kgGbp": 175,
+      "kgMmk": 0,
+      "rate": 0,
+      "kgPayDate": "",
+      "deliStatus": "none",
+      "deliCurrency": "GBP",
+      "deliGbp": 0,
+      "deliMmk": 0,
+      "deliRate": 0,
+      "deliPayDate": "",
+      "insured": false,
+      "insCurrency": "GBP",
+      "insAmount": 0,
+      "discount": false,
+      "discCurrency": "GBP",
+      "discAmount": 0,
+      "note": "Unpaid",
+      "ready": false,
+      "dispatched": false,
+      "archived": false
+    },
     {
       "id": "rec_1795844768598_wh25",
       "invNo": "ADF591",
