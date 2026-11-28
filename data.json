@@ -1,6 +1,52 @@
 {
-  "updatedAt": "2026-11-28T04:06:58.913Z",
+  "updatedAt": "2026-11-28T04:10:26.912Z",
   "records": [
+    {
+      "id": "rec_1795839023236_w6y3",
+      "invNo": "ADF580",
+      "date": "4.11.2026",
+      "cargoType": "Standard",
+      "kgBreakdowns": [
+        {
+          "category": "Standard",
+          "kg": 6
+        }
+      ],
+      "origin": "Myanmar",
+      "destType": "UK",
+      "destination": "UK",
+      "sender": "U Tin Soe",
+      "senderPhone": "095396347",
+      "receiver": "Ma Su Moh Moh Htoo",
+      "receiverPhone": "07496889163",
+      "boxes": 1,
+      "kg": 6,
+      "photos": [
+        "photos/rec_1795839023236_w6y3_1795839023236_1.jpg"
+      ],
+      "kgPayStatus": "unpaid",
+      "kgCurrency": "GBP",
+      "kgGbp": 78,
+      "kgMmk": 0,
+      "rate": 0,
+      "kgPayDate": "",
+      "deliStatus": "pay_uk",
+      "deliCurrency": "GBP",
+      "deliGbp": 15,
+      "deliMmk": 0,
+      "deliRate": 0,
+      "deliPayDate": "",
+      "insured": false,
+      "insCurrency": "GBP",
+      "insAmount": 0,
+      "discount": false,
+      "discCurrency": "GBP",
+      "discAmount": 0,
+      "note": "Unpaid",
+      "ready": false,
+      "dispatched": false,
+      "archived": false
+    },
     {
       "id": "rec_1795838811540_6vt2",
       "invNo": "ADF579",
