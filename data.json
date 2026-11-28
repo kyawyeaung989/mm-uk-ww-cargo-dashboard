@@ -1,6 +1,52 @@
 {
-  "updatedAt": "2026-11-28T04:20:36.574Z",
+  "updatedAt": "2026-11-28T04:23:50.573Z",
   "records": [
+    {
+      "id": "rec_1795839825528_e7ej",
+      "invNo": "ADF583",
+      "date": "9.11.2026",
+      "cargoType": "Risk",
+      "kgBreakdowns": [
+        {
+          "category": "Risk",
+          "kg": 12
+        }
+      ],
+      "origin": "Myanmar",
+      "destType": "UK",
+      "destination": "UK",
+      "sender": "Mar Mee",
+      "senderPhone": "09955960863",
+      "receiver": "Dawood  Nanabawa",
+      "receiverPhone": "+447877512270",
+      "boxes": 1,
+      "kg": 12,
+      "photos": [
+        "photos/rec_1795839825528_e7ej_1795839825528_1.jpg"
+      ],
+      "kgPayStatus": "unpaid",
+      "kgCurrency": "GBP",
+      "kgGbp": 168,
+      "kgMmk": 0,
+      "rate": 0,
+      "kgPayDate": "",
+      "deliStatus": "pay_uk",
+      "deliCurrency": "GBP",
+      "deliGbp": 20,
+      "deliMmk": 0,
+      "deliRate": 0,
+      "deliPayDate": "",
+      "insured": false,
+      "insCurrency": "GBP",
+      "insAmount": 0,
+      "discount": false,
+      "discCurrency": "GBP",
+      "discAmount": 0,
+      "note": "Unpaid",
+      "ready": false,
+      "dispatched": false,
+      "archived": false
+    },
     {
       "id": "rec_1795839632555_u45f",
       "invNo": "ADF582",
