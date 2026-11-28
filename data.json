@@ -1,6 +1,52 @@
 {
-  "updatedAt": "2026-11-28T03:27:53.582Z",
+  "updatedAt": "2026-11-28T03:59:29.566Z",
   "records": [
+    {
+      "id": "rec_1795838364355_a7dn",
+      "invNo": "ADF578",
+      "date": "1.11.2026",
+      "cargoType": "Standard",
+      "kgBreakdowns": [
+        {
+          "category": "Standard",
+          "kg": 3
+        }
+      ],
+      "origin": "Myanmar",
+      "destType": "UK",
+      "destination": "UK",
+      "sender": "Daw Khin Myoe Aye",
+      "senderPhone": "09799654223",
+      "receiver": "Htin Lin Aung",
+      "receiverPhone": "07960774648",
+      "boxes": 1,
+      "kg": 3,
+      "photos": [
+        "photos/rec_1795838364355_a7dn_1795838364356_1.jpg"
+      ],
+      "kgPayStatus": "unpaid",
+      "kgCurrency": "GBP",
+      "kgGbp": 39,
+      "kgMmk": 0,
+      "rate": 0,
+      "kgPayDate": "",
+      "deliStatus": "pay_uk",
+      "deliCurrency": "GBP",
+      "deliGbp": 10,
+      "deliMmk": 0,
+      "deliRate": 0,
+      "deliPayDate": "",
+      "insured": false,
+      "insCurrency": "GBP",
+      "insAmount": 0,
+      "discount": false,
+      "discCurrency": "GBP",
+      "discAmount": 0,
+      "note": "",
+      "ready": false,
+      "dispatched": false,
+      "archived": false
+    },
     {
       "id": "rec_1795836458200_1axp",
       "invNo": "ADF595",
