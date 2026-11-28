@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-28T04:41:22.806Z",
+  "updatedAt": "2026-11-28T04:42:02.927Z",
   "records": [
     {
       "id": "inv_ADF585_1795840877005",
@@ -29,28 +29,24 @@
       "kgCurrency": "GBP",
       "kgGbp": 126,
       "kgMmk": 0,
-      "rate": 6500,
+      "rate": 0,
       "kgPayDate": "28.11.2026",
       "deliStatus": "pay_uk",
       "deliCurrency": "GBP",
       "deliGbp": 10,
       "deliMmk": 0,
-      "deliRate": 6500,
+      "deliRate": 0,
       "deliPayDate": "",
       "insured": false,
       "insCurrency": "MMK",
       "insAmount": 0,
-      "insRate": 6500,
       "discount": false,
       "discCurrency": "GBP",
       "discAmount": 0,
-      "discRate": 6500,
-      "note": "",
-      "invoiceStage": "Final Invoice",
-      "sourceApp": "mm-invoice-v44",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": false,
+      "note": ""
     },
     {
       "id": "rec_1795840087775_q2vd",
@@ -93,10 +89,10 @@
       "discount": false,
       "discCurrency": "GBP",
       "discAmount": 0,
-      "note": "Paid",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": false,
+      "note": "Paid"
     },
     {
       "id": "rec_1795839825528_e7ej",
@@ -139,10 +135,10 @@
       "discount": false,
       "discCurrency": "GBP",
       "discAmount": 0,
-      "note": "Unpaid",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": false,
+      "note": "Unpaid"
     },
     {
       "id": "rec_1795839632555_u45f",
@@ -185,10 +181,10 @@
       "discount": false,
       "discCurrency": "GBP",
       "discAmount": 0,
-      "note": "Cargofees & Local Deli Fees Paid By Kpay",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": false,
+      "note": "Cargofees & Local Deli Fees Paid By Kpay"
     },
     {
       "id": "rec_1795839258607_2h2t",
@@ -231,10 +227,10 @@
       "discount": false,
       "discCurrency": "GBP",
       "discAmount": 0,
-      "note": "Unpaid",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": false,
+      "note": "Unpaid"
     },
     {
       "id": "rec_1795839023236_w6y3",
@@ -277,10 +273,10 @@
       "discount": false,
       "discCurrency": "GBP",
       "discAmount": 0,
-      "note": "Unpaid",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": false,
+      "note": "Unpaid"
     },
     {
       "id": "rec_1795838811540_6vt2",
@@ -323,10 +319,10 @@
       "discount": false,
       "discCurrency": "GBP",
       "discAmount": 0,
-      "note": "Unpaid",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": false,
+      "note": "Unpaid"
     },
     {
       "id": "rec_1795838364355_a7dn",
@@ -369,10 +365,10 @@
       "discount": false,
       "discCurrency": "GBP",
       "discAmount": 0,
-      "note": "",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": false,
+      "note": ""
     },
     {
       "id": "rec_1795836458200_1axp",
@@ -415,10 +411,10 @@
       "discount": false,
       "discCurrency": "GBP",
       "discAmount": 0,
-      "note": "Only Cargo Fees Paid By MMK & Pick Up in UK Office",
       "ready": false,
       "dispatched": false,
-      "archived": false
+      "archived": false,
+      "note": "Only Cargo Fees Paid By MMK & Pick Up in UK Office"
     },
     {
       "id": "inv_ADF567_1795688457574",
