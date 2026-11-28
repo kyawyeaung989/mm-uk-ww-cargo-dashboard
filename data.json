@@ -1,6 +1,52 @@
 {
-  "updatedAt": "2026-11-28T04:10:26.912Z",
+  "updatedAt": "2026-11-28T04:14:22.235Z",
   "records": [
+    {
+      "id": "rec_1795839258607_2h2t",
+      "invNo": "ADF581",
+      "date": "5.11.2026",
+      "cargoType": "Standard",
+      "kgBreakdowns": [
+        {
+          "category": "Standard",
+          "kg": 5.5
+        }
+      ],
+      "origin": "Myanmar",
+      "destType": "UK",
+      "destination": "UK",
+      "sender": "Wai Mar Min",
+      "senderPhone": "09420240038",
+      "receiver": "Ma Yee Yee Win",
+      "receiverPhone": "+447458981011",
+      "boxes": 1,
+      "kg": 5.5,
+      "photos": [
+        "photos/rec_1795839258607_2h2t_1795839258607_1.jpg"
+      ],
+      "kgPayStatus": "unpaid",
+      "kgCurrency": "GBP",
+      "kgGbp": 71.5,
+      "kgMmk": 0,
+      "rate": 0,
+      "kgPayDate": "",
+      "deliStatus": "pay_uk",
+      "deliCurrency": "GBP",
+      "deliGbp": 10,
+      "deliMmk": 0,
+      "deliRate": 0,
+      "deliPayDate": "",
+      "insured": false,
+      "insCurrency": "GBP",
+      "insAmount": 0,
+      "discount": false,
+      "discCurrency": "GBP",
+      "discAmount": 0,
+      "note": "Unpaid",
+      "ready": false,
+      "dispatched": false,
+      "archived": false
+    },
     {
       "id": "rec_1795839023236_w6y3",
       "invNo": "ADF580",
