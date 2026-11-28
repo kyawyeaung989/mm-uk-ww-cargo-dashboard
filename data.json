@@ -1,6 +1,52 @@
 {
-  "updatedAt": "2026-11-28T05:49:42.405Z",
+  "updatedAt": "2026-11-28T05:56:50.348Z",
   "records": [
+    {
+      "id": "rec_1795845406775_fh5x",
+      "invNo": "ADF594",
+      "date": "17.11.2026",
+      "cargoType": "Risk",
+      "kgBreakdowns": [
+        {
+          "category": "Risk",
+          "kg": 28
+        }
+      ],
+      "origin": "Myanmar",
+      "destType": "Worldwide",
+      "destination": "Poland",
+      "sender": "Daw Than Than Win",
+      "senderPhone": "095009133",
+      "receiver": "Htet Myat Noe",
+      "receiverPhone": "+48798625219",
+      "boxes": 1,
+      "kg": 28,
+      "photos": [
+        "photos/rec_1795845406775_fh5x_1795845406775_1.jpg"
+      ],
+      "kgPayStatus": "paid_mm",
+      "kgCurrency": "MMK",
+      "kgGbp": 0,
+      "kgMmk": 2380000,
+      "rate": 6800,
+      "kgPayDate": "17.11.2026",
+      "deliStatus": "none",
+      "deliCurrency": "GBP",
+      "deliGbp": 0,
+      "deliMmk": 0,
+      "deliRate": 0,
+      "deliPayDate": "",
+      "insured": false,
+      "insCurrency": "GBP",
+      "insAmount": 0,
+      "discount": false,
+      "discCurrency": "GBP",
+      "discAmount": 0,
+      "note": "Paid",
+      "ready": false,
+      "dispatched": false,
+      "archived": false
+    },
     {
       "id": "rec_1795844978892_ypc9",
       "invNo": "ADF592",
