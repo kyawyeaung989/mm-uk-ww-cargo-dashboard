@@ -1,6 +1,57 @@
 {
-  "updatedAt": "2026-11-28T04:55:48.243Z",
+  "updatedAt": "2026-11-28T05:04:03.195Z",
   "records": [
+    {
+      "id": "inv_ADF587_1795842236966",
+      "invNo": "ADF587",
+      "date": "12.11.2026",
+      "cargoType": "Risk",
+      "kgBreakdowns": [
+        {
+          "category": "Risk",
+          "kg": 8.5
+        }
+      ],
+      "origin": "Myanmar",
+      "destType": "UK",
+      "destination": "UK",
+      "sender": "U Zaw Win",
+      "senderPhone": "09450505128",
+      "receiver": "Junaid",
+      "receiverPhone": "+447774411784",
+      "boxes": 1,
+      "kg": 8.5,
+      "photos": [
+        "photos/inv_ADF587_1795842236966_1795842236966_1.jpg",
+        "photos/inv_ADF587_1795842236966_1795842239677_2.jpg"
+      ],
+      "kgPayStatus": "unpaid",
+      "kgCurrency": "GBP",
+      "kgGbp": 119,
+      "kgMmk": 0,
+      "rate": 6500,
+      "kgPayDate": "11.11.26",
+      "deliStatus": "pay_uk",
+      "deliCurrency": "GBP",
+      "deliGbp": 10,
+      "deliMmk": 0,
+      "deliRate": 6500,
+      "deliPayDate": "",
+      "insured": false,
+      "insCurrency": "MMK",
+      "insAmount": 0,
+      "insRate": 6500,
+      "discount": false,
+      "discCurrency": "GBP",
+      "discAmount": 0,
+      "discRate": 6500,
+      "note": "",
+      "invoiceStage": "Revised",
+      "sourceApp": "mm-invoice-v44",
+      "ready": false,
+      "dispatched": false,
+      "archived": false
+    },
     {
       "id": "inv_ADF586_1795841741339",
       "invNo": "ADF586",
