@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-28T05:58:39.157Z",
+  "updatedAt": "2026-11-28T06:00:30.007Z",
   "records": [
     {
       "id": "rec_1795845406775_fh5x",
@@ -343,8 +343,8 @@
       "origin": "Myanmar",
       "destType": "UK",
       "destination": "UK",
-      "sender": "Ma Sandar",
-      "senderPhone": "09253536677",
+      "sender": "Ko Beno",
+      "senderPhone": "09253539977",
       "receiver": "Stacey Eaint",
       "receiverPhone": "07427029529",
       "boxes": 1,
@@ -359,12 +359,12 @@
       "kgMmk": 455000,
       "rate": 6500,
       "kgPayDate": "11.11.26",
-      "deliStatus": "paid_mm",
+      "deliStatus": "none",
       "deliCurrency": "MMK",
       "deliGbp": 0,
-      "deliMmk": 65000,
-      "deliRate": 6500,
-      "deliPayDate": "11.11.26",
+      "deliMmk": 0,
+      "deliRate": 0,
+      "deliPayDate": "",
       "insured": false,
       "insCurrency": "MMK",
       "insAmount": 0,
@@ -374,7 +374,7 @@
       "ready": false,
       "dispatched": true,
       "archived": false,
-      "note": ""
+      "note": "Paid"
     },
     {
       "id": "inv_ADF585_1795840877005",
