@@ -1,6 +1,57 @@
 {
-  "updatedAt": "2026-11-28T04:40:30.443Z",
+  "updatedAt": "2026-11-28T04:41:22.806Z",
   "records": [
+    {
+      "id": "inv_ADF585_1795840877005",
+      "invNo": "ADF585",
+      "date": "28.11.2026",
+      "cargoType": "Risk",
+      "kgBreakdowns": [
+        {
+          "category": "Risk",
+          "kg": 9
+        }
+      ],
+      "origin": "Myanmar",
+      "destType": "UK",
+      "destination": "UK",
+      "sender": "Ma Sandar",
+      "senderPhone": "09966322019",
+      "receiver": "Khin Moh Moh Tun",
+      "receiverPhone": "+447502435549",
+      "boxes": 1,
+      "kg": 9,
+      "photos": [
+        "photos/inv_ADF585_1795840877005_1795840877005_1.jpg",
+        "photos/inv_ADF585_1795840877005_1795840879840_2.jpg"
+      ],
+      "kgPayStatus": "unpaid",
+      "kgCurrency": "GBP",
+      "kgGbp": 126,
+      "kgMmk": 0,
+      "rate": 6500,
+      "kgPayDate": "28.11.2026",
+      "deliStatus": "pay_uk",
+      "deliCurrency": "GBP",
+      "deliGbp": 10,
+      "deliMmk": 0,
+      "deliRate": 6500,
+      "deliPayDate": "",
+      "insured": false,
+      "insCurrency": "MMK",
+      "insAmount": 0,
+      "insRate": 6500,
+      "discount": false,
+      "discCurrency": "GBP",
+      "discAmount": 0,
+      "discRate": 6500,
+      "note": "",
+      "invoiceStage": "Final Invoice",
+      "sourceApp": "mm-invoice-v44",
+      "ready": false,
+      "dispatched": false,
+      "archived": false
+    },
     {
       "id": "rec_1795840087775_q2vd",
       "invNo": "ADF584",
