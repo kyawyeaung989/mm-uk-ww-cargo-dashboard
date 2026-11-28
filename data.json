@@ -1,6 +1,60 @@
 {
-  "updatedAt": "2026-11-28T05:04:03.195Z",
+  "updatedAt": "2026-11-28T05:11:49.202Z",
   "records": [
+    {
+      "id": "inv_ADF588_1795842705447",
+      "invNo": "ADF588",
+      "date": "15.11.2026",
+      "cargoType": "Standard",
+      "kgBreakdowns": [
+        {
+          "category": "Standard",
+          "kg": 14
+        },
+        {
+          "category": "Standard",
+          "kg": 8.5
+        }
+      ],
+      "origin": "Myanmar",
+      "destType": "UK",
+      "destination": "UK",
+      "sender": "Daw Sandar Oo",
+      "senderPhone": "09420140107",
+      "receiver": "Ingyin Yadanar",
+      "receiverPhone": "07902150461",
+      "boxes": 2,
+      "kg": 22.5,
+      "photos": [
+        "photos/inv_ADF588_1795842705447_1795842705447_1.jpg"
+      ],
+      "kgPayStatus": "unpaid",
+      "kgCurrency": "GBP",
+      "kgGbp": 301,
+      "kgMmk": 0,
+      "rate": 6500,
+      "kgPayDate": "15.11.2026",
+      "deliStatus": "pay_uk",
+      "deliCurrency": "GBP",
+      "deliGbp": 20,
+      "deliMmk": 0,
+      "deliRate": 6500,
+      "deliPayDate": "",
+      "insured": false,
+      "insCurrency": "MMK",
+      "insAmount": 0,
+      "insRate": 6500,
+      "discount": false,
+      "discCurrency": "GBP",
+      "discAmount": 0,
+      "discRate": 6500,
+      "note": "",
+      "invoiceStage": "Revised",
+      "sourceApp": "mm-invoice-v44",
+      "ready": false,
+      "dispatched": false,
+      "archived": false
+    },
     {
       "id": "inv_ADF587_1795842236966",
       "invNo": "ADF587",
