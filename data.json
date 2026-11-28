@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-28T06:00:39.433Z",
+  "updatedAt": "2026-11-28T06:00:44.856Z",
   "records": [
     {
       "id": "rec_1795845406775_fh5x",
@@ -466,7 +466,7 @@
       "discAmount": 0,
       "ready": false,
       "dispatched": true,
-      "archived": false,
+      "archived": true,
       "note": "Paid"
     },
     {
@@ -512,7 +512,7 @@
       "discAmount": 0,
       "ready": false,
       "dispatched": true,
-      "archived": false,
+      "archived": true,
       "note": "Unpaid"
     },
     {
